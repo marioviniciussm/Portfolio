@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Mobile — Portfólio Mário Vinicius</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f0f 100%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px 40px;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,0.9);
+    }
+    .hint {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .preview-wrapper {
+      width: 375px;
+      max-width: 100%;
+      border-radius: 24px;
+      overflow: visible;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+    .preview-wrapper iframe {
+      width: 375px;
+      height: 700px;
+      min-height: 700px;
+      border: none;
+      display: block;
+    }
+    .device-info {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Preview Mobile</h1>
+  <p class="hint">Portfólio Mário Vinicius · 375px</p>
+  <div class="preview-wrapper">
+    <iframe src="index.html" title="Portfólio" scrolling="yes"></iframe>
+  </div>
+  <p class="device-info">Clique na área do portfólio acima e use a roda do mouse para rolar</p>
+</body>
+</html>
