@@ -185,6 +185,77 @@
     margin-left: auto;
   }
 
+  /* ── ACCORDION ── */
+  .cobertura-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+
+  .cobertura-toggle .cobertura-header {
+    transition: border-color .25s;
+  }
+
+  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
+  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
+
+  .accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-left: 16px;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s, transform .35s ease;
+  }
+
+  .accordion-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--cinza);
+    fill: none;
+    stroke-width: 2;
+    transition: stroke .2s, transform .35s ease;
+  }
+
+  .cobertura-toggle:hover .accordion-icon {
+    background: rgba(192,57,43,0.12);
+    border-color: var(--vermelho);
+  }
+
+  .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
+
+  /* estado aberto */
+  .cobertura-block.open .accordion-icon {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+  .cobertura-block.open .accordion-icon svg {
+    stroke: var(--branco);
+    transform: rotate(180deg);
+  }
+
+  /* corpo do accordion */
+  .cobertura-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cobertura-block.open .cobertura-body {
+    max-height: 99999px;
+  }
+
+  .cobertura-body-inner {
+    padding-top: 28px;
+    padding-bottom: 8px;
+  }
+
   /* ── MASONRY GRID ── */
   .grid-masonry {
     columns: 3;
@@ -353,8 +424,10 @@
 <nav>
   <a href="index.html" class="nav-logo">M<span>·</span>V</a>
   <ul class="nav-links">
-    <li><a href="index.html">Portfólio</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#cases">Cases</a></li>
     <li><a href="fotografia.html" class="active">Fotografia</a></li>
+    <li><a href="index.html#habilidades">Habilidades</a></li>
     <li><a href="index.html#contato">Contato</a></li>
   </ul>
 </nav>
@@ -379,11 +452,18 @@
 
     <!-- Manifestação Juntos! -->
     <div class="cobertura-block">
-      <div class="cobertura-header">
-        <h2 class="cobertura-titulo">Manifestação do Juntos!</h2>
-        <span class="cobertura-data">02 Out 2025</span>
-        <span class="cobertura-count">35 fotos</span>
-      </div>
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Manifestação do Juntos!</h2>
+          <span class="cobertura-data">02 Out 2025</span>
+          <span class="cobertura-count">35 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
       <div class="grid-masonry" data-gallery="manifestacao">
         <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
@@ -421,15 +501,24 @@
         <div class="grid-item" data-index="33"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-46_oixcw5.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="34"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422664/mariovinicius.fotografia_02_10_2025-66_k84fwn.jpg" loading="lazy" alt=""></div>
       </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
     </div>
 
     <!-- São José VS Vila Olímpica -->
     <div class="cobertura-block">
-      <div class="cobertura-header">
-        <h2 class="cobertura-titulo">São José VS Vila Olímpica</h2>
-        <span class="cobertura-data">17 Ago 2025</span>
-        <span class="cobertura-count">97 fotos</span>
-      </div>
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">São José VS Vila Olímpica</h2>
+          <span class="cobertura-data">17 Ago 2025</span>
+          <span class="cobertura-count">97 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
       <div class="grid-masonry" data-gallery="futebol">
         <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
@@ -529,6 +618,8 @@
         <div class="grid-item" data-index="95"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-96_vlvbes.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="96"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-97_ecbxpy.jpg" loading="lazy" alt=""></div>
       </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
     </div>
 
   </div><!-- /coberturas -->
@@ -588,6 +679,16 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// ── ACCORDION ──
+document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const block = toggle.closest('.cobertura-block');
+    const isOpen = block.classList.contains('open');
+    block.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
 // ── LIGHTBOX ──
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
@@ -597,7 +698,6 @@ let currentGallery = [];
 let currentIndex = 0;
 
 function getFullUrl(thumb) {
-  // swap w_800 for w_1600 para a versão ampliada
   return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto');
 }
 
