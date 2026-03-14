@@ -123,19 +123,20 @@
   .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
   .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
   .drawer-cases-btn.open svg { transform: rotate(180deg); }
-  .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+  .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
   .drawer-cases-body.open { max-height: 400px; }
   .drawer-cases-body a {
-    display: block; padding: 10px 32px 10px 48px;
-    font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(136,136,136,0.8); text-decoration: none; border-left: 3px solid transparent;
-    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    display: block; padding: 11px 24px 11px 40px;
+    font-size: 10px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(155,155,155,0.9); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    transition: color 0.15s, background 0.15s, padding-left 0.15s;
   }
-  .drawer-cases-body a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
-  .drawer-cases-body .drawer-case-label {
-    font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.6);
-    padding: 10px 32px 4px 48px; pointer-events: none; display: block;
-  }
+  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; color: rgba(192,57,43,0.5); font-size: 9px; }
+  .drawer-cases-body a:last-of-type { border-bottom: none; }
+  .drawer-cases-body a:hover { color: var(--branco); background: rgba(192,57,43,0.1); padding-left: 46px; }
+  .drawer-cases-body a.active { color: var(--branco); }
 
   /* ── HERO ── */
   .hero {
@@ -531,7 +532,6 @@
         <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
-        <span class="drawer-case-label">Trabalhos selecionados</span>
         <a href="index.html#cases">Relatório de Atividades 2024</a>
         <a href="fotografia.html" class="active">Acervo Fotográfico</a>
         <a href="index.html#cases">Campanhas de Social Media</a>
