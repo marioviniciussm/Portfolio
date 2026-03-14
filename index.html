@@ -35,39 +35,52 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 60px;
+    display: flex; align-items: stretch;
+    padding: 0 60px;
     background: rgba(15,15,15,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(192,57,43,0.2);
+    min-height: 64px;
   }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+  /* logo estica a área de clique do topo à borda da nav */
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
+    color: var(--white); text-decoration: none;
+    display: flex; align-items: center;
+    padding: 0 24px 0 0;
+    margin-right: 8px;
+    transition: color 0.2s;
+  }
+  .nav-logo:hover { color: var(--white); }
   .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
 
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; margin-left: auto; flex-wrap: nowrap; }
+
+  /* links e dropdown-btn usam align-self: stretch + padding lateral generoso */
+  .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 8px 18px; border: 1px solid transparent;
-    transition: color 0.2s, background 0.2s, border-color 0.2s;
-    display: block;
+    padding: 0 22px; border: none;
+    display: flex; align-items: center;
+    transition: color 0.2s, background 0.2s;
   }
-  .nav-links a:hover { color: var(--white); background: var(--red); border-color: var(--red); }
+  .nav-links a:hover { color: var(--white); background: var(--red); }
 
   /* dropdown Cases */
-  .nav-dropdown { position: relative; }
+  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
 
   .nav-dropdown-btn {
-    color: var(--gray); background: none; border: 1px solid transparent; cursor: pointer;
+    color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 8px 18px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 22px;
     display: flex; align-items: center; gap: 6px;
-    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    transition: color 0.2s, background 0.2s;
   }
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
   .nav-dropdown:hover .nav-dropdown-btn,
-  .nav-dropdown-btn:focus-visible { color: var(--white); background: var(--red); border-color: var(--red); outline: none; }
-  .nav-dropdown.open .nav-dropdown-btn { color: var(--white); background: var(--red); border-color: var(--red); }
+  .nav-dropdown-btn:focus-visible { color: var(--white); background: var(--red); outline: none; }
+  .nav-dropdown.open .nav-dropdown-btn { color: var(--white); background: var(--red); }
   .nav-dropdown.open .nav-dropdown-btn svg { transform: rotate(180deg); }
 
   .nav-dropdown-menu {
@@ -337,10 +350,10 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; padding-top: max(16px, env(safe-area-inset-top)); justify-content: space-between; }
-    .nav-logo { font-size: 20px; }
+    nav { padding: 0 24px; padding-top: env(safe-area-inset-top); justify-content: space-between; min-height: calc(56px + env(safe-area-inset-top)); }
+    .nav-logo { font-size: 20px; padding: 0 16px 0 0; }
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
+    .nav-hamburger { display: flex; margin-left: auto; }
     #hero { grid-template-columns: 1fr; min-height: auto; padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
     .hero-left { padding: 40px 24px 36px; order: 1; }
     .hero-tag { font-size: 10px; padding: 5px 12px; margin-bottom: 20px; }
