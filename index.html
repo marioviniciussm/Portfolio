@@ -28,7 +28,6 @@
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; width: 100%; }
 
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--black); }
   ::-webkit-scrollbar-thumb { background: var(--red); }
@@ -44,123 +43,54 @@
   }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
   .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { color: var(--gray); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--white); }
+  .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--white);
+    background: var(--red);
+    border-color: var(--red);
+  }
 
   /* ── HERO ── */
   #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
-
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
-
   .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; margin-bottom: 36px; width: fit-content; }
-
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 28px; }
   .hero-name span { color: var(--red); display: block; }
-
   .hero-title { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
   .hero-title strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 6px; }
   .hero-subtitle { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; }
-
   .hero-desc { font-size: 15px; color: #aaa; max-width: 420px; line-height: 1.75; margin-bottom: 44px; }
-
-  .hero-ctas {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .hero-ctas-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .hero-social-icons {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--gray);
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-  }
-
-  .social-icon:hover {
-    border-color: var(--red);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
-
-  .social-icon svg {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.8;
-  }
-
-  .btn-primary, .btn-secondary {
-    text-decoration: none;
-    padding: 14px 20px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  }
+  .hero-ctas { display: flex; flex-direction: column; gap: 16px; }
+  .hero-ctas-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hero-social-icons { display: flex; gap: 12px; align-items: center; }
+  .social-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+  .social-icon:hover { border-color: var(--red); color: var(--white); transform: translateY(-2px); }
+  .social-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .btn-primary, .btn-secondary { text-decoration: none; padding: 14px 20px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; text-align: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
   .btn-primary { background: var(--red); color: var(--white); font-weight: 700; }
   .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
   .btn-secondary { border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-weight: 500; }
   .btn-secondary:hover { border-color: var(--white); transform: translateY(-2px); }
 
-  /* ── HERO RIGHT ── */
   .hero-right { position: relative; background: var(--red); overflow: hidden; }
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0.35;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 180px 180px;
-    mix-blend-mode: soft-light;
-  }
+  .hero-right::after { content: ''; position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0.35; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; mix-blend-mode: soft-light; }
   .hero-right::before { display: none; }
-
   .hero-photo { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 82%; width: auto; object-fit: cover; object-position: top center; display: block; z-index: 1; mask-image: linear-gradient(to bottom, black 68%, transparent 90%); -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 90%); }
-
   .hero-right-content { position: absolute; bottom: 110px; left: 48px; right: 48px; z-index: 2; }
-
   .hero-disciplines { display: flex; flex-direction: column; gap: 12px; }
-
-  /* DISCIPLINE ITEMS — hover efeito pulo */
-  .discipline-item {
-    display: flex; align-items: center; gap: 16px;
-    padding: 16px 20px;
-    background: rgba(0,0,0,0.2);
-    border-left: 3px solid rgba(255,255,255,0.3);
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
-    cursor: default;
-  }
-  .discipline-item:hover {
-    background: rgba(0,0,0,0.45);
-    border-left-color: var(--white);
-    transform: translateX(8px) scale(1.02);
-  }
+  .discipline-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.2); border-left: 3px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.25s; cursor: default; }
+  .discipline-item:hover { background: rgba(0,0,0,0.45); border-left-color: var(--white); transform: translateX(8px) scale(1.02); }
   .discipline-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: rgba(255,255,255,0.3); line-height: 1; min-width: 32px; transition: color 0.25s; }
   .discipline-item:hover .discipline-num { color: rgba(255,255,255,0.8); }
   .discipline-text { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); }
@@ -172,93 +102,81 @@
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 5vw, 64px); letter-spacing: 2px; color: var(--white); line-height: 1; margin-bottom: 48px; }
 
-  /* ── SOBRE ── */
   /* ── MARQUEE ── */
-  .marquee-wrap {
-    overflow: hidden;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 16px 0;
-    background: var(--black);
-    user-select: none;
-  }
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 22s linear infinite;
-  }
-  .marquee-reverse {
-    animation-direction: reverse;
-    animation-duration: 28s;
-  }
+  .marquee-wrap { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 0; background: var(--black); user-select: none; }
+  .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
+  .marquee-reverse { animation-direction: reverse; animation-duration: 28s; }
   .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-  .marquee-item {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    padding: 0 28px;
-    white-space: nowrap;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 15px;
-    letter-spacing: 3px;
-    color: rgba(255,255,255,0.18);
-    text-transform: uppercase;
-  }
+  .marquee-item { display: flex; align-items: center; gap: 28px; padding: 0 28px; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 3px; color: rgba(255,255,255,0.18); text-transform: uppercase; }
   .marquee-item span { color: var(--red); font-size: 10px; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+  /* ── SOBRE ── */
   #sobre { border-top: none; }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
   .sobre-text p strong { color: var(--white); font-weight: 500; }
   .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-
-  /* STAT BLOCKS — hover com leve aumento */
-  .stat-block {
-    background: var(--dark); padding: 32px 28px;
-    border-top: 3px solid transparent;
-    transition: border-color 0.2s, transform 0.25s, background 0.25s;
-  }
+  .stat-block { background: var(--dark); padding: 32px 28px; border-top: 3px solid transparent; transition: border-color 0.2s, transform 0.25s, background 0.25s; }
   .stat-block:hover { border-color: var(--red); transform: scale(1.04); background: #222; }
-
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* ── CASES ── */
+  /* ── CASES — Metro layout ── */
   #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
   .cases-header { max-width: 1200px; margin: 0 auto 60px; }
-  .cases-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-
-  .case-card { position: relative; background: var(--dark); overflow: hidden; cursor: pointer; text-decoration: none; display: block; aspect-ratio: 4/3; }
-  .case-card-wide { grid-column: span 2; aspect-ratio: 16/9; }
-
+  .cases-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 340px 340px 280px;
+    gap: 4px;
+  }
+  .case-card { position: relative; background: var(--dark); overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
+  /* posicionamento explícito — Metro clássico */
+  .case-card-01   { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .case-card-foto { grid-column: 3 / 4; grid-row: 1 / 3; }
+  .case-card-05   { grid-column: 1 / 3; grid-row: 2 / 3; }
+  .case-card-03   { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .case-card-04   { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .case-card-wide { grid-column: span 2; }
   .case-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, opacity 0.3s; opacity: 0.7; }
   .case-card:hover .case-thumb { transform: scale(1.04); opacity: 0.5; }
-
   .case-thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1010 100%); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; }
   .case-card:hover .case-thumb-placeholder { opacity: 0.6; }
 
-  .placeholder-icon { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(192,57,43,0.2); letter-spacing: 4px; }
+  /* placeholder especial de fotografia — grid de quadros simulando fotos */
+  .case-foto-placeholder {
+    width: 100%; height: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 2px; overflow: hidden; transition: opacity 0.3s;
+    background: #111;
+  }
+  .case-foto-placeholder span { display: block; transition: background 0.4s; }
+  .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #1c1010 0%, #2a1515 100%); }
+  .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #150e0e 0%, #200f0f 100%); }
+  .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #1a1010 0%, #280e0e 100%); }
+  .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #200c0c 0%, #2e0f0f 100%); }
+  .case-card:hover .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #3a1515 0%, #4a1c1c 100%); }
+  .case-card:hover .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #2e1010 0%, #401515 100%); }
+  .case-card:hover .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #350e0e 0%, #4a1010 100%); }
+  .case-card:hover .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #420c0c 0%, #5a1010 100%); }
 
+  .placeholder-icon { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(192,57,43,0.2); letter-spacing: 4px; }
   .case-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.2) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; transition: background 0.3s; }
   .case-card:hover .case-overlay { background: linear-gradient(to top, rgba(192,57,43,0.7) 0%, rgba(15,15,15,0.3) 60%, transparent 100%); }
-
   .case-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red-muted); margin-bottom: 8px; transition: color 0.3s; }
   .case-card:hover .case-tag { color: rgba(255,255,255,0.7); }
   .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--white); line-height: 1.1; margin-bottom: 6px; }
   .case-card-wide .case-title { font-size: 34px; }
   .case-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; max-width: 340px; transition: color 0.3s; }
   .case-card:hover .case-desc { color: rgba(255,255,255,0.8); }
-
   .case-arrow { position: absolute; top: 24px; right: 24px; width: 36px; height: 36px; background: var(--red); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s, transform 0.3s; }
   .case-card:hover .case-arrow { opacity: 1; transform: translateY(0); }
   .case-arrow svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; }
-
   .case-wip .placeholder-icon { color: rgba(192,57,43,0.15); }
   .case-wip-badge { position: absolute; top: 16px; left: 16px; background: rgba(15,15,15,0.85); border: 1px solid rgba(255,255,255,0.1); color: var(--gray); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
+  .case-foto-badge { position: absolute; top: 16px; left: 16px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
 
   /* ── HABILIDADES ── */
   #habilidades { border-top: none; }
@@ -315,9 +233,7 @@
     nav { padding: 16px 24px; padding-top: max(16px, env(safe-area-inset-top)); justify-content: center; }
     .nav-logo { font-size: 20px; }
     .nav-links { display: none; }
-
     #hero { grid-template-columns: 1fr; min-height: auto; padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
-
     .hero-left { padding: 40px 24px 36px; order: 1; }
     .hero-tag { font-size: 10px; padding: 5px 12px; margin-bottom: 20px; }
     .hero-name { font-size: clamp(56px, 16vw, 80px); margin-bottom: 16px; }
@@ -327,56 +243,53 @@
     .hero-ctas-buttons { grid-template-columns: 1fr 1fr; gap: 10px; }
     .btn-primary, .btn-secondary { padding: 13px 12px; font-size: 10px; }
     .social-icon { width: 38px; height: 38px; }
-
     .hero-right { order: 2; min-height: 520px; padding: 0; overflow: hidden; }
     .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 58%; object-fit: cover; object-position: top center; transform: none; mask-image: linear-gradient(to bottom, black 65%, transparent 92%); -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 92%); }
     .hero-right-content { position: absolute; bottom: 24px; left: 24px; right: 24px; padding: 0; }
     .hero-disciplines { gap: 8px; }
     .discipline-item { padding: 12px 16px; gap: 12px; }
-    /* Sem hover no mobile */
     .discipline-item:hover { transform: none; background: rgba(0,0,0,0.2); border-left-color: rgba(255,255,255,0.3); }
-
     section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
-
     .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
     .sobre-text p { font-size: 14px; }
     .sobre-stats { grid-template-columns: 1fr 1fr; gap: 2px; }
     .stat-block { padding: 24px 18px; }
-    .stat-block:hover { transform: none; } /* sem scale no mobile */
+    .stat-block:hover { transform: none; }
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 11px; }
-
     .cases-header { margin-bottom: 32px; }
-    .cases-grid { grid-template-columns: 1fr; }
-    .case-card, .case-card-wide { grid-column: span 1; aspect-ratio: 16/9; }
+    .cases-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .case-card-01   { grid-column: 1 / 3; grid-row: auto; }
+    .case-card-foto { grid-column: 1 / 3; grid-row: auto; min-height: 220px; }
+    .case-card-05   { grid-column: 1 / 3; grid-row: auto; }
+    .case-card-03   { grid-column: 1 / 2; grid-row: auto; min-height: 180px; }
+    .case-card-04   { grid-column: 2 / 3; grid-row: auto; min-height: 180px; }
+    .case-card-wide { grid-column: span 2; }
     .case-title { font-size: 20px; }
     .case-card-wide .case-title { font-size: 22px; }
     .case-desc { font-size: 11px; }
     .case-overlay { padding: 16px; }
-    .case-wip-badge { font-size: 9px; padding: 4px 8px; }
+    .case-wip-badge, .case-foto-badge { font-size: 9px; padding: 4px 8px; }
     .placeholder-icon { font-size: 48px; }
-
     .skills-grid { grid-template-columns: 1fr; }
     .skill-block, .skill-block.soft { padding: 24px 20px; grid-column: span 1; }
     .skill-tag { font-size: 11px; padding: 4px 10px; }
-
     .acervo-box { padding: 36px 24px; }
     .acervo-box p { font-size: 14px; }
-
     .contato-inner { grid-template-columns: 1fr; gap: 36px; }
     .contato-item { padding: 16px 18px; gap: 14px; }
     .contato-icon { width: 36px; height: 36px; }
     .contato-info-value { font-size: 13px; word-break: break-word; }
-
     footer { padding: 20px 24px; padding-bottom: max(20px, env(safe-area-inset-bottom)); flex-direction: column; gap: 6px; text-align: center; }
     footer span { font-size: 11px; }
   }
 
-  @media (max-width: 380px) {
-    .hero-name { font-size: 52px; }
-  }
+  @media (max-width: 380px) { .hero-name { font-size: 52px; } }
 </style>
 </head>
 <body>
@@ -448,7 +361,6 @@
 
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <!-- duplicado para loop contínuo -->
     <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
     <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
   </div>
@@ -464,22 +376,10 @@
       <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
     </div>
     <div class="sobre-stats">
-      <div class="stat-block">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Anos de experiência</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Ferramentas dominadas</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Disciplinas integradas</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">22</div>
-        <div class="stat-label">Anos de idade</div>
-      </div>
+      <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Anos de experiência</div></div>
+      <div class="stat-block"><div class="stat-num">10+</div><div class="stat-label">Ferramentas dominadas</div></div>
+      <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Disciplinas integradas</div></div>
+      <div class="stat-block"><div class="stat-num">22</div><div class="stat-label">Anos de idade</div></div>
     </div>
   </div>
 </section>
@@ -491,7 +391,8 @@
   </div>
   <div class="cases-grid">
 
-    <a href="LINK_CASE_1_AQUI" class="case-card case-card-wide case-wip" target="_blank">
+    <!-- TILE 01 — wide, linha 1 -->
+    <a href="LINK_CASE_1_AQUI" class="case-card case-card-01 case-wip" target="_blank">
       <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 01</span></div>
       <div class="case-wip-badge">Em breve</div>
       <div class="case-overlay">
@@ -502,18 +403,32 @@
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <a href="LINK_CASE_2_AQUI" class="case-card case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 02</span></div>
-      <div class="case-wip-badge">Em breve</div>
+    <!-- TILE FOTO — tall, linhas 1+2 -->
+    <a href="fotografia.html" class="case-card case-card-foto">
+      <div class="case-foto-placeholder"><span></span><span></span><span></span><span></span></div>
+      <div class="case-foto-badge">Ver álbum</div>
       <div class="case-overlay">
-        <span class="case-tag">Vídeo Institucional</span>
-        <h3 class="case-title">[ Título do vídeo ]</h3>
-        <p class="case-desc">Roteiro, captação, direção de cena e montagem final.</p>
+        <span class="case-tag">Fotografia Autoral</span>
+        <h3 class="case-title">Acervo Fotográfico</h3>
+        <p class="case-desc">Coberturas jornalísticas e cenas urbanas. Registro documental.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <a href="LINK_CASE_3_AQUI" class="case-card case-wip" target="_blank">
+    <!-- TILE 05 — wide, linha 2 -->
+    <a href="LINK_CASE_5_AQUI" class="case-card case-card-05 case-wip" target="_blank">
+      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 05</span></div>
+      <div class="case-wip-badge">Em breve</div>
+      <div class="case-overlay">
+        <span class="case-tag">Social Media e Design</span>
+        <h3 class="case-title">Campanhas de Social Media</h3>
+        <p class="case-desc">Seleção de peças de autoria própria: carrosséis educativos, posts de campanhas sazonais e identidades visuais para as redes da Verte Saúde.</p>
+      </div>
+      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+    </a>
+
+    <!-- TILE 03 — linha 3, col 1 -->
+    <a href="LINK_CASE_3_AQUI" class="case-card case-card-03 case-wip" target="_blank">
       <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 03</span></div>
       <div class="case-wip-badge">Em breve</div>
       <div class="case-overlay">
@@ -524,24 +439,14 @@
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <a href="LINK_CASE_4_AQUI" class="case-card case-wip" target="_blank">
+    <!-- TILE 04 — linha 3, col 2 -->
+    <a href="LINK_CASE_4_AQUI" class="case-card case-card-04 case-wip" target="_blank">
       <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 04</span></div>
       <div class="case-wip-badge">Em breve</div>
       <div class="case-overlay">
-        <span class="case-tag">Fotografia Editorial</span>
-        <h3 class="case-title">[ Título do ensaio ]</h3>
-        <p class="case-desc">[ Descrição breve do projeto fotográfico. ]</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
-
-    <a href="LINK_CASE_5_AQUI" class="case-card case-card-wide case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 05</span></div>
-      <div class="case-wip-badge">Em breve</div>
-      <div class="case-overlay">
-        <span class="case-tag">Social Media e Design</span>
-        <h3 class="case-title">Campanhas de Social Media</h3>
-        <p class="case-desc">Seleção de peças de autoria própria: carrosséis educativos, posts de campanhas sazonais e identidades visuais para as redes da Verte Saúde.</p>
+        <span class="case-tag">Vídeo Institucional</span>
+        <h3 class="case-title">[ Título do vídeo ]</h3>
+        <p class="case-desc">Roteiro, captação, direção de cena e montagem final.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
@@ -635,18 +540,15 @@
   <span>Feito com <strong>cuidado</strong></span>
 </footer>
 
-</body>
-
 <script>
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 </script>
 
+</body>
 </html>
