@@ -30,50 +30,111 @@
 
   /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 18px 48px;
     background: rgba(15,15,15,0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(192,57,43,0.2);
   }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.12em;
-    color: var(--branco);
-    text-decoration: none;
-  }
-
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--branco); text-decoration: none; }
   .nav-logo span { color: var(--vermelho); }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-    align-items: center;
-  }
-
+  .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
   .nav-links a {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--cinza);
-    text-decoration: none;
-    transition: color .2s;
+    color: var(--cinza); text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 8px 18px; border: 1px solid transparent; display: block;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .nav-links a:hover { color: var(--branco); background: var(--vermelho); border-color: var(--vermelho); }
+  .nav-links a.active { color: var(--branco); border-color: var(--vermelho); }
+
+  /* dropdown */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-btn {
+    color: var(--cinza); background: none; border: 1px solid transparent; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; padding: 8px 18px;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
+  .nav-dropdown:hover .nav-dropdown-btn,
+  .nav-dropdown.open .nav-dropdown-btn { color: var(--branco); background: var(--vermelho); border-color: var(--vermelho); }
+  .nav-dropdown.open .nav-dropdown-btn svg { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: calc(100% + 6px); left: 0;
+    background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
+    min-width: 240px; padding: 6px 0; opacity: 0; pointer-events: none;
+    transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s;
+    backdrop-filter: blur(12px);
+  }
+  .nav-dropdown.open .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .nav-dropdown-menu a {
+    display: block; padding: 10px 20px; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; border: none; transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { color: var(--branco); background: rgba(192,57,43,0.15); }
+  .nav-dropdown-menu .dropdown-label {
+    font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.7);
+    padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
   }
 
-  .nav-links a:hover,
-  .nav-links a.active { color: var(--branco); }
+  /* hambúrguer */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 8px;
+  }
+  .nav-hamburger span { display: block; height: 2px; background: var(--branco); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .nav-links a.active {
-    border-bottom: 1px solid var(--vermelho);
-    padding-bottom: 2px;
+  /* drawer */
+  .nav-drawer-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(0,0,0,0.5); }
+  .nav-drawer-overlay.open { display: block; }
+  .nav-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
+    width: 280px; background: #111; border-left: 1px solid rgba(192,57,43,0.2);
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column; padding: 80px 0 40px; overflow-y: auto;
+  }
+  .nav-drawer.open { transform: translateX(0); }
+  .drawer-links { list-style: none; }
+  .drawer-links li a {
+    display: block; padding: 14px 32px; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-links li a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-links li a.active { color: var(--branco); border-color: var(--vermelho); }
+  .drawer-cases-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px; border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-cases-btn span { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--cinza); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--branco); }
+  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
+  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-cases-btn.open svg { transform: rotate(180deg); }
+  .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+  .drawer-cases-body.open { max-height: 400px; }
+  .drawer-cases-body a {
+    display: block; padding: 10px 32px 10px 48px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(136,136,136,0.8); text-decoration: none; border-left: 3px solid transparent;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .drawer-cases-body a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-cases-body .drawer-case-label {
+    font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.6);
+    padding: 10px 32px 4px 48px; pointer-events: none; display: block;
   }
 
   /* ── HERO ── */
@@ -405,16 +466,27 @@
 
   footer a:hover { color: var(--branco); }
 
-  /* ── MOBILE NAV ── */
-  @media (max-width: 600px) {
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
     nav { padding: 16px 24px; }
-    .nav-links { gap: 18px; }
-    .nav-links a { font-size: 0.7rem; }
-    .hero { padding: 120px 24px 60px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero { padding: 100px 24px 50px; }
+    .hero h1 { font-size: clamp(3rem, 14vw, 5rem); }
     .tab-section { padding: 0 24px 40px; }
+    .tabs { margin-bottom: 36px; }
+    .tab-btn { font-size: 0.95rem; padding: 12px 24px 12px 0; }
     .cobertura-header { flex-wrap: wrap; gap: 8px; }
     .cobertura-count { margin-left: 0; }
+    .cobertura-titulo { font-size: 1.4rem; }
+    .grid-masonry { columns: 2; column-gap: 6px; }
+    .grid-item { margin-bottom: 6px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-masonry { columns: 1; }
+    .hero h1 { font-size: clamp(2.8rem, 16vw, 4rem); }
   }
 </style>
 </head>
@@ -425,12 +497,51 @@
   <a href="index.html" class="nav-logo">M<span>·</span>V</a>
   <ul class="nav-links">
     <li><a href="index.html#sobre">Sobre</a></li>
-    <li><a href="index.html#cases">Cases</a></li>
-    <li><a href="fotografia.html" class="active">Fotografia</a></li>
+    <li class="nav-dropdown" id="navDropdown">
+      <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+        Cases
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu" role="menu">
+        <div class="dropdown-label">Trabalhos selecionados</div>
+        <a href="index.html#cases" role="menuitem">Relatório de Atividades 2024</a>
+        <a href="fotografia.html" class="active" role="menuitem">Acervo Fotográfico</a>
+        <a href="index.html#cases" role="menuitem">Campanhas de Social Media</a>
+        <a href="index.html#cases" role="menuitem">Vídeo Institucional</a>
+      </div>
+    </li>
     <li><a href="index.html#habilidades">Habilidades</a></li>
     <li><a href="index.html#contato">Contato</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- OVERLAY -->
+<div class="nav-drawer-overlay" id="drawerOverlay"></div>
+
+<!-- DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <ul class="drawer-links">
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li>
+      <button class="drawer-cases-btn" id="drawerCasesBtn">
+        <span>Cases</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer-cases-body" id="drawerCasesBody">
+        <span class="drawer-case-label">Trabalhos selecionados</span>
+        <a href="index.html#cases">Relatório de Atividades 2024</a>
+        <a href="fotografia.html" class="active">Acervo Fotográfico</a>
+        <a href="index.html#cases">Campanhas de Social Media</a>
+        <a href="index.html#cases">Vídeo Institucional</a>
+      </div>
+    </li>
+    <li><a href="index.html#habilidades">Habilidades</a></li>
+    <li><a href="index.html#contato">Contato</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -741,6 +852,57 @@ document.querySelectorAll('.grid-masonry').forEach(grid => {
   grid.querySelectorAll('.grid-item').forEach((item, i) => {
     item.addEventListener('click', () => openLightbox(items, i));
   });
+});
+</script>
+
+<script>
+// ── DROPDOWN ──
+const navDropdown = document.getElementById('navDropdown');
+const dropBtn = navDropdown.querySelector('.nav-dropdown-btn');
+dropBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = navDropdown.classList.toggle('open');
+  dropBtn.setAttribute('aria-expanded', String(isOpen));
+});
+document.addEventListener('click', (e) => {
+  if (!navDropdown.contains(e.target)) {
+    navDropdown.classList.remove('open');
+    dropBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') navDropdown.classList.remove('open');
+});
+
+// ── HAMBÚRGUER + DRAWER ──
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+const overlay = document.getElementById('drawerOverlay');
+
+function closeDrawer() {
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = drawer.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  overlay.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+overlay.addEventListener('click', closeDrawer);
+
+const drawerCasesBtn = document.getElementById('drawerCasesBtn');
+const drawerCasesBody = document.getElementById('drawerCasesBody');
+drawerCasesBtn.addEventListener('click', () => {
+  const isOpen = drawerCasesBody.classList.toggle('open');
+  drawerCasesBtn.classList.toggle('open', isOpen);
+});
+
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', closeDrawer);
 });
 </script>
 </body>
