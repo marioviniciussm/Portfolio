@@ -920,4 +920,926 @@ document.addEventListener('keydown', (e) => {
 });
 </script>
 </body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotografia — Mário Vinicius</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --preto: #0f0f0f;
+    --vermelho: #C0392B;
+    --vermelho-dark: #a93226;
+    --branco: #ffffff;
+    --cinza: #888;
+    --cinza-escuro: #1a1a1a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: stretch;
+    padding: 0 48px;
+    background: rgba(15,15,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(192,57,43,0.2);
+    min-height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
+    color: var(--branco); text-decoration: none;
+    display: flex; align-items: center;
+    padding: 0 24px 0 0; margin-right: 8px;
+  }
+  .nav-logo span { color: var(--vermelho); }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; margin-left: auto; flex-wrap: nowrap; }
+  .nav-links > li { display: flex; align-items: stretch; }
+  .nav-links a {
+    color: var(--cinza); text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0 22px; border: none; display: flex; align-items: center;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--branco); background: var(--vermelho); }
+  .nav-links a.active { color: var(--branco); }
+
+  /* dropdown */
+  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
+  .nav-dropdown-btn {
+    color: var(--cinza); background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 22px;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
+  .nav-dropdown:hover .nav-dropdown-btn { color: var(--branco); background: var(--vermelho); }
+  .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 0;
+    background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
+    min-width: 240px; padding: 6px 0; opacity: 0; pointer-events: none;
+    transform: translateY(-4px); transition: opacity 0.18s, transform 0.18s;
+    backdrop-filter: blur(12px);
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .nav-dropdown-menu a {
+    display: block; padding: 10px 20px; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; border: none; transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { color: var(--branco); background: rgba(192,57,43,0.15); }
+  .nav-dropdown-menu .dropdown-label {
+    font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.7);
+    padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
+  }
+
+  /* hambúrguer */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 8px;
+  }
+  .nav-hamburger span { display: block; height: 2px; background: var(--branco); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* drawer */
+  .nav-drawer-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(0,0,0,0.5); }
+  .nav-drawer-overlay.open { display: block; }
+  .nav-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
+    width: 280px; background: #111; border-left: 1px solid rgba(192,57,43,0.2);
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column; padding: 72px 0 40px; overflow-y: auto;
+  }
+  .nav-drawer.open { transform: translateX(0); }
+
+  /* botão voltar ao topo do drawer */
+  .drawer-back {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 32px 14px 28px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: var(--vermelho); text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s, background 0.2s;
+  }
+  .drawer-back:hover { color: var(--branco); background: rgba(192,57,43,0.08); }
+  .drawer-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .drawer-links { list-style: none; }
+  .drawer-links li a {
+    display: block; padding: 14px 32px; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-links li a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-links li a.active { color: var(--branco); border-color: var(--vermelho); }
+  .drawer-cases-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px; border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-cases-btn span { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--cinza); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--branco); }
+  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
+  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-cases-btn.open svg { transform: rotate(180deg); }
+  .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
+  .drawer-cases-body.open { max-height: 400px; }
+  .drawer-cases-body a {
+    display: block; padding: 11px 24px 11px 40px;
+    font-size: 10px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(155,155,155,0.9); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    transition: color 0.15s, background 0.15s, padding-left 0.15s;
+  }
+  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; color: rgba(192,57,43,0.5); font-size: 9px; }
+  .drawer-cases-body a:last-of-type { border-bottom: none; }
+  .drawer-cases-body a:hover { color: var(--branco); background: rgba(192,57,43,0.1); padding-left: 46px; }
+  .drawer-cases-body a.active { color: var(--branco); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 160px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--branco);
+    margin-bottom: 24px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--cinza);
+    max-width: 500px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── TAB MENU ── */
+  .tab-section {
+    padding: 0 48px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 60px;
+  }
+
+  .tab-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--cinza);
+    background: none;
+    border: none;
+    padding: 14px 32px 14px 0;
+    cursor: pointer;
+    position: relative;
+    transition: color .25s;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 0; height: 2px;
+    background: var(--vermelho);
+    transition: width .3s ease;
+  }
+
+  .tab-btn.active {
+    color: var(--branco);
+  }
+
+  .tab-btn.active::after { width: calc(100% - 32px); }
+
+  /* ── COBERTURAS ── */
+  .cobertura-block {
+    margin-bottom: 80px;
+  }
+
+  .cobertura-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .cobertura-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    color: var(--branco);
+  }
+
+  .cobertura-data {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+  }
+
+  .cobertura-count {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+  }
+
+  /* ── ACCORDION ── */
+  .cobertura-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+
+  .cobertura-toggle .cobertura-header {
+    transition: border-color .25s;
+  }
+
+  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
+  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
+
+  .accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-left: 16px;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s, transform .35s ease;
+  }
+
+  .accordion-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--cinza);
+    fill: none;
+    stroke-width: 2;
+    transition: stroke .2s, transform .35s ease;
+  }
+
+  .cobertura-toggle:hover .accordion-icon {
+    background: rgba(192,57,43,0.12);
+    border-color: var(--vermelho);
+  }
+
+  .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
+
+  /* estado aberto */
+  .cobertura-block.open .accordion-icon {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+  .cobertura-block.open .accordion-icon svg {
+    stroke: var(--branco);
+    transform: rotate(180deg);
+  }
+
+  /* corpo do accordion */
+  .cobertura-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cobertura-block.open .cobertura-body {
+    max-height: 99999px;
+  }
+
+  .cobertura-body-inner {
+    padding-top: 28px;
+    padding-bottom: 8px;
+  }
+
+  /* ── MASONRY GRID ── */
+  .grid-masonry {
+    columns: 3;
+    column-gap: 8px;
+  }
+
+  @media (max-width: 900px) { .grid-masonry { columns: 2; } }
+  @media (max-width: 560px) { .grid-masonry { columns: 1; } }
+
+  .grid-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform .4s ease, filter .4s ease;
+    filter: brightness(0.92);
+  }
+
+  .grid-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1);
+  }
+
+  .grid-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(192,57,43,0);
+    transition: background .3s;
+    pointer-events: none;
+  }
+
+  .grid-item:hover::after {
+    background: rgba(192,57,43,0.08);
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.96);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lightbox.open {
+    display: flex;
+    animation: fadeIn .2s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .lightbox-img-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-img-wrap img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 24px; right: 32px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color .2s;
+    z-index: 210;
+  }
+
+  .lightbox-close:hover { color: var(--branco); }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: color .2s;
+    z-index: 210;
+    line-height: 1;
+  }
+
+  .lightbox-nav:hover { color: var(--branco); }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  /* ── TABS CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+  }
+
+  footer a {
+    color: var(--vermelho);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--branco); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; padding-top: env(safe-area-inset-top); min-height: calc(56px + env(safe-area-inset-top)); }
+    .nav-logo { font-size: 20px; padding: 0 16px 0 0; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; margin-left: auto; }
+    .hero { padding: 100px 24px 50px; }
+    .hero h1 { font-size: clamp(3rem, 14vw, 5rem); }
+    .tab-section { padding: 0 24px 40px; }
+    .tabs { margin-bottom: 36px; }
+    .tab-btn { font-size: 0.95rem; padding: 12px 24px 12px 0; }
+    .cobertura-header { flex-wrap: wrap; gap: 8px; }
+    .cobertura-count { margin-left: 0; }
+    .cobertura-titulo { font-size: 1.4rem; }
+    .grid-masonry { columns: 2; column-gap: 6px; }
+    .grid-item { margin-bottom: 6px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-masonry { columns: 1; }
+    .hero h1 { font-size: clamp(2.8rem, 16vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">M<span>·</span>V</a>
+  <ul class="nav-links">
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li class="nav-dropdown" id="navDropdown">
+      <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+        Cases
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu" role="menu">
+        <div class="dropdown-label">Trabalhos selecionados</div>
+        <a href="index.html#cases" role="menuitem">Relatório de Atividades 2024</a>
+        <a href="fotografia.html" class="active" role="menuitem">Acervo Fotográfico</a>
+        <a href="index.html#cases" role="menuitem">Campanhas de Social Media</a>
+        <a href="index.html#cases" role="menuitem">Vídeo Institucional</a>
+      </div>
+    </li>
+    <li><a href="index.html#habilidades">Habilidades</a></li>
+    <li><a href="index.html#contato">Contato</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- OVERLAY -->
+<div class="nav-drawer-overlay" id="drawerOverlay"></div>
+
+<!-- DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html" class="drawer-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Portfólio
+  </a>
+  <ul class="drawer-links">
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li>
+      <button class="drawer-cases-btn" id="drawerCasesBtn">
+        <span>Cases</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer-cases-body" id="drawerCasesBody">
+        <a href="index.html#cases">Relatório de Atividades 2024</a>
+        <a href="fotografia.html" class="active">Acervo Fotográfico</a>
+        <a href="index.html#cases">Campanhas de Social Media</a>
+        <a href="index.html#cases">Vídeo Institucional</a>
+      </div>
+    </li>
+    <li><a href="index.html#habilidades">Habilidades</a></li>
+    <li><a href="index.html#contato">Contato</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Acervo Fotográfico</p>
+  <h1>Foto<br>grafia</h1>
+  <p>Registro de coberturas jornalísticas e cenas urbanas. Fotografia autoral com olhar documental.</p>
+</section>
+
+<!-- TABS + GRID -->
+<section class="tab-section">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="coberturas">Coberturas</button>
+    <button class="tab-btn" data-tab="urbano">Urbano</button>
+  </div>
+
+  <!-- COBERTURAS -->
+  <div class="tab-content active" id="coberturas">
+
+    <!-- Manifestação Juntos! -->
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Manifestação do Juntos!</h2>
+          <span class="cobertura-data">02 Out 2025</span>
+          <span class="cobertura-count">35 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+      <div class="grid-masonry" data-gallery="manifestacao">
+        <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-03_ccfkly.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-04_pslrnk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-05_lozw2p.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-06_kwbnif.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422713/mariovinicius.fotografia_02_10_2025-07_dhqvpp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422707/mariovinicius.fotografia_02_10_2025-16_mghbjh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422706/mariovinicius.fotografia_02_10_2025-17_witqrc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422705/mariovinicius.fotografia_02_10_2025-18_klaniw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422694/mariovinicius.fotografia_02_10_2025-21_j6esvy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422699/mariovinicius.fotografia_02_10_2025-22_dj971u.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422695/mariovinicius.fotografia_02_10_2025-23_umv201.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422688/mariovinicius.fotografia_02_10_2025-24_mzpeju.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422699/mariovinicius.fotografia_02_10_2025-25_axbuo3.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422700/mariovinicius.fotografia_02_10_2025-26_h0omjs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422694/mariovinicius.fotografia_02_10_2025-27_x0po7c.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422693/mariovinicius.fotografia_02_10_2025-28_odfple.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422690/mariovinicius.fotografia_02_10_2025-29_gmwyri.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="19"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422691/mariovinicius.fotografia_02_10_2025-30_gxygrr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="20"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422674/mariovinicius.fotografia_02_10_2025-31_f4lwn2.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="21"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-32_xoznvh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="22"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422688/mariovinicius.fotografia_02_10_2025-33_k2ckpa.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="23"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422672/mariovinicius.fotografia_02_10_2025-34_ldmbo5.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="24"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422673/mariovinicius.fotografia_02_10_2025-35_zmk8vb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="25"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422671/mariovinicius.fotografia_02_10_2025-36_hfyqfp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="26"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422667/mariovinicius.fotografia_02_10_2025-37_byjhib.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="27"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422669/mariovinicius.fotografia_02_10_2025-38_ol2cqs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="28"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422668/mariovinicius.fotografia_02_10_2025-39_vxu0nw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="29"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422664/mariovinicius.fotografia_02_10_2025-40_sxfidl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="30"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422665/mariovinicius.fotografia_02_10_2025-41_yl6rou.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="31"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422670/mariovinicius.fotografia_02_10_2025-42_xnmddy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="32"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-43_pqfjtp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="33"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-46_oixcw5.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="34"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422664/mariovinicius.fotografia_02_10_2025-66_k84fwn.jpg" loading="lazy" alt=""></div>
+      </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
+    </div>
+
+    <!-- São José VS Vila Olímpica -->
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">São José VS Vila Olímpica</h2>
+          <span class="cobertura-data">17 Ago 2025</span>
+          <span class="cobertura-count">97 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+      <div class="grid-masonry" data-gallery="futebol">
+        <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-03_lzzpyk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-04_vuuqfe.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422794/sao-jose_vs_vila-olimpica_17-08-2025-05_hpk99a.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422792/sao-jose_vs_vila-olimpica_17-08-2025-06_jnus3o.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422791/sao-jose_vs_vila-olimpica_17-08-2025-07_f3nhrs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-08_oevscc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422790/sao-jose_vs_vila-olimpica_17-08-2025-09_xh80zy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422789/sao-jose_vs_vila-olimpica_17-08-2025-10_oxmtvk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422787/sao-jose_vs_vila-olimpica_17-08-2025-11_g5z94a.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422790/sao-jose_vs_vila-olimpica_17-08-2025-12_czoxbf.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422786/sao-jose_vs_vila-olimpica_17-08-2025-13_g6nal8.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422782/sao-jose_vs_vila-olimpica_17-08-2025-14_ouikgo.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422785/sao-jose_vs_vila-olimpica_17-08-2025-15_xlshdo.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422783/sao-jose_vs_vila-olimpica_17-08-2025-16_ktft0m.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422781/sao-jose_vs_vila-olimpica_17-08-2025-17_em4obv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422786/sao-jose_vs_vila-olimpica_17-08-2025-18_snjytx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422785/sao-jose_vs_vila-olimpica_17-08-2025-19_hkplqz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="19"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422782/sao-jose_vs_vila-olimpica_17-08-2025-20_qcq2rt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="20"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422783/sao-jose_vs_vila-olimpica_17-08-2025-21_s1mirj.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="21"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422781/sao-jose_vs_vila-olimpica_17-08-2025-22_kgzpnx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="22"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422780/sao-jose_vs_vila-olimpica_17-08-2025-23_mziu7q.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="23"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-24_vbb0hr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="24"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422777/sao-jose_vs_vila-olimpica_17-08-2025-25_sh9wpb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="25"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422778/sao-jose_vs_vila-olimpica_17-08-2025-26_qsb3gw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="26"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-27_xh4n9i.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="27"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-28_elyaaz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="28"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422776/sao-jose_vs_vila-olimpica_17-08-2025-29_iqnoyl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="29"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422774/sao-jose_vs_vila-olimpica_17-08-2025-30_nglivf.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="30"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422778/sao-jose_vs_vila-olimpica_17-08-2025-31_lx8kg7.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="31"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422775/sao-jose_vs_vila-olimpica_17-08-2025-32_csewpc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="32"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422776/sao-jose_vs_vila-olimpica_17-08-2025-33_nlchmt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="33"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422775/sao-jose_vs_vila-olimpica_17-08-2025-34_p9eo5k.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="34"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422773/sao-jose_vs_vila-olimpica_17-08-2025-35_ibepix.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="35"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422771/sao-jose_vs_vila-olimpica_17-08-2025-36_yj0sp6.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="36"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422772/sao-jose_vs_vila-olimpica_17-08-2025-37_hpjjqb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="37"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422772/sao-jose_vs_vila-olimpica_17-08-2025-38_yixvpn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="38"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422770/sao-jose_vs_vila-olimpica_17-08-2025-39_hmrgej.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="39"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422771/sao-jose_vs_vila-olimpica_17-08-2025-40_okyu0o.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="40"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422769/sao-jose_vs_vila-olimpica_17-08-2025-41_hdih5m.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="41"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422770/sao-jose_vs_vila-olimpica_17-08-2025-42_a0iugt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="42"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422766/sao-jose_vs_vila-olimpica_17-08-2025-43_z5irzh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="43"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422768/sao-jose_vs_vila-olimpica_17-08-2025-44_g6c1r2.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="44"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422767/sao-jose_vs_vila-olimpica_17-08-2025-45_dffqbw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="45"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422764/sao-jose_vs_vila-olimpica_17-08-2025-46_nwhkye.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="46"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422765/sao-jose_vs_vila-olimpica_17-08-2025-47_ngyixt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="47"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422764/sao-jose_vs_vila-olimpica_17-08-2025-48_heqtqx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="48"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422767/sao-jose_vs_vila-olimpica_17-08-2025-49_pajmon.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="49"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422765/sao-jose_vs_vila-olimpica_17-08-2025-50_yaln07.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="50"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422729/sao-jose_vs_vila-olimpica_17-08-2025-51_xiygdy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="51"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422726/sao-jose_vs_vila-olimpica_17-08-2025-52_yp9zeu.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="52"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/sao-jose_vs_vila-olimpica_17-08-2025-53_pjydot.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="53"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/sao-jose_vs_vila-olimpica_17-08-2025-54_zbzbpy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="54"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422724/sao-jose_vs_vila-olimpica_17-08-2025-55_r7j51e.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="55"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422728/sao-jose_vs_vila-olimpica_17-08-2025-56_uykaqp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="56"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422763/sao-jose_vs_vila-olimpica_17-08-2025-57_hi5r5t.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="57"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422759/sao-jose_vs_vila-olimpica_17-08-2025-58_todeif.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="58"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422759/sao-jose_vs_vila-olimpica_17-08-2025-59_v3wu8t.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="59"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422761/sao-jose_vs_vila-olimpica_17-08-2025-60_hmsnbp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="60"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422762/sao-jose_vs_vila-olimpica_17-08-2025-61_ybc9tl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="61"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422760/sao-jose_vs_vila-olimpica_17-08-2025-62_syfa09.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="62"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422762/sao-jose_vs_vila-olimpica_17-08-2025-63_skzqza.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="63"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422760/sao-jose_vs_vila-olimpica_17-08-2025-64_bh3nll.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="64"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422758/sao-jose_vs_vila-olimpica_17-08-2025-65_mxmrcx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="65"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422756/sao-jose_vs_vila-olimpica_17-08-2025-66_tnv6eh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="66"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422757/sao-jose_vs_vila-olimpica_17-08-2025-67_nqtusv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="67"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422757/sao-jose_vs_vila-olimpica_17-08-2025-68_nidw15.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="68"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422755/sao-jose_vs_vila-olimpica_17-08-2025-69_npotv9.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="69"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422756/sao-jose_vs_vila-olimpica_17-08-2025-70_ghpln8.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="70"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422754/sao-jose_vs_vila-olimpica_17-08-2025-71_fxcsqz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="71"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422752/sao-jose_vs_vila-olimpica_17-08-2025-72_wtctb4.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="72"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422754/sao-jose_vs_vila-olimpica_17-08-2025-73_lfgdt6.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="73"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422750/sao-jose_vs_vila-olimpica_17-08-2025-74_e52s7u.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="74"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422753/sao-jose_vs_vila-olimpica_17-08-2025-75_towqnx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="75"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422753/sao-jose_vs_vila-olimpica_17-08-2025-76_ywlm0l.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="76"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422748/sao-jose_vs_vila-olimpica_17-08-2025-77_f6t4ed.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="77"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422751/sao-jose_vs_vila-olimpica_17-08-2025-78_a7hber.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="78"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422749/sao-jose_vs_vila-olimpica_17-08-2025-79_qsgold.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="79"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422749/sao-jose_vs_vila-olimpica_17-08-2025-80_bb5ijs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="80"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422748/sao-jose_vs_vila-olimpica_17-08-2025-81_ul5nnn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="81"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422744/sao-jose_vs_vila-olimpica_17-08-2025-82_e8f9gb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="82"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422750/sao-jose_vs_vila-olimpica_17-08-2025-83_dqwylq.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="83"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422742/sao-jose_vs_vila-olimpica_17-08-2025-84_wmqmri.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="84"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422743/sao-jose_vs_vila-olimpica_17-08-2025-85_pqfhyy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="85"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422742/sao-jose_vs_vila-olimpica_17-08-2025-86_r8vwhv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="86"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422739/sao-jose_vs_vila-olimpica_17-08-2025-87_k6ogmn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="87"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422739/sao-jose_vs_vila-olimpica_17-08-2025-88_kutajh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="88"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422737/sao-jose_vs_vila-olimpica_17-08-2025-89_ya0cne.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="89"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422744/sao-jose_vs_vila-olimpica_17-08-2025-90_jgcjsu.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="90"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422736/sao-jose_vs_vila-olimpica_17-08-2025-91_qvh8do.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="91"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422734/sao-jose_vs_vila-olimpica_17-08-2025-92_vkcll3.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="92"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422732/sao-jose_vs_vila-olimpica_17-08-2025-93_mugkcr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="93"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422732/sao-jose_vs_vila-olimpica_17-08-2025-94_miiyje.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="94"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422737/sao-jose_vs_vila-olimpica_17-08-2025-95_maq7bm.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="95"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-96_vlvbes.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="96"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-97_ecbxpy.jpg" loading="lazy" alt=""></div>
+      </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
+    </div>
+
+  </div><!-- /coberturas -->
+
+  <!-- URBANO -->
+  <div class="tab-content" id="urbano">
+    <div class="grid-masonry" data-gallery="urbano">
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/20240812-_DSC0147_t3yz9t.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/20240124-mario-19_hkeba3.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428881/20240810-_DSC0021_yifjug.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428878/20250226-IMG_3447_zfnj8x.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428874/20250226-IMG_3458_cq3ru4.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428871/mario-13_1_pbmgjn.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428870/20240212-DSC_0123_jbrpfz.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423878/20250627-IMG_4816_hunoi5.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423877/20250627-IMG_4811-2_jy2qgd.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423877/20250627-IMG_4807-2_epjbcv.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422814/mario-2_wsdher.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422810/mario-09_gsllkk.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422808/mario-11_nxg0uj.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422807/mario-13_qktgxd.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422806/mario-14_jzefrw.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422623/20241128-_DSC1143_gp6idc.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422618/20240214-DSC_0193_cvjr8l.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422618/20240214-DSC_0151_ojeyjw.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422616/20240214-DSC_0171_ftu49h.jpg" loading="lazy" alt=""></div>
+    </div>
+  </div><!-- /urbano -->
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lb-close" aria-label="Fechar">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8594;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
+  <p><a href="https://www.instagram.com/mariovinicius.fotografia/" target="_blank">@mariovinicius.fotografia</a></p>
+</footer>
+
+<script>
+// ── TABS ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── ACCORDION ──
+document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const block = toggle.closest('.cobertura-block');
+    const isOpen = block.classList.contains('open');
+    block.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+// ── LIGHTBOX ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+
+let currentGallery = [];
+let currentIndex = 0;
+
+function getFullUrl(thumb) {
+  return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto');
+}
+
+function openLightbox(items, index) {
+  currentGallery = items;
+  showImage(index);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showImage(index) {
+  currentIndex = (index + currentGallery.length) % currentGallery.length;
+  lbImg.src = getFullUrl(currentGallery[currentIndex]);
+  lbCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIndex - 1));
+document.getElementById('lb-next').addEventListener('click', () => showImage(currentIndex + 1));
+
+lb.addEventListener('click', e => {
+  if (e.target === lb) closeLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+});
+
+// bind clicks em cada galeria
+document.querySelectorAll('.grid-masonry').forEach(grid => {
+  const items = Array.from(grid.querySelectorAll('.grid-item img')).map(img => img.src);
+  grid.querySelectorAll('.grid-item').forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(items, i));
+  });
+});
+
+// ── HAMBÚRGUER + DRAWER ──
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+const overlay = document.getElementById('drawerOverlay');
+
+function closeDrawer() {
+  if (!hamburger || !drawer || !overlay) return;
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger && drawer && overlay) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    overlay.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeDrawer);
+  });
+}
+
+// ── ACCORDION CASES NO DRAWER ──
+const drawerCasesBtn = document.getElementById('drawerCasesBtn');
+const drawerCasesBody = document.getElementById('drawerCasesBody');
+if (drawerCasesBtn && drawerCasesBody) {
+  drawerCasesBtn.addEventListener('click', () => {
+    const isOpen = drawerCasesBody.classList.toggle('open');
+    drawerCasesBtn.classList.toggle('open', isOpen);
+  });
+}
+
+// fechar dropdown ao pressionar Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDrawer();
+});
+</script>
+</body>
 </html>
