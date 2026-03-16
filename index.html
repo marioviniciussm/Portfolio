@@ -59,7 +59,17 @@
   }
   .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
+  /* botão home — ícone à esquerda da logo */
+  .nav-home {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; margin-right: 12px; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--gray); text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    align-self: center;
+  }
+  .nav-home svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .nav-home:hover { background: var(--red); border-color: var(--red); color: var(--white); }
   .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
@@ -296,6 +306,64 @@
   .case-wip-badge { position: absolute; top: 16px; left: 16px; background: rgba(15,15,15,0.85); border: 1px solid rgba(255,255,255,0.1); color: var(--gray); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
   .case-foto-badge { position: absolute; top: 16px; left: 16px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
 
+  /* ── MODAL DE VÍDEO ── */
+  .video-modal {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+  }
+  .video-modal.open { display: flex; animation: fadeInModal .2s ease; }
+  @keyframes fadeInModal { from { opacity: 0 } to { opacity: 1 } }
+
+  .video-modal-close {
+    position: fixed; top: 24px; right: 32px;
+    background: none; border: none; color: rgba(255,255,255,0.6);
+    font-size: 2rem; cursor: pointer; line-height: 1; z-index: 210;
+    transition: color .2s;
+  }
+  .video-modal-close:hover { color: var(--white); }
+
+  .video-modal-inner {
+    width: 90vw; max-width: 1000px;
+    position: relative;
+  }
+
+  .video-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 2px;
+    color: var(--white); margin-bottom: 12px;
+  }
+
+  .video-modal-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 16px; display: block;
+  }
+
+  /* wrapper 16:9 */
+  .video-embed-wrap {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+    background: #000;
+  }
+  .video-embed-wrap iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* placeholder quando não há vídeo ainda */
+  .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; background: #111; border: 1px solid rgba(192,57,43,0.2);
+  }
+  .video-placeholder svg { width: 48px; height: 48px; stroke: var(--red); fill: none; stroke-width: 1.2; opacity: 0.6; }
+  .video-placeholder p { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; text-align: center; line-height: 1.6; }
+
+  .video-modal-desc {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    margin-top: 14px; line-height: 1.6;
+  }
+
   /* ── HABILIDADES ── */
   #habilidades { border-top: none; }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
@@ -421,6 +489,9 @@
 
 <nav>
   <div class="nav-inner">
+    <a class="nav-home" href="#hero" title="Início" aria-label="Voltar ao início">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+    </a>
     <a class="nav-logo" href="#hero">M<span>·</span>V</a>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
@@ -605,9 +676,13 @@
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <!-- TILE 04 — linha 3, col 2 -->
-    <a href="LINK_CASE_4_AQUI" class="case-card case-card-04 case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 04</span></div>
+    <!-- TILE 04 — linha 3, col 2 — Vídeo com modal -->
+    <button onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
+      <div class="case-thumb-placeholder">
+        <span class="placeholder-icon" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.35)" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.35)" stroke="none"/></svg>
+        </span>
+      </div>
       <div class="case-wip-badge">Em breve</div>
       <div class="case-overlay">
         <span class="case-tag">Vídeo Institucional</span>
@@ -615,8 +690,27 @@
         <p class="case-desc">Roteiro, captação, direção de cena e montagem final.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
+    </button>
 
+  </div>
+</div>
+
+<!-- MODAL DE VÍDEO -->
+<div class="video-modal" id="videoModal">
+  <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+  <div class="video-modal-inner">
+    <span class="video-modal-tag">Vídeo Institucional</span>
+    <div class="video-modal-title">[ Título do vídeo ]</div>
+    <div class="video-embed-wrap">
+      <!-- Quando tiver o vídeo no YouTube, substitua o placeholder abaixo por:
+           <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
+      -->
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        <p>Vídeo em produção<br>Em breve disponível</p>
+      </div>
+    </div>
+    <p class="video-modal-desc">Roteiro, captação, direção de cena e montagem final.</p>
   </div>
 </div>
 
@@ -715,6 +809,30 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       closeDrawer();
     });
+  });
+
+  // ── MODAL DE VÍDEO ──
+  const videoModal = document.getElementById('videoModal');
+
+  function openVideoModal() {
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+    videoModal.classList.remove('open');
+    document.body.style.overflow = '';
+    // parar vídeo ao fechar — recarrega o iframe se existir
+    const iframe = videoModal.querySelector('iframe');
+    if (iframe) { const src = iframe.src; iframe.src = ''; iframe.src = src; }
+  }
+
+  videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) closeVideoModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoModal();
   });
 
   // ── HAMBÚRGUER + DRAWER ──
