@@ -2,38 +2,34 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Mário Vinicius — Comunicador Visual</title>
-<meta name="description" content="Portfólio de Mário Vinicius — Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.">
-<meta property="og:title" content="Mário Vinicius — Comunicador Visual">
-<meta property="og:description" content="Design, Videomaker e Social Media Estratégico. Transformo briefings em narrativas visuais de alto impacto.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://marioviniciussm.github.io/Portfolio">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mário Vinicius — Comunicador Visual">
-<meta name="twitter:description" content="Design, Videomaker e Social Media Estratégico. Porto Alegre/RS.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotografia — Mário Vinicius</title>
 <link rel="icon" type="image/png" href="favicon.png?v=2">
 <link rel="shortcut icon" href="favicon.png?v=2">
 <link rel="apple-touch-icon" href="favicon.png?v=2">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #C0392B;
-    --red-dark: #922b21;
-    --red-muted: #e8c8c8;
-    --black: #0f0f0f;
-    --dark: #1a1a1a;
-    --gray: #888;
-    --white: #ffffff;
+    --preto: #0f0f0f;
+    --vermelho: #C0392B;
+    --vermelho-dark: #a93226;
+    --branco: #ffffff;
+    --cinza: #888;
+    --cinza-escuro: #1a1a1a;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; overflow-x: hidden; }
-  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; width: 100%; }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--red); }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
 
   /* ── NAV ── */
   nav {
@@ -44,130 +40,120 @@
     border-bottom: 1px solid rgba(192,57,43,0.2);
     min-height: 64px;
   }
-
-  /* wrapper interno centralizado */
   .nav-inner {
     display: flex; align-items: center; flex-wrap: nowrap;
     width: 100%; max-width: 1200px;
-    margin: 0 auto; padding: 0 60px;
+    margin: 0 auto; padding: 0 48px;
     height: 64px;
   }
-
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
-    color: var(--white); text-decoration: none;
+    color: var(--branco); text-decoration: none;
     display: flex; align-items: center;
     padding: 0 28px 0 0; white-space: nowrap; flex-shrink: 0;
     border-right: 1px solid rgba(255,255,255,0.08);
     margin-right: 4px;
   }
-  .nav-logo span { color: var(--red); }
+  .nav-logo span { color: var(--vermelho); }
 
   .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; margin-left: auto; }
   .nav-links > li { display: flex; align-items: center; }
   .nav-links a {
-    color: var(--gray); text-decoration: none;
+    color: var(--cinza); text-decoration: none;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
     padding: 8px 20px; display: flex; align-items: center; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
-  .nav-links a:hover { color: var(--white); background: var(--red); }
+  .nav-links a:hover { color: var(--branco); background: var(--vermelho); }
+  .nav-links a.active { color: var(--branco); }
 
-  /* dropdown Cases */
+  /* dropdown */
   .nav-dropdown { position: relative; display: flex; align-items: center; }
   .nav-dropdown-btn {
-    color: var(--gray); background: none; border: none; cursor: pointer;
+    color: var(--cinza); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
-  .nav-dropdown:hover .nav-dropdown-btn { color: var(--white); background: var(--red); }
+  .nav-dropdown:hover .nav-dropdown-btn { color: var(--branco); background: var(--vermelho); }
   .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
-
   .nav-dropdown-menu {
     position: absolute; top: 100%; left: 0;
     background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
-    min-width: 240px; padding: 6px 0;
-    opacity: 0; pointer-events: none; transform: translateY(-4px);
-    transition: opacity 0.18s, transform 0.18s;
+    min-width: 240px; padding: 6px 0; opacity: 0; pointer-events: none;
+    transform: translateY(-4px); transition: opacity 0.18s, transform 0.18s;
     backdrop-filter: blur(12px);
   }
   .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
   .nav-dropdown-menu a {
-    display: block; padding: 10px 20px;
-    font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--gray); text-decoration: none;
-    transition: color 0.15s, background 0.15s; white-space: nowrap;
+    display: block; padding: 10px 20px; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; transition: color 0.15s, background 0.15s; white-space: nowrap;
   }
-  .nav-dropdown-menu a:hover { color: var(--white); background: rgba(192,57,43,0.15); }
+  .nav-dropdown-menu a:hover { color: var(--branco); background: rgba(192,57,43,0.15); }
   .nav-dropdown-menu .dropdown-label {
     font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.7);
     padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
   }
 
-  /* hambúrguer — oculto no desktop */
+  /* hambúrguer */
   .nav-hamburger {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
     width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px;
     margin-left: auto; flex-shrink: 0;
   }
-  .nav-hamburger span {
-    display: block; height: 2px; background: var(--white);
-    transition: transform 0.3s, opacity 0.3s;
-    transform-origin: center;
-  }
+  .nav-hamburger span { display: block; height: 2px; background: var(--branco); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* drawer mobile */
-  .nav-drawer-overlay {
-    display: none; position: fixed; inset: 0; z-index: 98;
-    background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
-  }
+  /* drawer */
+  .nav-drawer-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(0,0,0,0.5); }
   .nav-drawer-overlay.open { display: block; }
-
   .nav-drawer {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
-    width: 280px; background: #111;
-    border-left: 1px solid rgba(192,57,43,0.2);
+    width: 280px; background: #111; border-left: 1px solid rgba(192,57,43,0.2);
     transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    display: flex; flex-direction: column;
-    padding: 80px 0 40px;
-    overflow-y: auto;
+    display: flex; flex-direction: column; padding: 72px 0 40px; overflow-y: auto;
   }
   .nav-drawer.open { transform: translateX(0); }
 
-  .drawer-links { list-style: none; padding: 0 0 20px; }
+  /* botão voltar ao topo do drawer */
+  .drawer-back {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 32px 14px 28px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: var(--vermelho); text-decoration: none;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.2s, background 0.2s;
+  }
+  .drawer-back:hover { color: var(--branco); background: rgba(192,57,43,0.08); }
+  .drawer-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .drawer-links { list-style: none; }
   .drawer-links li a {
-    display: block; padding: 14px 32px;
-    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gray); text-decoration: none;
-    border-left: 3px solid transparent;
+    display: block; padding: 14px 32px; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza);
+    text-decoration: none; border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .drawer-links li a:hover { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.08); }
-
-  /* accordion Cases no drawer */
+  .drawer-links li a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-links li a.active { color: var(--branco); border-color: var(--vermelho); }
   .drawer-cases-btn {
     width: 100%; background: none; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 32px; border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .drawer-cases-btn span {
-    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
-    transition: color 0.2s;
-  }
-  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--gray); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
-  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--white); }
-  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--red); }
-  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--red); background: rgba(192,57,43,0.08); }
+  .drawer-cases-btn span { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--cinza); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--branco); }
+  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
+  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
   .drawer-cases-btn.open svg { transform: rotate(180deg); }
-
   .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
   .drawer-cases-body.open { max-height: 400px; }
   .drawer-cases-body a {
@@ -180,326 +166,427 @@
   }
   .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; color: rgba(192,57,43,0.5); font-size: 9px; }
   .drawer-cases-body a:last-of-type { border-bottom: none; }
-  .drawer-cases-body a:hover { color: var(--white); background: rgba(192,57,43,0.1); padding-left: 46px; }
-  .drawer-cases-body a.active { color: var(--white); }
+  .drawer-cases-body a:hover { color: var(--branco); background: rgba(192,57,43,0.1); padding-left: 46px; }
+  .drawer-cases-body a.active { color: var(--branco); }
 
   /* ── HERO ── */
-  #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
-  .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; margin-bottom: 36px; width: fit-content; }
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 28px; }
-  .hero-name span { color: var(--red); display: block; }
-  .hero-title { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
-  .hero-title strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 6px; }
-  .hero-subtitle { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; }
-  .hero-desc { font-size: 15px; color: #aaa; max-width: 420px; line-height: 1.75; margin-bottom: 44px; }
-  .hero-ctas { display: flex; flex-direction: column; gap: 16px; }
-  .hero-ctas-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .hero-social-icons { display: flex; gap: 12px; align-items: center; }
-  .social-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
-  .social-icon:hover { border-color: var(--red); color: var(--white); transform: translateY(-2px); }
-  .social-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-  .btn-primary, .btn-secondary { text-decoration: none; padding: 14px 20px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; text-align: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
-  .btn-primary { background: var(--red); color: var(--white); font-weight: 700; }
-  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
-  .btn-secondary { border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-weight: 500; }
-  .btn-secondary:hover { border-color: var(--white); transform: translateY(-2px); }
-
-  .hero-right { position: relative; background: var(--red); overflow: hidden; }
-  .hero-right::after { content: ''; position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0.35; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; mix-blend-mode: soft-light; }
-  .hero-right::before { display: none; }
-  .hero-photo { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 82%; width: auto; object-fit: cover; object-position: top center; display: block; z-index: 1; mask-image: linear-gradient(to bottom, black 68%, transparent 90%); -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 90%); }
-  .hero-right-content { position: absolute; bottom: 110px; left: 48px; right: 48px; z-index: 2; }
-  .hero-disciplines { display: flex; flex-direction: column; gap: 12px; }
-  .discipline-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.2); border-left: 3px solid rgba(255,255,255,0.3); transition: background 0.25s, border-color 0.25s, transform 0.25s; cursor: default; }
-  .discipline-item:hover { background: rgba(0,0,0,0.45); border-left-color: var(--white); transform: translateX(8px) scale(1.02); }
-  .discipline-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: rgba(255,255,255,0.3); line-height: 1; min-width: 32px; transition: color 0.25s; }
-  .discipline-item:hover .discipline-num { color: rgba(255,255,255,0.8); }
-  .discipline-text { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); }
-  .discipline-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; margin-top: 2px; transition: color 0.25s; }
-  .discipline-item:hover .discipline-sub { color: rgba(255,255,255,0.85); }
-
-  /* ── SECTIONS ── */
-  section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
-  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 5vw, 64px); letter-spacing: 2px; color: var(--white); line-height: 1; margin-bottom: 48px; }
-
-  /* ── MARQUEE ── */
-  .marquee-wrap { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 0; background: var(--black); user-select: none; }
-  .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
-  .marquee-reverse { animation-direction: reverse; animation-duration: 28s; }
-  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-  .marquee-item { display: flex; align-items: center; gap: 28px; padding: 0 28px; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 3px; color: rgba(255,255,255,0.18); text-transform: uppercase; }
-  .marquee-item span { color: var(--red); font-size: 10px; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* ── SOBRE ── */
-  #sobre { border-top: none; }
-  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
-  .sobre-text p strong { color: var(--white); font-weight: 500; }
-  .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .stat-block { background: var(--dark); padding: 32px 28px; border-top: 3px solid transparent; transition: border-color 0.2s, transform 0.25s, background 0.25s; }
-  .stat-block:hover { border-color: var(--red); transform: scale(1.04); background: #222; }
-  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
-  .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
-
-  /* ── CASES — Metro layout ── */
-  #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
-  .cases-header { max-width: 1200px; margin: 0 auto 60px; }
-  .cases-grid {
-    max-width: 1200px; margin: 0 auto;
+  .hero {
+    padding: 140px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 340px 340px 280px;
-    gap: 4px;
-  }
-  .case-card { position: relative; background: var(--dark); overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
-  /* posicionamento explícito — Metro clássico */
-  .case-card-01   { grid-column: 1 / 3; grid-row: 1 / 2; }
-  .case-card-foto { grid-column: 3 / 4; grid-row: 1 / 3; }
-  .case-card-05   { grid-column: 1 / 3; grid-row: 2 / 3; }
-  .case-card-03   { grid-column: 1 / 2; grid-row: 3 / 4; }
-  .case-card-04   { grid-column: 2 / 3; grid-row: 3 / 4; }
-  .case-card-wide { grid-column: span 2; }
-  .case-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, opacity 0.3s; opacity: 0.7; }
-  .case-card:hover .case-thumb { transform: scale(1.04); opacity: 0.5; }
-  .case-thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1010 100%); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; }
-  .case-card:hover .case-thumb-placeholder { opacity: 0.6; }
-
-  /* placeholder especial de fotografia — grid de quadros simulando fotos */
-  .case-foto-placeholder {
-    width: 100%; height: 100%;
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-    gap: 2px; overflow: hidden; transition: opacity 0.3s;
-    background: #111;
-  }
-  .case-foto-placeholder span { display: block; transition: background 0.4s; }
-  .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #1c1010 0%, #2a1515 100%); }
-  .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #150e0e 0%, #200f0f 100%); }
-  .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #1a1010 0%, #280e0e 100%); }
-  .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #200c0c 0%, #2e0f0f 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #3a1515 0%, #4a1c1c 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #2e1010 0%, #401515 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #350e0e 0%, #4a1010 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #420c0c 0%, #5a1010 100%); }
-
-  .placeholder-icon { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(192,57,43,0.2); letter-spacing: 4px; }
-  .case-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.2) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; transition: background 0.3s; }
-  .case-card:hover .case-overlay { background: linear-gradient(to top, rgba(192,57,43,0.7) 0%, rgba(15,15,15,0.3) 60%, transparent 100%); }
-  .case-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red-muted); margin-bottom: 8px; transition: color 0.3s; }
-  .case-card:hover .case-tag { color: rgba(255,255,255,0.7); }
-  .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--white); line-height: 1.1; margin-bottom: 6px; }
-  .case-card-wide .case-title { font-size: 34px; }
-  .case-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; max-width: 340px; transition: color 0.3s; }
-  .case-card:hover .case-desc { color: rgba(255,255,255,0.8); }
-  .case-arrow { position: absolute; top: 24px; right: 24px; width: 36px; height: 36px; background: var(--red); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s, transform 0.3s; }
-  .case-card:hover .case-arrow { opacity: 1; transform: translateY(0); }
-  .case-arrow svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; }
-  .case-wip .placeholder-icon { color: rgba(192,57,43,0.15); }
-  .case-wip-badge { position: absolute; top: 16px; left: 16px; background: rgba(15,15,15,0.85); border: 1px solid rgba(255,255,255,0.1); color: var(--gray); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
-  .case-foto-badge { position: absolute; top: 16px; left: 16px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
-
-  /* ── MODAL DE VÍDEO ── */
-  .video-modal {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px;
-  }
-  .video-modal.open { display: flex; animation: fadeInModal .2s ease; }
-  @keyframes fadeInModal { from { opacity: 0 } to { opacity: 1 } }
-
-  .video-modal-close {
-    position: fixed; top: 24px; right: 32px;
-    background: none; border: none; color: rgba(255,255,255,0.6);
-    font-size: 2rem; cursor: pointer; line-height: 1; z-index: 210;
-    transition: color .2s;
-  }
-  .video-modal-close:hover { color: var(--white); }
-
-  .video-modal-inner {
-    width: 90vw; max-width: 1000px;
-    position: relative;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+    align-items: end;
   }
 
-  .video-modal-title {
+  .hero-left { /* coluna esquerda — label + título + desc */ }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem; letter-spacing: 2px;
-    color: var(--white); margin-bottom: 12px;
+    font-size: clamp(5rem, 9vw, 9rem);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: var(--branco);
+    margin-bottom: 28px;
   }
 
-  .video-modal-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 16px; display: block;
+  .hero p {
+    font-size: 1rem;
+    color: var(--cinza);
+    max-width: 420px;
+    line-height: 1.7;
+    font-weight: 300;
   }
 
-  /* wrapper 16:9 */
-  .video-embed-wrap {
-    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-    background: #000;
+  /* coluna direita — elemento decorativo */
+  .hero-right-deco {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+    gap: 24px;
   }
-  .video-embed-wrap iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+
+  .hero-deco-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(10rem, 18vw, 18rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.04);
+    text-align: right;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-deco-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .hero-deco-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    border-right: 2px solid var(--vermelho);
+    padding-right: 12px;
+  }
+
+  /* ── TAB MENU ── */
+  .tab-section {
+    padding: 0 48px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 48px;
+  }
+
+  .tab-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--cinza);
+    background: none;
     border: none;
-  }
-
-  /* wrapper para PDF/Docs (mais alto que 16:9) */
-  .doc-embed-wrap {
+    padding: 14px 32px 14px 0;
+    cursor: pointer;
     position: relative;
-    height: min(82vh, 920px);
-    background: #000;
-    border: 1px solid rgba(255,255,255,0.08);
+    transition: color .25s;
   }
-  .doc-embed-wrap iframe {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 0; height: 2px;
+    background: var(--vermelho);
+    transition: width .3s ease;
+  }
+
+  .tab-btn.active { color: var(--branco); }
+  .tab-btn.active::after { width: calc(100% - 32px); }
+
+  /* ── COBERTURAS ── */
+  .cobertura-block {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .cobertura-block:last-child { border-bottom: none; }
+
+  .cobertura-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .cobertura-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: var(--branco);
+  }
+
+  .cobertura-data {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+  }
+
+  .cobertura-count {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+  }
+
+  /* ── ACCORDION ── */
+  .cobertura-toggle {
+    width: 100%;
+    background: none;
     border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
   }
 
-  /* placeholder quando não há vídeo ainda */
-  .video-placeholder {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 16px; background: #111; border: 1px solid rgba(192,57,43,0.2);
-  }
-  .video-placeholder svg { width: 48px; height: 48px; stroke: var(--red); fill: none; stroke-width: 1.2; opacity: 0.6; }
-  .video-placeholder p { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; text-align: center; line-height: 1.6; }
-
-  .video-modal-desc {
-    font-size: 13px; color: rgba(255,255,255,0.5);
-    margin-top: 14px; line-height: 1.6;
+  .cobertura-toggle .cobertura-header {
+    transition: border-color .25s;
   }
 
-  /* ── HABILIDADES ── */
-  #habilidades { border-top: none; }
-  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-  .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid transparent; transition: border-color 0.25s; }
-  .skill-block:hover { border-color: var(--red); }
-  .skill-category { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tag { font-size: 12px; color: #bbb; background: rgba(255,255,255,0.05); padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); }
-  .skill-block.soft .skill-tag { border-color: rgba(255,255,255,0.08); color: #ccc; }
-  .skill-block.soft { grid-column: span 2; }
+  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
+  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
 
-  /* ── ACERVO ── */
-  #acervo { border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
-  .acervo-box { background: var(--dark); border: 1px solid rgba(192,57,43,0.3); padding: 64px; max-width: 680px; margin: 0 auto; position: relative; overflow: hidden; }
-  .acervo-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); }
-  .acervo-box p { font-size: 15px; color: #aaa; line-height: 1.75; margin-bottom: 36px; }
+  .accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-left: 16px;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s, transform .35s ease;
+  }
 
-  /* ── CONTATO ── */
-  #contato { border-top: 1px solid rgba(255,255,255,0.06); background: var(--dark); max-width: 100%; padding: 100px 60px; }
-  .contato-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .contato-left .section-title { margin-bottom: 20px; }
-  .contato-left p { font-size: 15px; color: #aaa; line-height: 1.75; }
-  .contato-links { display: flex; flex-direction: column; gap: 16px; }
-  .contato-item { display: flex; align-items: center; gap: 20px; padding: 20px 24px; background: var(--black); text-decoration: none; border-left: 3px solid transparent; transition: border-color 0.2s, transform 0.2s; }
-  .contato-item:hover { border-color: var(--red); transform: translateX(6px); }
-  .contato-icon { width: 40px; height: 40px; background: rgba(192,57,43,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .contato-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; }
-  .contato-info-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
-  .contato-info-value { font-size: 14px; color: var(--white); font-weight: 400; }
+  .accordion-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--cinza);
+    fill: none;
+    stroke-width: 2;
+    transition: stroke .2s, transform .35s ease;
+  }
+
+  .cobertura-toggle:hover .accordion-icon {
+    background: rgba(192,57,43,0.12);
+    border-color: var(--vermelho);
+  }
+
+  .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
+
+  /* estado aberto */
+  .cobertura-block.open .accordion-icon {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+  .cobertura-block.open .accordion-icon svg {
+    stroke: var(--branco);
+    transform: rotate(180deg);
+  }
+
+  /* corpo do accordion */
+  .cobertura-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cobertura-block.open .cobertura-body {
+    max-height: 99999px;
+  }
+
+  .cobertura-body-inner {
+    padding-top: 28px;
+    padding-bottom: 8px;
+  }
+
+  /* ── MASONRY GRID ── */
+  .grid-masonry {
+    columns: 3;
+    column-gap: 8px;
+  }
+
+  @media (max-width: 900px) { .grid-masonry { columns: 2; } }
+  @media (max-width: 560px) { .grid-masonry { columns: 1; } }
+
+  .grid-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform .4s ease, filter .4s ease;
+    filter: brightness(0.92);
+  }
+
+  .grid-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1);
+  }
+
+  .grid-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(192,57,43,0);
+    transition: background .3s;
+    pointer-events: none;
+  }
+
+  .grid-item:hover::after {
+    background: rgba(192,57,43,0.08);
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.96);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lightbox.open {
+    display: flex;
+    animation: fadeIn .2s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .lightbox-img-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-img-wrap img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 24px; right: 32px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color .2s;
+    z-index: 210;
+  }
+
+  .lightbox-close:hover { color: var(--branco); }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: color .2s;
+    z-index: 210;
+    line-height: 1;
+  }
+
+  .lightbox-nav:hover { color: var(--branco); }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+  }
+
+  /* ── TABS CONTENT ── */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
   /* ── FOOTER ── */
-  footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.06); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
-  footer span { font-size: 12px; color: var(--gray); letter-spacing: 1px; }
-  footer strong { color: var(--red); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-tag  { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
-  .hero-name { animation: fadeUp 0.6s ease both; animation-delay: 0.2s; }
-  .hero-title { animation: fadeUp 0.6s ease both; animation-delay: 0.3s; }
-  .hero-desc { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
-  .hero-ctas { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    .nav-inner { padding: 0 32px; }
-    .hero-left { padding: 80px 32px; }
-    section, #cases, #contato { padding: 80px 32px; }
-    footer { padding: 24px 32px; }
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
   }
 
+  footer p {
+    font-size: 0.75rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+  }
+
+  footer a {
+    color: var(--vermelho);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--branco); }
+
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { min-height: 56px; }
-    .nav-inner { padding: 0 20px; width: 100%; }
-    .nav-logo { font-size: 20px; padding: 0; }
+    .nav-inner { padding: 0 20px; width: 100%; justify-content: space-between; position: relative; }
+    .nav-logo { font-size: 20px; padding: 0; position: absolute; left: 50%; transform: translateX(-50%); top: 50%; margin-top: -11px; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    #hero { grid-template-columns: 1fr; min-height: auto; padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
-    .hero-left { padding: 40px 24px 36px; order: 1; }
-    .hero-tag { font-size: 10px; padding: 5px 12px; margin-bottom: 20px; }
-    .hero-name { font-size: clamp(56px, 16vw, 80px); margin-bottom: 16px; }
-    .hero-title { font-size: 11px; letter-spacing: 1.2px; margin-bottom: 20px; }
-    .hero-desc { font-size: 14px; margin-bottom: 28px; max-width: 100%; }
-    .hero-ctas { gap: 14px; }
-    .hero-ctas-buttons { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .btn-primary, .btn-secondary { padding: 13px 12px; font-size: 10px; }
-    .social-icon { width: 38px; height: 38px; }
-    .hero-right { order: 2; min-height: 520px; padding: 0; overflow: hidden; }
-    .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 58%; object-fit: cover; object-position: top center; transform: none; mask-image: linear-gradient(to bottom, black 65%, transparent 92%); -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 92%); }
-    .hero-right-content { position: absolute; bottom: 24px; left: 24px; right: 24px; padding: 0; }
-    .hero-disciplines { gap: 8px; }
-    .discipline-item { padding: 12px 16px; gap: 12px; }
-    .discipline-item:hover { transform: none; background: rgba(0,0,0,0.2); border-left-color: rgba(255,255,255,0.3); }
-    section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
-    .section-label { font-size: 10px; }
-    .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
-    .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
-    .sobre-text p { font-size: 14px; }
-    .sobre-stats { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .stat-block { padding: 24px 18px; }
-    .stat-block:hover { transform: none; }
-    .stat-num { font-size: 42px; }
-    .stat-label { font-size: 11px; }
-    .cases-header { margin-bottom: 32px; }
-    .cases-grid {
+
+    .hero {
       grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      gap: 4px;
+      padding: 100px 24px 48px;
+      text-align: center;
     }
-    /* todos os cards voltam para fluxo normal em mobile */
-    .case-card-01, .case-card-foto, .case-card-05, .case-card-03, .case-card-04, .case-card-wide {
-      grid-column: 1 / -1;
-      grid-row: auto;
-    }
-    .case-card-01  { min-height: 220px; }
-    .case-card-foto { min-height: 200px; }
-    .case-card-05  { min-height: 220px; }
-    .case-card-03  { min-height: 180px; }
-    .case-card-04  { min-height: 180px; }
-    .case-title { font-size: 20px; }
-    .case-card-wide .case-title { font-size: 22px; }
-    .case-desc { font-size: 11px; }
-    .case-overlay { padding: 16px; }
-    .case-wip-badge, .case-foto-badge { font-size: 9px; padding: 4px 8px; }
-    .placeholder-icon { font-size: 48px; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .skill-block, .skill-block.soft { padding: 24px 20px; grid-column: span 1; }
-    .skill-tag { font-size: 11px; padding: 4px 10px; }
-    .acervo-box { padding: 36px 24px; }
-    .acervo-box p { font-size: 14px; }
-    .contato-inner { grid-template-columns: 1fr; gap: 36px; }
-    .contato-item { padding: 16px 18px; gap: 14px; }
-    .contato-icon { width: 36px; height: 36px; }
-    .contato-info-value { font-size: 13px; word-break: break-word; }
-    footer { padding: 20px 24px; padding-bottom: max(20px, env(safe-area-inset-bottom)); flex-direction: column; gap: 6px; text-align: center; }
-    footer span { font-size: 11px; }
+    .hero-right-deco { display: none; }
+    .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
+    .hero p { max-width: 100%; margin: 0 auto; }
+
+    .tab-section { padding: 0 24px 40px; }
+    .tabs { margin-bottom: 0; justify-content: center; gap: 16px; }
+    .tab-btn { padding: 14px 16px; }
+    .tab-btn.active::after { width: 100%; }
+
+    .cobertura-header { flex-wrap: wrap; gap: 8px; padding: 20px 0; }
+    .cobertura-count { margin-left: 0; }
+    .cobertura-titulo { font-size: 1.3rem; }
+
+    .grid-masonry { columns: 2; column-gap: 6px; }
+    .grid-item { margin-bottom: 6px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 
-  @media (max-width: 380px) { .hero-name { font-size: 52px; } }
+  @media (max-width: 420px) {
+    .grid-masonry { columns: 1; }
+    .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
+  }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#hero">M<span>·</span>V</a>
+    <a href="index.html" class="nav-logo">M<span>·</span>V</a>
     <ul class="nav-links">
-      <li><a href="#hero">Início</a></li>
-      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
       <li class="nav-dropdown" id="navDropdown">
         <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
           Cases
@@ -507,14 +594,14 @@
         </button>
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
-          <a href="#cases" role="menuitem">Relatório de Atividades 2024</a>
-          <a href="fotografia.html" role="menuitem">Acervo Fotográfico</a>
-          <a href="#cases" role="menuitem">Campanhas de Social Media</a>
-          <a href="#cases" role="menuitem">Vídeo Institucional</a>
+          <a href="index.html#cases" role="menuitem">Relatório de Atividades 2024</a>
+          <a href="fotografia.html" class="active" role="menuitem">Acervo Fotográfico</a>
+          <a href="index.html#cases" role="menuitem">Campanhas de Social Media</a>
+          <a href="index.html#cases" role="menuitem">Vídeo Institucional</a>
         </div>
       </li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#contato">Contato</a></li>
+      <li><a href="index.html#habilidades">Habilidades</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
     </ul>
     <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -528,415 +615,386 @@
 <!-- DRAWER -->
 <div class="nav-drawer" id="navDrawer">
   <ul class="drawer-links">
-    <li><a href="#hero">Início</a></li>
-    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="index.html#sobre">Sobre</a></li>
     <li>
       <button class="drawer-cases-btn" id="drawerCasesBtn">
         <span>Cases</span>
         <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
-        <a href="#cases">Relatório de Atividades 2024</a>
-        <a href="fotografia.html">Acervo Fotográfico</a>
-        <a href="#cases">Campanhas de Social Media</a>
-        <a href="#cases">Vídeo Institucional</a>
+        <a href="index.html#cases">Relatório de Atividades 2024</a>
+        <a href="fotografia.html" class="active">Acervo Fotográfico</a>
+        <a href="index.html#cases">Campanhas de Social Media</a>
+        <a href="index.html#cases">Vídeo Institucional</a>
       </div>
     </li>
-    <li><a href="#habilidades">Habilidades</a></li>
-    <li><a href="#contato">Contato</a></li>
+    <li><a href="index.html#habilidades">Habilidades</a></li>
+    <li><a href="index.html#contato">Contato</a></li>
   </ul>
 </div>
 
-<section id="hero">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-left">
-    <span class="hero-tag">Portfólio 2026</span>
-    <h1 class="hero-name">Mário<br><span>Vinicius</span></h1>
-    <p class="hero-title">
-      <strong>Comunicador Visual</strong>
-      <span class="hero-subtitle">Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media</span>
-    </p>
-    <p class="hero-desc">Transformo briefings em narrativas visuais de alto impacto. Do planejamento editorial à execução final em vídeo, fotografia e design gráfico.</p>
-    <div class="hero-ctas">
-      <div class="hero-ctas-buttons">
-        <a href="#cases" class="btn-primary">Ver Cases</a>
-        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank">Currículo</a>
-      </div>
-      <div class="hero-social-icons">
-        <a href="https://www.linkedin.com/in/mario-vinicius/" class="social-icon" target="_blank" title="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://www.instagram.com/mariovinicius.fotografia/" class="social-icon" target="_blank" title="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </div>
+    <p class="hero-label">Acervo Fotográfico</p>
+    <h1>Foto<br>grafia</h1>
+    <p>Registro de coberturas jornalísticas e cenas urbanas. Fotografia autoral com olhar documental.</p>
+  </div>
+  <div class="hero-right-deco">
+    <div class="hero-deco-num">©</div>
+    <div class="hero-deco-tags">
+      <span class="hero-deco-tag">Coberturas jornalísticas</span>
+      <span class="hero-deco-tag">Registro urbano</span>
+      <span class="hero-deco-tag">Porto Alegre · RS</span>
     </div>
   </div>
+</section>
 
-  <div class="hero-right">
-    <img src="foto-hero-mariov.png" alt="Mário Vinicius" class="hero-photo">
-    <div class="hero-right-content">
-      <div class="hero-disciplines">
-        <div class="discipline-item">
-          <span class="discipline-num">01</span>
-          <div>
-            <div class="discipline-text">Design Gráfico</div>
-            <div class="discipline-sub">Editorial · Identidade visual · Social Media</div>
+<!-- TABS + GRID -->
+<section class="tab-section">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="coberturas">Coberturas</button>
+    <button class="tab-btn" data-tab="urbano">Urbano</button>
+  </div>
+
+  <!-- COBERTURAS -->
+  <div class="tab-content active" id="coberturas">
+
+    <!-- Manifestação Juntos! -->
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Manifestação do Juntos!</h2>
+          <span class="cobertura-data">02 Out 2025</span>
+          <span class="cobertura-count">35 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
-        <div class="discipline-item">
-          <span class="discipline-num">02</span>
-          <div>
-            <div class="discipline-text">Produção Audiovisual</div>
-            <div class="discipline-sub">Vídeo institucional · Fotografia editorial · Captação · Pós-produção</div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+      <div class="grid-masonry" data-gallery="manifestacao">
+        <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-03_ccfkly.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-04_pslrnk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-05_lozw2p.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-06_kwbnif.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422713/mariovinicius.fotografia_02_10_2025-07_dhqvpp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422707/mariovinicius.fotografia_02_10_2025-16_mghbjh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422706/mariovinicius.fotografia_02_10_2025-17_witqrc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422705/mariovinicius.fotografia_02_10_2025-18_klaniw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422694/mariovinicius.fotografia_02_10_2025-21_j6esvy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422699/mariovinicius.fotografia_02_10_2025-22_dj971u.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422695/mariovinicius.fotografia_02_10_2025-23_umv201.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422688/mariovinicius.fotografia_02_10_2025-24_mzpeju.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422699/mariovinicius.fotografia_02_10_2025-25_axbuo3.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422700/mariovinicius.fotografia_02_10_2025-26_h0omjs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422694/mariovinicius.fotografia_02_10_2025-27_x0po7c.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422693/mariovinicius.fotografia_02_10_2025-28_odfple.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422690/mariovinicius.fotografia_02_10_2025-29_gmwyri.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="19"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422691/mariovinicius.fotografia_02_10_2025-30_gxygrr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="20"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422674/mariovinicius.fotografia_02_10_2025-31_f4lwn2.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="21"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-32_xoznvh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="22"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422688/mariovinicius.fotografia_02_10_2025-33_k2ckpa.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="23"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422672/mariovinicius.fotografia_02_10_2025-34_ldmbo5.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="24"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422673/mariovinicius.fotografia_02_10_2025-35_zmk8vb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="25"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422671/mariovinicius.fotografia_02_10_2025-36_hfyqfp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="26"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422667/mariovinicius.fotografia_02_10_2025-37_byjhib.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="27"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422669/mariovinicius.fotografia_02_10_2025-38_ol2cqs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="28"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422668/mariovinicius.fotografia_02_10_2025-39_vxu0nw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="29"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422664/mariovinicius.fotografia_02_10_2025-40_sxfidl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="30"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422665/mariovinicius.fotografia_02_10_2025-41_yl6rou.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="31"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422670/mariovinicius.fotografia_02_10_2025-42_xnmddy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="32"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-43_pqfjtp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="33"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422666/mariovinicius.fotografia_02_10_2025-46_oixcw5.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="34"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422664/mariovinicius.fotografia_02_10_2025-66_k84fwn.jpg" loading="lazy" alt=""></div>
+      </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
+    </div>
+
+    <!-- São José VS Vila Olímpica -->
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">São José VS Vila Olímpica</h2>
+          <span class="cobertura-data">17 Ago 2025</span>
+          <span class="cobertura-count">97 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
-        <div class="discipline-item">
-          <span class="discipline-num">03</span>
-          <div>
-            <div class="discipline-text">Social Media Estratégico</div>
-            <div class="discipline-sub">Planejamento · Copywriting · Meta Ads</div>
-          </div>
-        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+      <div class="grid-masonry" data-gallery="futebol">
+        <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-03_lzzpyk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-04_vuuqfe.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422794/sao-jose_vs_vila-olimpica_17-08-2025-05_hpk99a.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422792/sao-jose_vs_vila-olimpica_17-08-2025-06_jnus3o.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422791/sao-jose_vs_vila-olimpica_17-08-2025-07_f3nhrs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-08_oevscc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422790/sao-jose_vs_vila-olimpica_17-08-2025-09_xh80zy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422789/sao-jose_vs_vila-olimpica_17-08-2025-10_oxmtvk.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422787/sao-jose_vs_vila-olimpica_17-08-2025-11_g5z94a.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422790/sao-jose_vs_vila-olimpica_17-08-2025-12_czoxbf.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422786/sao-jose_vs_vila-olimpica_17-08-2025-13_g6nal8.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422782/sao-jose_vs_vila-olimpica_17-08-2025-14_ouikgo.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422785/sao-jose_vs_vila-olimpica_17-08-2025-15_xlshdo.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422783/sao-jose_vs_vila-olimpica_17-08-2025-16_ktft0m.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422781/sao-jose_vs_vila-olimpica_17-08-2025-17_em4obv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422786/sao-jose_vs_vila-olimpica_17-08-2025-18_snjytx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422785/sao-jose_vs_vila-olimpica_17-08-2025-19_hkplqz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="19"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422782/sao-jose_vs_vila-olimpica_17-08-2025-20_qcq2rt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="20"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422783/sao-jose_vs_vila-olimpica_17-08-2025-21_s1mirj.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="21"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422781/sao-jose_vs_vila-olimpica_17-08-2025-22_kgzpnx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="22"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422780/sao-jose_vs_vila-olimpica_17-08-2025-23_mziu7q.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="23"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-24_vbb0hr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="24"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422777/sao-jose_vs_vila-olimpica_17-08-2025-25_sh9wpb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="25"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422778/sao-jose_vs_vila-olimpica_17-08-2025-26_qsb3gw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="26"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-27_xh4n9i.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="27"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422779/sao-jose_vs_vila-olimpica_17-08-2025-28_elyaaz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="28"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422776/sao-jose_vs_vila-olimpica_17-08-2025-29_iqnoyl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="29"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422774/sao-jose_vs_vila-olimpica_17-08-2025-30_nglivf.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="30"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422778/sao-jose_vs_vila-olimpica_17-08-2025-31_lx8kg7.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="31"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422775/sao-jose_vs_vila-olimpica_17-08-2025-32_csewpc.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="32"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422776/sao-jose_vs_vila-olimpica_17-08-2025-33_nlchmt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="33"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422775/sao-jose_vs_vila-olimpica_17-08-2025-34_p9eo5k.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="34"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422773/sao-jose_vs_vila-olimpica_17-08-2025-35_ibepix.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="35"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422771/sao-jose_vs_vila-olimpica_17-08-2025-36_yj0sp6.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="36"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422772/sao-jose_vs_vila-olimpica_17-08-2025-37_hpjjqb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="37"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422772/sao-jose_vs_vila-olimpica_17-08-2025-38_yixvpn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="38"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422770/sao-jose_vs_vila-olimpica_17-08-2025-39_hmrgej.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="39"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422771/sao-jose_vs_vila-olimpica_17-08-2025-40_okyu0o.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="40"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422769/sao-jose_vs_vila-olimpica_17-08-2025-41_hdih5m.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="41"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422770/sao-jose_vs_vila-olimpica_17-08-2025-42_a0iugt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="42"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422766/sao-jose_vs_vila-olimpica_17-08-2025-43_z5irzh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="43"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422768/sao-jose_vs_vila-olimpica_17-08-2025-44_g6c1r2.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="44"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422767/sao-jose_vs_vila-olimpica_17-08-2025-45_dffqbw.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="45"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422764/sao-jose_vs_vila-olimpica_17-08-2025-46_nwhkye.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="46"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422765/sao-jose_vs_vila-olimpica_17-08-2025-47_ngyixt.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="47"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422764/sao-jose_vs_vila-olimpica_17-08-2025-48_heqtqx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="48"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422767/sao-jose_vs_vila-olimpica_17-08-2025-49_pajmon.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="49"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422765/sao-jose_vs_vila-olimpica_17-08-2025-50_yaln07.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="50"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422729/sao-jose_vs_vila-olimpica_17-08-2025-51_xiygdy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="51"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422726/sao-jose_vs_vila-olimpica_17-08-2025-52_yp9zeu.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="52"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/sao-jose_vs_vila-olimpica_17-08-2025-53_pjydot.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="53"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/sao-jose_vs_vila-olimpica_17-08-2025-54_zbzbpy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="54"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422724/sao-jose_vs_vila-olimpica_17-08-2025-55_r7j51e.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="55"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422728/sao-jose_vs_vila-olimpica_17-08-2025-56_uykaqp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="56"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422763/sao-jose_vs_vila-olimpica_17-08-2025-57_hi5r5t.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="57"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422759/sao-jose_vs_vila-olimpica_17-08-2025-58_todeif.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="58"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422759/sao-jose_vs_vila-olimpica_17-08-2025-59_v3wu8t.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="59"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422761/sao-jose_vs_vila-olimpica_17-08-2025-60_hmsnbp.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="60"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422762/sao-jose_vs_vila-olimpica_17-08-2025-61_ybc9tl.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="61"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422760/sao-jose_vs_vila-olimpica_17-08-2025-62_syfa09.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="62"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422762/sao-jose_vs_vila-olimpica_17-08-2025-63_skzqza.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="63"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422760/sao-jose_vs_vila-olimpica_17-08-2025-64_bh3nll.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="64"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422758/sao-jose_vs_vila-olimpica_17-08-2025-65_mxmrcx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="65"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422756/sao-jose_vs_vila-olimpica_17-08-2025-66_tnv6eh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="66"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422757/sao-jose_vs_vila-olimpica_17-08-2025-67_nqtusv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="67"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422757/sao-jose_vs_vila-olimpica_17-08-2025-68_nidw15.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="68"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422755/sao-jose_vs_vila-olimpica_17-08-2025-69_npotv9.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="69"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422756/sao-jose_vs_vila-olimpica_17-08-2025-70_ghpln8.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="70"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422754/sao-jose_vs_vila-olimpica_17-08-2025-71_fxcsqz.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="71"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422752/sao-jose_vs_vila-olimpica_17-08-2025-72_wtctb4.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="72"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422754/sao-jose_vs_vila-olimpica_17-08-2025-73_lfgdt6.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="73"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422750/sao-jose_vs_vila-olimpica_17-08-2025-74_e52s7u.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="74"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422753/sao-jose_vs_vila-olimpica_17-08-2025-75_towqnx.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="75"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422753/sao-jose_vs_vila-olimpica_17-08-2025-76_ywlm0l.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="76"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422748/sao-jose_vs_vila-olimpica_17-08-2025-77_f6t4ed.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="77"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422751/sao-jose_vs_vila-olimpica_17-08-2025-78_a7hber.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="78"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422749/sao-jose_vs_vila-olimpica_17-08-2025-79_qsgold.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="79"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422749/sao-jose_vs_vila-olimpica_17-08-2025-80_bb5ijs.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="80"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422748/sao-jose_vs_vila-olimpica_17-08-2025-81_ul5nnn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="81"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422744/sao-jose_vs_vila-olimpica_17-08-2025-82_e8f9gb.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="82"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422750/sao-jose_vs_vila-olimpica_17-08-2025-83_dqwylq.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="83"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422742/sao-jose_vs_vila-olimpica_17-08-2025-84_wmqmri.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="84"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422743/sao-jose_vs_vila-olimpica_17-08-2025-85_pqfhyy.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="85"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422742/sao-jose_vs_vila-olimpica_17-08-2025-86_r8vwhv.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="86"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422739/sao-jose_vs_vila-olimpica_17-08-2025-87_k6ogmn.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="87"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422739/sao-jose_vs_vila-olimpica_17-08-2025-88_kutajh.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="88"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422737/sao-jose_vs_vila-olimpica_17-08-2025-89_ya0cne.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="89"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422744/sao-jose_vs_vila-olimpica_17-08-2025-90_jgcjsu.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="90"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422736/sao-jose_vs_vila-olimpica_17-08-2025-91_qvh8do.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="91"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422734/sao-jose_vs_vila-olimpica_17-08-2025-92_vkcll3.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="92"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422732/sao-jose_vs_vila-olimpica_17-08-2025-93_mugkcr.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="93"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422732/sao-jose_vs_vila-olimpica_17-08-2025-94_miiyje.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="94"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422737/sao-jose_vs_vila-olimpica_17-08-2025-95_maq7bm.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="95"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-96_vlvbes.jpg" loading="lazy" alt=""></div>
+        <div class="grid-item" data-index="96"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422731/sao-jose_vs_vila-olimpica_17-08-2025-97_ecbxpy.jpg" loading="lazy" alt=""></div>
       </div>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
     </div>
-  </div>
+
+  </div><!-- /coberturas -->
+
+  <!-- URBANO -->
+  <div class="tab-content" id="urbano">
+    <div class="grid-masonry" data-gallery="urbano">
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/20240812-_DSC0147_t3yz9t.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/20240124-mario-19_hkeba3.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428881/20240810-_DSC0021_yifjug.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428878/20250226-IMG_3447_zfnj8x.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428874/20250226-IMG_3458_cq3ru4.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428871/mario-13_1_pbmgjn.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428870/20240212-DSC_0123_jbrpfz.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423878/20250627-IMG_4816_hunoi5.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423877/20250627-IMG_4811-2_jy2qgd.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773423877/20250627-IMG_4807-2_epjbcv.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="10"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422814/mario-2_wsdher.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="11"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422810/mario-09_gsllkk.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="12"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422808/mario-11_nxg0uj.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="13"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422807/mario-13_qktgxd.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="14"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422806/mario-14_jzefrw.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="15"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422623/20241128-_DSC1143_gp6idc.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="16"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422618/20240214-DSC_0193_cvjr8l.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="17"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422618/20240214-DSC_0151_ojeyjw.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="18"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422616/20240214-DSC_0171_ftu49h.jpg" loading="lazy" alt=""></div>
+    </div>
+  </div><!-- /urbano -->
+
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
-    <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lb-close" aria-label="Fechar">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="">
   </div>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8594;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
 </div>
 
-<section id="sobre">
-  <p class="section-label">Quem sou</p>
-  <h2 class="section-title">Sobre Mim</h2>
-  <div class="sobre-grid">
-    <div class="sobre-text">
-      <p>Tenho um perfil <strong>naturalmente múltiplo</strong>: a base técnica em informática, o pensamento centrado no usuário em UX e a prática em vídeo e design não são habilidades isoladas, são camadas que se somam.</p>
-      <p>Isso me permite entrar em qualquer projeto de comunicação com uma visão mais ampla do que só a execução. Gosto de entender o contexto da empresa e o cenário do setor antes de criar qualquer coisa, porque acredito que o trabalho só é bom quando está conectado com o que a marca realmente precisa.</p>
-      <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
-    </div>
-    <div class="sobre-stats">
-      <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Anos de experiência</div></div>
-      <div class="stat-block"><div class="stat-num">10+</div><div class="stat-label">Ferramentas dominadas</div></div>
-      <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Disciplinas integradas</div></div>
-      <div class="stat-block"><div class="stat-num">22</div><div class="stat-label">Anos de idade</div></div>
-    </div>
-  </div>
-</section>
-
-<div id="cases">
-  <div class="cases-header">
-    <p class="section-label">Trabalhos selecionados</p>
-    <h2 class="section-title">Cases</h2>
-  </div>
-  <div class="cases-grid">
-
-    <!-- TILE 01 — wide, linha 1 — Relatório em modal -->
-    <button type="button" onclick="openReportModal()" class="case-card case-card-01" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <img class="case-thumb" src="capa-relatorio-verte-2024.png" alt="Capa — Relatório de Atividades 2024">
-      <div class="case-overlay">
-        <span class="case-tag">Design Editorial</span>
-        <h3 class="case-title">Relatório de Atividades 2024</h3>
-        <p class="case-desc">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025.</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </button>
-
-    <!-- TILE FOTO — tall, linhas 1+2 -->
-    <a href="fotografia.html" class="case-card case-card-foto">
-      <img class="case-thumb" src="https://res.cloudinary.com/di2aesnlv/image/upload/q_auto,f_auto/v1773422618/20240214-DSC_0151_ojeyjw.jpg" alt="Fotografia autoral — senhora com rosa">
-      <div class="case-foto-badge">Ver álbum</div>
-      <div class="case-overlay">
-        <span class="case-tag">Fotografia Autoral</span>
-        <h3 class="case-title">Acervo Fotográfico</h3>
-        <p class="case-desc">Coberturas jornalísticas e cenas urbanas. Registro documental.</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
-
-    <!-- TILE 05 — wide, linha 2 — Campanhas em modal -->
-    <button type="button" onclick="openSocialModal()" class="case-card case-card-05" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">SOCIAL</span></div>
-      <div class="case-overlay">
-        <span class="case-tag">Social Media e Design</span>
-        <h3 class="case-title">Campanhas de Social Media</h3>
-        <p class="case-desc">Seleção de peças de autoria própria: carrosséis educativos, posts de campanhas sazonais e identidades visuais para as redes da Verte Saúde.</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </button>
-
-    <!-- TILE 03 — linha 3, col 1 -->
-    <a href="LINK_CASE_3_AQUI" class="case-card case-card-03 case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 03</span></div>
-      <div class="case-wip-badge">Em breve</div>
-      <div class="case-overlay">
-        <span class="case-tag">[ Categoria ]</span>
-        <h3 class="case-title">[ Título do case ]</h3>
-        <p class="case-desc">[ Descrição breve do projeto e do seu papel. ]</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
-
-    <!-- TILE 04 — linha 3, col 2 — Vídeo com modal -->
-    <button type="button" onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <img class="case-thumb" src="Logo-lagente.png" alt="Capa — Vídeo Institucional Verte Saúde">
-      <div class="case-overlay">
-        <span class="case-tag">Vídeo Institucional</span>
-        <h3 class="case-title">Vídeo Institucional Verte Saúde</h3>
-        <p class="case-desc">Roteiro, captação, direção de cena e montagem final.</p>
-      </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </button>
-
-  </div>
-</div>
-
-<!-- MODAL DE VÍDEO -->
-<div class="video-modal" id="videoModal">
-  <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Vídeo Institucional</span>
-    <div class="video-modal-title">Vídeo Institucional Verte Saúde</div>
-    <div class="video-embed-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/WqZssbpJstY"
-        title="Vídeo institucional Verte Saúde"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Roteiro, captação, direção de cena e montagem final.</p>
-  </div>
-</div>
-
-<!-- MODAL RELATÓRIO (PDF) -->
-<div class="video-modal" id="reportModal">
-  <button class="video-modal-close" onclick="closeReportModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Design Editorial</span>
-    <div class="video-modal-title">Relatório de Atividades 2024</div>
-    <div class="doc-embed-wrap">
-      <!-- Copie o PDF do relatório para a pasta do site com o nome abaixo
-           ou ajuste o src para o link de incorporação do Heyzine/Drive. -->
-      <iframe
-        src="RelatorioAtividades2024.pdf"
-        title="Relatório de Atividades 2024 — Verte Saúde"
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Relatório anual da Verte Saúde com projeto gráfico, diagramação e identidade editorial.</p>
-  </div>
-</div>
-
-<!-- MODAL CAMPANHAS SOCIAL MEDIA (PDF) -->
-<div class="video-modal" id="socialModal">
-  <button class="video-modal-close" onclick="closeSocialModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Social Media & Design</span>
-    <div class="video-modal-title">Campanhas de Social Media</div>
-    <div class="doc-embed-wrap">
-      <!-- Crie um PDF com os principais posts/peças das campanhas
-           e salve como CampanhasSocialMedia.pdf na pasta do site,
-           ou use aqui um link de incorporação externo. -->
-      <iframe
-        src="CampanhasSocialMedia.pdf"
-        title="Campanhas de Social Media — Verte Saúde"
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Seleção de campanhas com contexto, objetivos, métricas e principais peças criadas.</p>
-  </div>
-</div>
-
-<div class="marquee-wrap">
-  <div class="marquee-track marquee-reverse">
-    <div class="marquee-item">IDENTIDADE VISUAL <span>●</span> EDIÇÃO DE VÍDEO <span>●</span> PREMIERE PRO <span>●</span> AFTER EFFECTS <span>●</span> PHOTOSHOP <span>●</span> ILLUSTRATOR <span>●</span> FIGMA <span>●</span> CANVA PRO <span>●</span></div>
-    <div class="marquee-item">IDENTIDADE VISUAL <span>●</span> EDIÇÃO DE VÍDEO <span>●</span> PREMIERE PRO <span>●</span> AFTER EFFECTS <span>●</span> PHOTOSHOP <span>●</span> ILLUSTRATOR <span>●</span> FIGMA <span>●</span> CANVA PRO <span>●</span></div>
-  </div>
-</div>
-
-<section id="habilidades">
-  <p class="section-label">Ferramentas e competências</p>
-  <h2 class="section-title">Habilidades</h2>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <div class="skill-category">Produção Visual</div>
-      <div class="skill-tags">
-        <span class="skill-tag">After Effects</span><span class="skill-tag">Premiere Pro</span><span class="skill-tag">Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">InDesign</span><span class="skill-tag">Lightroom</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-category">Audiovisual</div>
-      <div class="skill-tags">
-        <span class="skill-tag">DaVinci Resolve</span><span class="skill-tag">Fotografia</span><span class="skill-tag">Captação</span><span class="skill-tag">Direção de cena</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-category">Social Media & Ads</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Planejamento editorial</span><span class="skill-tag">Meta Ads</span><span class="skill-tag">Meta Business Suite</span><span class="skill-tag">Google Analytics</span><span class="skill-tag">Copywriting</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-category">Gestão & UX</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Figma</span><span class="skill-tag">Trello</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Canva</span><span class="skill-tag">UX Design</span><span class="skill-tag">Briefing</span><span class="skill-tag">Estratégia de marca</span>
-      </div>
-    </div>
-    <div class="skill-block soft">
-      <div class="skill-category">Soft Skills</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Comunicação clara</span><span class="skill-tag">Visão de negócio</span><span class="skill-tag">Organização por processos</span><span class="skill-tag">Aprendizado contínuo</span><span class="skill-tag">Trabalho em equipe</span><span class="skill-tag">Adaptabilidade</span><span class="skill-tag">Atenção a detalhes</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="acervo">
-  <div class="acervo-box">
-    <p class="section-label" style="text-align:center; margin-bottom: 16px;">Quer ver mais?</p>
-    <h2 class="section-title" style="margin-bottom: 20px;">Acervo Completo</h2>
-    <p>Os cases acima são uma seleção de trabalhos de autoria própria. Para quem quiser se aprofundar, o acervo completo — vídeos, fotos editoriais, peças de design e materiais gráficos — está organizado no Drive.</p>
-    <a href="https://drive.google.com/drive/folders/1wm5q7MAVVQt5A0FJ-CaUJa_mYqi8h7FD?usp=sharing" class="btn-primary" target="_blank">Acessar Drive</a>
-  </div>
-</section>
-
-<div id="contato">
-  <div class="contato-inner">
-    <div class="contato-left">
-      <p class="section-label">Vamos conversar</p>
-      <h2 class="section-title">Contato</h2>
-      <p>Aberto a oportunidades em design, produção audiovisual e social media estratégico. Porto Alegre/RS.</p>
-    </div>
-    <div class="contato-links">
-      <a href="mailto:marioviniciussm@gmail.com" class="contato-item" target="_blank" rel="noopener">
-        <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
-        <div><div class="contato-info-label">E-mail</div><div class="contato-info-value">marioviniciussm@gmail.com</div></div>
-      </a>
-      <a href="https://wa.me/5513981978095" class="contato-item" target="_blank">
-        <div class="contato-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-        <div><div class="contato-info-label">WhatsApp</div><div class="contato-info-value">(13) 98197-8095</div></div>
-      </a>
-      <a href="https://www.instagram.com/mariovinicius.fotografia/" class="contato-item" target="_blank">
-        <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--red)" stroke="none"/></svg></div>
-        <div><div class="contato-info-label">Instagram</div><div class="contato-info-value">@mariovinicius.fotografia</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/mario-vinicius/" class="contato-item" target="_blank">
-        <div class="contato-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-        <div><div class="contato-info-label">LinkedIn</div><div class="contato-info-value">linkedin.com/in/mario-vinicius</div></div>
-      </a>
-    </div>
-  </div>
-</div>
-
+<!-- FOOTER -->
 <footer>
-  <span>© 2026 Mário Vinicius · Porto Alegre/RS</span>
-  <span>Feito com <strong>cuidado</strong></span>
+  <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
+  <p><a href="https://www.instagram.com/mariovinicius.fotografia/" target="_blank">@mariovinicius.fotografia</a></p>
 </footer>
 
 <script>
-  // smooth scroll âncoras
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      closeDrawer();
-    });
+// ── TABS ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
   });
+});
 
-  // ── MODAIS (VÍDEO / RELATÓRIO / SOCIAL) ──
-  const videoModal = document.getElementById('videoModal');
-  const reportModal = document.getElementById('reportModal');
-  const socialModal = document.getElementById('socialModal');
-
-  function openVideoModal() {
-    videoModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeVideoModal() {
-    videoModal.classList.remove('open');
-    document.body.style.overflow = '';
-    // parar vídeo ao fechar — recarrega o iframe se existir
-    const iframe = videoModal.querySelector('iframe');
-    if (iframe) { const src = iframe.src; iframe.src = ''; iframe.src = src; }
-  }
-
-  function openReportModal() {
-    reportModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeReportModal() {
-    reportModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function openSocialModal() {
-    socialModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeSocialModal() {
-    socialModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  videoModal.addEventListener('click', (e) => {
-    if (e.target === videoModal) closeVideoModal();
+// ── ACCORDION ──
+document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const block = toggle.closest('.cobertura-block');
+    const isOpen = block.classList.contains('open');
+    block.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
   });
-  reportModal.addEventListener('click', (e) => {
-    if (e.target === reportModal) closeReportModal();
+});
+
+// ── LIGHTBOX ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+
+let currentGallery = [];
+let currentIndex = 0;
+
+function getFullUrl(thumb) {
+  return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto');
+}
+
+function openLightbox(items, index) {
+  currentGallery = items;
+  showImage(index);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showImage(index) {
+  currentIndex = (index + currentGallery.length) % currentGallery.length;
+  lbImg.src = getFullUrl(currentGallery[currentIndex]);
+  lbCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIndex - 1));
+document.getElementById('lb-next').addEventListener('click', () => showImage(currentIndex + 1));
+
+lb.addEventListener('click', e => {
+  if (e.target === lb) closeLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+});
+
+// bind clicks em cada galeria
+document.querySelectorAll('.grid-masonry').forEach(grid => {
+  const items = Array.from(grid.querySelectorAll('.grid-item img')).map(img => img.src);
+  grid.querySelectorAll('.grid-item').forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(items, i));
   });
-  socialModal.addEventListener('click', (e) => {
-    if (e.target === socialModal) closeSocialModal();
+});
+
+// ── HAMBÚRGUER + DRAWER ──
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+const overlay = document.getElementById('drawerOverlay');
+
+function closeDrawer() {
+  if (!hamburger || !drawer || !overlay) return;
+  hamburger.classList.remove('open');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (hamburger && drawer && overlay) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    overlay.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideoModal();
-      closeReportModal();
-      closeSocialModal();
-    }
+  overlay.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeDrawer);
   });
+}
 
-  // ── HAMBÚRGUER + DRAWER ──
-  const hamburger = document.getElementById('navHamburger');
-  const drawer = document.getElementById('navDrawer');
-  const overlay = document.getElementById('drawerOverlay');
+// ── ACCORDION CASES NO DRAWER ──
+const drawerCasesBtn = document.getElementById('drawerCasesBtn');
+const drawerCasesBody = document.getElementById('drawerCasesBody');
+if (drawerCasesBtn && drawerCasesBody) {
+  drawerCasesBtn.addEventListener('click', () => {
+    const isOpen = drawerCasesBody.classList.toggle('open');
+    drawerCasesBtn.classList.toggle('open', isOpen);
+  });
+}
 
-  function closeDrawer() {
-    if (!hamburger || !drawer || !overlay) return;
-    hamburger.classList.remove('open');
-    drawer.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  if (hamburger && drawer && overlay) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = drawer.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      overlay.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-    overlay.addEventListener('click', closeDrawer);
-    drawer.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', closeDrawer);
-    });
-  }
-
-  // accordion Cases no drawer
-  const drawerCasesBtn = document.getElementById('drawerCasesBtn');
-  const drawerCasesBody = document.getElementById('drawerCasesBody');
-  if (drawerCasesBtn && drawerCasesBody) {
-    drawerCasesBtn.addEventListener('click', () => {
-      const isOpen = drawerCasesBody.classList.toggle('open');
-      drawerCasesBtn.classList.toggle('open', isOpen);
-    });
-  }
+// fechar dropdown ao pressionar Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDrawer();
+});
 </script>
 </body>
 </html>
