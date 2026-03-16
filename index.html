@@ -12,6 +12,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mário Vinicius — Comunicador Visual">
 <meta name="twitter:description" content="Design, Videomaker e Social Media Estratégico. Porto Alegre/RS.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -618,17 +620,16 @@
   </div>
   <div class="cases-grid">
 
-    <!-- TILE 01 — wide, linha 1 -->
-    <a href="LINK_CASE_1_AQUI" class="case-card case-card-01 case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 01</span></div>
-      <div class="case-wip-badge">Em breve</div>
+    <!-- TILE 01 — wide, linha 1 — Relatório em modal -->
+    <button type="button" onclick="openReportModal()" class="case-card case-card-01" style="background:none;border:none;cursor:pointer;text-align:left;">
+      <div class="case-thumb-placeholder"><span class="placeholder-icon">RELATÓRIO</span></div>
       <div class="case-overlay">
         <span class="case-tag">Design Editorial</span>
         <h3 class="case-title">Relatório de Atividades 2024</h3>
         <p class="case-desc">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
+    </button>
 
     <!-- TILE FOTO — tall, linhas 1+2 -->
     <a href="fotografia.html" class="case-card case-card-foto">
@@ -642,17 +643,16 @@
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <!-- TILE 05 — wide, linha 2 -->
-    <a href="LINK_CASE_5_AQUI" class="case-card case-card-05 case-wip" target="_blank">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">CASE 05</span></div>
-      <div class="case-wip-badge">Em breve</div>
+    <!-- TILE 05 — wide, linha 2 — Campanhas em modal -->
+    <button type="button" onclick="openSocialModal()" class="case-card case-card-05" style="background:none;border:none;cursor:pointer;text-align:left;">
+      <div class="case-thumb-placeholder"><span class="placeholder-icon">SOCIAL</span></div>
       <div class="case-overlay">
         <span class="case-tag">Social Media e Design</span>
         <h3 class="case-title">Campanhas de Social Media</h3>
         <p class="case-desc">Seleção de peças de autoria própria: carrosséis educativos, posts de campanhas sazonais e identidades visuais para as redes da Verte Saúde.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </a>
+    </button>
 
     <!-- TILE 03 — linha 3, col 1 -->
     <a href="LINK_CASE_3_AQUI" class="case-card case-card-03 case-wip" target="_blank">
@@ -667,16 +667,15 @@
     </a>
 
     <!-- TILE 04 — linha 3, col 2 — Vídeo com modal -->
-    <button onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
+    <button type="button" onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
       <div class="case-thumb-placeholder">
         <span class="placeholder-icon" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.35)" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.35)" stroke="none"/></svg>
         </span>
       </div>
-      <div class="case-wip-badge">Em breve</div>
       <div class="case-overlay">
         <span class="case-tag">Vídeo Institucional</span>
-        <h3 class="case-title">[ Título do vídeo ]</h3>
+        <h3 class="case-title">Vídeo Institucional Verte Saúde</h3>
         <p class="case-desc">Roteiro, captação, direção de cena e montagem final.</p>
       </div>
       <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
@@ -690,17 +689,53 @@
   <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
   <div class="video-modal-inner">
     <span class="video-modal-tag">Vídeo Institucional</span>
-    <div class="video-modal-title">[ Título do vídeo ]</div>
+    <div class="video-modal-title">Vídeo Institucional Verte Saúde</div>
     <div class="video-embed-wrap">
-      <!-- Quando tiver o vídeo no YouTube, substitua o placeholder abaixo por:
-           <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" allowfullscreen></iframe>
-      -->
-      <div class="video-placeholder">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        <p>Vídeo em produção<br>Em breve disponível</p>
-      </div>
+      <iframe
+        src="https://www.youtube.com/embed/WqZssbpJstY"
+        title="Vídeo institucional Verte Saúde"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
     </div>
     <p class="video-modal-desc">Roteiro, captação, direção de cena e montagem final.</p>
+  </div>
+</div>
+
+<!-- MODAL RELATÓRIO (PDF) -->
+<div class="video-modal" id="reportModal">
+  <button class="video-modal-close" onclick="closeReportModal()">✕</button>
+  <div class="video-modal-inner">
+    <span class="video-modal-tag">Design Editorial</span>
+    <div class="video-modal-title">Relatório de Atividades 2024</div>
+    <div class="video-embed-wrap">
+      <!-- Copie o PDF do relatório para a pasta do site com o nome abaixo
+           ou ajuste o src para o link de incorporação do Heyzine/Drive. -->
+      <iframe
+        src="RelatorioAtividades2024.pdf"
+        title="Relatório de Atividades 2024 — Verte Saúde"
+      ></iframe>
+    </div>
+    <p class="video-modal-desc">Relatório anual da Verte Saúde com projeto gráfico, diagramação e identidade editorial.</p>
+  </div>
+</div>
+
+<!-- MODAL CAMPANHAS SOCIAL MEDIA (PDF) -->
+<div class="video-modal" id="socialModal">
+  <button class="video-modal-close" onclick="closeSocialModal()">✕</button>
+  <div class="video-modal-inner">
+    <span class="video-modal-tag">Social Media & Design</span>
+    <div class="video-modal-title">Campanhas de Social Media</div>
+    <div class="video-embed-wrap">
+      <!-- Crie um PDF com os principais posts/peças das campanhas
+           e salve como CampanhasSocialMedia.pdf na pasta do site,
+           ou use aqui um link de incorporação externo. -->
+      <iframe
+        src="CampanhasSocialMedia.pdf"
+        title="Campanhas de Social Media — Verte Saúde"
+      ></iframe>
+    </div>
+    <p class="video-modal-desc">Seleção de campanhas com contexto, objetivos, métricas e principais peças criadas.</p>
   </div>
 </div>
 
@@ -801,8 +836,10 @@
     });
   });
 
-  // ── MODAL DE VÍDEO ──
+  // ── MODAIS (VÍDEO / RELATÓRIO / SOCIAL) ──
   const videoModal = document.getElementById('videoModal');
+  const reportModal = document.getElementById('reportModal');
+  const socialModal = document.getElementById('socialModal');
 
   function openVideoModal() {
     videoModal.classList.add('open');
@@ -817,12 +854,42 @@
     if (iframe) { const src = iframe.src; iframe.src = ''; iframe.src = src; }
   }
 
+  function openReportModal() {
+    reportModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeReportModal() {
+    reportModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function openSocialModal() {
+    socialModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSocialModal() {
+    socialModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   videoModal.addEventListener('click', (e) => {
     if (e.target === videoModal) closeVideoModal();
   });
+  reportModal.addEventListener('click', (e) => {
+    if (e.target === reportModal) closeReportModal();
+  });
+  socialModal.addEventListener('click', (e) => {
+    if (e.target === socialModal) closeSocialModal();
+  });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeVideoModal();
+    if (e.key === 'Escape') {
+      closeVideoModal();
+      closeReportModal();
+      closeSocialModal();
+    }
   });
 
   // ── HAMBÚRGUER + DRAWER ──
