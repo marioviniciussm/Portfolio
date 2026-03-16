@@ -12,8 +12,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mário Vinicius — Comunicador Visual">
 <meta name="twitter:description" content="Design, Videomaker e Social Media Estratégico. Porto Alegre/RS.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="shortcut icon" href="favicon.png?v=2">
+<link rel="apple-touch-icon" href="favicon.png?v=2">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -343,6 +344,19 @@
     border: none;
   }
 
+  /* wrapper para PDF/Docs (mais alto que 16:9) */
+  .doc-embed-wrap {
+    position: relative;
+    height: min(82vh, 920px);
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .doc-embed-wrap iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
   /* placeholder quando não há vídeo ainda */
   .video-placeholder {
     position: absolute; inset: 0;
@@ -622,7 +636,7 @@
 
     <!-- TILE 01 — wide, linha 1 — Relatório em modal -->
     <button type="button" onclick="openReportModal()" class="case-card case-card-01" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">RELATÓRIO</span></div>
+      <img class="case-thumb" src="capa-relatorio-verte-2024.png" alt="Capa — Relatório de Atividades 2024">
       <div class="case-overlay">
         <span class="case-tag">Design Editorial</span>
         <h3 class="case-title">Relatório de Atividades 2024</h3>
@@ -668,11 +682,7 @@
 
     <!-- TILE 04 — linha 3, col 2 — Vídeo com modal -->
     <button type="button" onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <div class="case-thumb-placeholder">
-        <span class="placeholder-icon" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.35)" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.35)" stroke="none"/></svg>
-        </span>
-      </div>
+      <img class="case-thumb" src="Logo-lagente.png" alt="Capa — Vídeo Institucional Verte Saúde">
       <div class="case-overlay">
         <span class="case-tag">Vídeo Institucional</span>
         <h3 class="case-title">Vídeo Institucional Verte Saúde</h3>
@@ -708,7 +718,7 @@
   <div class="video-modal-inner">
     <span class="video-modal-tag">Design Editorial</span>
     <div class="video-modal-title">Relatório de Atividades 2024</div>
-    <div class="video-embed-wrap">
+    <div class="doc-embed-wrap">
       <!-- Copie o PDF do relatório para a pasta do site com o nome abaixo
            ou ajuste o src para o link de incorporação do Heyzine/Drive. -->
       <iframe
@@ -726,7 +736,7 @@
   <div class="video-modal-inner">
     <span class="video-modal-tag">Social Media & Design</span>
     <div class="video-modal-title">Campanhas de Social Media</div>
-    <div class="video-embed-wrap">
+    <div class="doc-embed-wrap">
       <!-- Crie um PDF com os principais posts/peças das campanhas
            e salve como CampanhasSocialMedia.pdf na pasta do site,
            ou use aqui um link de incorporação externo. -->
