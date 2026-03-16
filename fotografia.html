@@ -50,7 +50,18 @@
     padding: 0 32px 0 0; white-space: nowrap;
   }
   .nav-logo span { color: var(--vermelho); }
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
+
+  /* botão home */
+  .nav-home {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; margin-right: 12px; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cinza); text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    align-self: center;
+  }
+  .nav-home svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .nav-home:hover { background: var(--vermelho); border-color: var(--vermelho); color: var(--branco); }
   .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--cinza); text-decoration: none;
@@ -577,6 +588,9 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
+    <a class="nav-home" href="index.html" title="Portfólio" aria-label="Voltar ao portfólio">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+    </a>
     <a href="index.html" class="nav-logo">M<span>·</span>V</a>
     <ul class="nav-links">
       <li><a href="index.html#sobre">Sobre</a></li>
