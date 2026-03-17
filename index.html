@@ -244,6 +244,49 @@
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 100%;
+    overflow: hidden;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 60px;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(192,57,43,0.4), transparent);
+  }
+
+  .section-divider-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 32px;
+    flex-shrink: 0;
+  }
+
+  .section-divider-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-divider-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.12);
+  }
+
   /* ── CASES — Card Grid ── */
   #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
   .cases-header { max-width: 1200px; margin: 0 auto 56px; }
@@ -273,15 +316,18 @@
   .case-card::before {
     content: attr(data-ghost);
     position: absolute;
-    bottom: -24px; right: -8px;
+    bottom: -10px; right: 4px;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 140px;
+    font-size: 110px;
     color: rgba(255,255,255,0.025);
     line-height: 1;
     letter-spacing: -2px;
     user-select: none;
     pointer-events: none;
     transition: color 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   .case-card:hover {
@@ -589,9 +635,19 @@
   </div>
 </section>
 
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-content">
+    <div class="section-divider-dot"></div>
+    <span class="section-divider-text">Cases</span>
+    <div class="section-divider-dot"></div>
+  </div>
+  <div class="section-divider-line"></div>
+</div>
+
 <div id="cases">
   <div class="cases-header">
-    <p class="section-label">Trabalhos selecionados</p>
+    <p class="section-label">Portfólio</p>
     <h2 class="section-title">Cases</h2>
   </div>
   <div class="cases-grid">
@@ -631,7 +687,7 @@
       </div>
       <p class="case-label">Design Gráfico</p>
       <h3 class="case-title">Peças Gráficas</h3>
-      <p class="case-desc">Peças institucionais, campanhas e materiais visuais. Inclui o Relatório de Atividades 2024 da Verte Saúde.</p>
+      <p class="case-desc">Peças institucionais, campanhas e materiais visuais.</p>
       <div class="case-arrow">
         Ver galeria
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -682,15 +738,6 @@
         <span class="skill-tag">Comunicação clara</span><span class="skill-tag">Visão de negócio</span><span class="skill-tag">Organização por processos</span><span class="skill-tag">Aprendizado contínuo</span><span class="skill-tag">Trabalho em equipe</span><span class="skill-tag">Adaptabilidade</span><span class="skill-tag">Atenção a detalhes</span>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="acervo">
-  <div class="acervo-box">
-    <p class="section-label" style="text-align:center; margin-bottom: 16px;">Quer ver mais?</p>
-    <h2 class="section-title" style="margin-bottom: 20px;">Acervo Completo</h2>
-    <p>Os cases acima são uma seleção de trabalhos de autoria própria. Para quem quiser se aprofundar, o acervo completo — vídeos, fotos editoriais, peças de design e materiais gráficos — está organizado no Drive.</p>
-    <a href="https://drive.google.com/drive/folders/1wm5q7MAVVQt5A0FJ-CaUJa_mYqi8h7FD?usp=sharing" class="btn-primary" target="_blank">Acessar Drive</a>
   </div>
 </section>
 
