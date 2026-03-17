@@ -227,7 +227,6 @@
   /* ── MARQUEE ── */
   .marquee-wrap { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 0; background: var(--black); user-select: none; }
   .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
-  .marquee-reverse { animation-direction: reverse; animation-duration: 28s; }
   .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
   .marquee-item { display: flex; align-items: center; gap: 28px; padding: 0 28px; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 3px; color: rgba(255,255,255,0.18); text-transform: uppercase; }
   .marquee-item span { color: var(--red); font-size: 10px; }
@@ -244,51 +243,8 @@
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* ── SECTION DIVIDER ── */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    max-width: 100%;
-    overflow: hidden;
-    background: var(--dark);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 20px 60px;
-  }
-
-  .section-divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(192,57,43,0.4), transparent);
-  }
-
-  .section-divider-content {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 0 32px;
-    flex-shrink: 0;
-  }
-
-  .section-divider-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--red);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .section-divider-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.12);
-  }
-
   /* ── CASES — Card Grid ── */
-  #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
+  #cases { background: var(--dark); max-width: 100%; padding: 100px 60px; }
   .cases-header { max-width: 1200px; margin: 0 auto 56px; }
 
   .cases-grid {
@@ -567,13 +523,13 @@
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
         <a href="#cases" class="btn-primary">Ver Cases</a>
-        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank">Currículo</a>
+        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Currículo</a>
       </div>
       <div class="hero-social-icons">
-        <a href="https://www.linkedin.com/in/mario-vinicius/" class="social-icon" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/mario-vinicius/" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn">
           <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="https://www.instagram.com/mariovinicius.fotografia/" class="social-icon" target="_blank" title="Instagram">
+        <a href="https://www.instagram.com/mariovinicius.fotografia/" class="social-icon" target="_blank" rel="noopener noreferrer" title="Instagram">
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
         </a>
       </div>
@@ -635,16 +591,6 @@
   </div>
 </section>
 
-<div class="section-divider">
-  <div class="section-divider-line"></div>
-  <div class="section-divider-content">
-    <div class="section-divider-dot"></div>
-    <span class="section-divider-text">Cases</span>
-    <div class="section-divider-dot"></div>
-  </div>
-  <div class="section-divider-line"></div>
-</div>
-
 <div id="cases">
   <div class="cases-header">
     <p class="section-label">Portfólio</p>
@@ -697,13 +643,6 @@
   </div>
 </div>
 
-<div class="marquee-wrap">
-  <div class="marquee-track marquee-reverse">
-    <div class="marquee-item">IDENTIDADE VISUAL <span>●</span> EDIÇÃO DE VÍDEO <span>●</span> PREMIERE PRO <span>●</span> AFTER EFFECTS <span>●</span> PHOTOSHOP <span>●</span> ILLUSTRATOR <span>●</span> FIGMA <span>●</span> CANVA PRO <span>●</span></div>
-    <div class="marquee-item">IDENTIDADE VISUAL <span>●</span> EDIÇÃO DE VÍDEO <span>●</span> PREMIERE PRO <span>●</span> AFTER EFFECTS <span>●</span> PHOTOSHOP <span>●</span> ILLUSTRATOR <span>●</span> FIGMA <span>●</span> CANVA PRO <span>●</span></div>
-  </div>
-</div>
-
 <section id="habilidades">
   <p class="section-label">Ferramentas e competências</p>
   <h2 class="section-title">Habilidades</h2>
@@ -749,19 +688,19 @@
       <p>Aberto a oportunidades em design, produção audiovisual e social media estratégico. Porto Alegre/RS.</p>
     </div>
     <div class="contato-links">
-      <a href="mailto:marioviniciussm@gmail.com" class="contato-item" target="_blank" rel="noopener">
+      <a href="mailto:marioviniciussm@gmail.com" class="contato-item" target="_blank" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
         <div><div class="contato-info-label">E-mail</div><div class="contato-info-value">marioviniciussm@gmail.com</div></div>
       </a>
-      <a href="https://wa.me/5513981978095" class="contato-item" target="_blank">
+      <a href="https://wa.me/5513981978095" class="contato-item" target="_blank" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
         <div><div class="contato-info-label">WhatsApp</div><div class="contato-info-value">(13) 98197-8095</div></div>
       </a>
-      <a href="https://www.instagram.com/mariovinicius.fotografia/" class="contato-item" target="_blank">
+      <a href="https://www.instagram.com/mariovinicius.fotografia/" class="contato-item" target="_blank" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--red)" stroke="none"/></svg></div>
         <div><div class="contato-info-label">Instagram</div><div class="contato-info-value">@mariovinicius.fotografia</div></div>
       </a>
-      <a href="https://www.linkedin.com/in/mario-vinicius/" class="contato-item" target="_blank">
+      <a href="https://www.linkedin.com/in/mario-vinicius/" class="contato-item" target="_blank" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
         <div><div class="contato-info-label">LinkedIn</div><div class="contato-info-value">linkedin.com/in/mario-vinicius</div></div>
       </a>
