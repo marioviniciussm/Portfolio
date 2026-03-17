@@ -1,0 +1,11 @@
+127.0.0.1 - - [17/Mar/2026 16:52:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:52:53] "GET /fotografia.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:52:53] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 16:52:53] "GET /favicon.png?v=2 HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 16:52:53] "GET /favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:52:53] "GET /favicon.svg HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:53:24] "GET /pecas-graficas.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:53:24] "GET /capa-relatorio-verte-2024.png HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:53:50] "GET /videos.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:54:19] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 16:54:19] "GET /foto-hero-mariov.png HTTP/1.1" 200 -
