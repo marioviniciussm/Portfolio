@@ -244,7 +244,7 @@
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
   /* ── CASES — Card Grid ── */
-  #cases { background: linear-gradient(to bottom, var(--red) 0%, var(--black) 100%); max-width: 100%; padding: 100px 60px; }
+  #cases { background: var(--dark); max-width: 100%; padding: 100px 60px; }
   .cases-header { max-width: 1200px; margin: 0 auto 56px; }
 
   .cases-grid {
@@ -264,10 +264,10 @@
     color: inherit;
     position: relative;
     overflow: hidden;
-    border-left: 3px solid transparent;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    border-right: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid rgba(192,57,43,0.45);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-right: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
     min-height: 380px;
     transition: border-color 0.25s, background 0.25s, transform 0.2s;
   }
@@ -294,7 +294,7 @@
     border-top-color: rgba(192,57,43,0.25);
     border-right-color: rgba(192,57,43,0.12);
     border-bottom-color: rgba(192,57,43,0.12);
-    background: #222;
+    background: var(--dark);
     transform: translateX(4px);
   }
 
