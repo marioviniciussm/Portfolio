@@ -1133,6 +1133,38 @@ if (drawerCasesBtn && drawerCasesBody) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });
+
+// ── DROPDOWN NAV — acessibilidade teclado ──
+const navDropdown = document.getElementById('navDropdown');
+const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
+const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
+if (dropBtn && dropMenu) {
+  dropBtn.addEventListener('click', () => {
+    const isExpanded = dropBtn.getAttribute('aria-expanded') === 'true';
+    dropBtn.setAttribute('aria-expanded', String(!isExpanded));
+    dropMenu.style.opacity = !isExpanded ? '1' : '';
+    dropMenu.style.pointerEvents = !isExpanded ? 'all' : '';
+    dropMenu.style.transform = !isExpanded ? 'translateY(0)' : '';
+  });
+  dropBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dropBtn.click(); }
+    if (e.key === 'Escape') {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+      dropBtn.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (navDropdown && !navDropdown.contains(e.target)) {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+    }
+  });
+}
 </script>
 </body>
 </html>

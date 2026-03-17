@@ -472,6 +472,27 @@
 
   @media (max-width: 380px) { .hero-name { font-size: 52px; } }
 
+  /* ── HERO — localização e disponibilidade ── */
+  .hero-location { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
+
+  /* ── SOBRE — ABAS POR ÁREA ── */
+  .sobre-areas { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .area-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .area-tab-btn { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--gray); padding: 8px 18px; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; line-height: 1; }
+  .area-tab-btn:hover { border-color: var(--red); color: var(--white); }
+  .area-tab-btn[aria-selected="true"] { background: var(--red); border-color: var(--red); color: var(--white); }
+  .area-tab-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .area-panel { display: none; }
+  .area-panel.active { display: block; animation: areaFadeIn .2s ease; }
+  @keyframes areaFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .area-panel-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); letter-spacing: 0.04em; color: var(--white); margin-bottom: 14px; }
+  .area-panel-text { font-size: 0.9rem; color: #bbb; line-height: 1.75; max-width: 640px; margin-bottom: 16px; }
+  .area-panel-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .area-panel-list li { font-size: 0.85rem; color: var(--gray); padding-left: 16px; position: relative; line-height: 1.55; }
+  .area-panel-list li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+  .area-panel-tools { font-size: 0.72rem; color: var(--gray); letter-spacing: 0.06em; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+  @media (max-width: 768px) { .area-tab-btn { font-size: 0.6rem; padding: 7px 12px; } }
+
   /* ── TIMELINE ── */
   .experiencia-wrap { margin-top: 48px; }
   .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 32px; position: relative; }
@@ -556,6 +577,7 @@
       <span class="hero-subtitle">Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media</span>
     </p>
     <p class="hero-desc">Transformo briefings em narrativas visuais que geram resultado. Design, vídeo e estratégia de conteúdo integrados, do planejamento à entrega final.</p>
+    <p class="hero-location">Porto Alegre/RS · Disponível para CLT, PJ e projetos freelance</p>
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
         <a href="#cases" class="btn-primary">Ver Portfólio</a>
@@ -625,6 +647,94 @@
       <div class="stat-block"><div class="stat-num">50+</div><div class="stat-label">Peças produzidas</div></div>
     </div>
   </div>
+
+  <!-- SOBRE INTERATIVO POR ÁREA -->
+  <div class="sobre-areas">
+    <div class="area-tabs" role="tablist" aria-label="Áreas de atuação">
+      <button class="area-tab-btn" role="tab" aria-selected="true" aria-controls="area-com-inst" tabindex="0">Comunicação Institucional</button>
+      <button class="area-tab-btn" role="tab" aria-selected="false" aria-controls="area-design" tabindex="-1">Design Gráfico</button>
+      <button class="area-tab-btn" role="tab" aria-selected="false" aria-controls="area-video" tabindex="-1">Vídeo</button>
+      <button class="area-tab-btn" role="tab" aria-selected="false" aria-controls="area-social" tabindex="-1">Social Media</button>
+      <button class="area-tab-btn" role="tab" aria-selected="false" aria-controls="area-gestao" tabindex="-1">Gestão &amp; Processos</button>
+      <button class="area-tab-btn" role="tab" aria-selected="false" aria-controls="area-foto" tabindex="-1">Fotografia</button>
+    </div>
+
+    <div class="area-panel active" id="area-com-inst" role="tabpanel">
+      <h3 class="area-panel-title">Comunicação institucional na prática</h3>
+      <p class="area-panel-text">Desde 2022, atuo na Verte Saúde produzindo comunicação visual institucional de forma contínua, atendendo demandas reais com consistência e alinhamento à identidade da organização.</p>
+      <ul class="area-panel-list">
+        <li>Campanhas internas e externas</li>
+        <li>Relatórios e publicações institucionais</li>
+        <li>Comunicação para redes sociais</li>
+        <li>Materiais para eventos corporativos</li>
+        <li>Apresentações e documentos estratégicos</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Photoshop · Illustrator · Google Sheets · Trello / ClickUp</p>
+    </div>
+
+    <div class="area-panel" id="area-design" role="tabpanel">
+      <h3 class="area-panel-title">Design que serve à mensagem</h3>
+      <p class="area-panel-text">Trabalho com identidade visual, editorial e social, criando peças multi-formato com hierarquia clara e consistência visual, sempre a partir de um briefing entendido.</p>
+      <ul class="area-panel-list">
+        <li>Campanhas e materiais de marca</li>
+        <li>Cartazes, banners e peças gráficas</li>
+        <li>Peças para feed e stories</li>
+        <li>Materiais editoriais e publicações</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Illustrator · Photoshop · InDesign</p>
+    </div>
+
+    <div class="area-panel" id="area-video" role="tabpanel">
+      <h3 class="area-panel-title">Do roteiro à entrega final</h3>
+      <p class="area-panel-text">Processo completo: roteiro, captação, edição e finalização, com foco em narrativa institucional e entrega adequada a cada canal e público.</p>
+      <ul class="area-panel-list">
+        <li>Vídeos de apresentação institucional</li>
+        <li>Cobertura audiovisual de eventos</li>
+        <li>Reels institucionais e conteúdo para redes</li>
+        <li>Versões adaptadas por canal e formato</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Premiere Pro · DaVinci Resolve · CapCut</p>
+    </div>
+
+    <div class="area-panel" id="area-social" role="tabpanel">
+      <h3 class="area-panel-title">Conteúdo com organização e propósito</h3>
+      <p class="area-panel-text">Planejo e opero conteúdo digital com organização estruturada, calendários editoriais, pautas e roteiros, sempre alinhado a objetivos de comunicação e ao posicionamento da marca.</p>
+      <ul class="area-panel-list">
+        <li>Calendário editorial e pauta de conteúdo</li>
+        <li>Roteiros e diretrizes de criação</li>
+        <li>Padronização visual de perfis</li>
+        <li>Publicações e agendamento</li>
+        <li>Organização e documentação de processos</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Meta Business Suite · Google Sheets · Trello · ClickUp · CapCut</p>
+    </div>
+
+    <div class="area-panel" id="area-gestao" role="tabpanel">
+      <h3 class="area-panel-title">Organização como parte do processo criativo</h3>
+      <p class="area-panel-text">Organizo fluxos de trabalho, versiono peças, mantenho checklists e garanto entregas dentro do prazo, com rastreabilidade de cada etapa do processo.</p>
+      <ul class="area-panel-list">
+        <li>Briefing e definição de escopo</li>
+        <li>Cronograma e acompanhamento de tarefas</li>
+        <li>Controle de status e aprovações</li>
+        <li>Versionamento de peças e arquivos</li>
+        <li>Documentação de processos e entregas</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Trello · ClickUp · Google Sheets</p>
+    </div>
+
+    <div class="area-panel" id="area-foto" role="tabpanel">
+      <h3 class="area-panel-title">Registro com olhar documental</h3>
+      <p class="area-panel-text">Fotografia de cobertura institucional, eventos corporativos, esporte e urbano. Do registro à entrega: captação, seleção criteriosa e tratamento com organização de acervo.</p>
+      <ul class="area-panel-list">
+        <li>Cobertura de eventos e registros institucionais</li>
+        <li>Edição e tratamento de imagens</li>
+        <li>Seleção e curadoria do acervo</li>
+        <li>Entrega organizada por categoria e uso</li>
+      </ul>
+      <p class="area-panel-tools">Ferramentas: Tratamento e curadoria pós-captação</p>
+    </div>
+  </div>
+
   <div class="experiencia-wrap">
     <p class="section-label">Trajetória</p>
     <div class="timeline">
@@ -873,6 +983,39 @@
         dropMenu.style.pointerEvents = '';
         dropMenu.style.transform = '';
       }
+    });
+  }
+
+  // ── SOBRE — ABAS POR ÁREA ──
+  const areaTabs = document.querySelectorAll('.area-tab-btn');
+  const areaPanels = document.querySelectorAll('.area-panel');
+
+  function activateAreaTab(btn) {
+    areaTabs.forEach(b => { b.setAttribute('aria-selected', 'false'); b.tabIndex = -1; });
+    areaPanels.forEach(p => p.classList.remove('active'));
+    btn.setAttribute('aria-selected', 'true');
+    btn.tabIndex = 0;
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (panel) panel.classList.add('active');
+  }
+
+  if (areaTabs.length) {
+    areaTabs.forEach(btn => {
+      btn.addEventListener('click', () => activateAreaTab(btn));
+      btn.addEventListener('keydown', e => {
+        const tabs = Array.from(areaTabs);
+        const idx = tabs.indexOf(btn);
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const next = tabs[(idx + 1) % tabs.length];
+          next.focus(); activateAreaTab(next);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+          prev.focus(); activateAreaTab(prev);
+        }
+      });
     });
   }
 </script>

@@ -750,7 +750,10 @@
         data-video-desc="Vídeo institucional produzido para apresentação da Verte Saúde, organização de saúde sediada em Porto Alegre/RS. Responsável pelo processo completo: pré-produção (roteiro e planejamento de cenas), captação (direção e operação de câmera) e pós-produção (edição, color grading e finalização). Peça utilizada em apresentações institucionais para conselhos e parceiros estratégicos."
         data-video-cliente="Verte Saúde"
         data-video-entrega="Vídeo institucional, 2024"
-        data-video-processo="Roteiro · Captação · Edição · Color grading">
+        data-video-processo="Roteiro · Captação · Edição · Color grading"
+        data-video-objetivo="Apresentar a Verte Saúde para conselhos diretivos e parceiros estratégicos"
+        data-video-papel="Responsável completo: pré-produção, captação e pós-produção"
+        data-video-resultado="Uso institucional em apresentações para conselho diretivo e parceiros estratégicos">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="Vídeo Institucional Verte Saúde" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -777,13 +780,13 @@
           <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.5)" stroke="none"/>
         </svg>
         <div>
-          <p style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:8px;">Produções em finalização</p>
-          <p style="font-size:0.8rem; color:rgba(255,255,255,0.25); letter-spacing:0.1em; max-width:360px; line-height:1.6;">
-            Projetos autorais em fase de pós-produção. Em breve disponíveis aqui.
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:8px;">Produções em curadoria</p>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.25); letter-spacing:0.05em; max-width:360px; line-height:1.65;">
+            Projetos autorais em fase de seleção e pós-produção.<br>Disponíveis sob solicitação mediante contato.
           </p>
         </div>
         <a href="index.html#contato" style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--vermelho); text-decoration:none; border:1px solid rgba(192,57,43,0.3); padding:10px 20px; transition:all 0.2s;">
-          Solicitar acesso antecipado →
+          Solicitar exemplos →
         </a>
       </div>
     </div>
@@ -817,6 +820,18 @@
           <span class="video-processo-label">Processo</span>
           <span class="video-processo-value" id="modalProcessoDesc"></span>
         </div>
+        <div class="video-processo-item">
+          <span class="video-processo-label">Objetivo</span>
+          <span class="video-processo-value" id="modalObjetivo"></span>
+        </div>
+        <div class="video-processo-item">
+          <span class="video-processo-label">Meu papel</span>
+          <span class="video-processo-value" id="modalPapel"></span>
+        </div>
+        <div class="video-processo-item">
+          <span class="video-processo-label">Resultado</span>
+          <span class="video-processo-value" id="modalResultado"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -848,7 +863,7 @@ const modalLabel = document.getElementById('modalLabel');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 
-function openVideoModal(videoId, title, label, desc, cliente, entrega, processo) {
+function openVideoModal(videoId, title, label, desc, cliente, entrega, processo, objetivo, papel, resultado) {
   if (!/^[\w-]+$/.test(videoId)) return;
   const scrollY = window.scrollY;
   modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
@@ -858,10 +873,16 @@ function openVideoModal(videoId, title, label, desc, cliente, entrega, processo)
   modalDesc.textContent = desc;
   const processoEl = document.getElementById('modalProcesso');
   if (processoEl) {
-    if (cliente || entrega || processo) {
+    if (cliente || entrega || processo || objetivo || papel || resultado) {
       document.getElementById('modalCliente').textContent = cliente || '—';
       document.getElementById('modalEntrega').textContent = entrega || '—';
       document.getElementById('modalProcessoDesc').textContent = processo || '—';
+      const objEl = document.getElementById('modalObjetivo');
+      const papelEl = document.getElementById('modalPapel');
+      const resultadoEl = document.getElementById('modalResultado');
+      if (objEl) objEl.textContent = objetivo || '—';
+      if (papelEl) papelEl.textContent = papel || '—';
+      if (resultadoEl) resultadoEl.textContent = resultado || '—';
       processoEl.style.display = 'grid';
     } else {
       processoEl.style.display = 'none';
@@ -888,7 +909,10 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
       card.dataset.videoDesc,
       card.dataset.videoCliente || '',
       card.dataset.videoEntrega || '',
-      card.dataset.videoProcesso || ''
+      card.dataset.videoProcesso || '',
+      card.dataset.videoObjetivo || '',
+      card.dataset.videoPapel || '',
+      card.dataset.videoResultado || ''
     );
   });
 });
@@ -938,6 +962,38 @@ document.addEventListener('keydown', (e) => {
     closeVideoModal();
   }
 });
+
+// ── DROPDOWN NAV — acessibilidade teclado ──
+const navDropdown = document.getElementById('navDropdown');
+const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
+const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
+if (dropBtn && dropMenu) {
+  dropBtn.addEventListener('click', () => {
+    const isExpanded = dropBtn.getAttribute('aria-expanded') === 'true';
+    dropBtn.setAttribute('aria-expanded', String(!isExpanded));
+    dropMenu.style.opacity = !isExpanded ? '1' : '';
+    dropMenu.style.pointerEvents = !isExpanded ? 'all' : '';
+    dropMenu.style.transform = !isExpanded ? 'translateY(0)' : '';
+  });
+  dropBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dropBtn.click(); }
+    if (e.key === 'Escape') {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+      dropBtn.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (navDropdown && !navDropdown.contains(e.target)) {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+    }
+  });
+}
 </script>
 </body>
 </html>

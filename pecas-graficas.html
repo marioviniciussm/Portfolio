@@ -470,7 +470,39 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     border: 1px dashed rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
+  .grid-empty-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+  .grid-empty-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.18);
+    line-height: 1.65;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    max-width: 360px;
+  }
+  .grid-empty-cta {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    text-decoration: none;
+    border: 1px solid rgba(192,57,43,0.3);
+    padding: 8px 18px;
+    transition: border-color 0.2s, color 0.2s;
+    margin-top: 4px;
+  }
+  .grid-empty-cta:hover { border-color: var(--vermelho); color: var(--branco); }
 
   /* ── LIGHTBOX ── */
   .lightbox {
@@ -829,7 +861,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="tampinhas">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -864,7 +896,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="diversos">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -899,7 +931,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="fotos-restauradas">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -935,7 +967,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="novembro-azul">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -970,7 +1002,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="canais-contato">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -1067,7 +1099,7 @@
             </div>
           </div>
           <div class="grid-masonry" data-gallery="siasc-2024">
-            <div class="grid-empty">Imagens em breve</div>
+            <div class="grid-empty"><p class="grid-empty-title">Imagens sob curadoria</p><p class="grid-empty-desc">Peças em fase de seleção e pós-produção.<br>Exemplos disponíveis sob solicitação.</p><a href="index.html#contato" class="grid-empty-cta">Solicitar exemplos &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -1210,6 +1242,38 @@ if (drawerCasesBtn && drawerCasesBody) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });
+
+// ── DROPDOWN NAV — acessibilidade teclado ──
+const navDropdown = document.getElementById('navDropdown');
+const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
+const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
+if (dropBtn && dropMenu) {
+  dropBtn.addEventListener('click', () => {
+    const isExpanded = dropBtn.getAttribute('aria-expanded') === 'true';
+    dropBtn.setAttribute('aria-expanded', String(!isExpanded));
+    dropMenu.style.opacity = !isExpanded ? '1' : '';
+    dropMenu.style.pointerEvents = !isExpanded ? 'all' : '';
+    dropMenu.style.transform = !isExpanded ? 'translateY(0)' : '';
+  });
+  dropBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dropBtn.click(); }
+    if (e.key === 'Escape') {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+      dropBtn.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (navDropdown && !navDropdown.contains(e.target)) {
+      dropBtn.setAttribute('aria-expanded', 'false');
+      dropMenu.style.opacity = '';
+      dropMenu.style.pointerEvents = '';
+      dropMenu.style.transform = '';
+    }
+  });
+}
 </script>
 </body>
 </html>
