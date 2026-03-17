@@ -38,7 +38,7 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center;
+    display: flex; align-items: stretch;
     background: rgba(15,15,15,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(192,57,43,0.2);
@@ -47,38 +47,38 @@
 
   /* wrapper interno centralizado */
   .nav-inner {
-    display: flex; align-items: center; flex-wrap: nowrap;
+    display: flex; align-items: stretch; flex-wrap: nowrap;
     width: 100%; max-width: 1200px;
     margin: 0 auto; padding: 0 60px;
-    height: 64px;
+    min-height: 64px;
   }
 
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
     color: var(--white); text-decoration: none;
-    display: flex; align-items: center;
+    display: flex; align-items: center; align-self: center;
     padding: 0 28px 0 0; white-space: nowrap; flex-shrink: 0;
     border-right: 1px solid rgba(255,255,255,0.08);
     margin-right: 4px;
   }
   .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; margin-left: auto; }
-  .nav-links > li { display: flex; align-items: center; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; margin-left: auto; }
+  .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 8px 20px; display: flex; align-items: center; white-space: nowrap;
+    padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
 
   /* dropdown Cases */
-  .nav-dropdown { position: relative; display: flex; align-items: center; }
+  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
