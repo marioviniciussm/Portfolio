@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mário Vinicius - Vídeos</title>
-<meta name="description" content="Vídeos de Mário Vinicius — produções institucionais e autorais. Captação, edição e pós-produção.">
+<title>Vídeos — Mário Vinicius | Produção Audiovisual Institucional | Porto Alegre</title>
+<meta name="description" content="Produções audiovisuais de Mário Vinicius — vídeos institucionais, coberturas e produções autorais. Captação, edição e pós-produção em Porto Alegre/RS.">
+<meta property="og:title" content="Vídeos — Mário Vinicius">
+<meta property="og:image" content="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -624,6 +627,36 @@
   @media (max-width: 420px) {
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
   }
+
+  /* ── VIDEO MODAL — ficha de processo ── */
+  .video-modal-processo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .video-processo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .video-processo-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(192,57,43,0.7);
+  }
+  .video-processo-value {
+    font-size: 0.82rem;
+    color: var(--branco);
+    font-weight: 500;
+  }
+  @media (max-width: 600px) {
+    .video-modal-processo { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -685,7 +718,7 @@
   <div class="hero-left">
     <p class="hero-label">Produção Audiovisual</p>
     <h1>Vídeos</h1>
-    <p>Produções audiovisuais institucionais e autorais. Captação, edição e pós-produção com narrativa visual de impacto.</p>
+    <p>Narrativa audiovisual do briefing à entrega final. Vídeos institucionais, coberturas de eventos e produções autorais — com domínio de captação, roteiro, edição e pós-produção.</p>
   </div>
   <div class="hero-right-deco">
     <div class="hero-deco-num">©</div>
@@ -710,7 +743,14 @@
 
     <div class="video-grid">
 
-      <div class="video-card" data-video-id="WqZssbpJstY" data-video-title="Vídeo Institucional Verte Saúde" data-video-label="Verte Saúde · 2024" data-video-desc="Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.">
+      <div class="video-card"
+        data-video-id="WqZssbpJstY"
+        data-video-title="Vídeo Institucional Verte Saúde"
+        data-video-label="Vídeo Institucional · Verte Saúde · 2024"
+        data-video-desc="Vídeo institucional produzido para apresentação da Verte Saúde — organização de saúde sediada em Porto Alegre/RS. Responsável pelo processo completo: pré-produção (roteiro e planejamento de cenas), captação (direção e operação de câmera) e pós-produção (edição, color grading e finalização). Peça utilizada em apresentações institucionais para conselhos e parceiros estratégicos."
+        data-video-cliente="Verte Saúde"
+        data-video-entrega="Vídeo institucional, 2024"
+        data-video-processo="Roteiro · Captação · Edição · Color grading">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="Vídeo Institucional Verte Saúde" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -718,9 +758,9 @@
           </div>
         </div>
         <div class="video-card-info">
-          <p class="video-card-label">Verte Saúde · 2024</p>
+          <p class="video-card-label">Vídeo Institucional · Verte Saúde · 2024</p>
           <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
-          <p class="video-card-desc">Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.</p>
+          <p class="video-card-desc">Processo completo de produção: roteiro, captação e edição. Peça de apresentação institucional da Verte Saúde — utilizada com conselhos e parceiros estratégicos em 2024.</p>
         </div>
       </div>
 
@@ -732,7 +772,20 @@
   <div class="tab-content" id="tab-autoral">
 
     <div class="video-grid">
-      <div class="grid-empty">Vídeos em breve</div>
+      <div class="grid-empty" style="display:flex; flex-direction:column; align-items:center; gap:20px; padding:64px 32px; border:1px dashed rgba(192,57,43,0.2); text-align:center;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.5)" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.5)" stroke="none"/>
+        </svg>
+        <div>
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:8px;">Produções em finalização</p>
+          <p style="font-size:0.8rem; color:rgba(255,255,255,0.25); letter-spacing:0.1em; max-width:360px; line-height:1.6;">
+            Projetos autorais em fase de pós-produção. Em breve disponíveis aqui.
+          </p>
+        </div>
+        <a href="index.html#contato" style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--vermelho); text-decoration:none; border:1px solid rgba(192,57,43,0.3); padding:10px 20px; transition:all 0.2s;">
+          Solicitar acesso antecipado →
+        </a>
+      </div>
     </div>
 
   </div><!-- /tab-autoral -->
@@ -751,6 +804,20 @@
       <p class="video-modal-label" id="modalLabel"></p>
       <h3 class="video-modal-title" id="modalTitle"></h3>
       <p class="video-modal-desc" id="modalDesc"></p>
+      <div class="video-modal-processo" id="modalProcesso" style="display:none;">
+        <div class="video-processo-item">
+          <span class="video-processo-label">Cliente</span>
+          <span class="video-processo-value" id="modalCliente"></span>
+        </div>
+        <div class="video-processo-item">
+          <span class="video-processo-label">Entrega</span>
+          <span class="video-processo-value" id="modalEntrega"></span>
+        </div>
+        <div class="video-processo-item">
+          <span class="video-processo-label">Processo</span>
+          <span class="video-processo-value" id="modalProcessoDesc"></span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -758,7 +825,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
-  <p><a href="https://www.instagram.com/mariovinicius.fotografia/" target="_blank">@mariovinicius.fotografia</a></p>
+  <p>Feito com <strong>propósito</strong></p>
 </footer>
 
 <script>
@@ -781,7 +848,7 @@ const modalLabel = document.getElementById('modalLabel');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 
-function openVideoModal(videoId, title, label, desc) {
+function openVideoModal(videoId, title, label, desc, cliente, entrega, processo) {
   if (!/^[\w-]+$/.test(videoId)) return;
   const scrollY = window.scrollY;
   modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
@@ -789,6 +856,17 @@ function openVideoModal(videoId, title, label, desc) {
   modalLabel.textContent = label;
   modalTitle.textContent = title;
   modalDesc.textContent = desc;
+  const processoEl = document.getElementById('modalProcesso');
+  if (processoEl) {
+    if (cliente || entrega || processo) {
+      document.getElementById('modalCliente').textContent = cliente || '—';
+      document.getElementById('modalEntrega').textContent = entrega || '—';
+      document.getElementById('modalProcessoDesc').textContent = processo || '—';
+      processoEl.style.display = 'grid';
+    } else {
+      processoEl.style.display = 'none';
+    }
+  }
   modal.classList.add('open');
   modal.dataset.scrollY = scrollY;
   document.body.style.overflow = 'hidden';
@@ -807,7 +885,10 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
       card.dataset.videoId,
       card.dataset.videoTitle,
       card.dataset.videoLabel,
-      card.dataset.videoDesc
+      card.dataset.videoDesc,
+      card.dataset.videoCliente || '',
+      card.dataset.videoEntrega || '',
+      card.dataset.videoProcesso || ''
     );
   });
 });

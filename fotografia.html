@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mário Vinicius - Fotografia</title>
+<title>Fotografia — Mário Vinicius | Comunicador Visual · Porto Alegre</title>
+<meta name="description" content="Fotografia de cobertura, editorial e urbana por Mário Vinicius — Comunicador Visual. Coberturas institucionais, fotografia esportiva e registro documental. Porto Alegre/RS.">
+<meta property="og:title" content="Fotografia — Mário Vinicius | Comunicador Visual">
+<meta property="og:description" content="Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão.">
+<meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/fotografia.html">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -581,6 +586,27 @@
     .grid-masonry { columns: 1; }
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
   }
+
+  /* ── CASE INTRO ── */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
+  }
+  .case-intro-context { display: flex; flex-direction: column; gap: 12px; }
+  .case-intro-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vermelho); }
+  .case-intro-desc { font-size: 0.9rem; color: #bbb; line-height: 1.75; }
+  .case-intro-meta { display: flex; flex-direction: column; gap: 12px; padding-left: 24px; border-left: 2px solid rgba(192,57,43,0.25); }
+  .case-intro-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .case-intro-meta-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(192,57,43,0.7); }
+  .case-intro-meta-value { font-size: 0.82rem; color: var(--branco); font-weight: 500; }
+  @media (max-width: 768px) {
+    .case-intro { grid-template-columns: 1fr; gap: 20px; }
+    .case-intro-meta { padding-left: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -642,14 +668,14 @@
   <div class="hero-left">
     <p class="hero-label">Fotografia</p>
     <h1>Foto<br>grafia</h1>
-    <p>Registro de coberturas jornalísticas e cenas urbanas. Fotografia autoral com olhar documental.</p>
+    <p>Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão — do campo ao evento corporativo, com olhar autoral e entrega profissional.</p>
   </div>
   <div class="hero-right-deco">
     <div class="hero-deco-num">©</div>
     <div class="hero-deco-tags">
-      <span class="hero-deco-tag">Coberturas jornalísticas</span>
-      <span class="hero-deco-tag">Registro urbano</span>
-      <span class="hero-deco-tag">Porto Alegre · RS</span>
+      <span class="hero-deco-tag">Eventos Corporativos</span>
+      <span class="hero-deco-tag">Fotografia Esportiva</span>
+      <span class="hero-deco-tag">Registro Documental</span>
     </div>
   </div>
 </section>
@@ -680,6 +706,27 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+      <div class="case-intro">
+        <div class="case-intro-context">
+          <p class="case-intro-label">Contexto do projeto</p>
+          <p class="case-intro-desc">
+            Cobertura fotojornalística da manifestação organizada pelo movimento Juntos!
+            em Porto Alegre. O desafio foi capturar a pluralidade do evento —
+            rostos, cartazes, tensão e celebração — em um registro documental que
+            preservasse a autenticidade do momento sem perder o enquadramento editorial.
+          </p>
+          <p class="case-intro-desc">
+            Das mais de 60 capturas realizadas, 35 fotografias foram selecionadas
+            como o conjunto mais representativo da cobertura.
+          </p>
+        </div>
+        <div class="case-intro-meta">
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Fotojornalismo · Cobertura de evento</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Data</span><span class="case-intro-meta-value">02 de outubro de 2025</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">35 fotografias selecionadas e tratadas</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Captação + Edição em Lightroom</span></div>
+        </div>
+      </div>
       <div class="grid-masonry" data-gallery="manifestacao">
         <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
@@ -735,6 +782,27 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+      <div class="case-intro">
+        <div class="case-intro-context">
+          <p class="case-intro-label">Contexto do projeto</p>
+          <p class="case-intro-desc">
+            Cobertura completa de partida de futebol feminino entre São José EC
+            e Vila Olímpica. Fotografia esportiva exige velocidade de reação,
+            domínio da iluminação adversa de estádio e capacidade de antecipar
+            o lance decisivo — tudo com equipamento portátil e sem segunda chance.
+          </p>
+          <p class="case-intro-desc">
+            97 fotografias entregues registrando lances, emoções e o ambiente da partida,
+            de aquecimento ao apito final.
+          </p>
+        </div>
+        <div class="case-intro-meta">
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Fotografia Esportiva · Futebol Feminino</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Data</span><span class="case-intro-meta-value">17 de agosto de 2025</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">97 fotografias selecionadas e tratadas</span></div>
+          <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Captação + Edição em Lightroom</span></div>
+        </div>
+      </div>
       <div class="grid-masonry" data-gallery="futebol">
         <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
         <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
@@ -842,6 +910,21 @@
 
   <!-- URBANO -->
   <div class="tab-content" id="urbano">
+    <div class="case-intro">
+      <div class="case-intro-context">
+        <p class="case-intro-label">Contexto do projeto</p>
+        <p class="case-intro-desc">
+          Série autoral de fotografia urbana pelas ruas de Porto Alegre.
+          Um exercício permanente de olhar — encontrar composição, luz e história
+          em cenas cotidianas que a maioria passa sem perceber.
+          Fotografia de rua como linguagem e laboratório criativo.
+        </p>
+      </div>
+      <div class="case-intro-meta">
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Projeto Autoral · Street Photography</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Local</span><span class="case-intro-meta-value">Porto Alegre/RS — em curso</span></div>
+      </div>
+    </div>
     <div class="grid-masonry" data-gallery="urbano">
       <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/20240812-_DSC0147_t3yz9t.jpg" loading="lazy" alt=""></div>
       <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/20240124-mario-19_hkeba3.jpg" loading="lazy" alt=""></div>
@@ -867,6 +950,22 @@
 
   <!-- VERTE|SAÚDE -->
   <div class="tab-content" id="verte-saude">
+    <div class="case-intro">
+      <div class="case-intro-context">
+        <p class="case-intro-label">Contexto do projeto</p>
+        <p class="case-intro-desc">
+          Fotografias institucionais produzidas para a Verte Saúde ao longo de 2022–2025.
+          Coberturas de eventos internos, registros de equipe, campanhas de comunicação
+          e materiais para uso em relatórios, redes sociais e apresentações institucionais.
+          Todo o acervo fotográfico da organização neste período passou pelas minhas mãos.
+        </p>
+      </div>
+      <div class="case-intro-meta">
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">2022 — Presente</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Uso</span><span class="case-intro-meta-value">Institucional · Redes Sociais · Relatórios</span></div>
+      </div>
+    </div>
     <div class="grid-masonry" data-gallery="verte-saude">
       <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/20250327-IMG_3843_hmkhgq.jpg" loading="lazy" alt=""></div>
       <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/caisembarcadero-22_-_Copia_ko8lpw.jpg" loading="lazy" alt=""></div>
@@ -915,7 +1014,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
-  <p><a href="https://www.instagram.com/mariovinicius.fotografia/" target="_blank">@mariovinicius.fotografia</a></p>
+  <p>Feito com <strong>propósito</strong></p>
 </footer>
 
 <script>
