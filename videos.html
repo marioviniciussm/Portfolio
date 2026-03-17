@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mário Vinicius - Peças Gráficas</title>
+<title>Mário Vinicius - Acervo de Vídeos</title>
+<meta name="description" content="Acervo de vídeos de Mário Vinicius — produções institucionais e autorais. Captação, edição e pós-produção.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
-<link rel="icon" type="image/png" href="favicon.png?v=2">
-<link rel="shortcut icon" href="favicon.png?v=2">
-<link rel="apple-touch-icon" href="favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -172,7 +170,7 @@
     align-items: end;
   }
 
-  .hero-left { /* coluna esquerda — label + título + desc */ }
+  .hero-left { /* coluna esquerda */ }
 
   .hero-label {
     font-size: 0.7rem;
@@ -199,7 +197,6 @@
     font-weight: 300;
   }
 
-  /* coluna direita — elemento decorativo */
   .hero-right-deco {
     display: flex;
     flex-direction: column;
@@ -252,61 +249,32 @@
 
   .tab-btn {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
     color: var(--cinza);
     background: none;
     border: none;
-    padding: 12px 20px 12px 0;
+    padding: 18px 20px;
     cursor: pointer;
     position: relative;
     transition: color .25s;
+    flex: 1;
+    text-align: center;
   }
 
   .tab-btn::after {
     content: '';
     position: absolute;
-    bottom: -1px; left: 0;
+    bottom: -1px; left: 50%; transform: translateX(-50%);
     width: 0; height: 2px;
     background: var(--vermelho);
     transition: width .3s ease;
   }
 
   .tab-btn.active { color: var(--branco); }
-  .tab-btn.active::after { width: calc(100% - 20px); }
+  .tab-btn.active::after { width: calc(100% - 40px); }
 
-  /* categoria em destaque — quando há apenas 1 tab */
-  .tabs.single-category {
-    border-bottom: none;
-    margin-bottom: 40px;
-    align-items: flex-start;
-  }
-
-  .tabs.single-category .tab-btn {
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: 0.06em;
-    color: var(--branco);
-    padding: 0 0 0 24px;
-    border-left: 4px solid var(--vermelho);
-    cursor: default;
-  }
-
-  .tabs.single-category .tab-btn::before {
-    content: 'CATEGORIA EM DESTAQUE';
-    display: block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    color: var(--vermelho);
-    margin-bottom: 8px;
-  }
-
-  .tabs.single-category .tab-btn::after {
-    display: none;
-  }
-
-  /* ── COBERTURAS / CATEGORIAS ── */
+  /* ── COBERTURAS ── */
   .cobertura-block {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -319,8 +287,6 @@
     align-items: center;
     gap: 20px;
     padding: 24px 0;
-    border-bottom: none;
-    margin-bottom: 0;
   }
 
   .cobertura-titulo {
@@ -330,7 +296,7 @@
     color: var(--branco);
   }
 
-  .cobertura-data {
+  .cobertura-sub {
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -354,112 +320,106 @@
     text-align: left;
   }
 
-  .cobertura-toggle .cobertura-header {
-    transition: border-color .25s;
-  }
-
   .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
-  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
 
   .accordion-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 32px; height: 32px;
     border: 1px solid rgba(255,255,255,0.12);
     margin-left: 16px;
     flex-shrink: 0;
-    transition: background .2s, border-color .2s, transform .35s ease;
+    transition: background .2s, border-color .2s;
   }
 
   .accordion-icon svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--cinza);
-    fill: none;
-    stroke-width: 2;
+    width: 14px; height: 14px;
+    stroke: var(--cinza); fill: none; stroke-width: 2;
     transition: stroke .2s, transform .35s ease;
   }
 
-  .cobertura-toggle:hover .accordion-icon {
-    background: rgba(192,57,43,0.12);
-    border-color: var(--vermelho);
-  }
-
+  .cobertura-toggle:hover .accordion-icon { background: rgba(192,57,43,0.12); border-color: var(--vermelho); }
   .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
 
-  /* estado aberto */
-  .cobertura-block.open .accordion-icon {
-    background: var(--vermelho);
-    border-color: var(--vermelho);
-  }
-  .cobertura-block.open .accordion-icon svg {
-    stroke: var(--branco);
-    transform: rotate(180deg);
-  }
+  .cobertura-block.open .accordion-icon { background: var(--vermelho); border-color: var(--vermelho); }
+  .cobertura-block.open .accordion-icon svg { stroke: var(--branco); transform: rotate(180deg); }
 
-  /* corpo do accordion */
   .cobertura-body {
     overflow: hidden;
     max-height: 0;
     transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .cobertura-block.open .cobertura-body {
-    max-height: 99999px;
-  }
+  .cobertura-block.open .cobertura-body { max-height: 99999px; }
 
   .cobertura-body-inner {
     padding-top: 28px;
-    padding-bottom: 8px;
+    padding-bottom: 36px;
   }
 
-  /* ── MASONRY GRID ── */
-  .grid-masonry {
-    columns: 3;
-    column-gap: 8px;
+  /* ── VÍDEO GRID ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
   }
 
-  @media (max-width: 900px) { .grid-masonry { columns: 2; } }
-  @media (max-width: 560px) { .grid-masonry { columns: 1; } }
-
-  .grid-item {
-    break-inside: avoid;
-    margin-bottom: 8px;
+  .video-card {
+    background: var(--cinza-escuro);
+    border: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
-    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+
+  .video-card:hover { border-color: rgba(192,57,43,0.35); }
+
+  .video-embed-wrap {
     position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
   }
 
-  .grid-item img {
-    width: 100%;
-    display: block;
-    transition: transform .4s ease, filter .4s ease;
-    filter: brightness(0.92);
-  }
-
-  .grid-item:hover img {
-    transform: scale(1.03);
-    filter: brightness(1);
-  }
-
-  .grid-item::after {
-    content: '';
+  .video-embed-wrap iframe {
     position: absolute;
-    inset: 0;
-    background: rgba(192,57,43,0);
-    transition: background .3s;
-    pointer-events: none;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
   }
 
-  .grid-item:hover::after {
-    background: rgba(192,57,43,0.08);
+  .video-card-info {
+    padding: 20px 24px 24px;
+  }
+
+  .video-card-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 8px;
+  }
+
+  .video-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    color: var(--branco);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .video-card-desc {
+    font-size: 0.85rem;
+    color: var(--cinza);
+    line-height: 1.6;
   }
 
   /* ── EMPTY STATE ── */
   .grid-empty {
-    padding: 48px 32px;
+    padding: 56px 32px;
     text-align: center;
     color: rgba(255,255,255,0.15);
     font-size: 0.75rem;
@@ -468,170 +428,9 @@
     border: 1px dashed rgba(255,255,255,0.08);
   }
 
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    background: rgba(0,0,0,0.96);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .lightbox.open {
-    display: flex;
-    animation: fadeIn .2s ease;
-  }
-
-  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-
-  .lightbox-img-wrap {
-    position: relative;
-    max-width: 90vw;
-    max-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lightbox-img-wrap img {
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-    display: block;
-  }
-
-  .lightbox-close {
-    position: fixed;
-    top: 24px; right: 32px;
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.6);
-    font-size: 2rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: color .2s;
-    z-index: 210;
-  }
-
-  .lightbox-close:hover { color: var(--branco); }
-
-  .lightbox-nav {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.5);
-    font-size: 2.5rem;
-    cursor: pointer;
-    padding: 20px;
-    transition: color .2s;
-    z-index: 210;
-    line-height: 1;
-  }
-
-  .lightbox-nav:hover { color: var(--branco); }
-  .lightbox-prev { left: 12px; }
-  .lightbox-next { right: 12px; }
-
-  .lightbox-counter {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-  }
-
   /* ── TABS CONTENT ── */
   .tab-content { display: none; }
   .tab-content.active { display: block; }
-
-  /* ── DOCUMENTO (RELATÓRIO) ── */
-  .doc-preview {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 40px;
-    align-items: start;
-    padding: 8px 0 16px;
-  }
-
-  .doc-preview-cover {
-    width: 220px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.08);
-    position: relative;
-  }
-
-  .doc-preview-cover img {
-    width: 100%;
-    display: block;
-    transition: transform .4s ease;
-  }
-
-  .doc-preview-cover:hover img { transform: scale(1.03); }
-
-  .doc-preview-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-    padding-top: 8px;
-  }
-
-  .doc-preview-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--vermelho);
-  }
-
-  .doc-preview-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    letter-spacing: 0.04em;
-    color: var(--branco);
-    line-height: 1.05;
-  }
-
-  .doc-preview-desc {
-    font-size: 0.9rem;
-    color: var(--cinza);
-    line-height: 1.7;
-    max-width: 480px;
-  }
-
-  .doc-preview-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
-    background: var(--vermelho);
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    width: fit-content;
-    transition: background .2s, transform .2s;
-    margin-top: 8px;
-  }
-
-  .doc-preview-btn:hover { background: var(--vermelho-dark); transform: translateY(-2px); }
-  .doc-preview-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
-
-  @media (max-width: 640px) {
-    .doc-preview { grid-template-columns: 1fr; gap: 24px; }
-    .doc-preview-cover { width: 100%; max-width: 280px; }
-  }
 
   /* ── FOOTER ── */
   footer {
@@ -649,11 +448,7 @@
     letter-spacing: 0.08em;
   }
 
-  footer a {
-    color: var(--vermelho);
-    text-decoration: none;
-  }
-
+  footer a { color: var(--vermelho); text-decoration: none; }
   footer a:hover { color: var(--branco); }
 
   /* ── MOBILE ── */
@@ -674,21 +469,19 @@
     .hero p { max-width: 100%; margin: 0 auto; }
 
     .tab-section { padding: 0 24px 40px; }
-    .tabs { margin-bottom: 0; justify-content: center; gap: 16px; }
-    .tab-btn { padding: 14px 16px; }
-    .tab-btn.active::after { width: 100%; }
+    .tabs { margin-bottom: 32px; }
+    .tab-btn { padding: 14px 16px; font-size: 1rem; }
+    .tab-btn.active::after { width: calc(100% - 32px); }
 
     .cobertura-header { flex-wrap: wrap; gap: 8px; padding: 20px 0; }
     .cobertura-count { margin-left: 0; }
     .cobertura-titulo { font-size: 1.3rem; }
 
-    .grid-masonry { columns: 2; column-gap: 6px; }
-    .grid-item { margin-bottom: 6px; }
+    .video-grid { grid-template-columns: 1fr; gap: 16px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 
   @media (max-width: 420px) {
-    .grid-masonry { columns: 1; }
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
   }
 </style>
@@ -710,8 +503,8 @@
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
           <a href="fotografia.html" role="menuitem">Acervo Fotográfico</a>
-          <a href="videos.html" role="menuitem">Acervo de Vídeos</a>
-          <a href="pecas-graficas.html" class="active" role="menuitem">Peças Gráficas</a>
+          <a href="videos.html" class="active" role="menuitem">Acervo de Vídeos</a>
+          <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
         </div>
       </li>
       <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -738,8 +531,8 @@
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
         <a href="fotografia.html">Acervo Fotográfico</a>
-        <a href="videos.html">Acervo de Vídeos</a>
-        <a href="pecas-graficas.html" class="active">Peças Gráficas</a>
+        <a href="videos.html" class="active">Acervo de Vídeos</a>
+        <a href="pecas-graficas.html">Peças Gráficas</a>
       </div>
     </li>
     <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -750,35 +543,38 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Design Gráfico</p>
-    <h1>Peças<br>Gráficas</h1>
-    <p>Peças gráficas criadas para campanhas, eventos e materiais institucionais. Design com propósito, identidade e narrativa visual.</p>
+    <p class="hero-label">Produção Audiovisual</p>
+    <h1>Acervo<br>de Vídeos</h1>
+    <p>Produções audiovisuais institucionais e autorais. Captação, edição e pós-produção com narrativa visual de impacto.</p>
   </div>
   <div class="hero-right-deco">
     <div class="hero-deco-num">©</div>
     <div class="hero-deco-tags">
-      <span class="hero-deco-tag">Design Institucional</span>
-      <span class="hero-deco-tag">Social Media</span>
-      <span class="hero-deco-tag">Verte|Saúde</span>
+      <span class="hero-deco-tag">Vídeo Institucional</span>
+      <span class="hero-deco-tag">Captação & Edição</span>
+      <span class="hero-deco-tag">Pós-produção</span>
     </div>
   </div>
 </section>
 
-<!-- TABS + GRID -->
+<!-- TABS + CONTEÚDO -->
 <section class="tab-section">
 
-  <div class="tabs single-category">
-    <button class="tab-btn active" data-tab="verte-saude">Verte|Saúde</button>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-verte">Verte</button>
+    <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
   </div>
 
-  <!-- VERTE|SAÚDE -->
-  <div class="tab-content active" id="verte-saude">
+  <!-- VERTE -->
+  <div class="tab-content active" id="tab-verte">
 
-    <!-- Caixa de doação de tampinhas -->
+    <!-- Vídeo Institucional -->
     <div class="cobertura-block">
       <button class="cobertura-toggle" aria-expanded="false">
         <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Caixa de doação de tampinhas</h2>
+          <h2 class="cobertura-titulo">Vídeo Institucional</h2>
+          <span class="cobertura-sub">2024</span>
+          <span class="cobertura-count">1 vídeo</span>
           <div class="accordion-icon">
             <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
@@ -786,124 +582,36 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="tampinhas">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Diversos -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Diversos</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="diversos">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fotos antigas restauradas -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Fotos antigas restauradas</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="fotos-restauradas">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Podcast Novembro Azul (2025) -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Podcast Novembro Azul (2025)</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="novembro-azul">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Post: Novos canais de contato -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Post: Novos canais de contato</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="canais-contato">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Relatório de Atividades 2024 -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Relatório de Atividades 2024</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="doc-preview">
-            <div class="doc-preview-cover">
-              <img src="capa-relatorio-verte-2024.png" alt="Capa do Relatório de Atividades 2024 — Verte Saúde">
-            </div>
-            <div class="doc-preview-info">
-              <p class="doc-preview-label">Design Editorial · Verte Saúde · 2024</p>
-              <h3 class="doc-preview-title">Relatório de Atividades 2024</h3>
-              <p class="doc-preview-desc">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025. Inclui identidade visual, tipografia, paleta de cores e estrutura editorial do relatório anual.</p>
-              <a href="RelatorioAtividades2024.pdf" target="_blank" class="doc-preview-btn">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                Ver PDF completo
-              </a>
+          <div class="video-grid">
+            <div class="video-card">
+              <div class="video-embed-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/WqZssbpJstY"
+                  title="Vídeo Institucional Verte Saúde"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="video-card-info">
+                <p class="video-card-label">Verte Saúde · 2024</p>
+                <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
+                <p class="video-card-desc">Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SIASC 2024 -->
+  </div><!-- /tab-verte -->
+
+  <!-- AUTORAL -->
+  <div class="tab-content" id="tab-autoral">
+
     <div class="cobertura-block">
       <button class="cobertura-toggle" aria-expanded="false">
         <div class="cobertura-header">
-          <h2 class="cobertura-titulo">SIASC 2024</h2>
+          <h2 class="cobertura-titulo">Produções Autorais</h2>
           <div class="accordion-icon">
             <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
@@ -911,27 +619,14 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
-          <div class="grid-masonry" data-gallery="siasc-2024">
-            <div class="grid-empty">Imagens em breve</div>
-          </div>
+          <div class="grid-empty">Vídeos em breve</div>
         </div>
       </div>
     </div>
 
-  </div><!-- /verte-saude -->
+  </div><!-- /tab-autoral -->
 
 </section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" id="lb-close" aria-label="Fechar">✕</button>
-  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8592;</button>
-  <div class="lightbox-img-wrap">
-    <img id="lb-img" src="" alt="">
-  </div>
-  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8594;</button>
-  <div class="lightbox-counter" id="lb-counter"></div>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -957,61 +652,6 @@ document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
     const isOpen = block.classList.contains('open');
     block.classList.toggle('open', !isOpen);
     toggle.setAttribute('aria-expanded', String(!isOpen));
-  });
-});
-
-// ── LIGHTBOX ──
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lb-img');
-const lbCounter = document.getElementById('lb-counter');
-
-let currentGallery = [];
-let currentIndex = 0;
-
-function getFullUrl(thumb) {
-  return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto');
-}
-
-function openLightbox(items, index) {
-  currentGallery = items;
-  showImage(index);
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function showImage(index) {
-  currentIndex = (index + currentGallery.length) % currentGallery.length;
-  lbImg.src = getFullUrl(currentGallery[currentIndex]);
-  lbCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
-}
-
-function closeLightbox() {
-  lb.classList.remove('open');
-  document.body.style.overflow = '';
-  lbImg.src = '';
-}
-
-document.getElementById('lb-close').addEventListener('click', closeLightbox);
-document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIndex - 1));
-document.getElementById('lb-next').addEventListener('click', () => showImage(currentIndex + 1));
-
-lb.addEventListener('click', e => {
-  if (e.target === lb) closeLightbox();
-});
-
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-});
-
-// bind clicks em cada galeria
-document.querySelectorAll('.grid-masonry').forEach(grid => {
-  const items = Array.from(grid.querySelectorAll('.grid-item img')).map(img => img.src);
-  if (items.length === 0) return;
-  grid.querySelectorAll('.grid-item').forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(items, i));
   });
 });
 
@@ -1051,7 +691,6 @@ if (drawerCasesBtn && drawerCasesBody) {
   });
 }
 
-// fechar dropdown ao pressionar Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });

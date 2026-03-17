@@ -244,120 +244,113 @@
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* ── CASES — Editorial List ── */
+  /* ── CASES — Card Grid ── */
   #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
-  .cases-header { max-width: 1200px; margin: 0 auto 60px; }
-  .cases-list { max-width: 1200px; margin: 0 auto; }
+  .cases-header { max-width: 1200px; margin: 0 auto 56px; }
 
-  .case-item {
+  .cases-grid {
     display: grid;
-    grid-template-columns: 80px 1fr auto;
-    gap: 0 32px;
-    align-items: center;
-    padding: 36px 24px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    padding: 52px 44px 44px;
+    background: var(--dark);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
     border-left: 3px solid transparent;
-    border-right: none; border-bottom: none;
-    cursor: pointer; text-decoration: none; color: inherit;
-    background: none; width: 100%; text-align: left;
+    min-height: 380px;
     transition: border-color 0.25s, background 0.25s, transform 0.2s;
   }
-  .case-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .case-item:hover {
-    border-left-color: var(--red);
-    background: rgba(255,255,255,0.02);
-    transform: translateX(4px);
-  }
-  .case-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
-    color: rgba(192,57,43,0.2); line-height: 1; flex-shrink: 0;
+
+  .case-card::before {
+    content: attr(data-ghost);
+    position: absolute;
+    bottom: -24px; right: -8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 140px;
+    color: rgba(255,255,255,0.025);
+    line-height: 1;
+    letter-spacing: -2px;
+    user-select: none;
+    pointer-events: none;
     transition: color 0.3s;
   }
-  .case-item:hover .case-num { color: rgba(192,57,43,0.55); }
-  .case-cat {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--red); margin-bottom: 8px;
-  }
-  .case-name {
-    font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 2.5vw, 38px);
-    letter-spacing: 1px; color: var(--white); line-height: 1.1; margin-bottom: 8px;
-  }
-  .case-detail {
-    font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6;
-    max-width: 520px; transition: color 0.25s;
-  }
-  .case-item:hover .case-detail { color: rgba(255,255,255,0.7); }
-  .case-cta {
-    display: flex; align-items: center; gap: 8px;
-    color: rgba(255,255,255,0.15);
-    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    white-space: nowrap; flex-shrink: 0;
-    transition: color 0.25s, transform 0.25s;
-  }
-  .case-cta svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
-  .case-item:hover .case-cta { color: var(--red); transform: translateX(6px); }
 
-  /* ── MODAL DE VÍDEO ── */
-  .video-modal {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px;
-  }
-  .video-modal.open { display: flex; animation: fadeInModal .2s ease; }
-  @keyframes fadeInModal { from { opacity: 0 } to { opacity: 1 } }
-
-  .video-modal-close {
-    position: fixed; top: 24px; right: 32px;
-    background: none; border: none; color: rgba(255,255,255,0.6);
-    font-size: 2rem; cursor: pointer; line-height: 1; z-index: 210;
-    transition: color .2s;
-  }
-  .video-modal-close:hover { color: var(--white); }
-
-  .video-modal-inner {
-    width: 90vw; max-width: 1000px;
-    position: relative;
+  .case-card:hover {
+    border-left-color: var(--red);
+    background: #222;
+    transform: translateX(4px);
   }
 
-  .video-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem; letter-spacing: 2px;
-    color: var(--white); margin-bottom: 12px;
+  .case-card:hover::before { color: rgba(192,57,43,0.07); }
+
+  .case-icon {
+    width: 56px; height: 56px;
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 36px;
+    flex-shrink: 0;
+    transition: background 0.25s, border-color 0.25s;
   }
 
-  .video-modal-tag {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  .case-card:hover .case-icon {
+    background: rgba(192,57,43,0.18);
+    border-color: rgba(192,57,43,0.5);
+  }
+
+  .case-icon svg {
+    width: 26px; height: 26px;
+    stroke: var(--red); fill: none; stroke-width: 1.5;
+  }
+
+  .case-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
     text-transform: uppercase; color: var(--red);
-    margin-bottom: 16px; display: block;
+    margin-bottom: 12px;
   }
 
-  /* wrapper 16:9 */
-  .video-embed-wrap {
-    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-    background: #000;
-  }
-  .video-embed-wrap iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    border: none;
+  .case-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 2.8vw, 42px);
+    letter-spacing: 1px; color: var(--white);
+    line-height: 1.05; margin-bottom: 16px;
   }
 
-  /* wrapper para PDF/Docs (mais alto que 16:9) */
-  .doc-embed-wrap {
-    position: relative;
-    height: min(82vh, 920px);
-    background: #000;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .doc-embed-wrap iframe {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    border: none;
+  .case-desc {
+    font-size: 13px; color: rgba(255,255,255,0.4);
+    line-height: 1.7; flex: 1;
+    transition: color 0.25s;
   }
 
-  .video-modal-desc {
-    font-size: 13px; color: rgba(255,255,255,0.5);
-    margin-top: 14px; line-height: 1.6;
+  .case-card:hover .case-desc { color: rgba(255,255,255,0.68); }
+
+  .case-arrow {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 36px;
+    color: rgba(255,255,255,0.18);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: color 0.25s;
   }
+
+  .case-arrow svg {
+    width: 16px; height: 16px;
+    stroke: currentColor; fill: none; stroke-width: 2;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+
+  .case-card:hover .case-arrow { color: var(--red); }
+  .case-card:hover .case-arrow svg { transform: translate(4px, -4px); }
 
   /* ── HABILIDADES ── */
   #habilidades { border-top: none; }
@@ -442,16 +435,11 @@
     .stat-block:hover { transform: none; }
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 11px; }
-    .cases-header { margin-bottom: 32px; }
-    .case-item {
-      grid-template-columns: 52px 1fr;
-      padding: 24px 12px;
-      gap: 0 16px;
-    }
-    .case-cta { display: none; }
-    .case-num { font-size: 38px; }
-    .case-name { font-size: clamp(20px, 6vw, 28px); }
-    .case-detail { font-size: 12px; }
+    .cases-header { margin-bottom: 28px; }
+    .cases-grid { grid-template-columns: 1fr; gap: 3px; }
+    .case-card { min-height: auto; padding: 36px 28px; transform: none !important; }
+    .case-card:hover { transform: none; }
+    .case-title { font-size: clamp(26px, 8vw, 36px); }
     .skills-grid { grid-template-columns: 1fr; }
     .skill-block, .skill-block.soft { padding: 24px 20px; grid-column: span 1; }
     .skill-tag { font-size: 11px; padding: 4px 10px; }
@@ -483,10 +471,9 @@
         </button>
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
-          <a href="#cases" role="menuitem">Relatório de Atividades 2024</a>
           <a href="fotografia.html" role="menuitem">Acervo Fotográfico</a>
+          <a href="videos.html" role="menuitem">Acervo de Vídeos</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
-          <a href="#cases" role="menuitem">Vídeo Institucional</a>
         </div>
       </li>
       <li><a href="#habilidades">Habilidades</a></li>
@@ -512,10 +499,9 @@
         <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
-        <a href="#cases">Relatório de Atividades 2024</a>
         <a href="fotografia.html">Acervo Fotográfico</a>
+        <a href="videos.html">Acervo de Vídeos</a>
         <a href="pecas-graficas.html">Peças Gráficas</a>
-        <a href="#cases">Vídeo Institucional</a>
       </div>
     </li>
     <li><a href="#habilidades">Habilidades</a></li>
@@ -608,98 +594,50 @@
     <p class="section-label">Trabalhos selecionados</p>
     <h2 class="section-title">Cases</h2>
   </div>
-  <div class="cases-list">
+  <div class="cases-grid">
 
-    <!-- 01 — Relatório de Atividades 2024 -->
-    <button type="button" onclick="openReportModal()" class="case-item">
-      <span class="case-num">01</span>
-      <div class="case-body">
-        <p class="case-cat">Design Editorial</p>
-        <h3 class="case-name">Relatório de Atividades 2024</h3>
-        <p class="case-detail">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025.</p>
+    <!-- Acervo Fotográfico -->
+    <a href="fotografia.html" class="case-card" data-ghost="FOTO">
+      <div class="case-icon">
+        <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </div>
-      <div class="case-cta">
-        Ver PDF
-        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </div>
-    </button>
-
-    <!-- 02 — Acervo Fotográfico -->
-    <a href="fotografia.html" class="case-item">
-      <span class="case-num">02</span>
-      <div class="case-body">
-        <p class="case-cat">Fotografia Autoral</p>
-        <h3 class="case-name">Acervo Fotográfico</h3>
-        <p class="case-detail">Coberturas jornalísticas e cenas urbanas. Registro documental com olhar autoral.</p>
-      </div>
-      <div class="case-cta">
+      <p class="case-label">Fotografia</p>
+      <h3 class="case-title">Acervo Fotográfico</h3>
+      <p class="case-desc">Coberturas jornalísticas e cenas urbanas. Registro documental com olhar autoral.</p>
+      <div class="case-arrow">
         Ver álbum
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </div>
     </a>
 
-    <!-- 03 — Peças Gráficas -->
-    <a href="pecas-graficas.html" class="case-item">
-      <span class="case-num">03</span>
-      <div class="case-body">
-        <p class="case-cat">Design Gráfico</p>
-        <h3 class="case-name">Peças Gráficas</h3>
-        <p class="case-detail">Peças institucionais, campanhas e materiais visuais criados para a Verte Saúde.</p>
+    <!-- Acervo de Vídeos -->
+    <a href="videos.html" class="case-card" data-ghost="VID">
+      <div class="case-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
-      <div class="case-cta">
+      <p class="case-label">Produção Audiovisual</p>
+      <h3 class="case-title">Acervo de Vídeos</h3>
+      <p class="case-desc">Produções institucionais e autorais. Captação, edição e pós-produção com narrativa visual de impacto.</p>
+      <div class="case-arrow">
+        Ver vídeos
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
+    </a>
+
+    <!-- Peças Gráficas -->
+    <a href="pecas-graficas.html" class="case-card" data-ghost="DESIGN">
+      <div class="case-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
+      <p class="case-label">Design Gráfico</p>
+      <h3 class="case-title">Peças Gráficas</h3>
+      <p class="case-desc">Peças institucionais, campanhas e materiais visuais. Inclui o Relatório de Atividades 2024 da Verte Saúde.</p>
+      <div class="case-arrow">
         Ver galeria
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </div>
     </a>
 
-    <!-- 04 — Vídeo Institucional -->
-    <button type="button" onclick="openVideoModal()" class="case-item">
-      <span class="case-num">04</span>
-      <div class="case-body">
-        <p class="case-cat">Vídeo Institucional</p>
-        <h3 class="case-name">Vídeo Institucional Verte Saúde</h3>
-        <p class="case-detail">Captação, edição e pós-produção.</p>
-      </div>
-      <div class="case-cta">
-        Assistir
-        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </div>
-    </button>
-
-  </div>
-</div>
-
-<!-- MODAL DE VÍDEO -->
-<div class="video-modal" id="videoModal">
-  <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Vídeo Institucional</span>
-    <div class="video-modal-title">Vídeo Institucional Verte Saúde</div>
-    <div class="video-embed-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/WqZssbpJstY"
-        title="Vídeo institucional Verte Saúde"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Captação, edição e pós-produção.</p>
-  </div>
-</div>
-
-<!-- MODAL RELATÓRIO (PDF) -->
-<div class="video-modal" id="reportModal">
-  <button class="video-modal-close" onclick="closeReportModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Design Editorial</span>
-    <div class="video-modal-title">Relatório de Atividades 2024</div>
-    <div class="doc-embed-wrap">
-      <iframe
-        src="RelatorioAtividades2024.pdf"
-        title="Relatório de Atividades 2024 — Verte Saúde"
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Relatório anual da Verte Saúde com projeto gráfico, diagramação e identidade editorial.</p>
   </div>
 </div>
 
@@ -798,47 +736,6 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       closeDrawer();
     });
-  });
-
-  // ── MODAIS (VÍDEO / RELATÓRIO) ──
-  const videoModal = document.getElementById('videoModal');
-  const reportModal = document.getElementById('reportModal');
-
-  function openVideoModal() {
-    videoModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeVideoModal() {
-    videoModal.classList.remove('open');
-    document.body.style.overflow = '';
-    // parar vídeo ao fechar — recarrega o iframe se existir
-    const iframe = videoModal.querySelector('iframe');
-    if (iframe) { const src = iframe.src; iframe.src = ''; iframe.src = src; }
-  }
-
-  function openReportModal() {
-    reportModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeReportModal() {
-    reportModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  videoModal.addEventListener('click', (e) => {
-    if (e.target === videoModal) closeVideoModal();
-  });
-  reportModal.addEventListener('click', (e) => {
-    if (e.target === reportModal) closeReportModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideoModal();
-      closeReportModal();
-    }
   });
 
   // ── HAMBÚRGUER + DRAWER ──
