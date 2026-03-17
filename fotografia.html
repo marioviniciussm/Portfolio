@@ -37,45 +37,45 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center;
+    display: flex; align-items: stretch;
     background: rgba(15,15,15,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(192,57,43,0.2);
     min-height: 64px;
   }
   .nav-inner {
-    display: flex; align-items: center; flex-wrap: nowrap;
+    display: flex; align-items: stretch; flex-wrap: nowrap;
     width: 100%; max-width: 1200px;
-    margin: 0 auto; padding: 0 48px;
-    height: 64px;
+    margin: 0 auto; padding: 0 60px;
+    min-height: 64px;
   }
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
     color: var(--branco); text-decoration: none;
-    display: flex; align-items: center;
+    display: flex; align-items: center; align-self: center;
     padding: 0 28px 0 0; white-space: nowrap; flex-shrink: 0;
     border-right: 1px solid rgba(255,255,255,0.08);
     margin-right: 4px;
   }
   .nav-logo span { color: var(--vermelho); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; margin-left: auto; }
-  .nav-links > li { display: flex; align-items: center; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; margin-left: auto; }
+  .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--cinza); text-decoration: none;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 8px 20px; display: flex; align-items: center; white-space: nowrap;
+    padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
   .nav-links a:hover { color: var(--branco); background: var(--vermelho); }
   .nav-links a.active { color: var(--branco); }
 
   /* dropdown */
-  .nav-dropdown { position: relative; display: flex; align-items: center; }
+  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
   .nav-dropdown-btn {
     color: var(--cinza); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
@@ -549,8 +549,8 @@
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { min-height: 56px; }
-    .nav-inner { padding: 0 20px; width: 100%; justify-content: space-between; position: relative; }
-    .nav-logo { font-size: 20px; padding: 0; position: absolute; left: 50%; transform: translateX(-50%); top: 50%; margin-top: -11px; }
+    .nav-inner { padding: 0 20px; width: 100%; }
+    .nav-logo { font-size: 20px; padding: 0; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
 
@@ -602,7 +602,6 @@
           <a href="index.html#cases" role="menuitem">Relatório de Atividades 2024</a>
           <a href="fotografia.html" class="active" role="menuitem">Acervo Fotográfico</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
-          <a href="index.html#cases" role="menuitem">Campanhas de Social Media</a>
           <a href="index.html#cases" role="menuitem">Vídeo Institucional</a>
         </div>
       </li>
@@ -632,7 +631,6 @@
         <a href="index.html#cases">Relatório de Atividades 2024</a>
         <a href="fotografia.html" class="active">Acervo Fotográfico</a>
         <a href="pecas-graficas.html">Peças Gráficas</a>
-        <a href="index.html#cases">Campanhas de Social Media</a>
         <a href="index.html#cases">Vídeo Institucional</a>
       </div>
     </li>

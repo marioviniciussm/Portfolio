@@ -244,61 +244,58 @@
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
   .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* ── CASES — Metro layout ── */
+  /* ── CASES — Editorial List ── */
   #cases { border-top: 1px solid rgba(255,255,255,0.06); max-width: 100%; padding: 100px 60px; }
   .cases-header { max-width: 1200px; margin: 0 auto 60px; }
-  .cases-grid {
-    max-width: 1200px; margin: 0 auto;
+  .cases-list { max-width: 1200px; margin: 0 auto; }
+
+  .case-item {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 340px 340px 280px;
-    gap: 4px;
+    grid-template-columns: 80px 1fr auto;
+    gap: 0 32px;
+    align-items: center;
+    padding: 36px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid transparent;
+    border-right: none; border-bottom: none;
+    cursor: pointer; text-decoration: none; color: inherit;
+    background: none; width: 100%; text-align: left;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
   }
-  .case-card { position: relative; background: var(--dark); overflow: hidden; cursor: pointer; text-decoration: none; display: block; }
-  /* posicionamento explícito — Metro clássico */
-  .case-card-01   { grid-column: 1 / 3; grid-row: 1 / 2; }
-  .case-card-foto { grid-column: 3 / 4; grid-row: 1 / 3; }
-  .case-card-05   { grid-column: 1 / 3; grid-row: 2 / 3; }
-  .case-card-03   { grid-column: 1 / 2; grid-row: 3 / 4; }
-  .case-card-04   { grid-column: 2 / 3; grid-row: 3 / 4; }
-  .case-card-wide { grid-column: span 2; }
-  .case-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, opacity 0.3s; opacity: 0.7; }
-  .case-card:hover .case-thumb { transform: scale(1.04); opacity: 0.5; }
-  .case-thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 50%, #1a1010 100%); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; }
-  .case-card:hover .case-thumb-placeholder { opacity: 0.6; }
-
-  /* placeholder especial de fotografia — grid de quadros simulando fotos */
-  .case-foto-placeholder {
-    width: 100%; height: 100%;
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-    gap: 2px; overflow: hidden; transition: opacity 0.3s;
-    background: #111;
+  .case-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .case-item:hover {
+    border-left-color: var(--red);
+    background: rgba(255,255,255,0.02);
+    transform: translateX(4px);
   }
-  .case-foto-placeholder span { display: block; transition: background 0.4s; }
-  .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #1c1010 0%, #2a1515 100%); }
-  .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #150e0e 0%, #200f0f 100%); }
-  .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #1a1010 0%, #280e0e 100%); }
-  .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #200c0c 0%, #2e0f0f 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(1) { background: linear-gradient(135deg, #3a1515 0%, #4a1c1c 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(2) { background: linear-gradient(135deg, #2e1010 0%, #401515 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(3) { background: linear-gradient(135deg, #350e0e 0%, #4a1010 100%); }
-  .case-card:hover .case-foto-placeholder span:nth-child(4) { background: linear-gradient(135deg, #420c0c 0%, #5a1010 100%); }
-
-  .placeholder-icon { font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: rgba(192,57,43,0.2); letter-spacing: 4px; }
-  .case-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,15,0.95) 0%, rgba(15,15,15,0.2) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; transition: background 0.3s; }
-  .case-card:hover .case-overlay { background: linear-gradient(to top, rgba(192,57,43,0.7) 0%, rgba(15,15,15,0.3) 60%, transparent 100%); }
-  .case-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red-muted); margin-bottom: 8px; transition: color 0.3s; }
-  .case-card:hover .case-tag { color: rgba(255,255,255,0.7); }
-  .case-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--white); line-height: 1.1; margin-bottom: 6px; }
-  .case-card-wide .case-title { font-size: 34px; }
-  .case-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; max-width: 340px; transition: color 0.3s; }
-  .case-card:hover .case-desc { color: rgba(255,255,255,0.8); }
-  .case-arrow { position: absolute; top: 24px; right: 24px; width: 36px; height: 36px; background: var(--red); display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s, transform 0.3s; }
-  .case-card:hover .case-arrow { opacity: 1; transform: translateY(0); }
-  .case-arrow svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; }
-  .case-wip .placeholder-icon { color: rgba(192,57,43,0.15); }
-  .case-wip-badge { position: absolute; top: 16px; left: 16px; background: rgba(15,15,15,0.85); border: 1px solid rgba(255,255,255,0.1); color: var(--gray); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
-  .case-foto-badge { position: absolute; top: 16px; left: 16px; background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; }
+  .case-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+    color: rgba(192,57,43,0.2); line-height: 1; flex-shrink: 0;
+    transition: color 0.3s;
+  }
+  .case-item:hover .case-num { color: rgba(192,57,43,0.55); }
+  .case-cat {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 8px;
+  }
+  .case-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 2.5vw, 38px);
+    letter-spacing: 1px; color: var(--white); line-height: 1.1; margin-bottom: 8px;
+  }
+  .case-detail {
+    font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6;
+    max-width: 520px; transition: color 0.25s;
+  }
+  .case-item:hover .case-detail { color: rgba(255,255,255,0.7); }
+  .case-cta {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.15);
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    white-space: nowrap; flex-shrink: 0;
+    transition: color 0.25s, transform 0.25s;
+  }
+  .case-cta svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .case-item:hover .case-cta { color: var(--red); transform: translateX(6px); }
 
   /* ── MODAL DE VÍDEO ── */
   .video-modal {
@@ -356,15 +353,6 @@
     width: 100%; height: 100%;
     border: none;
   }
-
-  /* placeholder quando não há vídeo ainda */
-  .video-placeholder {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 16px; background: #111; border: 1px solid rgba(192,57,43,0.2);
-  }
-  .video-placeholder svg { width: 48px; height: 48px; stroke: var(--red); fill: none; stroke-width: 1.2; opacity: 0.6; }
-  .video-placeholder p { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; text-align: center; line-height: 1.6; }
 
   .video-modal-desc {
     font-size: 13px; color: rgba(255,255,255,0.5);
@@ -455,27 +443,15 @@
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 11px; }
     .cases-header { margin-bottom: 32px; }
-    .cases-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      gap: 4px;
+    .case-item {
+      grid-template-columns: 52px 1fr;
+      padding: 24px 12px;
+      gap: 0 16px;
     }
-    /* todos os cards voltam para fluxo normal em mobile */
-    .case-card-01, .case-card-foto, .case-card-05, .case-card-03, .case-card-04, .case-card-wide {
-      grid-column: 1 / -1;
-      grid-row: auto;
-    }
-    .case-card-01  { min-height: 220px; }
-    .case-card-foto { min-height: 200px; }
-    .case-card-05  { min-height: 220px; }
-    .case-card-03  { min-height: 180px; }
-    .case-card-04  { min-height: 180px; }
-    .case-title { font-size: 20px; }
-    .case-card-wide .case-title { font-size: 22px; }
-    .case-desc { font-size: 11px; }
-    .case-overlay { padding: 16px; }
-    .case-wip-badge, .case-foto-badge { font-size: 9px; padding: 4px 8px; }
-    .placeholder-icon { font-size: 48px; }
+    .case-cta { display: none; }
+    .case-num { font-size: 38px; }
+    .case-name { font-size: clamp(20px, 6vw, 28px); }
+    .case-detail { font-size: 12px; }
     .skills-grid { grid-template-columns: 1fr; }
     .skill-block, .skill-block.soft { padding: 24px 20px; grid-column: span 1; }
     .skill-tag { font-size: 11px; padding: 4px 10px; }
@@ -510,7 +486,6 @@
           <a href="#cases" role="menuitem">Relatório de Atividades 2024</a>
           <a href="fotografia.html" role="menuitem">Acervo Fotográfico</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
-          <a href="#cases" role="menuitem">Campanhas de Social Media</a>
           <a href="#cases" role="menuitem">Vídeo Institucional</a>
         </div>
       </li>
@@ -540,7 +515,6 @@
         <a href="#cases">Relatório de Atividades 2024</a>
         <a href="fotografia.html">Acervo Fotográfico</a>
         <a href="pecas-graficas.html">Peças Gráficas</a>
-        <a href="#cases">Campanhas de Social Media</a>
         <a href="#cases">Vídeo Institucional</a>
       </div>
     </li>
@@ -634,63 +608,62 @@
     <p class="section-label">Trabalhos selecionados</p>
     <h2 class="section-title">Cases</h2>
   </div>
-  <div class="cases-grid">
+  <div class="cases-list">
 
-    <!-- TILE 01 — wide, linha 1 — Relatório em modal -->
-    <button type="button" onclick="openReportModal()" class="case-card case-card-01" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <img class="case-thumb" src="capa-relatorio-verte-2024.png" alt="Capa — Relatório de Atividades 2024">
-      <div class="case-overlay">
-        <span class="case-tag">Design Editorial</span>
-        <h3 class="case-title">Relatório de Atividades 2024</h3>
-        <p class="case-desc">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025.</p>
+    <!-- 01 — Relatório de Atividades 2024 -->
+    <button type="button" onclick="openReportModal()" class="case-item">
+      <span class="case-num">01</span>
+      <div class="case-body">
+        <p class="case-cat">Design Editorial</p>
+        <h3 class="case-name">Relatório de Atividades 2024</h3>
+        <p class="case-detail">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025.</p>
       </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      <div class="case-cta">
+        Ver PDF
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
     </button>
 
-    <!-- TILE FOTO — tall, linhas 1+2 -->
-    <a href="fotografia.html" class="case-card case-card-foto">
-      <img class="case-thumb" src="https://res.cloudinary.com/di2aesnlv/image/upload/q_auto,f_auto/v1773422618/20240214-DSC_0151_ojeyjw.jpg" alt="Fotografia autoral — senhora com rosa">
-      <div class="case-foto-badge">Ver álbum</div>
-      <div class="case-overlay">
-        <span class="case-tag">Fotografia Autoral</span>
-        <h3 class="case-title">Acervo Fotográfico</h3>
-        <p class="case-desc">Coberturas jornalísticas e cenas urbanas. Registro documental.</p>
+    <!-- 02 — Acervo Fotográfico -->
+    <a href="fotografia.html" class="case-item">
+      <span class="case-num">02</span>
+      <div class="case-body">
+        <p class="case-cat">Fotografia Autoral</p>
+        <h3 class="case-name">Acervo Fotográfico</h3>
+        <p class="case-detail">Coberturas jornalísticas e cenas urbanas. Registro documental com olhar autoral.</p>
       </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      <div class="case-cta">
+        Ver álbum
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
     </a>
 
-    <!-- TILE 05 — wide, linha 2 — Campanhas em modal -->
-    <button type="button" onclick="openSocialModal()" class="case-card case-card-05" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">SOCIAL</span></div>
-      <div class="case-overlay">
-        <span class="case-tag">Social Media e Design</span>
-        <h3 class="case-title">Campanhas de Social Media</h3>
-        <p class="case-desc">Seleção de peças de autoria própria: carrosséis educativos, posts de campanhas sazonais e identidades visuais para as redes da Verte Saúde.</p>
+    <!-- 03 — Peças Gráficas -->
+    <a href="pecas-graficas.html" class="case-item">
+      <span class="case-num">03</span>
+      <div class="case-body">
+        <p class="case-cat">Design Gráfico</p>
+        <h3 class="case-name">Peças Gráficas</h3>
+        <p class="case-detail">Peças institucionais, campanhas e materiais visuais criados para a Verte Saúde.</p>
       </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </button>
-
-    <!-- TILE 03 — linha 3, col 1 — Peças Gráficas -->
-    <a href="pecas-graficas.html" class="case-card case-card-03">
-      <div class="case-thumb-placeholder"><span class="placeholder-icon">DESIGN</span></div>
-      <div class="case-foto-badge">Ver galeria</div>
-      <div class="case-overlay">
-        <span class="case-tag">Design Gráfico</span>
-        <h3 class="case-title">Peças Gráficas</h3>
-        <p class="case-desc">Peças institucionais, campanhas e materiais visuais criados para a Verte Saúde.</p>
+      <div class="case-cta">
+        Ver galeria
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </a>
 
-    <!-- TILE 04 — linha 3, col 2 — Vídeo com modal -->
-    <button type="button" onclick="openVideoModal()" class="case-card case-card-04" style="background:none;border:none;cursor:pointer;text-align:left;">
-      <img class="case-thumb" src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg"> alt="Capa — Vídeo Institucional Verte Saúde">
-      <div class="case-overlay">
-        <span class="case-tag">Vídeo Institucional</span>
-        <h3 class="case-title">Vídeo Institucional Verte Saúde</h3>
-        <p class="case-desc">Captação, edição e pós-produção.</p>
+    <!-- 04 — Vídeo Institucional -->
+    <button type="button" onclick="openVideoModal()" class="case-item">
+      <span class="case-num">04</span>
+      <div class="case-body">
+        <p class="case-cat">Vídeo Institucional</p>
+        <h3 class="case-name">Vídeo Institucional Verte Saúde</h3>
+        <p class="case-detail">Captação, edição e pós-produção.</p>
       </div>
-      <div class="case-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      <div class="case-cta">
+        Assistir
+        <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
     </button>
 
   </div>
@@ -721,33 +694,12 @@
     <span class="video-modal-tag">Design Editorial</span>
     <div class="video-modal-title">Relatório de Atividades 2024</div>
     <div class="doc-embed-wrap">
-      <!-- Copie o PDF do relatório para a pasta do site com o nome abaixo
-           ou ajuste o src para o link de incorporação do Heyzine/Drive. -->
       <iframe
         src="RelatorioAtividades2024.pdf"
         title="Relatório de Atividades 2024 — Verte Saúde"
       ></iframe>
     </div>
     <p class="video-modal-desc">Relatório anual da Verte Saúde com projeto gráfico, diagramação e identidade editorial.</p>
-  </div>
-</div>
-
-<!-- MODAL CAMPANHAS SOCIAL MEDIA (PDF) -->
-<div class="video-modal" id="socialModal">
-  <button class="video-modal-close" onclick="closeSocialModal()">✕</button>
-  <div class="video-modal-inner">
-    <span class="video-modal-tag">Social Media & Design</span>
-    <div class="video-modal-title">Campanhas de Social Media</div>
-    <div class="doc-embed-wrap">
-      <!-- Crie um PDF com os principais posts/peças das campanhas
-           e salve como CampanhasSocialMedia.pdf na pasta do site,
-           ou use aqui um link de incorporação externo. -->
-      <iframe
-        src="CampanhasSocialMedia.pdf"
-        title="Campanhas de Social Media — Verte Saúde"
-      ></iframe>
-    </div>
-    <p class="video-modal-desc">Seleção de campanhas com contexto, objetivos, métricas e principais peças criadas.</p>
   </div>
 </div>
 
@@ -848,10 +800,9 @@
     });
   });
 
-  // ── MODAIS (VÍDEO / RELATÓRIO / SOCIAL) ──
+  // ── MODAIS (VÍDEO / RELATÓRIO) ──
   const videoModal = document.getElementById('videoModal');
   const reportModal = document.getElementById('reportModal');
-  const socialModal = document.getElementById('socialModal');
 
   function openVideoModal() {
     videoModal.classList.add('open');
@@ -876,31 +827,17 @@
     document.body.style.overflow = '';
   }
 
-  function openSocialModal() {
-    socialModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeSocialModal() {
-    socialModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
   videoModal.addEventListener('click', (e) => {
     if (e.target === videoModal) closeVideoModal();
   });
   reportModal.addEventListener('click', (e) => {
     if (e.target === reportModal) closeReportModal();
   });
-  socialModal.addEventListener('click', (e) => {
-    if (e.target === socialModal) closeSocialModal();
-  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeVideoModal();
       closeReportModal();
-      closeSocialModal();
     }
   });
 
