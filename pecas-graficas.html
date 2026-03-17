@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<title>Peças Gráficas — Mário Vinicius | Design Institucional & Editorial | Porto Alegre</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mário Vinicius - Peças Gráficas</title>
+<meta name="description" content="Peças gráficas de Mário Vinicius — design institucional, editorial e social media para a Verte Saúde. Porto Alegre/RS.">
+<meta property="og:title" content="Peças Gráficas — Mário Vinicius">
+<meta property="og:description" content="Design com propósito: identidade visual, materiais editoriais, campanhas e peças para redes sociais.">
+<meta property="og:image" content="https://marioviniciussm.github.io/Portfolio/capa-relatorio-verte-2024.png">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -691,6 +695,27 @@
     .grid-masonry { columns: 1; }
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
   }
+
+  /* ── CASE INTRO ── */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
+  }
+  .case-intro-context { display: flex; flex-direction: column; gap: 12px; }
+  .case-intro-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vermelho); }
+  .case-intro-desc { font-size: 0.9rem; color: #bbb; line-height: 1.75; }
+  .case-intro-meta { display: flex; flex-direction: column; gap: 12px; padding-left: 24px; border-left: 2px solid rgba(192,57,43,0.25); }
+  .case-intro-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .case-intro-meta-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(192,57,43,0.7); }
+  .case-intro-meta-value { font-size: 0.82rem; color: var(--branco); font-weight: 500; }
+  @media (max-width: 768px) {
+    .case-intro { grid-template-columns: 1fr; gap: 20px; }
+    .case-intro-meta { padding-left: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -752,7 +777,7 @@
   <div class="hero-left">
     <p class="hero-label">Design Gráfico</p>
     <h1>Peças<br>Gráficas</h1>
-    <p>Peças gráficas criadas para campanhas, eventos e materiais institucionais. Design com propósito, identidade e narrativa visual.</p>
+    <p>Design com intenção: cada peça nasce de um briefing entendido, não de uma tela em branco. Materiais institucionais, editoriais e digitais — do conceito à entrega, com visão estratégica de comunicação.</p>
   </div>
   <div class="hero-right-deco">
     <div class="hero-deco-num">©</div>
@@ -786,6 +811,23 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Design de embalagem para caixa coletora de tampinhas plásticas —
+                ação de responsabilidade socioambiental da Verte Saúde.
+                O desafio foi criar uma peça funcional e visualmente atrativa,
+                que comunicasse o propósito da ação de forma clara
+                para colaboradores e visitantes da organização.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Design de embalagem · Comunicação interna</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe Illustrator / Canva</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="tampinhas">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -805,6 +847,22 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Conjunto de peças gráficas variadas produzidas para a Verte Saúde —
+                banners, cartazes, flyers e materiais de apoio para diferentes ocasiões.
+                Cada peça com briefing próprio, mas todas mantendo coerência com
+                a identidade visual da organização.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Design gráfico · Múltiplos formatos</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">2022 — Presente</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="diversos">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -824,6 +882,22 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Restauração digital de fotografias históricas do acervo da Verte Saúde —
+                imagens antigas de eventos, equipes e momentos institucionais que precisavam
+                ser recuperadas para uso em publicações e no Relatório de Atividades 2024.
+                Trabalho de retoque, reconstrução de detalhes e equalização de cor.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Restauração fotográfica · Pós-produção</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe Photoshop / Lightroom</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="fotos-restauradas">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -843,6 +917,23 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Criação de identidade visual e peças gráficas para o podcast da campanha
+                Novembro Azul da Verte Saúde — focado em saúde masculina.
+                O projeto incluiu capa do podcast, posts de divulgação para redes sociais
+                e materiais de apoio para cada episódio, mantendo coerência com a campanha maior.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Campanha</span><span class="case-intro-meta-value">Novembro Azul · Saúde Masculina</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Identidade visual · Social media</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ano</span><span class="case-intro-meta-value">2025</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="novembro-azul">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -862,6 +953,22 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Design de post institucional para comunicar a atualização dos canais de
+                atendimento da Verte Saúde nas redes sociais.
+                Peça com hierarquia visual clara, fácil de ler no feed mobile
+                e alinhada ao manual de identidade da organização.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Social media · Comunicação institucional</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Formato</span><span class="case-intro-meta-value">Post feed + Stories</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="canais-contato">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -881,14 +988,45 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
-          <div class="doc-preview">
+          <div class="case-intro" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Case em destaque · Design Editorial</p>
+              <p class="case-intro-desc">
+                Projeto gráfico completo do Relatório de Atividades 2024 da Verte Saúde —
+                publicação anual entregue ao conselho diretivo e parceiros estratégicos da organização.
+              </p>
+              <p class="case-intro-desc">
+                O desafio foi transformar dados institucionais, registros de eventos e narrativas
+                de impacto em uma publicação visualmente coesa e profissional.
+                Responsável por todo o design: capa, diagramação interna, hierarquia tipográfica,
+                tratamento de imagens e identidade editorial do documento.
+              </p>
+              <p class="case-intro-desc">
+                Resultado: uma publicação de prestação de contas que também funciona como
+                peça de comunicação institucional — demonstrando profissionalismo e
+                transparência da organização para seus stakeholders.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">Publicação PDF · 2025</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Escopo</span><span class="case-intro-meta-value">Projeto gráfico completo: capa, diagramação e identidade editorial</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe InDesign · Illustrator · Photoshop</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Público</span><span class="case-intro-meta-value">Conselho diretivo e parceiros estratégicos</span></div>
+            </div>
+          </div>
+          <div class="doc-preview" style="margin-top:32px; padding-top:0;">
             <div class="doc-preview-cover">
               <img src="capa-relatorio-verte-2024.png" alt="Capa do Relatório de Atividades 2024 — Verte Saúde">
             </div>
             <div class="doc-preview-info">
               <p class="doc-preview-label">Design Editorial · Verte Saúde · 2024</p>
               <h3 class="doc-preview-title">Relatório de Atividades 2024</h3>
-              <p class="doc-preview-desc">Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial. Entregue ao conselho diretivo da Verte Saúde em 2025. Inclui identidade visual, tipografia, paleta de cores e estrutura editorial do relatório anual.</p>
+              <p class="doc-preview-desc">
+                Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial.
+                Entregue ao conselho diretivo da Verte Saúde em 2025.
+                Inclui identidade visual, tipografia, paleta de cores e estrutura editorial do relatório anual.
+              </p>
               <a href="RelatorioAtividades2024.pdf" target="_blank" class="doc-preview-btn">
                 <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                 Ver PDF completo
@@ -911,6 +1049,23 @@
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Material gráfico desenvolvido para o SIASC 2024 — Seminário Interno
+                de Atividades da Verte Saúde.
+                O projeto incluiu peças de divulgação, materiais de apoio para o evento
+                e comunicação visual para o dia do seminário,
+                mantendo alinhamento com a identidade institucional da organização.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Evento</span><span class="case-intro-meta-value">SIASC — Seminário Interno · 2024</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Design de evento · Comunicação interna</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="siasc-2024">
             <div class="grid-empty">Imagens em breve</div>
           </div>
@@ -936,7 +1091,7 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
-  <p><a href="https://www.instagram.com/mariovinicius.fotografia/" target="_blank">@mariovinicius.fotografia</a></p>
+  <p>Feito com <strong>propósito</strong></p>
 </footer>
 
 <script>
