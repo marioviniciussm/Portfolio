@@ -183,7 +183,7 @@
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(5rem, 9vw, 9rem);
-    line-height: 0.88;
+    line-height: 1;
     letter-spacing: 0.02em;
     color: var(--branco);
     margin-bottom: 28px;
@@ -417,6 +417,146 @@
     line-height: 1.6;
   }
 
+  /* ── VÍDEO THUMBNAIL + LIGHTBOX ── */
+  .video-thumb-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s ease;
+    filter: brightness(0.75);
+  }
+
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.04);
+    filter: brightness(0.55);
+  }
+
+  .video-play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px; height: 64px;
+    background: var(--vermelho);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--branco);
+    transition: background 0.25s, transform 0.25s;
+    pointer-events: none;
+  }
+
+  .video-play-btn svg {
+    width: 24px; height: 24px;
+    margin-left: 4px;
+  }
+
+  .video-card:hover .video-play-btn {
+    background: var(--vermelho-dark);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  /* ── MODAL ── */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .video-modal.open { display: flex; }
+
+  .video-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    cursor: pointer;
+  }
+
+  .video-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 860px;
+    background: var(--cinza-escuro);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+
+  .video-modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 10;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--branco);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .video-modal-close:hover {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+
+  .video-modal-player {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+  }
+
+  .video-modal-player iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .video-modal-card {
+    padding: 24px 28px 28px;
+    border-top: 2px solid var(--vermelho);
+  }
+
+  .video-modal-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 8px;
+  }
+
+  .video-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--branco);
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+
+  .video-modal-desc {
+    font-size: 0.875rem;
+    color: var(--cinza);
+    line-height: 1.65;
+  }
+
   /* ── EMPTY STATE ── */
   .grid-empty {
     padding: 56px 32px;
@@ -561,46 +701,29 @@
 <section class="tab-section">
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="tab-verte">Verte</button>
+    <button class="tab-btn active" data-tab="tab-verte">Verte Saúde</button>
     <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
   </div>
 
-  <!-- VERTE -->
+  <!-- VERTE SAÚDE -->
   <div class="tab-content active" id="tab-verte">
 
-    <!-- Vídeo Institucional -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Vídeo Institucional</h2>
-          <span class="cobertura-sub">2024</span>
-          <span class="cobertura-count">1 vídeo</span>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    <div class="video-grid">
+
+      <div class="video-card" data-video-id="WqZssbpJstY" data-video-title="Vídeo Institucional Verte Saúde" data-video-label="Verte Saúde · 2024" data-video-desc="Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.">
+        <div class="video-thumb-wrap">
+          <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="Vídeo Institucional Verte Saúde" loading="lazy">
+          <div class="video-play-btn" aria-label="Reproduzir vídeo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
         </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="video-grid">
-            <div class="video-card">
-              <div class="video-embed-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/WqZssbpJstY"
-                  title="Vídeo Institucional Verte Saúde"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="video-card-info">
-                <p class="video-card-label">Verte Saúde · 2024</p>
-                <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
-                <p class="video-card-desc">Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.</p>
-              </div>
-            </div>
-          </div>
+        <div class="video-card-info">
+          <p class="video-card-label">Verte Saúde · 2024</p>
+          <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
+          <p class="video-card-desc">Captação, edição e pós-produção. Produção audiovisual para apresentação institucional da empresa.</p>
         </div>
       </div>
+
     </div>
 
   </div><!-- /tab-verte -->
@@ -608,25 +731,29 @@
   <!-- AUTORAL -->
   <div class="tab-content" id="tab-autoral">
 
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Produções Autorais</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="grid-empty">Vídeos em breve</div>
-        </div>
-      </div>
+    <div class="video-grid">
+      <div class="grid-empty">Vídeos em breve</div>
     </div>
 
   </div><!-- /tab-autoral -->
 
 </section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo">
+  <div class="video-modal-overlay" id="videoModalOverlay"></div>
+  <div class="video-modal-content">
+    <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
+    <div class="video-modal-player">
+      <iframe id="modalIframe" src="" title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="video-modal-card">
+      <p class="video-modal-label" id="modalLabel"></p>
+      <h3 class="video-modal-title" id="modalTitle"></h3>
+      <p class="video-modal-desc" id="modalDesc"></p>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -645,15 +772,48 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// ── ACCORDION ──
-document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
-  toggle.addEventListener('click', () => {
-    const block = toggle.closest('.cobertura-block');
-    const isOpen = block.classList.contains('open');
-    block.classList.toggle('open', !isOpen);
-    toggle.setAttribute('aria-expanded', String(!isOpen));
+// ── VIDEO LIGHTBOX ──
+const modal = document.getElementById('videoModal');
+const modalOverlay = document.getElementById('videoModalOverlay');
+const modalClose = document.getElementById('videoModalClose');
+const modalIframe = document.getElementById('modalIframe');
+const modalLabel = document.getElementById('modalLabel');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+
+function openVideoModal(videoId, title, label, desc) {
+  if (!/^[\w-]+$/.test(videoId)) return;
+  const scrollY = window.scrollY;
+  modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  modalIframe.title = title;
+  modalLabel.textContent = label;
+  modalTitle.textContent = title;
+  modalDesc.textContent = desc;
+  modal.classList.add('open');
+  modal.dataset.scrollY = scrollY;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  modal.classList.remove('open');
+  modalIframe.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    openVideoModal(
+      card.dataset.videoId,
+      card.dataset.videoTitle,
+      card.dataset.videoLabel,
+      card.dataset.videoDesc
+    );
   });
 });
+
+modalOverlay.addEventListener('click', closeVideoModal);
+modalClose.addEventListener('click', closeVideoModal);
 
 // ── HAMBÚRGUER + DRAWER ──
 const hamburger = document.getElementById('navHamburger');
@@ -692,7 +852,10 @@ if (drawerCasesBtn && drawerCasesBody) {
 }
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeDrawer();
+  if (e.key === 'Escape') {
+    closeDrawer();
+    closeVideoModal();
+  }
 });
 </script>
 </body>
