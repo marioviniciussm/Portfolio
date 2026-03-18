@@ -142,8 +142,10 @@
   .drawer-back:hover { color: var(--branco); background: rgba(192,57,43,0.08); }
   .drawer-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
   .drawer-links { list-style: none; }
+  .drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .drawer-links li:last-child { border-bottom: none; }
   .drawer-links li a {
-    display: block; padding: 14px 32px; font-size: 12px; font-weight: 700;
+    display: block; padding: 14px 32px; font-size: 15px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; color: var(--cinza);
     text-decoration: none; border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
@@ -156,7 +158,7 @@
     padding: 14px 32px; border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .drawer-cases-btn span { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
+  .drawer-cases-btn span { font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
   .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--cinza); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
   .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--branco); }
   .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
@@ -166,7 +168,7 @@
   .drawer-cases-body.open { max-height: 400px; }
   .drawer-cases-body a {
     display: block; padding: 11px 24px 11px 40px;
-    font-size: 10px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
     color: rgba(155,155,155,0.9); text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     position: relative;
