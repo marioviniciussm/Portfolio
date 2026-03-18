@@ -216,11 +216,11 @@
   .hero-right { position: relative; background: var(--red); overflow: hidden; }
   .hero-right::after { content: ''; position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0.35; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; mix-blend-mode: soft-light; }
   .hero-right::before { display: none; }
-  .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; z-index: 1; mask-image: linear-gradient(to bottom, black 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 88%); }
-  .hero-right-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: rgba(15,15,15,0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 2px solid var(--red); padding: 28px 48px 32px; }
+  .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 75%; object-fit: cover; object-position: top center; display: block; z-index: 1; mask-image: linear-gradient(to bottom, black 55%, transparent 92%); -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%); }
+  .hero-right-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: transparent; border-top: none; padding: 28px 48px 32px; }
   .hero-disciplines { display: flex; flex-direction: column; gap: 12px; }
-  .discipline-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(255,255,255,0.06); border-left: 3px solid rgba(255,255,255,0.25); transition: background 0.25s, border-color 0.25s, transform 0.25s; cursor: default; }
-  .discipline-item:hover { background: rgba(255,255,255,0.13); border-left-color: var(--white); transform: translateX(8px) scale(1.02); }
+  .discipline-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-left: 3px solid var(--red); transition: background 0.25s, border-color 0.25s, transform 0.25s; cursor: default; }
+  .discipline-item:hover { background: rgba(0,0,0,0.72); border-left-color: var(--white); transform: translateX(8px) scale(1.02); }
   .discipline-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: rgba(255,255,255,0.3); line-height: 1; min-width: 32px; transition: color 0.25s; }
   .discipline-item:hover .discipline-num { color: rgba(255,255,255,0.8); }
   .discipline-text { font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); }
@@ -437,11 +437,11 @@
     .btn-primary, .btn-secondary { padding: 13px 12px; font-size: 10px; }
     .social-icon { width: 38px; height: 38px; }
     .hero-right { order: 2; min-height: 520px; padding: 0; overflow: hidden; }
-    .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transform: none; mask-image: linear-gradient(to bottom, black 55%, transparent 88%); -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 88%); }
+    .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 75%; object-fit: cover; object-position: top center; transform: none; mask-image: linear-gradient(to bottom, black 55%, transparent 92%); -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%); }
     .hero-right-content { left: 0; right: 0; bottom: 0; padding: 20px 24px 24px; }
     .hero-disciplines { gap: 8px; }
     .discipline-item { padding: 12px 16px; gap: 12px; }
-    .discipline-item:hover { transform: none; background: rgba(255,255,255,0.04); border-left-color: rgba(255,255,255,0.18); }
+    .discipline-item:hover { transform: none; background: rgba(0,0,0,0.72); border-left-color: var(--white); }
     section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
