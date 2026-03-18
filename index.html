@@ -196,6 +196,59 @@
   /* ── HERO ── */
   #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
+
+  /* ── HERO DECO ICONS ── */
+  .hero-deco-icons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .hero-deco-icon {
+    position: absolute;
+    left: var(--ix, 10%);
+    top: var(--iy, 10%);
+    width: clamp(28px, 3.5vw, 44px);
+    height: clamp(28px, 3.5vw, 44px);
+    color: rgba(192, 57, 43, 0.12);
+    transform: rotate(var(--ir, 0deg)) scale(var(--is, 1));
+    transition: color 0.3s;
+  }
+
+  /* ── HERO CORNER FRAMES ── */
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: 88px;
+    left: 60px;
+    width: 40px;
+    height: 40px;
+    border-top: 1px solid rgba(192, 57, 43, 0.3);
+    border-left: 1px solid rgba(192, 57, 43, 0.3);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-bottom: 1px solid rgba(192, 57, 43, 0.2);
+    border-right: 1px solid rgba(192, 57, 43, 0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ensure hero-left direct children stay above deco icons */
+  .hero-left > .hero-tag,
+  .hero-left > .hero-name,
+  .hero-left > .hero-title,
+  .hero-left > .hero-desc,
+  .hero-left > .hero-location,
+  .hero-left > .hero-ctas { position: relative; z-index: 2; }
   .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; margin-bottom: 36px; width: fit-content; }
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 28px; }
   .hero-name span { color: var(--red); display: block; }
@@ -246,7 +299,23 @@
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ── SOBRE ── */
-  #sobre { border-top: none; }
+  #sobre { border-top: none; position: relative; overflow: hidden; }
+  #sobre::before {
+    content: "CRIAÇÃO";
+    position: absolute;
+    top: 60px;
+    right: -20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 160px);
+    color: rgba(255, 255, 255, 0.025);
+    letter-spacing: 4px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+  #sobre > * { position: relative; z-index: 1; }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
   .sobre-text p strong { color: var(--white); font-weight: 500; }
@@ -379,7 +448,8 @@
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid transparent; transition: border-color 0.25s; }
   .skill-block:hover { border-color: var(--red); }
-  .skill-category { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .skill-category { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .skill-cat-icon { width: 14px; height: 14px; fill: var(--red); flex-shrink: 0; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill-tag { font-size: 12px; color: #bbb; background: rgba(255,255,255,0.05); padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); }
   .skill-block.soft .skill-tag { border-color: rgba(255,255,255,0.08); color: #ccc; }
@@ -474,6 +544,9 @@
     .contato-info-value { font-size: 13px; word-break: break-word; }
     footer { padding: 20px 24px; padding-bottom: max(20px, env(safe-area-inset-bottom)); flex-direction: column; gap: 6px; text-align: center; }
     footer span { font-size: 11px; }
+    .hero-deco-icon { width: clamp(20px, 5vw, 32px); height: clamp(20px, 5vw, 32px); }
+    .hero-left::before { display: none; }
+    #sobre::before { font-size: clamp(56px, 14vw, 80px); top: 40px; }
   }
 
   @media (max-width: 380px) { .hero-name { font-size: 52px; } }
@@ -575,6 +648,32 @@
 
 <section id="hero">
   <div class="hero-left">
+    <!-- Ícones decorativos -->
+    <div class="hero-deco-icons" aria-hidden="true">
+      <!-- câmera -->
+      <svg class="hero-deco-icon" style="--ix:12%;--iy:72%;--ir:-12deg;--is:0.9" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="currentColor"/>
+        <circle cx="12" cy="13" r="4" fill="#0f0f0f"/>
+        <circle cx="12" cy="13" r="2.2" fill="currentColor"/>
+      </svg>
+      <!-- play/vídeo -->
+      <svg class="hero-deco-icon" style="--ix:78%;--iy:18%;--ir:8deg;--is:0.75" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="5" width="15" height="14" rx="2" fill="currentColor"/>
+        <polygon points="23 7 16 12 23 17 23 7" fill="currentColor"/>
+      </svg>
+      <!-- camadas/layers -->
+      <svg class="hero-deco-icon" style="--ix:68%;--iy:78%;--ir:-6deg;--is:0.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" fill="currentColor"/>
+        <polyline points="2 17 12 22 22 17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polyline points="2 12 12 17 22 12" fill="none" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <!-- pen/caneta -->
+      <svg class="hero-deco-icon" style="--ix:88%;--iy:55%;--ir:15deg;--is:0.7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 19l7-7 3 3-7 7-3-3z" fill="currentColor"/>
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" fill="currentColor"/>
+        <circle cx="11" cy="11" r="2" fill="#0f0f0f"/>
+      </svg>
+    </div>
     <span class="hero-tag">Portfólio 2026</span>
     <h1 class="hero-name">Mário<br><span>Vinicius</span></h1>
     <p class="hero-title">
@@ -839,37 +938,37 @@
   <h2 class="section-title">Habilidades</h2>
   <div class="skills-grid">
     <div class="skill-block">
-      <div class="skill-category">Produção Visual</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>Produção Visual</div>
       <div class="skill-tags">
         <span class="skill-tag">After Effects</span><span class="skill-tag">Premiere Pro</span><span class="skill-tag">Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">InDesign</span><span class="skill-tag">Lightroom</span>
       </div>
     </div>
     <div class="skill-block">
-      <div class="skill-category">Audiovisual</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="var(--black)"/><circle cx="12" cy="13" r="2.2"/></svg>Audiovisual</div>
       <div class="skill-tags">
         <span class="skill-tag">DaVinci Resolve</span><span class="skill-tag">Fotografia</span><span class="skill-tag">Captação</span><span class="skill-tag">Direção de cena</span>
       </div>
     </div>
     <div class="skill-block">
-      <div class="skill-category">Social Media & Ads</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Social Media &amp; Ads</div>
       <div class="skill-tags">
         <span class="skill-tag">Planejamento editorial</span><span class="skill-tag">Meta Ads</span><span class="skill-tag">Meta Business Suite</span><span class="skill-tag">Google Analytics</span><span class="skill-tag">Copywriting</span>
       </div>
     </div>
     <div class="skill-block">
-      <div class="skill-category">Gestão & UX</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 0 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>Gestão &amp; UX</div>
       <div class="skill-tags">
         <span class="skill-tag">Figma</span><span class="skill-tag">Trello</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Canva</span><span class="skill-tag">UX Design</span><span class="skill-tag">Briefing</span><span class="skill-tag">Estratégia de marca</span>
       </div>
     </div>
     <div class="skill-block">
-      <div class="skill-category">Ferramentas & Plataformas</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm7.43-2a7.5 7.5 0 0 0 .07-1 7.5 7.5 0 0 0-.07-1l2.19-1.71a.52.52 0 0 0 .12-.66l-2.07-3.58a.52.52 0 0 0-.63-.23l-2.57 1.03a7.44 7.44 0 0 0-1.73-1l-.39-2.73A.5.5 0 0 0 14 2h-4a.5.5 0 0 0-.5.42l-.39 2.73a7.44 7.44 0 0 0-1.73 1L4.81 5.12a.52.52 0 0 0-.63.23L2.11 8.93a.51.51 0 0 0 .12.66L4.42 11.3A7.6 7.6 0 0 0 4.35 12a7.6 7.6 0 0 0 .07 1l-2.19 1.71a.52.52 0 0 0-.12.66l2.07 3.58c.13.23.4.31.63.23l2.57-1.03a7.44 7.44 0 0 0 1.73 1l.39 2.73c.06.24.27.42.5.42h4c.24 0 .44-.18.5-.42l.39-2.73a7.44 7.44 0 0 0 1.73-1l2.57 1.03c.23.08.5 0 .63-.23l2.07-3.58a.51.51 0 0 0-.12-.66L19.43 13.5z"/></svg>Ferramentas &amp; Plataformas</div>
       <div class="skill-tags">
         <span class="skill-tag">Meta Business Suite</span><span class="skill-tag">CapCut</span><span class="skill-tag">Adobe Premiere Pro</span><span class="skill-tag">DaVinci Resolve</span><span class="skill-tag">Adobe Photoshop</span><span class="skill-tag">Adobe Illustrator</span><span class="skill-tag">Trello</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Google Sheets</span>
       </div>
     </div>
     <div class="skill-block soft">
-      <div class="skill-category">Soft Skills</div>
+      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Soft Skills</div>
       <div class="skill-tags">
         <span class="skill-tag">Comunicação clara</span><span class="skill-tag">Visão de negócio</span><span class="skill-tag">Organização por processos</span><span class="skill-tag">Aprendizado contínuo</span><span class="skill-tag">Trabalho em equipe</span><span class="skill-tag">Adaptabilidade</span><span class="skill-tag">Atenção a detalhes</span>
       </div>
