@@ -223,7 +223,7 @@
   .hero-disciplines { display: flex; flex-direction: column; gap: 8px; }
   .discipline-item { position: relative; display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-left: 3px solid var(--red); transition: background 0.25s, border-color 0.25s, transform 0.25s; cursor: default; overflow: hidden; }
   .discipline-item:hover { background: rgba(0,0,0,0.72); border-left-color: var(--white); transform: translateX(8px) scale(1.02); }
-  .discipline-item::before { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(80px, 10vw, 120px); font-weight: 900; letter-spacing: -2px; color: rgba(255,255,255,0.15); line-height: 1; pointer-events: none; z-index: 0; }
+  .discipline-item::before { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 100px); font-weight: 900; letter-spacing: -2px; color: rgba(255,255,255,0.12); line-height: 1; pointer-events: none; z-index: 0; }
   .discipline-item:nth-child(1)::before { content: "01"; }
   .discipline-item:nth-child(2)::before { content: "02"; }
   .discipline-item:nth-child(3)::before { content: "03"; }
@@ -447,6 +447,7 @@
     .hero-disciplines { gap: 8px; }
     .discipline-item { padding: 12px 16px; gap: 12px; }
     .discipline-item:hover { transform: none; background: rgba(0,0,0,0.72); border-left-color: var(--white); }
+    .discipline-item::before { font-size: clamp(56px, 14vw, 88px); left: 8px; }
     section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
