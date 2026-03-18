@@ -197,7 +197,7 @@
   #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
 
-  /* ── HERO DECO ICONS ── */
+  /* ── HERO DECO ICONS — flutuantes animados ── */
   .hero-deco-icons {
     position: absolute;
     inset: 0;
@@ -205,15 +205,27 @@
     z-index: 1;
     overflow: hidden;
   }
+
   .hero-deco-icon {
     position: absolute;
     left: var(--ix, 10%);
     top: var(--iy, 10%);
-    width: clamp(28px, 3.5vw, 44px);
-    height: clamp(28px, 3.5vw, 44px);
-    color: rgba(192, 57, 43, 0.12);
-    transform: rotate(var(--ir, 0deg)) scale(var(--is, 1));
-    transition: color 0.3s;
+    width: clamp(36px, 4vw, 56px);
+    height: clamp(36px, 4vw, 56px);
+    color: rgba(192, 57, 43, 0.35);
+    transform: rotate(var(--ir, 0deg));
+    animation: heroDeco var(--idur, 6s) ease-in-out infinite;
+    animation-delay: var(--idelay, 0s);
+  }
+
+  .hero-deco-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes heroDeco {
+    0%, 100% { transform: rotate(var(--ir, 0deg)) translateY(0px); }
+    50% { transform: rotate(var(--ir, 0deg)) translateY(-12px); }
   }
 
   /* ── HERO CORNER FRAMES ── */
@@ -299,23 +311,30 @@
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ── SOBRE ── */
-  #sobre { border-top: none; position: relative; overflow: hidden; }
-  #sobre::before {
-    content: "CRIAÇÃO";
+  #sobre { border-top: none; position: relative; }
+  #sobre > * { position: relative; z-index: 1; }
+
+  /* ── SOBRE — decoração numérica ── */
+  .sobre-deco-nums {
     position: absolute;
-    top: 60px;
-    right: -20px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(80px, 12vw, 160px);
-    color: rgba(255, 255, 255, 0.025);
-    letter-spacing: 4px;
-    line-height: 1;
+    top: 50px;
+    right: 0;
+    display: flex;
+    gap: 0;
     pointer-events: none;
     user-select: none;
-    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50%;
     z-index: 0;
   }
-  #sobre > * { position: relative; z-index: 1; }
+
+  .sobre-deco-nums span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 10vw, 120px);
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -4px;
+    line-height: 1;
+  }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
   .sobre-text p strong { color: var(--white); font-weight: 500; }
@@ -444,7 +463,102 @@
   .case-card:hover .case-arrow svg { transform: translate(4px, -4px); }
 
   /* ── HABILIDADES ── */
-  #habilidades { border-top: none; }
+  /* ── PHOTOSHOP TOOLBAR ── */
+  #habilidades { border-top: none; position: relative; padding-left: 120px; }
+
+  .ps-toolbar {
+    position: absolute;
+    left: 60px;
+    top: 100px;
+    bottom: 100px;
+    width: 44px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ps-toolbar-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: #2a2a2a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 8px 4px;
+  }
+
+  .ps-tool {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    cursor: default;
+    transition: background 0.15s, color 0.15s;
+    color: rgba(255,255,255,0.45);
+    position: relative;
+  }
+
+  .ps-tool svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ps-tool:hover {
+    background: rgba(192,57,43,0.2);
+    color: var(--white);
+  }
+
+  .ps-tool.active {
+    background: rgba(192,57,43,0.35);
+    color: var(--white);
+  }
+
+  .ps-tool-divider {
+    width: 26px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 4px 0;
+  }
+
+  .ps-color-swatch {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin-top: 4px;
+  }
+
+  .ps-color-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .ps-color-fg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: var(--red);
+    border: 1px solid rgba(255,255,255,0.25);
+    z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    #habilidades { padding-left: 92px; }
+    .ps-toolbar { left: 32px; }
+  }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid transparent; transition: border-color 0.25s; }
   .skill-block:hover { border-color: var(--red); }
@@ -546,7 +660,8 @@
     footer span { font-size: 11px; }
     .hero-deco-icon { width: clamp(20px, 5vw, 32px); height: clamp(20px, 5vw, 32px); }
     .hero-left::before { display: none; }
-    #sobre::before { font-size: clamp(56px, 14vw, 80px); top: 40px; }
+    #habilidades { padding-left: 24px; }
+    .ps-toolbar { display: none; }
   }
 
   @media (max-width: 380px) { .hero-name { font-size: 52px; } }
@@ -648,30 +763,28 @@
 
 <section id="hero">
   <div class="hero-left">
-    <!-- Ícones decorativos -->
+    <!-- Ícones decorativos flutuantes -->
     <div class="hero-deco-icons" aria-hidden="true">
       <!-- câmera -->
-      <svg class="hero-deco-icon" style="--ix:12%;--iy:72%;--ir:-12deg;--is:0.9" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="currentColor"/>
-        <circle cx="12" cy="13" r="4" fill="#0f0f0f"/>
-        <circle cx="12" cy="13" r="2.2" fill="currentColor"/>
+      <svg class="hero-deco-icon" style="--ix:8%;--iy:68%;--ir:-12deg;--idur:7s;--idelay:0s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4" fill="rgba(15,15,15,0.6)"/>
+        <circle cx="12" cy="13" r="2" fill="currentColor"/>
       </svg>
       <!-- play/vídeo -->
-      <svg class="hero-deco-icon" style="--ix:78%;--iy:18%;--ir:8deg;--is:0.75" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="5" width="15" height="14" rx="2" fill="currentColor"/>
-        <polygon points="23 7 16 12 23 17 23 7" fill="currentColor"/>
+      <svg class="hero-deco-icon" style="--ix:76%;--iy:14%;--ir:10deg;--idur:5s;--idelay:-1.5s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="5" width="15" height="14" rx="2"/>
+        <polygon points="23 7 16 12 23 17 23 7"/>
       </svg>
-      <!-- camadas/layers -->
-      <svg class="hero-deco-icon" style="--ix:68%;--iy:78%;--ir:-6deg;--is:0.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" fill="currentColor"/>
-        <polyline points="2 17 12 22 22 17" fill="none" stroke="currentColor" stroke-width="2"/>
-        <polyline points="2 12 12 17 22 12" fill="none" stroke="currentColor" stroke-width="2"/>
+      <!-- pen/design -->
+      <svg class="hero-deco-icon" style="--ix:82%;--iy:62%;--ir:18deg;--idur:8s;--idelay:-3s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+        <circle cx="11" cy="11" r="2" fill="rgba(15,15,15,0.7)"/>
       </svg>
-      <!-- pen/caneta -->
-      <svg class="hero-deco-icon" style="--ix:88%;--iy:55%;--ir:15deg;--is:0.7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 19l7-7 3 3-7 7-3-3z" fill="currentColor"/>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" fill="currentColor"/>
-        <circle cx="11" cy="11" r="2" fill="#0f0f0f"/>
+      <!-- estrela/social -->
+      <svg class="hero-deco-icon" style="--ix:4%;--iy:20%;--ir:-5deg;--idur:6.5s;--idelay:-2s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
       </svg>
     </div>
     <span class="hero-tag">Portfólio 2026</span>
@@ -733,6 +846,9 @@
 </div>
 
 <section id="sobre">
+  <div class="sobre-deco-nums" aria-hidden="true">
+    <span>01</span><span>02</span><span>03</span><span>04</span>
+  </div>
   <p class="section-label">Quem sou</p>
   <h2 class="section-title">Sobre Mim</h2>
   <div class="sobre-grid">
@@ -934,6 +1050,42 @@
 </div>
 
 <section id="habilidades">
+  <!-- Toolbar decorativa estilo Photoshop -->
+  <div class="ps-toolbar" aria-hidden="true">
+    <div class="ps-toolbar-inner">
+      <div class="ps-tool active" title="Seleção">
+        <svg viewBox="0 0 24 24"><path d="M4 2l16 9-9 2-3 9z"/></svg>
+      </div>
+      <div class="ps-tool" title="Mover">
+        <svg viewBox="0 0 24 24"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M12 12h.01"/><path d="M12 3v18M3 12h18"/></svg>
+      </div>
+      <div class="ps-tool" title="Recorte">
+        <svg viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
+      </div>
+      <div class="ps-tool-divider"></div>
+      <div class="ps-tool" title="Pincel">
+        <svg viewBox="0 0 24 24"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1 1 2.48 1.02 3.5 1.02 2.2 0 3.5-1.8 3.5-4.04 0-1.26-.7-2.02-2-2.02z"/></svg>
+      </div>
+      <div class="ps-tool" title="Borracha">
+        <svg viewBox="0 0 24 24"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+      </div>
+      <div class="ps-tool" title="Texto">
+        <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+      </div>
+      <div class="ps-tool-divider"></div>
+      <div class="ps-tool" title="Zoom">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      </div>
+      <div class="ps-tool" title="Conta-gotas">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/><circle cx="7.5" cy="11.5" r="1.5" fill="currentColor"/><circle cx="11.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/></svg>
+      </div>
+      <div class="ps-tool-divider"></div>
+      <div class="ps-color-swatch">
+        <div class="ps-color-fg"></div>
+        <div class="ps-color-bg"></div>
+      </div>
+    </div>
+  </div>
   <p class="section-label">Ferramentas e competências</p>
   <h2 class="section-title">Habilidades</h2>
   <div class="skills-grid">
@@ -959,12 +1111,6 @@
       <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 0 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>Gestão &amp; UX</div>
       <div class="skill-tags">
         <span class="skill-tag">Figma</span><span class="skill-tag">Trello</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Canva</span><span class="skill-tag">UX Design</span><span class="skill-tag">Briefing</span><span class="skill-tag">Estratégia de marca</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-category"><svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm7.43-2a7.5 7.5 0 0 0 .07-1 7.5 7.5 0 0 0-.07-1l2.19-1.71a.52.52 0 0 0 .12-.66l-2.07-3.58a.52.52 0 0 0-.63-.23l-2.57 1.03a7.44 7.44 0 0 0-1.73-1l-.39-2.73A.5.5 0 0 0 14 2h-4a.5.5 0 0 0-.5.42l-.39 2.73a7.44 7.44 0 0 0-1.73 1L4.81 5.12a.52.52 0 0 0-.63.23L2.11 8.93a.51.51 0 0 0 .12.66L4.42 11.3A7.6 7.6 0 0 0 4.35 12a7.6 7.6 0 0 0 .07 1l-2.19 1.71a.52.52 0 0 0-.12.66l2.07 3.58c.13.23.4.31.63.23l2.57-1.03a7.44 7.44 0 0 0 1.73 1l.39 2.73c.06.24.27.42.5.42h4c.24 0 .44-.18.5-.42l.39-2.73a7.44 7.44 0 0 0 1.73-1l2.57 1.03c.23.08.5 0 .63-.23l2.07-3.58a.51.51 0 0 0-.12-.66L19.43 13.5z"/></svg>Ferramentas &amp; Plataformas</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Meta Business Suite</span><span class="skill-tag">CapCut</span><span class="skill-tag">Adobe Premiere Pro</span><span class="skill-tag">DaVinci Resolve</span><span class="skill-tag">Adobe Photoshop</span><span class="skill-tag">Adobe Illustrator</span><span class="skill-tag">Trello</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Google Sheets</span>
       </div>
     </div>
     <div class="skill-block soft">
@@ -1086,6 +1232,17 @@
         dropMenu.style.transform = '';
       }
     });
+  }
+
+  // ── PHOTOSHOP TOOLBAR — animação ──
+  const psTools = document.querySelectorAll('.ps-tool');
+  if (psTools.length) {
+    let activeIdx = 0;
+    setInterval(() => {
+      psTools[activeIdx].classList.remove('active');
+      activeIdx = (activeIdx + 1) % psTools.length;
+      psTools[activeIdx].classList.add('active');
+    }, 1800);
   }
 
   // ── SOBRE — ABAS POR ÁREA ──
