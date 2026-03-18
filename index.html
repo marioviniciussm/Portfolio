@@ -197,37 +197,6 @@
   #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
 
-  /* ── HERO DECO ICONS — flutuantes animados ── */
-  .hero-deco-icons {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .hero-deco-icon {
-    position: absolute;
-    left: var(--ix, 10%);
-    top: var(--iy, 10%);
-    width: clamp(36px, 4vw, 56px);
-    height: clamp(36px, 4vw, 56px);
-    color: rgba(192, 57, 43, 0.35);
-    transform: rotate(var(--ir, 0deg));
-    animation: heroDeco var(--idur, 6s) ease-in-out infinite;
-    animation-delay: var(--idelay, 0s);
-  }
-
-  .hero-deco-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  @keyframes heroDeco {
-    0%, 100% { transform: rotate(var(--ir, 0deg)) translateY(0px); }
-    50% { transform: rotate(var(--ir, 0deg)) translateY(-12px); }
-  }
-
   /* ── HERO CORNER FRAMES ── */
   .hero-left::before {
     content: '';
@@ -254,7 +223,6 @@
     z-index: 1;
   }
 
-  /* Ensure hero-left direct children stay above deco icons */
   .hero-left > .hero-tag,
   .hero-left > .hero-name,
   .hero-left > .hero-title,
@@ -314,27 +282,6 @@
   #sobre { border-top: none; position: relative; }
   #sobre > * { position: relative; z-index: 1; }
 
-  /* ── SOBRE — decoração numérica ── */
-  .sobre-deco-nums {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    display: flex;
-    gap: 0;
-    pointer-events: none;
-    user-select: none;
-    overflow: hidden;
-    max-width: 50%;
-    z-index: 0;
-  }
-
-  .sobre-deco-nums span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(60px, 10vw, 120px);
-    color: rgba(255,255,255,0.03);
-    letter-spacing: -4px;
-    line-height: 1;
-  }
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
   .sobre-text p strong { color: var(--white); font-weight: 500; }
@@ -658,7 +605,6 @@
     .contato-info-value { font-size: 13px; word-break: break-word; }
     footer { padding: 20px 24px; padding-bottom: max(20px, env(safe-area-inset-bottom)); flex-direction: column; gap: 6px; text-align: center; }
     footer span { font-size: 11px; }
-    .hero-deco-icon { width: clamp(20px, 5vw, 32px); height: clamp(20px, 5vw, 32px); }
     .hero-left::before { display: none; }
     #habilidades { padding-left: 24px; }
     .ps-toolbar { display: none; }
@@ -763,30 +709,6 @@
 
 <section id="hero">
   <div class="hero-left">
-    <!-- Ícones decorativos flutuantes -->
-    <div class="hero-deco-icons" aria-hidden="true">
-      <!-- câmera -->
-      <svg class="hero-deco-icon" style="--ix:8%;--iy:68%;--ir:-12deg;--idur:7s;--idelay:0s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-        <circle cx="12" cy="13" r="4" fill="rgba(15,15,15,0.6)"/>
-        <circle cx="12" cy="13" r="2" fill="currentColor"/>
-      </svg>
-      <!-- play/vídeo -->
-      <svg class="hero-deco-icon" style="--ix:76%;--iy:14%;--ir:10deg;--idur:5s;--idelay:-1.5s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="5" width="15" height="14" rx="2"/>
-        <polygon points="23 7 16 12 23 17 23 7"/>
-      </svg>
-      <!-- pen/design -->
-      <svg class="hero-deco-icon" style="--ix:82%;--iy:62%;--ir:18deg;--idur:8s;--idelay:-3s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-        <circle cx="11" cy="11" r="2" fill="rgba(15,15,15,0.7)"/>
-      </svg>
-      <!-- estrela/social -->
-      <svg class="hero-deco-icon" style="--ix:4%;--iy:20%;--ir:-5deg;--idur:6.5s;--idelay:-2s" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-      </svg>
-    </div>
     <span class="hero-tag">Portfólio 2026</span>
     <h1 class="hero-name">Mário<br><span>Vinicius</span></h1>
     <p class="hero-title">
@@ -846,9 +768,6 @@
 </div>
 
 <section id="sobre">
-  <div class="sobre-deco-nums" aria-hidden="true">
-    <span>01</span><span>02</span><span>03</span><span>04</span>
-  </div>
   <p class="section-label">Quem sou</p>
   <h2 class="section-title">Sobre Mim</h2>
   <div class="sobre-grid">
