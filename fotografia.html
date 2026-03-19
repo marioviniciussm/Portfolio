@@ -26,6 +26,12 @@
     --branco: #ffffff;
     --cinza: #888;
     --cinza-escuro: #1a1a1a;
+    --black: var(--preto);
+    --red: var(--vermelho);
+    --red-dark: var(--vermelho-dark);
+    --white: var(--branco);
+    --gray: var(--cinza);
+    --dark: var(--cinza-escuro);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,122 +54,132 @@
     border-bottom: 1px solid rgba(192,57,43,0.2);
     min-height: 64px;
   }
+
+  /* wrapper interno centralizado */
   .nav-inner {
     display: flex; align-items: stretch; flex-wrap: nowrap;
     width: 100%; max-width: 1200px;
     margin: 0 auto; padding: 0 60px;
     min-height: 64px;
   }
+
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
-    color: var(--branco); text-decoration: none;
+    color: var(--white); text-decoration: none;
     display: flex; align-items: center; align-self: center;
     padding: 0 28px 0 0; white-space: nowrap; flex-shrink: 0;
     border-right: 1px solid rgba(255,255,255,0.08);
     margin-right: 4px;
   }
-  .nav-logo span { color: var(--vermelho); }
+  .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; margin-left: auto; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
   .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
-    color: var(--cinza); text-decoration: none;
+    color: var(--gray); text-decoration: none;
     font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
     padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
-  .nav-links a:hover { color: var(--branco); background: var(--vermelho); }
-  .nav-links a.active { color: var(--branco); }
+  .nav-links a:hover { color: var(--white); background: var(--red); }
 
-  /* dropdown */
+  /* dropdown Cases */
   .nav-dropdown { position: relative; display: flex; align-items: stretch; }
   .nav-dropdown-btn {
-    color: var(--cinza); background: none; border: none; cursor: pointer;
+    color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     transition: color 0.2s, background 0.2s;
   }
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
-  .nav-dropdown:hover .nav-dropdown-btn { color: var(--branco); background: var(--vermelho); }
+  .nav-dropdown:hover .nav-dropdown-btn { color: var(--white); background: var(--red); }
   .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
+
   .nav-dropdown-menu {
     position: absolute; top: 100%; left: 0;
     background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
-    min-width: 240px; padding: 6px 0; opacity: 0; pointer-events: none;
-    transform: translateY(-4px); transition: opacity 0.18s, transform 0.18s;
+    min-width: 240px; padding: 6px 0;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: opacity 0.18s, transform 0.18s;
     backdrop-filter: blur(12px);
   }
   .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
   .nav-dropdown-menu a {
-    display: block; padding: 10px 20px; font-size: 11px; font-weight: 500;
-    letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza);
-    text-decoration: none; transition: color 0.15s, background 0.15s; white-space: nowrap;
+    display: block; padding: 10px 20px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none;
+    transition: color 0.15s, background 0.15s; white-space: nowrap;
   }
-  .nav-dropdown-menu a:hover { color: var(--branco); background: rgba(192,57,43,0.15); }
+  .nav-dropdown-menu a:hover { color: var(--white); background: rgba(192,57,43,0.15); }
   .nav-dropdown-menu .dropdown-label {
     font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.7);
     padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
   }
 
-  /* hambúrguer */
+  /* hambúrguer — oculto no desktop */
   .nav-hamburger {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
     width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px;
     margin-left: auto; flex-shrink: 0; align-self: center;
   }
-  .nav-hamburger span { display: block; height: 2px; background: var(--branco); transition: transform 0.3s, opacity 0.3s; transform-origin: center; }
+  .nav-hamburger span {
+    display: block; height: 2px; background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* drawer */
-  .nav-drawer-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(0,0,0,0.5); }
+  /* drawer mobile */
+  .nav-drawer-overlay {
+    display: none; position: fixed; inset: 0; z-index: 98;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+  }
   .nav-drawer-overlay.open { display: block; }
+
   .nav-drawer {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
-    width: 280px; background: #111; border-left: 1px solid rgba(192,57,43,0.2);
+    width: 280px; background: #111;
+    border-left: 1px solid rgba(192,57,43,0.2);
     transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-    display: flex; flex-direction: column; padding: 72px 0 40px; overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: 80px 0 40px;
+    overflow-y: auto;
   }
   .nav-drawer.open { transform: translateX(0); }
 
-  /* botão voltar ao topo do drawer */
-  .drawer-back {
-    display: flex; align-items: center; gap: 10px;
-    padding: 14px 32px 14px 28px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    color: var(--vermelho); text-decoration: none;
-    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    transition: color 0.2s, background 0.2s;
-  }
-  .drawer-back:hover { color: var(--branco); background: rgba(192,57,43,0.08); }
-  .drawer-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
-  .drawer-links { list-style: none; }
+  .drawer-links { list-style: none; padding: 0 0 20px; }
   .drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
   .drawer-links li:last-child { border-bottom: none; }
   .drawer-links li a {
-    display: block; padding: 14px 32px; font-size: 15px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; color: var(--cinza);
-    text-decoration: none; border-left: 3px solid transparent;
+    display: block; padding: 14px 32px;
+    font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none;
+    border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .drawer-links li a:hover { color: var(--branco); border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
-  .drawer-links li a.active { color: var(--branco); border-color: var(--vermelho); }
+  .drawer-links li a:hover { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.08); }
+
+  /* accordion Cases no drawer */
   .drawer-cases-btn {
     width: 100%; background: none; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 32px; border-left: 3px solid transparent;
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
-  .drawer-cases-btn span { font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); transition: color 0.2s; }
-  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--cinza); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
-  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--branco); }
-  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--vermelho); }
-  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--vermelho); background: rgba(192,57,43,0.08); }
+  .drawer-cases-btn span {
+    font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
+    transition: color 0.2s;
+  }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--gray); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--white); }
+  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--red); }
+  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--red); background: rgba(192,57,43,0.08); }
   .drawer-cases-btn.open svg { transform: rotate(180deg); }
+
   .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
   .drawer-cases-body.open { max-height: 400px; }
   .drawer-cases-body a {
@@ -174,10 +190,10 @@
     position: relative;
     transition: color 0.15s, background 0.15s, padding-left 0.15s;
   }
-  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; color: rgba(192,57,43,0.5); font-size: 9px; }
+  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: rgba(192,57,43,0.5); font-size: 9px; }
   .drawer-cases-body a:last-of-type { border-bottom: none; }
-  .drawer-cases-body a:hover { color: var(--branco); background: rgba(192,57,43,0.1); padding-left: 46px; }
-  .drawer-cases-body a.active { color: var(--branco); }
+  .drawer-cases-body a:hover { color: var(--white); background: rgba(192,57,43,0.1); padding-left: 46px; }
+  .drawer-cases-body a.active { color: var(--white); }
 
   /* ── HERO ── */
   .hero {
@@ -554,10 +570,13 @@
   footer a:hover { color: var(--branco); }
 
   /* ── MOBILE ── */
+  @media (max-width: 1024px) {
+    .nav-inner { padding: 0 32px; }
+  }
   @media (max-width: 768px) {
     nav { min-height: 56px; }
     .nav-inner { padding: 0 20px; width: 100%; }
-    .nav-logo { font-size: 20px; padding: 0; }
+    .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
 
@@ -617,9 +636,9 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">M<span>·</span>V</a>
+    <a class="nav-logo" href="index.html#hero">M<span>·</span>V</a>
     <ul class="nav-links">
-      <li><a href="index.html">Início</a></li>
+      <li><a href="index.html#hero">Início</a></li>
       <li><a href="index.html#sobre">Sobre</a></li>
       <li class="nav-dropdown" id="navDropdown">
         <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
@@ -628,7 +647,7 @@
         </button>
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
-          <a href="fotografia.html" class="active" role="menuitem">Fotografia</a>
+          <a href="fotografia.html" role="menuitem" aria-current="page">Fotografia</a>
           <a href="videos.html" role="menuitem">Vídeos</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
         </div>
@@ -648,7 +667,7 @@
 <!-- DRAWER -->
 <div class="nav-drawer" id="navDrawer">
   <ul class="drawer-links">
-    <li><a href="index.html">Início</a></li>
+    <li><a href="index.html#hero">Início</a></li>
     <li><a href="index.html#sobre">Sobre</a></li>
     <li>
       <button class="drawer-cases-btn" id="drawerCasesBtn">
