@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Vídeos — Mário Vinicius | Produção Audiovisual Institucional | Porto Alegre</title>
-<meta name="description" content="Produções audiovisuais de Mário Vinicius — vídeos institucionais, coberturas e produções autorais. Captação, edição e pós-produção em Porto Alegre/RS.">
-<meta property="og:title" content="Vídeos — Mário Vinicius">
-<meta property="og:image" content="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg">
-<meta property="og:type" content="website">
-<meta property="og:description" content="Vídeos institucionais, coberturas de eventos e produções autorais. Processo completo do roteiro à entrega final.">
-<meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/videos.html">
+<title>Social Media — Mário Vinicius | Comunicador Visual · Porto Alegre</title>
+<meta name="description" content="Planejamento editorial, Meta Ads, gestão de perfis e copywriting por Mário Vinicius — Comunicador Visual. Estratégia de conteúdo integrada ao design e à identidade da marca. Porto Alegre/RS.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Mário Vinicius">
+<meta property="og:title" content="Social Media — Mário Vinicius | Comunicador Visual">
+<meta property="og:description" content="Calendário editorial, campanhas de Meta Ads e gestão de perfis institucionais. Estratégia digital integrada ao design e à produção audiovisual.">
+<meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/social-media.html">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Mário Vinicius — Comunicador Visual">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vídeos — Mário Vinicius | Produção Audiovisual">
-<meta name="twitter:description" content="Vídeos institucionais, coberturas de eventos e produções autorais. Processo completo do roteiro à entrega final.">
-<link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/videos.html">
+<meta name="twitter:title" content="Social Media — Mário Vinicius | Comunicador Visual">
+<meta name="twitter:description" content="Calendário editorial, campanhas de Meta Ads e gestão de perfis institucionais.">
+<link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/social-media.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -215,7 +214,7 @@
     align-items: end;
   }
 
-  .hero-left { /* coluna esquerda */ }
+  .hero-left { /* coluna esquerda — label + título + desc */ }
 
   .hero-label {
     font-size: 0.7rem;
@@ -228,7 +227,7 @@
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(5rem, 9vw, 9rem);
-    line-height: 1;
+    line-height: 0.88;
     letter-spacing: 0.02em;
     color: var(--branco);
     margin-bottom: 28px;
@@ -242,6 +241,7 @@
     font-weight: 300;
   }
 
+  /* coluna direita — elemento decorativo */
   .hero-right-deco {
     display: flex;
     flex-direction: column;
@@ -319,298 +319,110 @@
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: calc(100% - 40px); }
 
-  /* ── COBERTURAS ── */
-  .cobertura-block {
-    margin-bottom: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .cobertura-block:last-child { border-bottom: none; }
-
-  .cobertura-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 24px 0;
-  }
-
-  .cobertura-titulo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.05em;
-    color: var(--branco);
-  }
-
-  .cobertura-sub {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--vermelho);
-  }
-
-  .cobertura-count {
-    font-size: 0.7rem;
-    color: var(--cinza);
-    letter-spacing: 0.1em;
-    margin-left: auto;
-  }
-
-  /* ── ACCORDION ── */
-  .cobertura-toggle {
-    width: 100%;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
-  }
-
-  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
-
-  .accordion-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px; height: 32px;
-    border: 1px solid rgba(255,255,255,0.12);
-    margin-left: 16px;
-    flex-shrink: 0;
-    transition: background .2s, border-color .2s;
-  }
-
-  .accordion-icon svg {
-    width: 14px; height: 14px;
-    stroke: var(--cinza); fill: none; stroke-width: 2;
-    transition: stroke .2s, transform .35s ease;
-  }
-
-  .cobertura-toggle:hover .accordion-icon { background: rgba(192,57,43,0.12); border-color: var(--vermelho); }
-  .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
-
-  .cobertura-block.open .accordion-icon { background: var(--vermelho); border-color: var(--vermelho); }
-  .cobertura-block.open .accordion-icon svg { stroke: var(--branco); transform: rotate(180deg); }
-
-  .cobertura-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .cobertura-block.open .cobertura-body { max-height: 99999px; }
-
-  .cobertura-body-inner {
-    padding-top: 28px;
-    padding-bottom: 36px;
-  }
-
-  /* ── VÍDEO GRID ── */
-  .video-grid {
+  /* ── INFO CARDS ── */
+  .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 24px;
   }
 
-  .video-card {
-    background: var(--cinza-escuro);
-    border: 1px solid rgba(255,255,255,0.06);
-    overflow: hidden;
-    transition: border-color 0.25s;
+  .info-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s;
   }
 
-  .video-card:hover { border-color: rgba(192,57,43,0.35); }
-
-  .video-embed-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    background: #000;
+  .info-card:hover {
+    border-color: rgba(192,57,43,0.4);
+    background: rgba(192,57,43,0.04);
   }
 
-  .video-embed-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
-  }
-
-  .video-card-info {
-    padding: 20px 24px 24px;
-  }
-
-  .video-card-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--vermelho);
-    margin-bottom: 8px;
-  }
-
-  .video-card-title {
+  .info-card-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.05em;
-    color: var(--branco);
-    margin-bottom: 8px;
-    line-height: 1.1;
-  }
-
-  .video-card-desc {
-    font-size: 0.85rem;
-    color: var(--cinza);
-    line-height: 1.6;
-  }
-
-  /* ── VÍDEO THUMBNAIL + LIGHTBOX ── */
-  .video-thumb-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    background: #000;
-    cursor: pointer;
-  }
-
-  .video-thumb-wrap img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, filter 0.3s ease;
-    filter: brightness(0.75);
-  }
-
-  .video-card:hover .video-thumb-wrap img {
-    transform: scale(1.04);
-    filter: brightness(0.55);
-  }
-
-  .video-play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 64px; height: 64px;
-    background: var(--vermelho);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--branco);
-    transition: background 0.25s, transform 0.25s;
-    pointer-events: none;
-  }
-
-  .video-play-btn svg {
-    width: 24px; height: 24px;
-    margin-left: 4px;
-  }
-
-  .video-card:hover .video-play-btn {
-    background: var(--vermelho-dark);
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-
-  /* ── MODAL ── */
-  .video-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .video-modal.open { display: flex; }
-
-  .video-modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    cursor: pointer;
-  }
-
-  .video-modal-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 860px;
-    background: var(--cinza-escuro);
-    border: 1px solid rgba(255,255,255,0.08);
-    overflow: hidden;
-  }
-
-  .video-modal-close {
-    position: absolute;
-    top: 12px; right: 12px;
-    z-index: 10;
-    background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--branco);
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 1;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .video-modal-close:hover {
-    background: var(--vermelho);
-    border-color: var(--vermelho);
-  }
-
-  .video-modal-player {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    background: #000;
-  }
-
-  .video-modal-player iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
-  }
-
-  .video-modal-card {
-    padding: 24px 28px 28px;
-    border-top: 2px solid var(--vermelho);
-  }
-
-  .video-modal-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--vermelho);
-    margin-bottom: 8px;
-  }
-
-  .video-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
     color: var(--branco);
     margin-bottom: 10px;
-    line-height: 1.1;
   }
 
-  .video-modal-desc {
-    font-size: 0.875rem;
+  .info-card-desc {
+    font-size: 0.85rem;
     color: var(--cinza);
     line-height: 1.65;
   }
 
-  /* ── EMPTY STATE ── */
-  .grid-empty {
-    padding: 56px 32px;
-    text-align: center;
-    color: rgba(255,255,255,0.15);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+  /* ── TAB DESCRIPTION ── */
+  .tab-desc {
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.75;
+    max-width: 680px;
+    margin-bottom: 8px;
+  }
+
+  /* ── EXPERIENCE BLOCK ── */
+  .experiencia-block {
+    padding: 60px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .experiencia-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 60px;
+    align-items: start;
+  }
+
+  .experiencia-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    border: 1px dashed rgba(255,255,255,0.08);
+    color: var(--vermelho);
+    margin-bottom: 10px;
+  }
+
+  .experiencia-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    letter-spacing: 0.05em;
+    color: var(--branco);
+    margin-bottom: 16px;
+  }
+
+  .experiencia-text {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.75;
+  }
+
+  .experiencia-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .experiencia-list li {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .experiencia-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--vermelho);
+    font-size: 0.6rem;
+    top: 3px;
   }
 
   /* ── TABS CONTENT ── */
@@ -626,13 +438,7 @@
     align-items: center;
     margin-top: 80px;
   }
-
-  footer p {
-    font-size: 0.75rem;
-    color: var(--cinza);
-    letter-spacing: 0.08em;
-  }
-
+  footer p { font-size: 0.75rem; color: var(--cinza); letter-spacing: 0.08em; }
   footer a { color: var(--vermelho); text-decoration: none; }
   footer a:hover { color: var(--branco); }
 
@@ -657,50 +463,20 @@
     .hero p { max-width: 100%; margin: 0 auto; }
 
     .tab-section { padding: 0 24px 40px; }
-    .tabs { margin-bottom: 32px; }
+    .tabs { margin-bottom: 0; }
+    .tab-content { padding-top: 32px; }
     .tab-btn { padding: 14px 16px; font-size: 1rem; }
     .tab-btn.active::after { width: calc(100% - 32px); }
 
-    .cobertura-header { flex-wrap: wrap; gap: 8px; padding: 20px 0; }
-    .cobertura-count { margin-left: 0; }
-    .cobertura-titulo { font-size: 1.3rem; }
+    .info-grid { grid-template-columns: 1fr; gap: 14px; }
+    .experiencia-block { padding: 40px 24px; }
+    .experiencia-inner { grid-template-columns: 1fr; gap: 24px; }
 
-    .video-grid { grid-template-columns: 1fr; gap: 16px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 
   @media (max-width: 420px) {
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
-  }
-
-  /* ── VIDEO MODAL — ficha de processo ── */
-  .video-modal-processo {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .video-processo-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .video-processo-label {
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(192,57,43,0.7);
-  }
-  .video-processo-value {
-    font-size: 0.82rem;
-    color: var(--branco);
-    font-weight: 500;
-  }
-  @media (max-width: 600px) {
-    .video-modal-processo { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -721,9 +497,9 @@
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
           <a href="fotografia.html" role="menuitem">Fotografia</a>
-          <a href="videos.html" role="menuitem" aria-current="page">Vídeos</a>
+          <a href="videos.html" role="menuitem">Vídeos</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
-          <a href="social-media.html" role="menuitem">Social Media</a>
+          <a href="social-media.html" role="menuitem" aria-current="page">Social Media</a>
         </div>
       </li>
       <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -750,9 +526,9 @@
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
         <a href="fotografia.html">Fotografia</a>
-        <a href="videos.html" class="active">Vídeos</a>
+        <a href="videos.html">Vídeos</a>
         <a href="pecas-graficas.html">Peças Gráficas</a>
-        <a href="social-media.html">Social Media</a>
+        <a href="social-media.html" class="active">Social Media</a>
       </div>
     </li>
     <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -763,131 +539,147 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Produção Audiovisual</p>
-    <h1>Vídeos</h1>
-    <p>Narrativa audiovisual do briefing à entrega final. Vídeos institucionais, coberturas de eventos e produções autorais, com domínio de captação, roteiro, edição e pós-produção.</p>
+    <p class="hero-label">Estratégia Digital</p>
+    <h1>Social<br>Media</h1>
+    <p>Do planejamento ao resultado. Calendário editorial, campanhas de Meta Ads, copywriting e gestão de perfis — tudo integrado à identidade visual e aos objetivos da marca.</p>
   </div>
   <div class="hero-right-deco">
-    <div class="hero-deco-num">©</div>
+    <div class="hero-deco-num">✦</div>
     <div class="hero-deco-tags">
-      <span class="hero-deco-tag">Vídeo Institucional</span>
-      <span class="hero-deco-tag">Captação & Edição</span>
-      <span class="hero-deco-tag">Pós-produção</span>
+      <span class="hero-deco-tag">Planejamento Editorial</span>
+      <span class="hero-deco-tag">Meta Ads</span>
+      <span class="hero-deco-tag">Copywriting</span>
+      <span class="hero-deco-tag">Gestão de Perfis</span>
     </div>
   </div>
 </section>
 
-<!-- TABS + CONTEÚDO -->
+<!-- TABS + CONTENT -->
 <section class="tab-section">
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="tab-verte">Verte Saúde</button>
-    <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
+    <button class="tab-btn active" data-tab="tab-editorial">Planejamento Editorial</button>
+    <button class="tab-btn" data-tab="tab-campanhas">Campanhas &amp; Meta Ads</button>
+    <button class="tab-btn" data-tab="tab-gestao">Gestão de Perfis</button>
+    <button class="tab-btn" data-tab="tab-copy">Copywriting</button>
   </div>
 
-  <!-- VERTE SAÚDE -->
-  <div class="tab-content active" id="tab-verte">
-
-    <div class="video-grid">
-
-      <div class="video-card"
-        data-video-id="WqZssbpJstY"
-        data-video-title="Vídeo Institucional Verte Saúde"
-        data-video-label="Vídeo Institucional · Verte Saúde · 2024"
-        data-video-desc="Vídeo institucional produzido para apresentação da Verte Saúde, organização de saúde sediada em Porto Alegre/RS. Responsável pelo processo completo: pré-produção (roteiro e planejamento de cenas), captação (direção e operação de câmera) e pós-produção (edição, color grading e finalização). Peça utilizada em apresentações institucionais para conselhos e parceiros estratégicos."
-        data-video-cliente="Verte Saúde"
-        data-video-entrega="Vídeo institucional, 2024"
-        data-video-processo="Roteiro · Captação · Edição · Color grading"
-        data-video-objetivo="Apresentar a Verte Saúde para conselhos diretivos e parceiros estratégicos"
-        data-video-papel="Responsável completo: pré-produção, captação e pós-produção"
-        data-video-resultado="Uso institucional em apresentações para conselho diretivo e parceiros estratégicos">
-        <div class="video-thumb-wrap">
-          <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="Vídeo Institucional Verte Saúde" loading="lazy">
-          <div class="video-play-btn" aria-label="Reproduzir vídeo">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-        </div>
-        <div class="video-card-info">
-          <p class="video-card-label">Vídeo Institucional · Verte Saúde · 2024</p>
-          <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
-          <p class="video-card-desc">Processo completo de produção: roteiro, captação e edição. Peça de apresentação institucional da Verte Saúde, utilizada com conselhos e parceiros estratégicos em 2024.</p>
-        </div>
+  <!-- Tab 1 — Planejamento Editorial -->
+  <div class="tab-content active" id="tab-editorial">
+    <p class="tab-desc">Criação de calendários editoriais mensais, definição de pautas, roteiros e diretrizes criativas alinhadas ao posicionamento da marca e ao público-alvo.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Calendário Editorial</div>
+        <p class="info-card-desc">Organização mensal de conteúdos por tema, formato e canal, com antecedência suficiente para produção e revisão.</p>
       </div>
-
-    </div>
-
-  </div><!-- /tab-verte -->
-
-  <!-- AUTORAL -->
-  <div class="tab-content" id="tab-autoral">
-
-    <div class="video-grid">
-      <div class="grid-empty" style="display:flex; flex-direction:column; align-items:center; gap:20px; padding:64px 32px; border:1px dashed rgba(192,57,43,0.2); text-align:center;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.5)" stroke-width="1.5">
-          <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.5)" stroke="none"/>
-        </svg>
-        <div>
-          <p style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:8px;">Produções em curadoria</p>
-          <p style="font-size:0.8rem; color:rgba(255,255,255,0.25); letter-spacing:0.05em; max-width:360px; line-height:1.65;">
-            Projetos autorais em fase de seleção e pós-produção.<br>Disponíveis sob solicitação mediante contato.
-          </p>
-        </div>
-        <a href="index.html#contato" style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--vermelho); text-decoration:none; border:1px solid rgba(192,57,43,0.3); padding:10px 20px; transition:all 0.2s;">
-          Solicitar exemplos →
-        </a>
+      <div class="info-card">
+        <div class="info-card-title">Pauta &amp; Briefing</div>
+        <p class="info-card-desc">Definição de temas, referências visuais e objetivos de comunicação para cada publicação.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Roteiros</div>
+        <p class="info-card-desc">Textos guia para Reels, stories e vídeos institucionais, com linguagem adequada ao tom de voz da marca.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Diretrizes Criativas</div>
+        <p class="info-card-desc">Padronização visual de feed, paleta, tipografia e templates para consistência entre publicações.</p>
       </div>
     </div>
+  </div>
 
-  </div><!-- /tab-autoral -->
+  <!-- Tab 2 — Campanhas & Meta Ads -->
+  <div class="tab-content" id="tab-campanhas">
+    <p class="tab-desc">Planejamento e operação de campanhas pagas no Meta Ads com foco em alcance institucional, engajamento e geração de leads.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Meta Ads</div>
+        <p class="info-card-desc">Criação e gerenciamento de campanhas no Facebook e Instagram Ads via Meta Business Suite.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Segmentação</div>
+        <p class="info-card-desc">Definição de público-alvo, objetivos de campanha e orçamento por resultado esperado.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Criativos</div>
+        <p class="info-card-desc">Desenvolvimento das peças visuais e textos dos anúncios, alinhados ao objetivo de cada campanha.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Análise</div>
+        <p class="info-card-desc">Acompanhamento de métricas via Meta Business Suite e Google Analytics para otimização contínua.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 3 — Gestão de Perfis -->
+  <div class="tab-content" id="tab-gestao">
+    <p class="tab-desc">Operação completa dos perfis institucionais: publicações, agendamento, padronização visual e manutenção da identidade da marca no ambiente digital.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Publicação &amp; Agendamento</div>
+        <p class="info-card-desc">Postagem e agendamento de conteúdos com consistência de frequência e horários estratégicos.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Padronização Visual</div>
+        <p class="info-card-desc">Identidade coerente entre posts, highlights, capa e bio, seguindo o manual da marca.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Gestão de Feed</div>
+        <p class="info-card-desc">Curadoria visual do feed para garantir coerência estética e narrativa ao longo do tempo.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Interação</div>
+        <p class="info-card-desc">Monitoramento de comentários e mensagens com respostas alinhadas ao posicionamento institucional.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 4 — Copywriting -->
+  <div class="tab-content" id="tab-copy">
+    <p class="tab-desc">Criação de textos para posts, legendas, anúncios e roteiros, com linguagem adequada ao canal, ao público e ao tom de voz da organização.</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Legendas &amp; Posts</div>
+        <p class="info-card-desc">Textos de feed com chamada para ação, hashtags e linguagem adaptada ao contexto institucional.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Anúncios</div>
+        <p class="info-card-desc">Copy para campanhas pagas com foco em conversão e clareza de mensagem.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Roteiros</div>
+        <p class="info-card-desc">Textos narrativos para vídeos e Reels institucionais, com estrutura de apresentação, conflito e solução.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Tom de Voz</div>
+        <p class="info-card-desc">Adaptação da linguagem ao perfil da organização: profissional, acessível e consistente.</p>
+      </div>
+    </div>
+  </div>
 
 </section>
 
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo">
-  <div class="video-modal-overlay" id="videoModalOverlay"></div>
-  <div class="video-modal-content">
-    <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
-    <div class="video-modal-player">
-      <iframe id="modalIframe" src="" title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<!-- EXPERIÊNCIA REAL -->
+<section class="experiencia-block">
+  <div class="experiencia-inner">
+    <div>
+      <p class="experiencia-label">Na prática</p>
+      <h2 class="experiencia-title">Verte Saúde · 2024–Atual</h2>
+      <p class="experiencia-text">Responsável pela gestão completa dos perfis institucionais da operadora de saúde: planejamento editorial mensal, produção de conteúdo, campanhas pagas e relatórios de desempenho. Mais de 12 meses de operação contínua com consistência visual e alinhamento estratégico.</p>
     </div>
-    <div class="video-modal-card">
-      <p class="video-modal-label" id="modalLabel"></p>
-      <h3 class="video-modal-title" id="modalTitle"></h3>
-      <p class="video-modal-desc" id="modalDesc"></p>
-      <div class="video-modal-processo" id="modalProcesso" style="display:none;">
-        <div class="video-processo-item">
-          <span class="video-processo-label">Cliente</span>
-          <span class="video-processo-value" id="modalCliente"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Entrega</span>
-          <span class="video-processo-value" id="modalEntrega"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Processo</span>
-          <span class="video-processo-value" id="modalProcessoDesc"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Objetivo</span>
-          <span class="video-processo-value" id="modalObjetivo"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Meu papel</span>
-          <span class="video-processo-value" id="modalPapel"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Resultado</span>
-          <span class="video-processo-value" id="modalResultado"></span>
-        </div>
-      </div>
+    <div>
+      <ul class="experiencia-list">
+        <li>Calendários editoriais mensais entregues sem atraso</li>
+        <li>Campanhas sazonais (Dia da Saúde, eventos corporativos, datas comemorativas)</li>
+        <li>Integração entre design, vídeo e copy na mesma entrega</li>
+        <li>Uso de Meta Business Suite e Google Analytics para análise</li>
+      </ul>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
-  <p>Feito com <strong>propósito</strong></p>
+  <p>© 2026 Mário Vinicius — <a href="index.html">Comunicador Visual</a></p>
+  <p>Porto Alegre/RS</p>
 </footer>
 
 <script>
@@ -900,72 +692,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById(btn.dataset.tab).classList.add('active');
   });
 });
-
-// ── VIDEO LIGHTBOX ──
-const modal = document.getElementById('videoModal');
-const modalOverlay = document.getElementById('videoModalOverlay');
-const modalClose = document.getElementById('videoModalClose');
-const modalIframe = document.getElementById('modalIframe');
-const modalLabel = document.getElementById('modalLabel');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-
-function openVideoModal(videoId, title, label, desc, cliente, entrega, processo, objetivo, papel, resultado) {
-  if (!/^[\w-]+$/.test(videoId)) return;
-  const scrollY = window.scrollY;
-  modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  modalIframe.title = title;
-  modalLabel.textContent = label;
-  modalTitle.textContent = title;
-  modalDesc.textContent = desc;
-  const processoEl = document.getElementById('modalProcesso');
-  if (processoEl) {
-    if (cliente || entrega || processo || objetivo || papel || resultado) {
-      document.getElementById('modalCliente').textContent = cliente || '—';
-      document.getElementById('modalEntrega').textContent = entrega || '—';
-      document.getElementById('modalProcessoDesc').textContent = processo || '—';
-      const objEl = document.getElementById('modalObjetivo');
-      const papelEl = document.getElementById('modalPapel');
-      const resultadoEl = document.getElementById('modalResultado');
-      if (objEl) objEl.textContent = objetivo || '—';
-      if (papelEl) papelEl.textContent = papel || '—';
-      if (resultadoEl) resultadoEl.textContent = resultado || '—';
-      processoEl.style.display = 'grid';
-    } else {
-      processoEl.style.display = 'none';
-    }
-  }
-  modal.classList.add('open');
-  modal.dataset.scrollY = scrollY;
-  document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-  modal.classList.remove('open');
-  modalIframe.src = '';
-  document.body.style.overflow = '';
-}
-
-document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => {
-    openVideoModal(
-      card.dataset.videoId,
-      card.dataset.videoTitle,
-      card.dataset.videoLabel,
-      card.dataset.videoDesc,
-      card.dataset.videoCliente || '',
-      card.dataset.videoEntrega || '',
-      card.dataset.videoProcesso || '',
-      card.dataset.videoObjetivo || '',
-      card.dataset.videoPapel || '',
-      card.dataset.videoResultado || ''
-    );
-  });
-});
-
-modalOverlay.addEventListener('click', closeVideoModal);
-modalClose.addEventListener('click', closeVideoModal);
 
 // ── HAMBÚRGUER + DRAWER ──
 const hamburger = document.getElementById('navHamburger');
@@ -1003,11 +729,9 @@ if (drawerCasesBtn && drawerCasesBody) {
   });
 }
 
+// fechar dropdown ao pressionar Escape
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeDrawer();
-    closeVideoModal();
-  }
+  if (e.key === 'Escape') closeDrawer();
 });
 
 // ── DROPDOWN NAV — acessibilidade teclado ──
