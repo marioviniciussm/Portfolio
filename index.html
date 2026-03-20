@@ -651,6 +651,43 @@
     .timeline-role { font-size: 22px; }
     .timeline-desc { font-size: 13px; }
   }
+
+  /* Diferenciar Áreas de Atuação */
+  .sobre-areas {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 32px;
+    margin-top: 48px;
+  }
+  .area-tab-btn.active {
+    background: rgba(192,57,43,0.12);
+    color: var(--white);
+  }
+  .area-panel {
+    border-left: 4px solid transparent;
+    padding-left: 20px;
+    transition: border-color 0.2s;
+  }
+  .area-panel[aria-hidden="false"],
+  .area-panel:not([aria-hidden]) {
+    border-left-color: var(--red);
+  }
+
+  /* Diferenciar Trajetória */
+  .experiencia-wrap {
+    border-top: 2px solid rgba(192,57,43,0.5);
+    padding-top: 48px;
+    margin-top: 48px;
+  }
+  .timeline-content {
+    background: rgba(0,0,0,0.2);
+    padding: 20px 24px;
+    border-left: 2px solid rgba(192,57,43,0.3);
+    transition: border-color 0.2s;
+  }
+  .timeline-item:hover .timeline-content {
+    border-left-color: var(--red);
+  }
 </style>
 </head>
 <body>
@@ -778,10 +815,10 @@
       <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
     </div>
     <div class="sobre-stats">
-      <div class="stat-block"><div class="stat-num">2</div><div class="stat-label">Anos de experiência</div></div>
+      <div class="stat-block"><div class="stat-num">2024</div><div class="stat-label">Início na Verte Saúde</div></div>
       <div class="stat-block"><div class="stat-num">10+</div><div class="stat-label">Ferramentas dominadas</div></div>
-      <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Disciplinas integradas</div></div>
-      <div class="stat-block"><div class="stat-num">50+</div><div class="stat-label">Peças produzidas</div></div>
+      <div class="stat-block"><div class="stat-num">3</div><div class="stat-label">Áreas de atuação</div></div>
+      <div class="stat-block"><div class="stat-num">2026</div><div class="stat-label">Formatura prevista em Produção Audiovisual</div></div>
     </div>
   </div>
 
@@ -799,7 +836,7 @@
 
     <div class="area-panel active" id="area-com-inst" role="tabpanel">
       <h3 class="area-panel-title">Comunicação institucional na prática</h3>
-      <p class="area-panel-text">Desde 2022, atuo na Verte Saúde produzindo comunicação visual institucional de forma contínua, atendendo demandas reais com consistência e alinhamento à identidade da organização.</p>
+      <p class="area-panel-text">Desde 2024, atuo na Verte Saúde produzindo comunicação visual institucional de forma contínua, atendendo demandas reais com consistência e alinhamento à identidade da organização.</p>
       <ul class="area-panel-list">
         <li>Campanhas internas e externas</li>
         <li>Relatórios e publicações institucionais</li>
@@ -1020,24 +1057,24 @@
       </div>
     </div>
   </div>
-  <p class="section-label">Ferramentas</p>
-  <h2 class="section-title">Ferramentas &amp; Software</h2>
+  <p class="section-label">Ferramentas e competências</p>
+  <h2 class="section-title">Habilidades</h2>
   <div class="skills-grid">
 
-    <!-- Produção Visual -->
+    <!-- Design Gráfico/Digital -->
     <div class="skill-block">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        Produção Visual
+        Design Gráfico/Digital
       </div>
       <div class="skill-tags">
-        <span class="skill-tag">After Effects</span>
-        <span class="skill-tag">Premiere Pro</span>
         <span class="skill-tag">Photoshop</span>
         <span class="skill-tag">Illustrator</span>
         <span class="skill-tag">InDesign</span>
         <span class="skill-tag">Lightroom</span>
         <span class="skill-tag">Identidade Visual</span>
+        <span class="skill-tag">Affinity</span>
+        <span class="skill-tag">Adobe Express</span>
       </div>
     </div>
 
@@ -1052,6 +1089,10 @@
         <span class="skill-tag">Câmera DSLR/Mirrorless</span>
         <span class="skill-tag">Captação de áudio</span>
         <span class="skill-tag">Iluminação básica</span>
+        <span class="skill-tag">After Effects</span>
+        <span class="skill-tag">Premiere Pro</span>
+        <span class="skill-tag">Darktable</span>
+        <span class="skill-tag">Aftershoot</span>
       </div>
     </div>
 
@@ -1066,15 +1107,16 @@
         <span class="skill-tag">Meta Ads</span>
         <span class="skill-tag">Google Analytics</span>
         <span class="skill-tag">Planejamento editorial</span>
-        <span class="skill-tag">Hootsuite</span>
+        <span class="skill-tag">Mailchimp</span>
+        <span class="skill-tag">IAGente</span>
       </div>
     </div>
 
-    <!-- Gestão & UX -->
+    <!-- Gestão & UX/UI -->
     <div class="skill-block">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 0 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
-        Gestão &amp; UX
+        Gestão &amp; UX/UI
       </div>
       <div class="skill-tags">
         <span class="skill-tag">Figma</span>
@@ -1082,6 +1124,9 @@
         <span class="skill-tag">ClickUp</span>
         <span class="skill-tag">Canva</span>
         <span class="skill-tag">Notion</span>
+        <span class="skill-tag">Google Planilhas</span>
+        <span class="skill-tag">Adobe Dreamweaver</span>
+        <span class="skill-tag">Marvel App</span>
       </div>
     </div>
 
