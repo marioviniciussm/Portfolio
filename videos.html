@@ -577,6 +577,13 @@
     border: none;
   }
 
+  /* modal vertical para Shorts/Reels */
+  .video-modal-content.is-vertical { max-width: 420px; }
+  .video-modal-content.is-vertical .video-modal-player { padding-bottom: 177.78%; }
+
+  /* thumbnail vertical no card */
+  .video-thumb-wrap.is-vertical { padding-bottom: 177.78%; }
+
   .video-modal-card {
     padding: 24px 28px 28px;
     border-top: 2px solid var(--vermelho);
@@ -823,6 +830,46 @@
         </div>
       </div>
 
+      <!-- Reel HED -->
+      <div class="video-card"
+        data-video-id="uXasY-DPo3I"
+        data-video-vertical="true"
+        data-video-title="Emergência HED — Hospital Ernesto Dornelles"
+        data-video-label="Reel Institucional · Verte Saúde · Set 2025"
+        data-video-desc="Reel produzido para divulgação da Emergência do Hospital Ernesto Dornelles, hospital próprio da Verte|Saúde. Edição, pós-produção e publicação. Maior alcance do perfil no período: 5.896 visualizações e 3.264 pessoas alcançadas, acima da média histórica."
+        data-video-cliente="Verte Saúde"
+        data-video-entrega="Reel Instagram · Set 2025"
+        data-video-processo="Edição · Pós-produção · Publicação"
+        data-video-objetivo="Divulgar a Emergência do HED para o público da Verte Saúde"
+        data-video-papel="Edição, pós-produção e publicação"
+        data-video-resultado="5.896 visualizações · 3.264 alcance · 229 interações — acima da média do perfil">
+        <div class="video-thumb-wrap is-vertical">
+          <img src="https://img.youtube.com/vi/uXasY-DPo3I/maxresdefault.jpg" alt="Reel — Emergência HED Hospital Ernesto Dornelles" loading="lazy">
+          <div class="video-play-btn" aria-label="Reproduzir vídeo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+        </div>
+        <div class="video-card-info">
+          <p class="video-card-label">Reel Institucional · Verte Saúde · Set 2025</p>
+          <h3 class="video-card-title">Emergência HED — Hospital Ernesto Dornelles</h3>
+          <p class="video-card-desc">Edição e publicação. Maior alcance do perfil no período — 5.896 visualizações e 3.264 alcance, acima da média histórica.</p>
+          <div style="display:flex; gap:20px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06);">
+            <div>
+              <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Visualizações</div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">5.896</div>
+            </div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Alcance</div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">3.264</div>
+            </div>
+            <div>
+              <div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Interações</div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">229</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div><!-- /tab-verte -->
@@ -958,6 +1005,13 @@ function closeVideoModal() {
 document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
   card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
+    const isVertical = card.dataset.videoVertical === 'true';
+    const modalContent = document.querySelector('.video-modal-content');
+    if (isVertical) {
+      modalContent.classList.add('is-vertical');
+    } else {
+      modalContent.classList.remove('is-vertical');
+    }
     openVideoModal(
       card.dataset.videoId,
       card.dataset.videoTitle,
