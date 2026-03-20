@@ -3,14 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vídeos — Mário Vinicius | Produção Audiovisual Institucional | Porto Alegre</title>
-<meta name="description" content="Produções audiovisuais de Mário Vinicius — vídeos institucionais, coberturas e produções autorais. Captação, edição e pós-produção em Porto Alegre/RS.">
-<meta property="og:title" content="Vídeos — Mário Vinicius">
-<meta property="og:image" content="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg">
+<title>Design Gráfico — Mário Vinicius | Comunicador Visual · Porto Alegre</title>
+<meta name="description" content="Design gráfico por Mário Vinicius — Comunicador Visual. Identidade visual, peças editoriais, social media e campanhas. Projetos autorais e para marcas. Porto Alegre/RS.">
+<meta property="og:title" content="Design Gráfico — Mário Vinicius | Comunicador Visual">
+<meta property="og:description" content="Identidade visual, editorial, social media e campanhas. Design orientado à mensagem: cada entrega conectada ao posicionamento da marca.">
+<meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/design.html">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/design.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="shortcut icon" href="favicon.png?v=2">
+<link rel="apple-touch-icon" href="favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -202,7 +207,7 @@
     align-items: end;
   }
 
-  .hero-left { /* coluna esquerda */ }
+  .hero-left { /* coluna esquerda — label + título + desc */ }
 
   .hero-label {
     font-size: 0.7rem;
@@ -215,7 +220,7 @@
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(5rem, 9vw, 9rem);
-    line-height: 1;
+    line-height: 0.88;
     letter-spacing: 0.02em;
     color: var(--branco);
     margin-bottom: 28px;
@@ -229,6 +234,7 @@
     font-weight: 300;
   }
 
+  /* coluna direita — elemento decorativo */
   .hero-right-deco {
     display: flex;
     flex-direction: column;
@@ -306,7 +312,7 @@
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: calc(100% - 40px); }
 
-  /* ── COBERTURAS ── */
+  /* ── ACCORDION ── */
   .cobertura-block {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -319,6 +325,8 @@
     align-items: center;
     gap: 20px;
     padding: 24px 0;
+    border-bottom: none;
+    margin-bottom: 0;
   }
 
   .cobertura-titulo {
@@ -328,7 +336,7 @@
     color: var(--branco);
   }
 
-  .cobertura-sub {
+  .cobertura-data {
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -342,7 +350,6 @@
     margin-left: auto;
   }
 
-  /* ── ACCORDION ── */
   .cobertura-toggle {
     width: 100%;
     background: none;
@@ -352,252 +359,196 @@
     text-align: left;
   }
 
+  .cobertura-toggle .cobertura-header {
+    transition: border-color .25s;
+  }
+
   .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
+  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
 
   .accordion-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px; height: 32px;
+    width: 32px;
+    height: 32px;
     border: 1px solid rgba(255,255,255,0.12);
     margin-left: 16px;
     flex-shrink: 0;
-    transition: background .2s, border-color .2s;
+    transition: background .2s, border-color .2s, transform .35s ease;
   }
 
   .accordion-icon svg {
-    width: 14px; height: 14px;
-    stroke: var(--cinza); fill: none; stroke-width: 2;
+    width: 14px;
+    height: 14px;
+    stroke: var(--cinza);
+    fill: none;
+    stroke-width: 2;
     transition: stroke .2s, transform .35s ease;
   }
 
-  .cobertura-toggle:hover .accordion-icon { background: rgba(192,57,43,0.12); border-color: var(--vermelho); }
+  .cobertura-toggle:hover .accordion-icon {
+    background: rgba(192,57,43,0.12);
+    border-color: var(--vermelho);
+  }
+
   .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
 
-  .cobertura-block.open .accordion-icon { background: var(--vermelho); border-color: var(--vermelho); }
-  .cobertura-block.open .accordion-icon svg { stroke: var(--branco); transform: rotate(180deg); }
+  /* estado aberto */
+  .cobertura-block.open .accordion-icon {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+  .cobertura-block.open .accordion-icon svg {
+    stroke: var(--branco);
+    transform: rotate(180deg);
+  }
 
+  /* corpo do accordion */
   .cobertura-body {
     overflow: hidden;
     max-height: 0;
     transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .cobertura-block.open .cobertura-body { max-height: 99999px; }
+  .cobertura-block.open .cobertura-body {
+    max-height: 99999px;
+  }
 
   .cobertura-body-inner {
     padding-top: 28px;
-    padding-bottom: 36px;
+    padding-bottom: 8px;
   }
 
-  /* ── VÍDEO GRID ── */
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 24px;
+  /* ── MASONRY GRID ── */
+  .grid-masonry {
+    columns: 3;
+    column-gap: 8px;
   }
 
-  .video-card {
-    background: var(--cinza-escuro);
-    border: 1px solid rgba(255,255,255,0.06);
-    overflow: hidden;
-    transition: border-color 0.25s;
-  }
+  @media (max-width: 900px) { .grid-masonry { columns: 2; } }
+  @media (max-width: 560px) { .grid-masonry { columns: 1; } }
 
-  .video-card:hover { border-color: rgba(192,57,43,0.35); }
-
-  .video-embed-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    background: #000;
-  }
-
-  .video-embed-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
-  }
-
-  .video-card-info {
-    padding: 20px 24px 24px;
-  }
-
-  .video-card-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--vermelho);
+  .grid-item {
+    break-inside: avoid;
     margin-bottom: 8px;
-  }
-
-  .video-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.05em;
-    color: var(--branco);
-    margin-bottom: 8px;
-    line-height: 1.1;
-  }
-
-  .video-card-desc {
-    font-size: 0.85rem;
-    color: var(--cinza);
-    line-height: 1.6;
-  }
-
-  /* ── VÍDEO THUMBNAIL + LIGHTBOX ── */
-  .video-thumb-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
     overflow: hidden;
-    background: #000;
     cursor: pointer;
+    position: relative;
   }
 
-  .video-thumb-wrap img {
+  .grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform .4s ease, filter .4s ease;
+    filter: brightness(0.92);
+  }
+
+  .grid-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1);
+  }
+
+  .grid-item::after {
+    content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, filter 0.3s ease;
-    filter: brightness(0.75);
-  }
-
-  .video-card:hover .video-thumb-wrap img {
-    transform: scale(1.04);
-    filter: brightness(0.55);
-  }
-
-  .video-play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 64px; height: 64px;
-    background: var(--vermelho);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--branco);
-    transition: background 0.25s, transform 0.25s;
+    inset: 0;
+    background: rgba(192,57,43,0);
+    transition: background .3s;
     pointer-events: none;
   }
 
-  .video-play-btn svg {
-    width: 24px; height: 24px;
-    margin-left: 4px;
+  .grid-item:hover::after {
+    background: rgba(192,57,43,0.08);
   }
 
-  .video-card:hover .video-play-btn {
-    background: var(--vermelho-dark);
-    transform: translate(-50%, -50%) scale(1.1);
+  /* ── GRID VAZIO ── */
+  .grid-empty {
+    padding: 48px 0 24px;
+    color: rgba(255,255,255,0.18);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
 
-  /* ── MODAL ── */
-  .video-modal {
+  /* ── LIGHTBOX ── */
+  .lightbox {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 200;
+    background: rgba(0,0,0,0.96);
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    flex-direction: column;
   }
 
-  .video-modal.open { display: flex; }
-
-  .video-modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    cursor: pointer;
+  .lightbox.open {
+    display: flex;
+    animation: fadeIn .2s ease;
   }
 
-  .video-modal-content {
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .lightbox-img-wrap {
     position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 860px;
-    background: var(--cinza-escuro);
-    border: 1px solid rgba(255,255,255,0.08);
-    overflow: hidden;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .video-modal-close {
-    position: absolute;
-    top: 12px; right: 12px;
-    z-index: 10;
-    background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--branco);
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    line-height: 1;
-    transition: background 0.2s, border-color 0.2s;
+  .lightbox-img-wrap img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
   }
 
-  .video-modal-close:hover {
-    background: var(--vermelho);
-    border-color: var(--vermelho);
-  }
-
-  .video-modal-player {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    background: #000;
-  }
-
-  .video-modal-player iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+  .lightbox-close {
+    position: fixed;
+    top: 24px; right: 32px;
+    background: none;
     border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color .2s;
+    z-index: 210;
   }
 
-  .video-modal-card {
-    padding: 24px 28px 28px;
-    border-top: 2px solid var(--vermelho);
+  .lightbox-close:hover { color: var(--branco); }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: color .2s;
+    z-index: 210;
+    line-height: 1;
   }
 
-  .video-modal-label {
-    font-size: 0.65rem;
-    font-weight: 700;
+  .lightbox-nav:hover { color: var(--branco); }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
     letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
     text-transform: uppercase;
-    color: var(--vermelho);
-    margin-bottom: 8px;
-  }
-
-  .video-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
-    color: var(--branco);
-    margin-bottom: 10px;
-    line-height: 1.1;
-  }
-
-  .video-modal-desc {
-    font-size: 0.875rem;
-    color: var(--cinza);
-    line-height: 1.65;
-  }
-
-  /* ── EMPTY STATE ── */
-  .grid-empty {
-    padding: 56px 32px;
-    text-align: center;
-    color: rgba(255,255,255,0.15);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border: 1px dashed rgba(255,255,255,0.08);
   }
 
   /* ── TABS CONTENT ── */
@@ -620,7 +571,11 @@
     letter-spacing: 0.08em;
   }
 
-  footer a { color: var(--vermelho); text-decoration: none; }
+  footer a {
+    color: var(--vermelho);
+    text-decoration: none;
+  }
+
   footer a:hover { color: var(--branco); }
 
   /* ── MOBILE ── */
@@ -644,7 +599,8 @@
     .hero p { max-width: 100%; margin: 0 auto; }
 
     .tab-section { padding: 0 24px 40px; }
-    .tabs { margin-bottom: 32px; }
+    .tabs { margin-bottom: 0; }
+    .tab-content { padding-top: 32px; }
     .tab-btn { padding: 14px 16px; font-size: 1rem; }
     .tab-btn.active::after { width: calc(100% - 32px); }
 
@@ -652,42 +608,35 @@
     .cobertura-count { margin-left: 0; }
     .cobertura-titulo { font-size: 1.3rem; }
 
-    .video-grid { grid-template-columns: 1fr; gap: 16px; }
+    .grid-masonry { columns: 2; column-gap: 6px; }
+    .grid-item { margin-bottom: 6px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
   }
 
   @media (max-width: 420px) {
+    .grid-masonry { columns: 1; }
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
   }
 
-  /* ── VIDEO MODAL — ficha de processo ── */
-  .video-modal-processo {
+  /* ── CASE INTRO ── */
+  .case-intro {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
   }
-  .video-processo-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .video-processo-label {
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(192,57,43,0.7);
-  }
-  .video-processo-value {
-    font-size: 0.82rem;
-    color: var(--branco);
-    font-weight: 500;
-  }
-  @media (max-width: 600px) {
-    .video-modal-processo { grid-template-columns: 1fr 1fr; }
+  .case-intro-context { display: flex; flex-direction: column; gap: 12px; }
+  .case-intro-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vermelho); }
+  .case-intro-desc { font-size: 0.9rem; color: #bbb; line-height: 1.75; }
+  .case-intro-meta { display: flex; flex-direction: column; gap: 12px; padding-left: 24px; border-left: 2px solid rgba(192,57,43,0.25); }
+  .case-intro-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .case-intro-meta-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(192,57,43,0.7); }
+  .case-intro-meta-value { font-size: 0.82rem; color: var(--branco); font-weight: 500; }
+  @media (max-width: 768px) {
+    .case-intro { grid-template-columns: 1fr; gap: 20px; }
+    .case-intro-meta { padding-left: 16px; }
   }
 </style>
 </head>
@@ -708,9 +657,9 @@
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
           <a href="fotografia.html" role="menuitem">Fotografia</a>
-          <a href="videos.html" role="menuitem" aria-current="page">Vídeos</a>
+          <a href="videos.html" role="menuitem">Vídeos</a>
           <a href="pecas-graficas.html" role="menuitem">Peças Gráficas</a>
-          <a href="design.html" role="menuitem">Design</a>
+          <a href="design.html" role="menuitem" aria-current="page">Design</a>
         </div>
       </li>
       <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -737,9 +686,9 @@
       </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
         <a href="fotografia.html">Fotografia</a>
-        <a href="videos.html" class="active">Vídeos</a>
+        <a href="videos.html">Vídeos</a>
         <a href="pecas-graficas.html">Peças Gráficas</a>
-        <a href="design.html">Design</a>
+        <a href="design.html" class="active">Design</a>
       </div>
     </li>
     <li><a href="index.html#habilidades">Habilidades</a></li>
@@ -747,129 +696,161 @@
   </ul>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+  <button class="lightbox-close" id="lb-close" aria-label="Fechar">&#x2715;</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8249;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8250;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Produção Audiovisual</p>
-    <h1>Vídeos</h1>
-    <p>Narrativa audiovisual do briefing à entrega final. Vídeos institucionais, coberturas de eventos e produções autorais, com domínio de captação, roteiro, edição e pós-produção.</p>
+    <p class="hero-label">Design Gráfico</p>
+    <h1>Design</h1>
+    <p>Identidade visual, peças editoriais, social media e campanhas. Design orientado à mensagem: cada entrega pensada estrategicamente para conectar marcas ao seu público com coerência e intenção.</p>
   </div>
   <div class="hero-right-deco">
-    <div class="hero-deco-num">©</div>
+    <div class="hero-deco-num">★</div>
     <div class="hero-deco-tags">
-      <span class="hero-deco-tag">Vídeo Institucional</span>
-      <span class="hero-deco-tag">Captação & Edição</span>
-      <span class="hero-deco-tag">Pós-produção</span>
+      <span class="hero-deco-tag">Identidade Visual</span>
+      <span class="hero-deco-tag">Editorial</span>
+      <span class="hero-deco-tag">Social Media</span>
     </div>
   </div>
 </section>
 
-<!-- TABS + CONTEÚDO -->
+<!-- TABS + GRID -->
 <section class="tab-section">
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="tab-verte">Verte Saúde</button>
-    <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
+    <button class="tab-btn active" data-tab="identidade-visual">Identidade Visual</button>
+    <button class="tab-btn" data-tab="editorial">Editorial</button>
+    <button class="tab-btn" data-tab="social-media">Social Media</button>
+    <button class="tab-btn" data-tab="campanhas">Campanhas</button>
   </div>
 
-  <!-- VERTE SAÚDE -->
-  <div class="tab-content active" id="tab-verte">
+  <!-- IDENTIDADE VISUAL -->
+  <div class="tab-content active" id="identidade-visual">
 
-    <div class="video-grid">
-
-      <div class="video-card"
-        data-video-id="WqZssbpJstY"
-        data-video-title="Vídeo Institucional Verte Saúde"
-        data-video-label="Vídeo Institucional · Verte Saúde · 2024"
-        data-video-desc="Vídeo institucional produzido para apresentação da Verte Saúde, organização de saúde sediada em Porto Alegre/RS. Responsável pelo processo completo: pré-produção (roteiro e planejamento de cenas), captação (direção e operação de câmera) e pós-produção (edição, color grading e finalização). Peça utilizada em apresentações institucionais para conselhos e parceiros estratégicos."
-        data-video-cliente="Verte Saúde"
-        data-video-entrega="Vídeo institucional, 2024"
-        data-video-processo="Roteiro · Captação · Edição · Color grading"
-        data-video-objetivo="Apresentar a Verte Saúde para conselhos diretivos e parceiros estratégicos"
-        data-video-papel="Responsável completo: pré-produção, captação e pós-produção"
-        data-video-resultado="Uso institucional em apresentações para conselho diretivo e parceiros estratégicos">
-        <div class="video-thumb-wrap">
-          <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="Vídeo Institucional Verte Saúde" loading="lazy">
-          <div class="video-play-btn" aria-label="Reproduzir vídeo">
-            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <!-- Baristo -->
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Baristo</h2>
+          <span class="cobertura-data">Projeto Autoral</span>
+          <span class="cobertura-count">Identidade Visual</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
         </div>
-        <div class="video-card-info">
-          <p class="video-card-label">Vídeo Institucional · Verte Saúde · 2024</p>
-          <h3 class="video-card-title">Vídeo Institucional Verte Saúde</h3>
-          <p class="video-card-desc">Processo completo de produção: roteiro, captação e edição. Peça de apresentação institucional da Verte Saúde, utilizada com conselhos e parceiros estratégicos em 2024.</p>
-        </div>
-      </div>
-
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Baristo é uma marca de café fictícia criada como projeto autoral de identidade visual.
+                O desafio foi imaginar desde o naming e posicionamento até a aplicação completa da marca
+                em produtos, embalagens e materiais de comunicação.
+              </p>
+              <p class="case-intro-desc">
+                O projeto explora a criação de uma identidade visual coerente, desde o logotipo
+                até as aplicações em mockups de produtos, passando pela definição de paleta,
+                tipografia e linguagem visual da marca.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Identidade Visual · Projeto Autoral</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Categoria</span><span class="case-intro-meta-value">Marca de Café Fictícia</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe Illustrator · Photoshop</span></div>
+            </div>
+          </div>
+          <div class="grid-masonry" data-gallery="baristo">
+            <!-- Imagens serão adicionadas via Cloudinary -->
+          </div>
+          <p class="grid-empty">Imagens em breve</p>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
     </div>
 
-  </div><!-- /tab-verte -->
+  </div><!-- /identidade-visual -->
 
-  <!-- AUTORAL -->
-  <div class="tab-content" id="tab-autoral">
+  <!-- EDITORIAL -->
+  <div class="tab-content" id="editorial">
 
-    <div class="video-grid">
-      <div class="grid-empty" style="display:flex; flex-direction:column; align-items:center; gap:20px; padding:64px 32px; border:1px dashed rgba(192,57,43,0.2); text-align:center;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.5)" stroke-width="1.5">
-          <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(192,57,43,0.5)" stroke="none"/>
-        </svg>
-        <div>
-          <p style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:8px;">Produções em curadoria</p>
-          <p style="font-size:0.8rem; color:rgba(255,255,255,0.25); letter-spacing:0.05em; max-width:360px; line-height:1.65;">
-            Projetos autorais em fase de seleção e pós-produção.<br>Disponíveis sob solicitação mediante contato.
-          </p>
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Em breve</h2>
+          <span class="cobertura-data">—</span>
+          <span class="cobertura-count">Editorial</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </div>
-        <a href="index.html#contato" style="font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--vermelho); text-decoration:none; border:1px solid rgba(192,57,43,0.3); padding:10px 20px; transition:all 0.2s;">
-          Solicitar exemplos →
-        </a>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <p class="grid-empty">Projetos editoriais em breve</p>
+        </div>
       </div>
     </div>
 
-  </div><!-- /tab-autoral -->
+  </div><!-- /editorial -->
+
+  <!-- SOCIAL MEDIA -->
+  <div class="tab-content" id="social-media">
+
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Em breve</h2>
+          <span class="cobertura-data">—</span>
+          <span class="cobertura-count">Social Media</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <p class="grid-empty">Peças para redes sociais em breve</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /social-media -->
+
+  <!-- CAMPANHAS -->
+  <div class="tab-content" id="campanhas">
+
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Em breve</h2>
+          <span class="cobertura-data">—</span>
+          <span class="cobertura-count">Campanhas</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <p class="grid-empty">Campanhas em breve</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /campanhas -->
 
 </section>
-
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo">
-  <div class="video-modal-overlay" id="videoModalOverlay"></div>
-  <div class="video-modal-content">
-    <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
-    <div class="video-modal-player">
-      <iframe id="modalIframe" src="" title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div class="video-modal-card">
-      <p class="video-modal-label" id="modalLabel"></p>
-      <h3 class="video-modal-title" id="modalTitle"></h3>
-      <p class="video-modal-desc" id="modalDesc"></p>
-      <div class="video-modal-processo" id="modalProcesso" style="display:none;">
-        <div class="video-processo-item">
-          <span class="video-processo-label">Cliente</span>
-          <span class="video-processo-value" id="modalCliente"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Entrega</span>
-          <span class="video-processo-value" id="modalEntrega"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Processo</span>
-          <span class="video-processo-value" id="modalProcessoDesc"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Objetivo</span>
-          <span class="video-processo-value" id="modalObjetivo"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Meu papel</span>
-          <span class="video-processo-value" id="modalPapel"></span>
-        </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Resultado</span>
-          <span class="video-processo-value" id="modalResultado"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -888,71 +869,69 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// ── VIDEO LIGHTBOX ──
-const modal = document.getElementById('videoModal');
-const modalOverlay = document.getElementById('videoModalOverlay');
-const modalClose = document.getElementById('videoModalClose');
-const modalIframe = document.getElementById('modalIframe');
-const modalLabel = document.getElementById('modalLabel');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-
-function openVideoModal(videoId, title, label, desc, cliente, entrega, processo, objetivo, papel, resultado) {
-  if (!/^[\w-]+$/.test(videoId)) return;
-  const scrollY = window.scrollY;
-  modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  modalIframe.title = title;
-  modalLabel.textContent = label;
-  modalTitle.textContent = title;
-  modalDesc.textContent = desc;
-  const processoEl = document.getElementById('modalProcesso');
-  if (processoEl) {
-    if (cliente || entrega || processo || objetivo || papel || resultado) {
-      document.getElementById('modalCliente').textContent = cliente || '—';
-      document.getElementById('modalEntrega').textContent = entrega || '—';
-      document.getElementById('modalProcessoDesc').textContent = processo || '—';
-      const objEl = document.getElementById('modalObjetivo');
-      const papelEl = document.getElementById('modalPapel');
-      const resultadoEl = document.getElementById('modalResultado');
-      if (objEl) objEl.textContent = objetivo || '—';
-      if (papelEl) papelEl.textContent = papel || '—';
-      if (resultadoEl) resultadoEl.textContent = resultado || '—';
-      processoEl.style.display = 'grid';
-    } else {
-      processoEl.style.display = 'none';
-    }
-  }
-  modal.classList.add('open');
-  modal.dataset.scrollY = scrollY;
-  document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-  modal.classList.remove('open');
-  modalIframe.src = '';
-  document.body.style.overflow = '';
-}
-
-document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => {
-    openVideoModal(
-      card.dataset.videoId,
-      card.dataset.videoTitle,
-      card.dataset.videoLabel,
-      card.dataset.videoDesc,
-      card.dataset.videoCliente || '',
-      card.dataset.videoEntrega || '',
-      card.dataset.videoProcesso || '',
-      card.dataset.videoObjetivo || '',
-      card.dataset.videoPapel || '',
-      card.dataset.videoResultado || ''
-    );
+// ── ACCORDION ──
+document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const block = toggle.closest('.cobertura-block');
+    const isOpen = block.classList.contains('open');
+    block.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
   });
 });
 
-modalOverlay.addEventListener('click', closeVideoModal);
-modalClose.addEventListener('click', closeVideoModal);
+// ── LIGHTBOX ──
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+
+let currentGallery = [];
+let currentIndex = 0;
+
+function getFullUrl(thumb) {
+  return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto');
+}
+
+function openLightbox(items, index) {
+  currentGallery = items;
+  showImage(index);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showImage(index) {
+  currentIndex = (index + currentGallery.length) % currentGallery.length;
+  lbImg.src = getFullUrl(currentGallery[currentIndex]);
+  lbCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIndex - 1));
+document.getElementById('lb-next').addEventListener('click', () => showImage(currentIndex + 1));
+
+lb.addEventListener('click', e => {
+  if (e.target === lb) closeLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+});
+
+// bind clicks em cada galeria
+document.querySelectorAll('.grid-masonry').forEach(grid => {
+  const items = Array.from(grid.querySelectorAll('.grid-item img')).map(img => img.src);
+  grid.querySelectorAll('.grid-item').forEach((item, i) => {
+    item.addEventListener('click', () => openLightbox(items, i));
+  });
+});
 
 // ── HAMBÚRGUER + DRAWER ──
 const hamburger = document.getElementById('navHamburger');
@@ -990,11 +969,9 @@ if (drawerCasesBtn && drawerCasesBody) {
   });
 }
 
+// fechar dropdown ao pressionar Escape
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeDrawer();
-    closeVideoModal();
-  }
+  if (e.key === 'Escape') closeDrawer();
 });
 
 // ── DROPDOWN NAV — acessibilidade teclado ──
