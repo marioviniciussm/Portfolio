@@ -678,6 +678,39 @@
 
     .video-grid { grid-template-columns: 1fr; gap: 16px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+
+    /* ── MODAL MOBILE ── */
+    .video-modal { padding: 0; align-items: flex-end; }
+    .video-modal-content {
+      width: 100%;
+      max-width: 100%;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+    }
+    .video-modal-content.is-vertical { max-width: 100%; }
+    .video-modal-player {
+      flex-shrink: 0;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+    .video-modal-card {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      padding: 20px 20px 32px;
+    }
+    .video-modal-close {
+      top: 10px; right: 10px;
+      width: 32px; height: 32px;
+      font-size: 14px;
+    }
+    .video-modal-processo {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 420px) {
