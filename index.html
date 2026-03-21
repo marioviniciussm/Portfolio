@@ -285,7 +285,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: start;
+    align-items: center;
     margin-bottom: 80px;
   }
 
@@ -298,17 +298,6 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-  }
-
-  /* espaçador alinha a lista com o texto após o título */
-  .sobre-areas-spacer {
-    height: calc(11px + 12px + clamp(44px, 5vw, 64px) + 32px);
-    display: block;
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 768px) {
-    .sobre-areas-spacer { display: none; }
   }
 
   .sobre-area-item {
@@ -881,9 +870,8 @@
       <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
     </div>
 
-    <!-- áreas como lista limpa — espaçador alinha com o texto após o título -->
+    <!-- áreas como lista limpa -->
     <div class="sobre-areas-list">
-      <div class="sobre-areas-spacer"></div>
 
       <div class="sobre-area-item">
         <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
