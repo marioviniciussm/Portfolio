@@ -255,6 +255,11 @@
   .hero-right-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: transparent; border-top: none; padding: 28px 48px 32px; }
   .hero-disciplines { display: flex; flex-direction: column; gap: 8px; }
   .discipline-item { position: relative; display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-left: 3px solid var(--red); overflow: hidden; }
+  .discipline-item::before { content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 100px); font-weight: 900; letter-spacing: -2px; color: rgba(255,255,255,0.07); line-height: 1; pointer-events: none; z-index: 0; }
+  .discipline-item:nth-child(1)::before { content: "01"; }
+  .discipline-item:nth-child(2)::before { content: "02"; }
+  .discipline-item:nth-child(3)::before { content: "03"; }
+  .discipline-item > * { position: relative; z-index: 1; }
   .discipline-text { font-size: 14px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--white); margin-bottom: 3px; }
   .discipline-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.4px; }
 
@@ -275,14 +280,134 @@
   #sobre { border-top: none; position: relative; }
   #sobre > * { position: relative; z-index: 1; }
 
-  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  /* bloco principal */
+  .sobre-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
   .sobre-text p { font-size: 15px; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
+  .sobre-text p:last-child { margin-bottom: 0; }
   .sobre-text p strong { color: var(--white); font-weight: 500; }
-  .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .stat-block { background: var(--dark); padding: 32px 28px; border-top: 3px solid transparent; transition: border-color 0.2s; }
-  .stat-block:hover { border-color: var(--red); }
-  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--red); line-height: 1; margin-bottom: 6px; }
-  .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* áreas como lista simples */
+  .sobre-areas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* espaçador alinha a lista com o texto após o título */
+  .sobre-areas-spacer {
+    height: calc(11px + 12px + clamp(44px, 5vw, 64px) + 32px);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .sobre-areas-spacer { display: none; }
+  }
+
+  .sobre-area-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sobre-area-item:first-child { padding-top: 0; }
+
+  .sobre-area-icon {
+    width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+  }
+  .sobre-area-icon svg {
+    width: 18px; height: 18px;
+    stroke: var(--red); fill: none; stroke-width: 1.6;
+  }
+
+  .sobre-area-name {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--white); margin-bottom: 3px;
+  }
+
+  .sobre-area-desc {
+    font-size: 12px; color: var(--gray); line-height: 1.55;
+  }
+
+  /* trajetória — linha do tempo horizontal limpa */
+  .sobre-trajetoria { }
+
+  .trajetoria-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .trajetoria-item {
+    padding: 32px 28px 28px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+
+  .trajetoria-item:last-child { border-right: none; }
+
+  /* ponto vermelho no topo, alinhado à linha */
+  .trajetoria-item::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: 28px;
+    width: 9px; height: 9px;
+    background: var(--red);
+    border-radius: 50%;
+    border: 2px solid var(--black);
+  }
+
+  /* intensidade progressiva da cor do ponto */
+  .trajetoria-item:nth-child(1)::before { background: rgba(192,57,43,0.3); }
+  .trajetoria-item:nth-child(2)::before { background: rgba(192,57,43,0.55); }
+  .trajetoria-item:nth-child(3)::before { background: rgba(192,57,43,0.8); }
+  .trajetoria-item:nth-child(4)::before { background: var(--red); }
+
+  .trajetoria-period {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 12px; opacity: 0.8;
+  }
+
+  .trajetoria-role {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem; color: var(--white);
+    line-height: 1.1; margin-bottom: 5px; letter-spacing: 0.04em;
+  }
+
+  .trajetoria-company {
+    font-size: 10px; color: var(--gray);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+  }
+
+  .trajetoria-desc { font-size: 12px; color: #777; line-height: 1.65; }
+
+  @media (max-width: 900px) {
+    .trajetoria-items { grid-template-columns: repeat(2, 1fr); }
+    .trajetoria-item:nth-child(2) { border-right: none; }
+    .trajetoria-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.05); }
+    .trajetoria-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.05); }
+  }
+
+  @media (max-width: 768px) {
+    .sobre-main { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
+    .sobre-area-item { padding: 14px 0; }
+    .trajetoria-items { grid-template-columns: 1fr; }
+    .trajetoria-item { border-right: none; border-top: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 24px 0 24px 24px; }
+    .trajetoria-item:last-child { border-bottom: none; }
+    .trajetoria-item::before { left: 0; top: 30px; }
+  }
 
   /* ── CASES — Card Grid ── */
   #cases { background: var(--dark); max-width: 100%; padding: 100px 60px; }
@@ -600,12 +725,7 @@
     section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
-    .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
     .sobre-text p { font-size: 14px; }
-    .sobre-stats { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .stat-block { padding: 24px 18px; }
-    .stat-num { font-size: 42px; }
-    .stat-label { font-size: 11px; }
     .cases-header { margin-bottom: 28px; }
     .cases-grid { grid-template-columns: 1fr; gap: 16px; }
     .case-card { min-height: auto; padding: 36px 28px; transform: none !important; }
@@ -631,156 +751,6 @@
 
   /* ── HERO — localização e disponibilidade ── */
   .hero-location { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
-
-  /* ── SOBRE — ÁREAS DE ATUAÇÃO ── */
-  .sobre-areas { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); }
-
-  .areas-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 24px;
-  }
-
-  .area-card {
-    background: var(--dark);
-    padding: 28px 24px;
-    border-left: 3px solid rgba(192,57,43,0.2);
-  }
-
-  .area-card-icon {
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
-  }
-
-  .area-card-icon svg {
-    width: 22px; height: 22px;
-    stroke: var(--red); fill: none; stroke-width: 1.6;
-  }
-
-  .area-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.15rem; letter-spacing: 0.06em;
-    color: var(--white); margin-bottom: 10px; line-height: 1.1;
-  }
-
-  .area-card-desc {
-    font-size: 0.8rem; color: var(--gray);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 900px) {
-    .areas-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 768px) {
-    .sobre-areas { margin-top: 36px; padding-top: 32px; }
-    .areas-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .area-card { padding: 22px 18px; }
-    .area-card-title { font-size: 1rem; }
-    .area-card-desc { font-size: 0.78rem; }
-  }
-
-  @media (max-width: 420px) {
-    .areas-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── TIMELINE ── */
-  .experiencia-wrap { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); }
-
-  .timeline {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    margin-top: 32px;
-    position: relative;
-  }
-
-  /* linha conectora acima dos cards */
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, rgba(192,57,43,0.15), rgba(192,57,43,0.5), rgba(192,57,43,0.5), rgba(192,57,43,0.8));
-  }
-
-  .timeline-item {
-    background: var(--dark);
-    padding: 28px 24px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid transparent;
-  }
-
-  /* destaque vermelho no topo de cada card */
-  .timeline-item:nth-child(1) { border-top-color: rgba(192,57,43,0.3); }
-  .timeline-item:nth-child(2) { border-top-color: rgba(192,57,43,0.5); }
-  .timeline-item:nth-child(3) { border-top-color: rgba(192,57,43,0.75); }
-  .timeline-item:nth-child(4) { border-top-color: var(--red); }
-
-  .timeline-period {
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 16px; line-height: 1.3;
-  }
-
-  .timeline-period-sm { display: none; }
-
-  .timeline-marker { display: none; }
-
-  .timeline-role {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem; color: var(--white);
-    line-height: 1.1; margin-bottom: 6px; letter-spacing: 0.05em;
-  }
-
-  .timeline-company {
-    font-size: 11px; color: var(--gray);
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
-  }
-
-  .timeline-desc { font-size: 12px; color: #888; line-height: 1.65; flex: 1; }
-
-  @media (max-width: 900px) {
-    .timeline { grid-template-columns: repeat(2, 1fr); }
-    .timeline::before { display: none; }
-  }
-
-  @media (max-width: 768px) {
-    .timeline { grid-template-columns: 1fr; gap: 2px; }
-    .timeline-item { border-top: none; border-left: 3px solid; padding: 24px 20px; }
-    .timeline-item:nth-child(1) { border-left-color: rgba(192,57,43,0.3); }
-    .timeline-item:nth-child(2) { border-left-color: rgba(192,57,43,0.5); }
-    .timeline-item:nth-child(3) { border-left-color: rgba(192,57,43,0.75); }
-    .timeline-item:nth-child(4) { border-left-color: var(--red); }
-    .timeline-role { font-size: 1.1rem; }
-    .timeline-desc { font-size: 12px; }
-  }
-
-  /* Diferenciar Áreas de Atuação */
-  .sobre-areas {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 32px;
-    margin-top: 48px;
-  }
-  .area-tab-btn.active {
-    background: rgba(192,57,43,0.12);
-    color: var(--white);
-  }
-  .area-panel {
-    border-left: 4px solid transparent;
-    padding-left: 20px;
-    transition: border-color 0.2s;
-  }
-  .area-panel[aria-hidden="false"],
-  .area-panel:not([aria-hidden]) {
-    border-left-color: var(--red);
-  }
-
 
 </style>
 </head>
@@ -900,112 +870,90 @@
 </div>
 
 <section id="sobre">
-  <p class="section-label">Quem sou</p>
-  <h2 class="section-title">Sobre Mim</h2>
-  <div class="sobre-grid">
+  <div class="sobre-main">
+
+    <!-- coluna esquerda: título + texto -->
     <div class="sobre-text">
+      <p class="section-label" style="margin-bottom:12px;">Quem sou</p>
+      <h2 class="section-title" style="margin-bottom:32px;">Sobre Mim</h2>
       <p>Tenho um perfil <strong>naturalmente múltiplo</strong>: a base técnica em informática, o pensamento centrado no usuário em UX e a prática em vídeo e design não são habilidades isoladas, são camadas que se somam.</p>
       <p>Isso me permite entrar em qualquer projeto de comunicação com uma visão mais ampla do que só a execução. Gosto de entender o contexto da empresa e o cenário do setor antes de criar qualquer coisa, porque acredito que o trabalho só é bom quando está conectado com o que a marca realmente precisa.</p>
       <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
     </div>
-    <div class="sobre-stats">
-      <div class="stat-block"><div class="stat-num">2+</div><div class="stat-label">Anos de experiência</div></div>
-      <div class="stat-block"><div class="stat-num">10+</div><div class="stat-label">Ferramentas dominadas</div></div>
-      <div class="stat-block"><div class="stat-num">6</div><div class="stat-label">Múltiplas áreas de atuação</div></div>
-      <div class="stat-block"><div class="stat-num">2026</div><div class="stat-label">Formatura prevista em Produção Audiovisual</div></div>
-    </div>
-  </div>
 
-  <!-- ÁREAS DE ATUAÇÃO -->
-  <div class="sobre-areas">
-    <p class="section-label">Áreas de atuação</p>
-    <div class="areas-grid">
+    <!-- áreas como lista limpa — espaçador alinha com o texto após o título -->
+    <div class="sobre-areas-list">
+      <div class="sobre-areas-spacer"></div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <div class="area-card-title">Comunicação Institucional</div>
-        <p class="area-card-desc">Campanhas internas e externas, relatórios, materiais para eventos e apresentações estratégicas — desde 2024 na Verte Saúde.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div><div class="sobre-area-name">Comunicação Institucional</div><div class="sobre-area-desc">Campanhas, relatórios, eventos e apresentações estratégicas</div></div>
       </div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-        </div>
-        <div class="area-card-title">Design Gráfico</div>
-        <p class="area-card-desc">Identidade visual, peças gráficas institucionais e materiais para impresso e digital com domínio das ferramentas Adobe.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <div><div class="sobre-area-name">Design Gráfico</div><div class="sobre-area-desc">Identidade visual, peças gráficas e materiais para Adobe Suite</div></div>
       </div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-        </div>
-        <div class="area-card-title">Produção de Vídeo</div>
-        <p class="area-card-desc">Processo completo: roteiro, captação, edição e finalização. Vídeos institucionais, coberturas de eventos e Reels para redes sociais.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+        <div><div class="sobre-area-name">Produção de Vídeo</div><div class="sobre-area-desc">Roteiro, captação, edição e pós-produção completos</div></div>
       </div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="area-card-title">Social Media</div>
-        <p class="area-card-desc">Calendário editorial, copywriting, padronização visual de perfis e operação de conteúdo alinhado ao posicionamento da marca.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><div class="sobre-area-name">Social Media</div><div class="sobre-area-desc">Calendário editorial, copywriting e gestão de perfis</div></div>
       </div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </div>
-        <div class="area-card-title">Fotografia</div>
-        <p class="area-card-desc">Cobertura institucional, eventos corporativos e ensaios editoriais. Captação, curadoria e entrega organizada por categoria.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <div><div class="sobre-area-name">Fotografia</div><div class="sobre-area-desc">Coberturas institucionais, eventos e ensaios editoriais</div></div>
       </div>
 
-      <div class="area-card">
-        <div class="area-card-icon">
-          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <div class="area-card-title">Gestão & Processos</div>
-        <p class="area-card-desc">Briefing, cronogramas, versionamento e documentação de entregas. Organização como parte essencial do processo criativo.</p>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><div class="sobre-area-name">Gestão & Processos</div><div class="sobre-area-desc">Briefing, cronogramas e documentação de entregas</div></div>
       </div>
 
     </div>
   </div>
 
-  <div class="experiencia-wrap">
+  <!-- trajetória -->
+  <div class="sobre-trajetoria">
     <p class="section-label">Trajetória</p>
-    <div class="timeline">
+    <div class="trajetoria-items">
 
-      <div class="timeline-item">
-        <div class="timeline-period">Fev 2019 — Dez 2022</div>
-        <div class="timeline-role">Técnico em Informática para Internet</div>
-        <div class="timeline-company">ETEC · Praia Grande/SP</div>
-        <p class="timeline-desc">Desenvolvimento web, design de interfaces, programação e banco de dados. Base técnica que sustenta o olhar estratégico atual em UX e comunicação digital.</p>
+      <div class="trajetoria-item">
+        <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
+        <div class="trajetoria-role">Técnico em Informática para Internet</div>
+        <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
+        <p class="trajetoria-desc">Desenvolvimento web, design de interfaces, programação e banco de dados. Base técnica que sustenta o olhar estratégico atual em UX e comunicação digital.</p>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-period">Abr 2024 — Dez 2024</div>
-        <div class="timeline-role">Estagiário de Comunicação e Social Media</div>
-        <div class="timeline-company">Verte Saúde · Porto Alegre/RS</div>
-        <p class="timeline-desc">Evolução acelerada em 8 meses, reconhecida com promoção. Gestão de redes sociais, produção de materiais e apoio na execução visual de eventos e campanhas sazonais.</p>
+      <div class="trajetoria-item">
+        <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
+        <div class="trajetoria-role">Estagiário de Comunicação e Social Media</div>
+        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+        <p class="trajetoria-desc">Evolução acelerada em 8 meses, reconhecida com promoção. Gestão de redes sociais, produção de materiais e apoio na execução visual de eventos e campanhas sazonais.</p>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-period">Dez 2024 — Atual</div>
-        <div class="timeline-role">Comunicador Visual</div>
-        <div class="timeline-company">Verte Saúde · Porto Alegre/RS</div>
-        <p class="timeline-desc">Referência criativa do time. Responsável pela identidade visual, produção audiovisual, relatório institucional e campanhas mensais de Social Media com design e copywriting.</p>
+      <div class="trajetoria-item">
+        <div class="trajetoria-period">Dez 2024 — Atual</div>
+        <div class="trajetoria-role">Comunicador Visual</div>
+        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+        <p class="trajetoria-desc">Referência criativa do time. Identidade visual, produção audiovisual, relatório institucional e campanhas mensais de Social Media com design e copywriting.</p>
       </div>
 
-      <div class="timeline-item">
-        <div class="timeline-period">Jan 2025 — Dez 2026</div>
-        <div class="timeline-role">Tecnólogo em Produção Audiovisual</div>
-        <div class="timeline-company">Cruzeiro do Sul Virtual · Porto Alegre/RS</div>
-        <p class="timeline-desc">Concepção, produção e pós-produção de conteúdo audiovisual e digital. Ênfase em técnicas de vídeo, fotografia e linguagens visuais. Conclusão: Dez 2026.</p>
+      <div class="trajetoria-item">
+        <div class="trajetoria-period">Jan 2025 — Dez 2026</div>
+        <div class="trajetoria-role">Tecnólogo em Produção Audiovisual</div>
+        <div class="trajetoria-company">Cruzeiro do Sul Virtual · Porto Alegre/RS</div>
+        <p class="trajetoria-desc">Produção e pós-produção de conteúdo audiovisual e digital. Ênfase em vídeo, fotografia e linguagens visuais. Conclusão: Dez 2026.</p>
       </div>
 
     </div>
   </div>
+
 </section>
 <div id="cases">
   <div class="cases-header">
@@ -1216,9 +1164,9 @@
       <p>Estou em busca de um ambiente onde comunicação, criatividade e estratégia se encontrem. Se você precisa de alguém que entende o briefing antes de abrir qualquer software, com autonomia e visão de negócio, vamos conversar.</p>
     </div>
     <div class="contato-links">
-      <a href="/cdn-cgi/l/email-protection#0a676b7863657c63646369637f7979674a6d676b636624696567" class="contato-item" target="_blank" rel="noopener noreferrer">
+      <a href="mailto:marioviniciussm@gmail.com" class="contato-item" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
-        <div class="contato-item-body"><div class="contato-info-label">E-mail</div><div class="contato-info-value"><span class="__cf_email__" data-cfemail="056864776c6a736c6b6c666c70767668456268646c692b666a68">[email&#160;protected]</span></div></div>
+        <div class="contato-item-body"><div class="contato-info-label">E-mail</div><div class="contato-info-value">marioviniciussm@gmail.com</div></div>
         <div class="contato-item-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
       </a>
       <a href="https://wa.me/5513981978095" class="contato-item" target="_blank" rel="noopener noreferrer">
