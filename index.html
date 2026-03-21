@@ -198,31 +198,6 @@
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; z-index: 2; }
 
   /* ── HERO CORNER FRAMES ── */
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: 88px;
-    left: 60px;
-    width: 40px;
-    height: 40px;
-    border-top: 1px solid rgba(192, 57, 43, 0.3);
-    border-left: 1px solid rgba(192, 57, 43, 0.3);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .hero-left::after {
-    content: '';
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    border-bottom: 1px solid rgba(192, 57, 43, 0.2);
-    border-right: 1px solid rgba(192, 57, 43, 0.2);
-    pointer-events: none;
-    z-index: 1;
-  }
-
   .hero-left > .hero-tag,
   .hero-left > .hero-name,
   .hero-left > .hero-title,
@@ -266,6 +241,8 @@
   /* ── SECTIONS ── */
   section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .sobre-text .section-label,
+  .contato-left .section-label { color: var(--red); font-size: 11px; }
   .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 5vw, 64px); letter-spacing: 2px; color: var(--white); line-height: 1; margin-bottom: 48px; }
 
   /* ── MARQUEE ── */
@@ -279,6 +256,7 @@
   /* ── SOBRE ── */
   #sobre { border-top: none; position: relative; }
   #sobre > * { position: relative; z-index: 1; }
+  #sobre .section-title { margin-bottom: 32px; }
 
   /* bloco principal */
   .sobre-main {
@@ -631,14 +609,12 @@
   /* ── CONTATO ── */
   #contato { border-top: 1px solid rgba(255,255,255,0.06); background: var(--dark); max-width: 100%; padding: 100px 60px; }
   .contato-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .contato-left .section-title { margin-bottom: 20px; }
   .contato-left p { font-size: 15px; color: #aaa; line-height: 1.75; }
   .contato-links { display: flex; flex-direction: column; gap: 2px; }
   .contato-item {
     display: flex; align-items: center; gap: 20px;
     padding: 20px 24px; background: var(--black); text-decoration: none;
     border-left: 3px solid rgba(192,57,43,0.4);
-    border-right: 1px solid rgba(255,255,255,0.06);
     border-top: 1px solid rgba(255,255,255,0.04);
     border-bottom: 1px solid rgba(255,255,255,0.04);
     cursor: pointer;
@@ -653,16 +629,16 @@
     width: 56px; height: 56px;
     display: flex; align-items: flex-start; justify-content: flex-end;
     padding: 8px 9px 0 0;
-    color: rgba(192,57,43,0.45);
+    color: rgba(192,57,43,0.6);
     pointer-events: none;
   }
   .contato-item-arrow svg {
-    width: 36px; height: 36px;
-    stroke: currentColor; fill: none; stroke-width: 1.8;
-    transition: transform 0.2s, color 0.2s;
+    width: 22px; height: 22px;
+    stroke: currentColor; fill: none; stroke-width: 2;
+    transition: transform 0.2s;
   }
   .contato-item:hover .contato-item-arrow { color: var(--red); }
-  .contato-item:hover .contato-item-arrow svg { transform: translate(3px, -3px); }
+  .contato-item:hover .contato-item-arrow svg { transform: translate(2px, -2px); }
   .contato-icon { width: 40px; height: 40px; background: rgba(192,57,43,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .contato-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; }
   .contato-info-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
@@ -863,8 +839,8 @@
 
     <!-- coluna esquerda: título + texto -->
     <div class="sobre-text">
-      <p class="section-label" style="margin-bottom:12px;">Quem sou</p>
-      <h2 class="section-title" style="margin-bottom:32px;">Sobre Mim</h2>
+      <p class="section-label">Quem sou</p>
+      <h2 class="section-title">Sobre Mim</h2>
       <p>Tenho um perfil <strong>naturalmente múltiplo</strong>: a base técnica em informática, o pensamento centrado no usuário em UX e a prática em vídeo e design não são habilidades isoladas, são camadas que se somam.</p>
       <p>Isso me permite entrar em qualquer projeto de comunicação com uma visão mais ampla do que só a execução. Gosto de entender o contexto da empresa e o cenário do setor antes de criar qualquer coisa, porque acredito que o trabalho só é bom quando está conectado com o que a marca realmente precisa.</p>
       <p>Atualmente em Porto Alegre/RS, com <strong>2 anos de atuação</strong> em comunicação corporativa na Verte Saúde, e cursando Produção Audiovisual com formatura prevista para 2026.</p>
