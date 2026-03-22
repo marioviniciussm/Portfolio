@@ -218,9 +218,10 @@
 
   .hero-label {
     font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--vermelho);
+    color: var(--vermelho) !important;
     margin-bottom: 16px;
   }
 
@@ -702,7 +703,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Fotografia</p>
+    <p class="hero-label" style="font-family:'DM Sans',sans-serif; font-weight:800; letter-spacing:0.2em;">Fotografia</p>
     <h1>Foto<br>grafia</h1>
     <p>Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão, do campo ao evento corporativo, com olhar autoral e entrega profissional.</p>
   </div>
@@ -1205,21 +1206,6 @@ if (dropBtn && dropMenu) {
     }
   });
 }
-
-// garante que links da nav com href completo navegam normalmente
-document.querySelectorAll('nav a[href], .nav-drawer a[href]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href && href.startsWith('#')) {
-    link.addEventListener('click', function(e) {
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  }
-});
-
 </script>
 </body>
 </html>
