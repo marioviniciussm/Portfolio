@@ -218,9 +218,10 @@
 
   .hero-label {
     font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--vermelho);
+    color: var(--vermelho) !important;
     margin-bottom: 16px;
   }
 
@@ -543,7 +544,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Estratégia Digital</p>
+    <p class="hero-label" style="font-family:'DM Sans',sans-serif; font-weight:800; letter-spacing:0.2em;">Estratégia Digital</p>
     <h1>Social<br>Media</h1>
     <p>Do planejamento ao resultado. Calendário editorial, campanhas de Meta Ads, copywriting e gestão de perfis — tudo integrado à identidade visual e aos objetivos da marca.</p>
   </div>
@@ -773,21 +774,6 @@ if (dropBtn && dropMenu) {
     }
   });
 }
-
-// garante que links da nav com href completo navegam normalmente
-document.querySelectorAll('nav a[href], .nav-drawer a[href]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href && href.startsWith('#')) {
-    link.addEventListener('click', function(e) {
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  }
-});
-
 </script>
 </body>
 </html>
