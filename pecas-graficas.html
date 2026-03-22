@@ -219,9 +219,10 @@
 
   .hero-label {
     font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--vermelho);
+    color: var(--vermelho) !important;
     margin-bottom: 16px;
   }
 
@@ -299,15 +300,17 @@
 
   .tab-btn {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
     color: var(--cinza);
     background: none;
     border: none;
-    padding: 12px 20px 12px 0;
+    padding: 18px 20px;
     cursor: pointer;
     position: relative;
     transition: color .25s;
+    flex: 1;
+    text-align: center;
   }
 
   .tab-btn::after {
@@ -320,7 +323,7 @@
   }
 
   .tab-btn.active { color: var(--branco); }
-  .tab-btn.active::after { width: calc(100% - 20px); }
+  .tab-btn.active::after { width: 100%; }
 
   /* categoria em destaque — quando há apenas 1 tab */
   .tabs.single-category {
@@ -855,7 +858,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Design Gráfico</p>
+    <p class="hero-label" style="font-weight:700; letter-spacing:3px;">Design Gráfico</p>
     <h1>Peças<br>Gráficas</h1>
     <p>Design com intenção: cada peça nasce de um briefing entendido, não de uma tela em branco. Materiais institucionais, editoriais e digitais, do conceito à entrega, com visão estratégica de comunicação.</p>
   </div>
@@ -967,46 +970,6 @@
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/OutubroRosa2025_Wallpaper_rbomyq.png" alt="OutubroRosa2025 Wallpaper" loading="lazy"></div>
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/Servi%C3%A7osProprios_Email_wsoxrp.png" alt="ServiçosProprios Email" loading="lazy"></div>
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NovembroAzul2024_Banner_gokw6k.png" alt="NovembroAzul2024 Banner" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fotos antigas restauradas -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Fotos antigas restauradas</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="case-intro">
-            <div class="case-intro-context">
-              <p class="case-intro-label">Contexto do projeto</p>
-              <p class="case-intro-desc">
-                Restauração digital de fotografias históricas do acervo da Verte Saúde,
-                imagens antigas de eventos, equipes e momentos institucionais que precisavam
-                ser recuperadas para uso em publicações e no Relatório de Atividades 2024.
-                Trabalho de retoque, reconstrução de detalhes e equalização de cor.
-              </p>
-            </div>
-            <div class="case-intro-meta">
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Restauração fotográfica · Pós-produção</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe Photoshop / Lightroom</span></div>
-            </div>
-          </div>
-          <div class="grid-masonry" data-gallery="fotos-restauradas">
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/PrimeiraSedeAFPERGS_RestauradaColorida_dze7ca.png" alt="PrimeiraSedeAFPERGS RestauradaColorida" loading="lazy"></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/ComissaoEstruturadoraHED_RestauradaColorida_jiffkh.png" alt="ComissaoEstruturadoraHED RestauradaColorida" loading="lazy"></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/InauguracaoHED_RestauradoColorido_vszps8.png" alt="InauguracaoHED RestauradoColorido" loading="lazy"></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/ComissaoEstruturadoraHED_Antiga_cet2rc.jpg" alt="ComissaoEstruturadoraHED Antiga" loading="lazy"></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/InauguracaoHED_Antiga_hiolil.jpg" alt="InauguracaoHED Antiga" loading="lazy"></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/PrimeiraSedeAFPERGS_Antiga_ymjpzx.jpg" alt="PrimeiraSedeAFPERGS Antiga" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -1417,21 +1380,6 @@ if (dropBtn && dropMenu) {
     }
   });
 }
-
-// garante que links da nav com href completo navegam normalmente
-document.querySelectorAll('nav a[href], .nav-drawer a[href]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (href && href.startsWith('#')) {
-    link.addEventListener('click', function(e) {
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  }
-});
-
 </script>
 </body>
 </html>
