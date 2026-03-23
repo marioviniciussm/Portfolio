@@ -877,21 +877,6 @@
   padding-bottom: 4px;
 }
 
-/* barra proporcional */
-.baristo-bar {
-  display: flex;
-  height: 6px;
-  width: 100%;
-  gap: 2px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.baristo-bar-seg {
-  background: var(--sw-color);
-  height: 100%;
-  transition: flex 0.4s ease;
-}
 
 /* mobile */
 @media (max-width: 600px) {
@@ -1322,41 +1307,93 @@
             <!-- Label -->
             <p class="baristo-palette-label">Paleta de Cores</p>
 
-            <!-- Composição geométrica SVG inspirada em Bauhaus -->
+            <!-- Composição SVG temática de café -->
             <div class="baristo-geo">
-              <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- fundo dividido -->
-                <rect width="560" height="160" fill="#1F2023"/>
+              <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- fundo base quase preto -->
+                <rect width="560" height="180" fill="#1F2023"/>
 
-                <!-- bloco marrom -->
-                <rect x="0" y="0" width="112" height="160" fill="#6F4325"/>
+                <!-- faixa decorativa inferior marrom -->
+                <rect x="0" y="150" width="560" height="30" fill="#6F4325" opacity="0.4"/>
 
-                <!-- bloco creme -->
-                <rect x="448" y="0" width="112" height="160" fill="#FFE6CB"/>
+                <!-- faixa decorativa superior creme -->
+                <rect x="0" y="0" width="560" height="6" fill="#FFE6CB" opacity="0.15"/>
 
-                <!-- triângulo amarelo -->
-                <polygon points="224,20 336,20 280,100" fill="#FFDF8F"/>
+                <!-- ══ LADO ESQUERDO: grãos de café estilizados ══ -->
 
-                <!-- círculo avelã -->
-                <circle cx="168" cy="80" r="44" fill="#BD9377"/>
+                <!-- grão 1 — grande -->
+                <ellipse cx="72" cy="90" rx="38" ry="52" fill="#6F4325" transform="rotate(-20 72 90)"/>
+                <line x1="52" y1="72" x2="90" y2="108" stroke="#1F2023" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
 
-                <!-- círculo vazio (anel) marrom -->
-                <circle cx="392" cy="80" r="44" fill="none" stroke="#6F4325" stroke-width="12"/>
+                <!-- grão 2 — médio, sobreposto -->
+                <ellipse cx="118" cy="70" rx="26" ry="36" fill="#BD9377" transform="rotate(15 118 70)"/>
+                <line x1="104" y1="56" x2="130" y2="84" stroke="#1F2023" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
 
-                <!-- retângulo amarelo estreito -->
-                <rect x="260" y="112" width="40" height="32" fill="#FFDF8F" opacity="0.7"/>
+                <!-- grão 3 — pequeno fundo -->
+                <ellipse cx="50" cy="130" rx="18" ry="25" fill="#BD9377" transform="rotate(10 50 130)" opacity="0.5"/>
+                <line x1="41" y1="120" x2="59" y2="140" stroke="#1F2023" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
 
-                <!-- linhas decorativas creme -->
-                <line x1="112" y1="0" x2="112" y2="160" stroke="#FFE6CB" stroke-width="1" opacity="0.2"/>
-                <line x1="224" y1="0" x2="224" y2="160" stroke="#FFE6CB" stroke-width="1" opacity="0.1"/>
-                <line x1="336" y1="0" x2="336" y2="160" stroke="#FFE6CB" stroke-width="1" opacity="0.1"/>
-                <line x1="448" y1="0" x2="448" y2="160" stroke="#FFE6CB" stroke-width="1" opacity="0.2"/>
+                <!-- ══ CENTRO: xícara de café ══ -->
 
-                <!-- triângulo canto inferior esquerdo -->
-                <polygon points="0,100 60,160 0,160" fill="#FFDF8F" opacity="0.5"/>
+                <!-- pires -->
+                <ellipse cx="280" cy="148" rx="68" ry="10" fill="#BD9377" opacity="0.6"/>
+                <rect x="234" y="144" width="92" height="6" rx="3" fill="#BD9377" opacity="0.5"/>
 
-                <!-- triângulo canto superior direito -->
-                <polygon points="560,0 500,0 560,60" fill="#BD9377" opacity="0.6"/>
+                <!-- corpo da xícara -->
+                <path d="M232 100 Q230 148 280 150 Q330 148 328 100 Z" fill="#6F4325"/>
+
+                <!-- borda/aro superior da xícara -->
+                <ellipse cx="280" cy="100" rx="48" ry="10" fill="#BD9377"/>
+
+                <!-- superfície do café dentro da xícara -->
+                <ellipse cx="280" cy="100" rx="40" ry="8" fill="#1F2023"/>
+
+                <!-- reflexo do café -->
+                <ellipse cx="268" cy="98" rx="14" ry="4" fill="#6F4325" opacity="0.5" transform="rotate(-10 268 98)"/>
+
+                <!-- alça da xícara -->
+                <path d="M328 110 Q360 110 360 128 Q360 146 328 146" fill="none" stroke="#6F4325" stroke-width="10" stroke-linecap="round"/>
+                <path d="M328 110 Q356 110 356 128 Q356 146 328 146" fill="none" stroke="#BD9377" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+
+                <!-- ══ VAPOR acima da xícara ══ -->
+
+                <!-- fio de vapor esquerdo -->
+                <path d="M262 95 Q254 78 262 62 Q270 46 262 30" fill="none" stroke="#FFE6CB" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+
+                <!-- fio de vapor central -->
+                <path d="M280 92 Q272 75 280 58 Q288 41 280 24" fill="none" stroke="#FFE6CB" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+
+                <!-- fio de vapor direito -->
+                <path d="M298 95 Q306 78 298 62 Q290 46 298 30" fill="none" stroke="#FFE6CB" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+
+                <!-- ══ LADO DIREITO: círculo decorativo + texto marca ══ -->
+
+                <!-- círculo anel dourado -->
+                <circle cx="460" cy="80" r="52" fill="none" stroke="#FFDF8F" stroke-width="1.5" opacity="0.25"/>
+                <circle cx="460" cy="80" r="42" fill="none" stroke="#FFDF8F" stroke-width="0.8" opacity="0.15"/>
+
+                <!-- grão decorativo direito -->
+                <ellipse cx="480" cy="60" rx="22" ry="30" fill="#FFDF8F" transform="rotate(25 480 60)" opacity="0.18"/>
+                <line x1="470" y1="48" x2="490" y2="72" stroke="#1F2023" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+                <!-- ponto de café estilizado -->
+                <circle cx="430" cy="110" r="12" fill="#FFDF8F" opacity="0.2"/>
+                <circle cx="430" cy="110" r="6" fill="#FFDF8F" opacity="0.35"/>
+
+                <!-- ══ TEXTO BARISTO (estilizado) ══ -->
+                <text x="460" y="86" text-anchor="middle" font-family="'Georgia', serif" font-size="22" font-weight="700" letter-spacing="6" fill="#FFE6CB" opacity="0.12" transform="rotate(-90 460 86)">BARISTO</text>
+
+                <!-- ══ PONTOS / TEXTURA ══ -->
+                <circle cx="160" cy="150" r="3" fill="#FFDF8F" opacity="0.2"/>
+                <circle cx="180" cy="140" r="2" fill="#FFDF8F" opacity="0.15"/>
+                <circle cx="200" cy="155" r="2.5" fill="#BD9377" opacity="0.2"/>
+                <circle cx="380" cy="155" r="3" fill="#FFDF8F" opacity="0.18"/>
+                <circle cx="400" cy="145" r="2" fill="#BD9377" opacity="0.2"/>
+
+                <!-- linha divisória esquerda sutil -->
+                <line x1="155" y1="10" x2="155" y2="170" stroke="#FFE6CB" stroke-width="0.5" opacity="0.08"/>
+                <!-- linha divisória direita sutil -->
+                <line x1="400" y1="10" x2="400" y2="170" stroke="#FFE6CB" stroke-width="0.5" opacity="0.08"/>
               </svg>
             </div>
 
@@ -1384,14 +1421,7 @@
               </div>
             </div>
 
-            <!-- Barra proporcional de pesos visuais -->
-            <div class="baristo-bar" aria-label="Proporção visual da paleta">
-              <div class="baristo-bar-seg" style="--sw-color:#6F4325; flex:2" title="Café Escuro"></div>
-              <div class="baristo-bar-seg" style="--sw-color:#BD9377; flex:1.5" title="Avelã"></div>
-              <div class="baristo-bar-seg" style="--sw-color:#1F2023; flex:2.5" title="Noite"></div>
-              <div class="baristo-bar-seg" style="--sw-color:#FFE6CB; flex:1.5" title="Creme"></div>
-              <div class="baristo-bar-seg" style="--sw-color:#FFDF8F; flex:2.5" title="Manteiga"></div>
-            </div>
+
           </div>
 
           <div class="grid-masonry" data-gallery="baristo">
