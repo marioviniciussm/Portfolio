@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Mário Vinicius — Comunicador Visual | Designer, Videomaker & Social Media | Porto Alegre</title>
-<meta name="description" content="Portfólio de Mário Vinicius — Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.">
-<meta property="og:title" content="Mário Vinicius — Comunicador Visual">
+<title>Mário Vinicius | Comunicador Visual | Designer, Videomaker & Social Media | Porto Alegre</title>
+<meta name="description" content="Portfólio de Mário Vinicius, Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.">
+<meta property="og:title" content="Mário Vinicius | Comunicador Visual">
 <meta property="og:description" content="Design, Videomaker e Social Media Estratégico. Transformo briefings em narrativas visuais de alto impacto.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://marioviniciussm.github.io/Portfolio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mário Vinicius — Comunicador Visual">
+<meta name="twitter:title" content="Mário Vinicius | Comunicador Visual">
 <meta name="twitter:description" content="Design, Videomaker e Social Media Estratégico. Porto Alegre/RS.">
 <meta name="author" content="Mário Vinicius">
 <meta name="robots" content="index, follow">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Mário Vinicius — Comunicador Visual">
+<meta property="og:site_name" content="Mário Vinicius | Comunicador Visual">
 <meta property="og:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
-<meta property="og:image:alt" content="Mário Vinicius — Comunicador Visual">
+<meta property="og:image:alt" content="Mário Vinicius | Comunicador Visual">
 <meta name="twitter:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
 <link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -188,7 +188,7 @@
     position: relative;
     transition: color 0.15s, background 0.15s, padding-left 0.15s;
   }
-  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: rgba(192,57,43,0.5); font-size: 9px; }
+  .drawer-cases-body a::before { content: '›'; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: rgba(192,57,43,0.5); font-size: 9px; }
   .drawer-cases-body a:last-of-type { border-bottom: none; }
   .drawer-cases-body a:hover { color: var(--white); background: rgba(192,57,43,0.1); padding-left: 46px; }
   .drawer-cases-body a.active { color: var(--white); }
@@ -724,12 +724,15 @@
   .verte-contexto {
     background: var(--red);
     width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .verte-ctx-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 56px 60px;
+    padding: 36px 60px;
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 60px;
@@ -801,32 +804,34 @@
   .verte-ctx-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.72rem;
+    gap: 10px;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
+    color: var(--red);
+    background: var(--white);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
+    padding: 12px 22px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
   }
 
   .verte-ctx-link:hover {
-    color: var(--white);
-    border-color: var(--white);
+    background: rgba(255,255,255,0.88);
+    color: var(--red-dark);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1024px) {
-    .verte-ctx-inner { padding: 48px 32px; gap: 40px; }
+    .verte-ctx-inner { padding: 28px 32px; gap: 40px; }
   }
 
   @media (max-width: 768px) {
     .verte-ctx-inner {
       grid-template-columns: 1fr;
-      padding: 40px 24px;
-      gap: 28px;
+      padding: 28px 24px;
+      gap: 20px;
     }
     .verte-ctx-stats { gap: 20px; }
     .verte-ctx-title { font-size: clamp(2rem, 10vw, 3rem); }
@@ -902,7 +907,7 @@
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
         <a href="#cases" class="btn-primary">Ver Portfólio</a>
-        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Currículo</a>
+        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Visualizar Currículo</a>
       </div>
       <div class="hero-social-icons">
         <a href="https://www.linkedin.com/in/mario-vinicius/" class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn">
@@ -1003,28 +1008,28 @@
     <div class="trajetoria-items">
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
+        <div class="trajetoria-period">Fev 2019 a Dez 2022</div>
         <div class="trajetoria-role">Técnico em Informática para Internet</div>
         <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
         <p class="trajetoria-desc">Desenvolvimento web, design de interfaces, programação e banco de dados. Base técnica que sustenta o olhar estratégico atual em UX e comunicação digital.</p>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
+        <div class="trajetoria-period">Abr 2024 a Dez 2024</div>
         <div class="trajetoria-role">Estagiário de Comunicação e Social Media</div>
         <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
         <p class="trajetoria-desc">Evolução acelerada em 8 meses, reconhecida com promoção. Gestão de redes sociais, produção de materiais e apoio na execução visual de eventos e campanhas sazonais.</p>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Dez 2024 — Atual</div>
+        <div class="trajetoria-period">Dez 2024 a Atual</div>
         <div class="trajetoria-role">Comunicador Visual</div>
         <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
         <p class="trajetoria-desc">Referência criativa do time. Identidade visual, produção audiovisual, relatório institucional e campanhas mensais de Social Media com design e copywriting.</p>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Jan 2025 — Dez 2026</div>
+        <div class="trajetoria-period">Jan 2025 a Dez 2026</div>
         <div class="trajetoria-role">Tecnólogo em Produção Audiovisual</div>
         <div class="trajetoria-company">Cruzeiro do Sul Virtual · Porto Alegre/RS</div>
         <p class="trajetoria-desc">Produção e pós-produção de conteúdo audiovisual e digital. Ênfase em vídeo, fotografia e linguagens visuais. Conclusão: Dez 2026.</p>
@@ -1035,7 +1040,7 @@
 
 </section>
 
-<section class="verte-contexto" aria-label="Contexto — Verte Saúde">
+<section class="verte-contexto" aria-label="Contexto Verte Saúde">
   <div class="verte-ctx-inner">
     <div class="verte-ctx-left">
       <p class="verte-ctx-eyebrow">Empresa onde atuo</p>
@@ -1043,7 +1048,7 @@
       <p class="verte-ctx-tagline">Sua vida, nossos cuidados.</p>
     </div>
     <div class="verte-ctx-right">
-      <p class="verte-ctx-desc">Operadora de planos de saúde da Afpergs — Associação dos Funcionários Públicos do Estado do Rio Grande do Sul, com mais de 90 anos de história. Sediada em Porto Alegre/RS, a Verte Saúde atende cerca de 41.500 beneficiários com uma rede integrada de cuidados que inclui hospitais próprios e credenciados, telemedicina e Clube de Benefícios.</p>
+      <p class="verte-ctx-desc">Operadora de planos de saúde da Afpergs, Associação dos Funcionários Públicos do Estado do Rio Grande do Sul, com mais de 90 anos de história. Sediada em Porto Alegre/RS, a Verte Saúde atende cerca de 41.500 beneficiários com uma rede integrada de cuidados que inclui hospitais próprios e credenciados, telemedicina e Clube de Benefícios.</p>
       <div class="verte-ctx-stats">
         <div class="verte-ctx-stat">
           <span class="verte-ctx-stat-num">41.5k</span>
