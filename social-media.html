@@ -256,6 +256,15 @@
     border: 1px solid rgba(192,57,43,0.4);
     padding: 48px;
     background: rgba(192,57,43,0.04);
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .destaque-inner:hover {
+    background: rgba(192,57,43,0.1);
+    border-color: rgba(192,57,43,0.8);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(192,57,43,0.18);
   }
 
   .destaque-titulo {
@@ -1358,6 +1367,10 @@
         <span class="campanha-tag">Meta Ads</span>
         <span class="campanha-tag">Copywriting</span>
         <span class="campanha-tag">A/B Testing</span>
+        <span class="campanha-tag">Design</span>
+        <span class="campanha-tag">Estratégia de Conteúdo</span>
+        <span class="campanha-tag">Branding</span>
+        <span class="campanha-tag">Performance</span>
       </div>
     </div>
 
@@ -2113,6 +2126,16 @@ function fecharModal() {
 if (btnAbrirCase) btnAbrirCase.addEventListener('click', abrirModal);
 if (caseModalClose) caseModalClose.addEventListener('click', fecharModal);
 if (caseModalOverlay) caseModalOverlay.addEventListener('click', fecharModal);
+
+// ── CARD INTEIRO CLICÁVEL ──
+const destaqueInner = document.querySelector('.destaque-inner');
+if (destaqueInner) {
+  destaqueInner.addEventListener('click', (e) => {
+    if (!e.target.closest('#btnAbrirCase')) {
+      abrirModal();
+    }
+  });
+}
 
 // ── HAMBÚRGUER + DRAWER ──
 const hamburger = document.getElementById('navHamburger');
