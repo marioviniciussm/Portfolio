@@ -241,13 +241,141 @@
     padding-right: 12px;
   }
 
-  /* ── CASE SECTION (Verte Verão unificado) ── */
-  .case-section {
+  /* ── DESTAQUE SECTION (Verte Verão card) ── */
+  .destaque-section {
     padding: 0 48px 80px;
     max-width: 1200px;
     margin: 0 auto;
   }
 
+  .destaque-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    border: 1px solid rgba(192,57,43,0.4);
+    padding: 48px;
+    background: rgba(192,57,43,0.04);
+  }
+
+  .destaque-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    line-height: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .destaque-desc {
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .destaque-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .destaque-metric-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .destaque-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .destaque-metric-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    letter-spacing: 0.04em;
+    color: var(--vermelho);
+    line-height: 1;
+  }
+
+  .destaque-metric-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza);
+  }
+
+  .btn-case-modal {
+    background: var(--vermelho);
+    color: var(--branco);
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-case-modal:hover { background: var(--vermelho-dark); }
+
+  /* ── CASE MODAL ── */
+  .case-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+
+  .case-modal.open { display: flex; }
+
+  .case-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  .case-modal-content {
+    position: relative;
+    z-index: 1;
+    background: var(--preto);
+    width: 100%;
+    max-width: 1100px;
+    border: 1px solid rgba(192,57,43,0.25);
+    padding: 60px 48px 80px;
+  }
+
+  .case-modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: none;
+    border: none;
+    color: var(--branco);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 2;
+    padding: 4px 8px;
+  }
+
+  .case-modal-close:hover { opacity: 1; }
+
+  .case-modal-body {
+    clear: both;
+  }
+
+  /* ── CASE TABS (inside modal) ── */
   .case-header {
     margin-bottom: 40px;
   }
@@ -739,154 +867,6 @@
     z-index: 201;
   }
 
-  /* ── TAB MENU ── */
-  .tab-section {
-    padding: 0 48px 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 48px;
-  }
-
-  .tab-btn {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
-    color: var(--cinza);
-    background: none;
-    border: none;
-    padding: 18px 20px;
-    cursor: pointer;
-    position: relative;
-    transition: color .25s;
-    flex: 1;
-    text-align: center;
-  }
-
-  .tab-btn::after {
-    content: '';
-    position: absolute;
-    bottom: -1px; left: 50%; transform: translateX(-50%);
-    width: 0; height: 2px;
-    background: var(--vermelho);
-    transition: width .3s ease;
-  }
-
-  .tab-btn.active { color: var(--branco); }
-  .tab-btn.active::after { width: calc(100% - 40px); }
-
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 24px;
-  }
-
-  .info-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    padding: 24px;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .info-card:hover {
-    border-color: rgba(192,57,43,0.4);
-    background: rgba(192,57,43,0.04);
-  }
-
-  .info-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    color: var(--branco);
-    margin-bottom: 10px;
-  }
-
-  .info-card-desc {
-    font-size: 0.85rem;
-    color: var(--cinza);
-    line-height: 1.65;
-  }
-
-  .tab-desc {
-    font-size: 0.95rem;
-    color: #aaa;
-    line-height: 1.75;
-    max-width: 680px;
-    margin-bottom: 8px;
-  }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* ── EXPERIENCE BLOCK ── */
-  .experiencia-block {
-    padding: 60px 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .experiencia-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 60px;
-    align-items: start;
-  }
-
-  .experiencia-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--vermelho);
-    margin-bottom: 10px;
-  }
-
-  .experiencia-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    letter-spacing: 0.05em;
-    color: var(--branco);
-    margin-bottom: 16px;
-  }
-
-  .experiencia-text {
-    font-size: 0.9rem;
-    color: #aaa;
-    line-height: 1.75;
-  }
-
-  .experiencia-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .experiencia-list li {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.65);
-    padding-left: 20px;
-    position: relative;
-    line-height: 1.55;
-  }
-
-  .experiencia-list li::before {
-    content: '✦';
-    position: absolute;
-    left: 0;
-    color: var(--vermelho);
-    font-size: 0.6rem;
-    top: 3px;
-  }
-
   /* ── FOOTER ── */
   footer {
     padding: 40px 48px;
@@ -924,7 +904,10 @@
     .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
     .hero p { max-width: 100%; margin: 0 auto; }
 
-    .case-section { padding: 0 24px 60px; }
+    .destaque-section { padding: 0 24px 60px; }
+    .destaque-inner { grid-template-columns: 1fr; }
+    .case-modal-content { padding: 40px 24px 60px; }
+    .case-modal { padding: 20px 0; }
     .case-tab-btn { padding: 12px 18px; font-size: 0.95rem; }
     .campanha-header { grid-template-columns: 1fr; }
     .campanha-period { text-align: left; }
@@ -938,15 +921,6 @@
     .post-metrica-block { grid-template-columns: 1fr; }
     .pm-stats { grid-template-columns: repeat(2, 1fr); }
 
-    .tab-section { padding: 0 24px 40px; }
-    .tabs { margin-bottom: 0; }
-    .tab-content { padding-top: 32px; }
-    .tab-btn { padding: 14px 12px; font-size: 0.9rem; }
-    .tab-btn.active::after { width: calc(100% - 24px); }
-    .info-grid { grid-template-columns: 1fr; gap: 14px; }
-
-    .experiencia-block { padding: 40px 24px; }
-    .experiencia-inner { grid-template-columns: 1fr; gap: 24px; }
     footer { padding: 32px 24px; }
   }
   @media (max-width: 420px) {
@@ -1200,98 +1174,143 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     VERTE VERÃO — CASE COMPLETO (abas internas)
+     VERTE VERÃO — CARD DESTAQUE
 ════════════════════════════════════════════════ -->
-<section id="verte-verao" class="case-section">
+<section id="verte-destaque" class="destaque-section">
+  <div class="destaque-inner">
 
-  <!-- Cabeçalho único do case -->
-  <div class="case-header">
-    <div class="campanha-header">
-      <div>
-        <p class="section-label">Case completo · Campanha sazonal</p>
-        <h2 class="section-title">Verte Verão</h2>
-        <div class="campanha-meta">
-          <span class="campanha-tag">Planejamento Editorial</span>
-          <span class="campanha-tag">Design Gráfico</span>
-          <span class="campanha-tag">Copywriting</span>
-          <span class="campanha-tag">Meta Business Suite</span>
-          <span class="campanha-tag">Parceria Panvel</span>
-          <span class="campanha-tag">Meta Ads</span>
-          <span class="campanha-tag">A/B Testing</span>
-          <span class="campanha-tag">Performance</span>
-        </div>
-      </div>
-      <div class="campanha-period">
-        Dez 2024 — Mar 2025 · Meta Ads 2026<br>
-        <span style="color:rgba(255,255,255,0.3); font-size:0.65rem;">Verte Saúde · Afpergs</span>
+    <!-- Lado esquerdo: identidade do case -->
+    <div class="destaque-info">
+      <p class="section-label">Case completo · Campanha sazonal</p>
+      <h2 class="destaque-titulo">Verte Verão<br>2024/2025</h2>
+      <p class="destaque-desc">Gestão completa de redes sociais: planejamento editorial, conteúdo orgânico, parceria Panvel, e campanha de Meta Ads com R$0,02 de custo por resultado.</p>
+      <div class="destaque-tags">
+        <span class="campanha-tag">Planejamento Editorial</span>
+        <span class="campanha-tag">Meta Ads</span>
+        <span class="campanha-tag">Copywriting</span>
+        <span class="campanha-tag">A/B Testing</span>
       </div>
     </div>
+
+    <!-- Lado direito: métricas + CTA -->
+    <div class="destaque-metricas">
+      <div class="destaque-metric-row">
+        <div class="destaque-metric">
+          <span class="destaque-metric-num">74.685</span>
+          <span class="destaque-metric-label">Alcance (Meta Ads)</span>
+        </div>
+        <div class="destaque-metric">
+          <span class="destaque-metric-num">R$ 0,02</span>
+          <span class="destaque-metric-label">Custo por resultado</span>
+        </div>
+        <div class="destaque-metric">
+          <span class="destaque-metric-num">4,5k</span>
+          <span class="destaque-metric-label">Visualizações orgânicas</span>
+        </div>
+      </div>
+      <button class="btn-case-modal" id="btnAbrirCase" aria-label="Ver case completo da Verte Verão">
+        Ver case completo →
+      </button>
+    </div>
+
   </div>
+</section>
 
-  <!-- Abas internas do case -->
-  <div class="case-tabs">
-    <button class="case-tab-btn active" data-case-tab="tab-organico">Conteúdo Orgânico</button>
-    <button class="case-tab-btn" data-case-tab="tab-performance">Performance &amp; Ads</button>
-  </div>
+<!-- MODAL: CASE VERTE VERÃO -->
+<div class="case-modal" id="caseModal" role="dialog" aria-modal="true" aria-label="Case Verte Verão">
+  <div class="case-modal-overlay" id="caseModalOverlay"></div>
+  <div class="case-modal-content">
+    <button class="case-modal-close" id="caseModalClose" aria-label="Fechar">✕</button>
+    <div class="case-modal-body">
 
-  <!-- Aba 1: Conteúdo Orgânico -->
-  <div class="case-tab-content active" id="tab-organico">
-
-  <!-- Métricas gerais -->
-  <div class="metricas-banner">
-    <div class="metrica-item">
-      <div class="metrica-num">6<span>+</span></div>
-      <div class="metrica-label">Publicações monitoradas</div>
-    </div>
-    <div class="metrica-item">
-      <div class="metrica-num">4<span>,</span>5<span>k</span></div>
-      <div class="metrica-label">Visualizações totais</div>
-    </div>
-    <div class="metrica-item">
-      <div class="metrica-num">43</div>
-      <div class="metrica-label">Compartilhamentos (pico)</div>
-    </div>
-    <div class="metrica-item">
-      <div class="metrica-num">6</div>
-      <div class="metrica-label">Formatos de conteúdo</div>
-    </div>
-  </div>
-
-  <!-- ── POST DESTAQUE: Telemedicina (melhor desempenho) ── -->
-  <div class="post-metrica-block">
-    <div class="post-metrica-visual" data-lightbox="single" data-imgs='["https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"]'>
-      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"
-           alt="Post Telemedicina — Neste verão, viaje tranquilo!"
-           onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
-    </div>
-    <div class="post-metrica-dados">
-      <div>
-        <p class="section-label" style="margin-bottom:8px;">Destaque da campanha</p>
-        <p class="pm-titulo">Neste verão,<br>viaje tranquilo!</p>
-      </div>
-      <p class="pm-desc">Post de serviço promovendo a Telemedicina da Verte Saúde com copy direcionado à liberdade de veraneio. Publicado em 29 jan 2025, obteve desempenho acima da média histórica no Instagram com alcance de 500 pessoas.</p>
-      <div class="pm-stats">
-        <div class="pm-stat">
-          <div class="pm-stat-num">743</div>
-          <div class="pm-stat-label">Visualizações · Instagram</div>
-        </div>
-        <div class="pm-stat">
-          <div class="pm-stat-num">500</div>
-          <div class="pm-stat-label">Alcance · Instagram</div>
-        </div>
-        <div class="pm-stat">
-          <div class="pm-stat-num">272</div>
-          <div class="pm-stat-label">Visualizações · Facebook</div>
-        </div>
-        <div class="pm-stat">
-          <div class="pm-stat-num">30</div>
-          <div class="pm-stat-label">Interações líquidas</div>
+      <!-- Cabeçalho do case -->
+      <div class="case-header">
+        <div class="campanha-header">
+          <div>
+            <p class="section-label">Case completo · Campanha sazonal</p>
+            <h2 class="section-title">Verte Verão</h2>
+            <div class="campanha-meta">
+              <span class="campanha-tag">Planejamento Editorial</span>
+              <span class="campanha-tag">Design Gráfico</span>
+              <span class="campanha-tag">Copywriting</span>
+              <span class="campanha-tag">Meta Business Suite</span>
+              <span class="campanha-tag">Parceria Panvel</span>
+              <span class="campanha-tag">Meta Ads</span>
+              <span class="campanha-tag">A/B Testing</span>
+              <span class="campanha-tag">Performance</span>
+            </div>
+          </div>
+          <div class="campanha-period">
+            Dez 2024 — Mar 2025 · Meta Ads 2026<br>
+            <span style="color:rgba(255,255,255,0.3); font-size:0.65rem;">Verte Saúde · Afpergs</span>
+          </div>
         </div>
       </div>
-      <p class="pm-fonte">Métricas via Meta Business Suite · @vertesaude · jan/2025</p>
-      <div class="post-legenda">
-        <span class="post-legenda-label">Legenda do post</span>
-        <p class="post-legenda-texto">Neste verão, viaje tranquilo!
+
+      <!-- Abas internas do case -->
+      <div class="case-tabs">
+        <button class="case-tab-btn active" data-case-tab="tab-organico">Conteúdo Orgânico</button>
+        <button class="case-tab-btn" data-case-tab="tab-performance">Performance &amp; Ads</button>
+      </div>
+
+      <!-- Aba 1: Conteúdo Orgânico -->
+      <div class="case-tab-content active" id="tab-organico">
+
+      <!-- Métricas gerais -->
+      <div class="metricas-banner">
+        <div class="metrica-item">
+          <div class="metrica-num">6<span>+</span></div>
+          <div class="metrica-label">Publicações monitoradas</div>
+        </div>
+        <div class="metrica-item">
+          <div class="metrica-num">4<span>,</span>5<span>k</span></div>
+          <div class="metrica-label">Visualizações totais</div>
+        </div>
+        <div class="metrica-item">
+          <div class="metrica-num">43</div>
+          <div class="metrica-label">Compartilhamentos (pico)</div>
+        </div>
+        <div class="metrica-item">
+          <div class="metrica-num">6</div>
+          <div class="metrica-label">Formatos de conteúdo</div>
+        </div>
+      </div>
+
+      <!-- ── POST DESTAQUE: Telemedicina (melhor desempenho) ── -->
+      <div class="post-metrica-block">
+        <div class="post-metrica-visual" data-lightbox="single" data-imgs='["https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"]'>
+          <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"
+               alt="Post Telemedicina — Neste verão, viaje tranquilo!"
+               onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+        </div>
+        <div class="post-metrica-dados">
+          <div>
+            <p class="section-label" style="margin-bottom:8px;">Destaque da campanha</p>
+            <p class="pm-titulo">Neste verão,<br>viaje tranquilo!</p>
+          </div>
+          <p class="pm-desc">Post de serviço promovendo a Telemedicina da Verte Saúde com copy direcionado à liberdade de veraneio. Publicado em 29 jan 2025, obteve desempenho acima da média histórica no Instagram com alcance de 500 pessoas.</p>
+          <div class="pm-stats">
+            <div class="pm-stat">
+              <div class="pm-stat-num">743</div>
+              <div class="pm-stat-label">Visualizações · Instagram</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">500</div>
+              <div class="pm-stat-label">Alcance · Instagram</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">272</div>
+              <div class="pm-stat-label">Visualizações · Facebook</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">30</div>
+              <div class="pm-stat-label">Interações líquidas</div>
+            </div>
+          </div>
+          <p class="pm-fonte">Métricas via Meta Business Suite · @vertesaude · jan/2025</p>
+          <div class="post-legenda">
+            <span class="post-legenda-label">Legenda do post</span>
+            <p class="post-legenda-texto">Neste verão, viaje tranquilo!
 
 Com a Telemedicina da Verte|Saúde – Afpergs, você tem acesso a cuidados médicos a qualquer momento, onde quer que esteja. Seja na praia, na serra ou em casa, nossa equipe está sempre pronta para cuidar de você.
 
@@ -1303,45 +1322,45 @@ Saúde na palma da mão, sempre que precisar.
 Verte|Saúde – Sua vida, nossos cuidados.
 
 #VerteSaúde #Telemedicina #VerãoTranquilo #CuidadoSempre</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <hr class="section-divider">
+      <hr class="section-divider">
 
-  <!-- ── CARROSSEL: PROTETOR SOLAR ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">Como escolher o Protetor Solar</span>
-      <span class="carrossel-subtitulo">Carrossel · 4 slides · Parceria Panvel Farmácias</span>
-    </div>
-    <div class="carrossel-metricas-inline">
-      <span class="cm-item"><strong>877</strong> visualizações</span>
-      <span class="cm-item"><strong>43</strong> compartilhamentos</span>
-      <span class="cm-item"><strong>57</strong> interações</span>
-      <span class="cm-item">31 jan 2025</span>
-    </div>
-    <div class="slides-strip" id="strip-protetor">
-      <div class="slide-item" data-group="protetor" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_carr_Protetor_arnaldo-1_nm149e.png" alt="Protetor Solar slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="protetor" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_carr_Protetor_arnaldo-2_dyl6pv.png" alt="Protetor Solar slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-      <div class="slide-item" data-group="protetor" data-idx="2">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_Protetor_arnaldo-3_wdzxep.png" alt="Protetor Solar slide 3" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">03</span>
-      </div>
-      <div class="slide-item" data-group="protetor" data-idx="3">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_Protetor_arnaldo-4_dhos7c.png" alt="Protetor Solar slide 4" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">04</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Com os planos da Verte|Saúde, você tem acesso a cuidados essenciais para manter sua pele e seu corpo protegidos e saudáveis, em qualquer estação. E neste verão, proteger a pele é cuidar da saúde!
+      <!-- ── CARROSSEL: PROTETOR SOLAR ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">Como escolher o Protetor Solar</span>
+          <span class="carrossel-subtitulo">Carrossel · 4 slides · Parceria Panvel Farmácias</span>
+        </div>
+        <div class="carrossel-metricas-inline">
+          <span class="cm-item"><strong>877</strong> visualizações</span>
+          <span class="cm-item"><strong>43</strong> compartilhamentos</span>
+          <span class="cm-item"><strong>57</strong> interações</span>
+          <span class="cm-item">31 jan 2025</span>
+        </div>
+        <div class="slides-strip" id="strip-protetor">
+          <div class="slide-item" data-group="protetor" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_carr_Protetor_arnaldo-1_nm149e.png" alt="Protetor Solar slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="protetor" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_carr_Protetor_arnaldo-2_dyl6pv.png" alt="Protetor Solar slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+          <div class="slide-item" data-group="protetor" data-idx="2">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_Protetor_arnaldo-3_wdzxep.png" alt="Protetor Solar slide 3" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">03</span>
+          </div>
+          <div class="slide-item" data-group="protetor" data-idx="3">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_Protetor_arnaldo-4_dhos7c.png" alt="Protetor Solar slide 4" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">04</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Com os planos da Verte|Saúde, você tem acesso a cuidados essenciais para manter sua pele e seu corpo protegidos e saudáveis, em qualquer estação. E neste verão, proteger a pele é cuidar da saúde!
 
 Confira as dicas incríveis da @panvelfarmacias, parceira do nosso Clube de Benefícios, sobre como escolher o protetor solar ideal para o seu tipo de pele.☺
 
@@ -1349,87 +1368,87 @@ Confira as dicas incríveis da @panvelfarmacias, parceira do nosso Clube de Bene
 Verte|Saúde – Sua vida, nossos cuidados.
 
 #VerteSaúde #Saúde #verão #proteçãosolar</p>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <!-- ── CARROSSEL: UVA e UVB ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">O que é UVA e UVB?</span>
-      <span class="carrossel-subtitulo">Carrossel · 4 slides · Educativo</span>
-    </div>
-    <div class="carrossel-metricas-inline">
-      <span class="cm-item"><strong>863</strong> visualizações</span>
-      <span class="cm-item"><strong>12</strong> interações</span>
-      <span class="cm-item">13 jan 2025</span>
-    </div>
-    <div class="slides-strip" id="strip-uva">
-      <div class="slide-item" data-group="uva" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_feed_Carrossel_UVA_e_UVB_arnaldo-1_glukxn.png" alt="UVA e UVB slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="uva" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_Carrossel_UVA_e_UVB_arnaldo-2_qxmmrw.png" alt="UVA e UVB slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-      <div class="slide-item" data-group="uva" data-idx="2">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_Carrossel_UVA_e_UVB_arnaldo-3_chfr6v.png" alt="UVA e UVB slide 3" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">03</span>
-      </div>
-      <div class="slide-item" data-group="uva" data-idx="3">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_feed_Carrossel_UVA_e_UVB_arnaldo-4_cvkhpz.png" alt="UVA e UVB slide 4" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">04</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Proteja sua pele, cuide da sua saúde!
+      <!-- ── CARROSSEL: UVA e UVB ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">O que é UVA e UVB?</span>
+          <span class="carrossel-subtitulo">Carrossel · 4 slides · Educativo</span>
+        </div>
+        <div class="carrossel-metricas-inline">
+          <span class="cm-item"><strong>863</strong> visualizações</span>
+          <span class="cm-item"><strong>12</strong> interações</span>
+          <span class="cm-item">13 jan 2025</span>
+        </div>
+        <div class="slides-strip" id="strip-uva">
+          <div class="slide-item" data-group="uva" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_feed_Carrossel_UVA_e_UVB_arnaldo-1_glukxn.png" alt="UVA e UVB slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="uva" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_Carrossel_UVA_e_UVB_arnaldo-2_qxmmrw.png" alt="UVA e UVB slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+          <div class="slide-item" data-group="uva" data-idx="2">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_Carrossel_UVA_e_UVB_arnaldo-3_chfr6v.png" alt="UVA e UVB slide 3" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">03</span>
+          </div>
+          <div class="slide-item" data-group="uva" data-idx="3">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_feed_Carrossel_UVA_e_UVB_arnaldo-4_cvkhpz.png" alt="UVA e UVB slide 4" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">04</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Proteja sua pele, cuide da sua saúde!
 
 Usar protetor solar diariamente é o primeiro passo para prevenir queimaduras, envelhecimento precoce e o câncer de pele. Entenda a diferença entre os raios ultravioletas A e B, e não deixe o cuidado de lado, mesmo nos dias nublados!
 
 Verte|Saúde - sua vida, nossos cuidados.
 
 #VerteVerão #Saúde #VerteSaúde #Verão #RaiosUltraVioletas #UVB #UVA</p>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <!-- ── CARROSSEL: Doenças do Ouvido ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">Doenças do Ouvido no Verão</span>
-      <span class="carrossel-subtitulo">Carrossel · 5 slides · Parceria médica · Dra. Luciane Maltchik Kohem</span>
-    </div>
-    <div class="carrossel-metricas-inline">
-      <span class="cm-item"><strong>812</strong> visualizações</span>
-      <span class="cm-item"><strong>11</strong> compartilhamentos</span>
-      <span class="cm-item"><strong>23</strong> interações</span>
-      <span class="cm-item">8 jan 2025</span>
-    </div>
-    <div class="slides-strip" id="strip-otite">
-      <div class="slide-item" data-group="otite" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_otite_arnaldo-1_nuirms.png" alt="Otite slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="otite" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_otite_arnaldo-2_p7q5fa.png" alt="Otite slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-      <div class="slide-item" data-group="otite" data-idx="2">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_carr_otite_arnaldo-3_dggo7x.png" alt="Otite slide 3" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">03</span>
-      </div>
-      <div class="slide-item" data-group="otite" data-idx="3">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_carr_otite_arnaldo-4_klsgn5.png" alt="Otite slide 4" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">04</span>
-      </div>
-      <div class="slide-item" data-group="otite" data-idx="4">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_carr_otite_arnaldo-5_epenfm.png" alt="Otite slide 5" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">05</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Ouvidos saudáveis, férias tranquilas!
+      <!-- ── CARROSSEL: Doenças do Ouvido ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">Doenças do Ouvido no Verão</span>
+          <span class="carrossel-subtitulo">Carrossel · 5 slides · Parceria médica · Dra. Luciane Maltchik Kohem</span>
+        </div>
+        <div class="carrossel-metricas-inline">
+          <span class="cm-item"><strong>812</strong> visualizações</span>
+          <span class="cm-item"><strong>11</strong> compartilhamentos</span>
+          <span class="cm-item"><strong>23</strong> interações</span>
+          <span class="cm-item">8 jan 2025</span>
+        </div>
+        <div class="slides-strip" id="strip-otite">
+          <div class="slide-item" data-group="otite" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_otite_arnaldo-1_nuirms.png" alt="Otite slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="otite" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_otite_arnaldo-2_p7q5fa.png" alt="Otite slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+          <div class="slide-item" data-group="otite" data-idx="2">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_carr_otite_arnaldo-3_dggo7x.png" alt="Otite slide 3" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">03</span>
+          </div>
+          <div class="slide-item" data-group="otite" data-idx="3">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_carr_otite_arnaldo-4_klsgn5.png" alt="Otite slide 4" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">04</span>
+          </div>
+          <div class="slide-item" data-group="otite" data-idx="4">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353974/VER_carr_otite_arnaldo-5_epenfm.png" alt="Otite slide 5" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">05</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Ouvidos saudáveis, férias tranquilas!
 
 No verão, a diversão na praia, na piscina ou na serra vem acompanhada de cuidados extras com a saúde auditiva. Evite infecções, como a otite externa, e outras complicações típicas dessa estação seguindo dicas simples de prevenção. 🌊
 
@@ -1438,45 +1457,45 @@ Para manter seus ouvidos protegidos e aproveitar o melhor da estação, conte se
 Conte com a Verte|Saúde para manter sua saúde sempre em dia!
 
 #VerteSaúde #saúde #verão #cuidadosnoverão #VerteVerão</p>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <!-- ── CARROSSEL: Cuidados com Idosos ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">Verão e Saúde: Cuidados com Idosos</span>
-      <span class="carrossel-subtitulo">Carrossel · 5 slides · Educativo</span>
-    </div>
-    <div class="carrossel-metricas-inline">
-      <span class="cm-item"><strong>569</strong> visualizações · Instagram</span>
-      <span class="cm-item"><strong>320</strong> alcance</span>
-      <span class="cm-item">13 fev 2025</span>
-    </div>
-    <div class="slides-strip" id="strip-idosos">
-      <div class="slide-item" data-group="idosos" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353970/VER_carr_cuidados_com_idosos_arnaldo-1_w12qm4.png" alt="Idosos slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="idosos" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_cuidados_com_idosos_arnaldo-2_komsyo.png" alt="Idosos slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-      <div class="slide-item" data-group="idosos" data-idx="2">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_carr_cuidados_com_idosos_arnaldo-3_cu87wq.png" alt="Idosos slide 3" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">03</span>
-      </div>
-      <div class="slide-item" data-group="idosos" data-idx="3">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_carr_cuidados_com_idosos_arnaldo-4_qauero.png" alt="Idosos slide 4" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">04</span>
-      </div>
-      <div class="slide-item" data-group="idosos" data-idx="4">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353970/VER_carr_cuidados_com_idosos_arnaldo-5_jin5r9.png" alt="Idosos slide 5" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">05</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Proteja quem você ama no verão!
+      <!-- ── CARROSSEL: Cuidados com Idosos ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">Verão e Saúde: Cuidados com Idosos</span>
+          <span class="carrossel-subtitulo">Carrossel · 5 slides · Educativo</span>
+        </div>
+        <div class="carrossel-metricas-inline">
+          <span class="cm-item"><strong>569</strong> visualizações · Instagram</span>
+          <span class="cm-item"><strong>320</strong> alcance</span>
+          <span class="cm-item">13 fev 2025</span>
+        </div>
+        <div class="slides-strip" id="strip-idosos">
+          <div class="slide-item" data-group="idosos" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353970/VER_carr_cuidados_com_idosos_arnaldo-1_w12qm4.png" alt="Idosos slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="idosos" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_carr_cuidados_com_idosos_arnaldo-2_komsyo.png" alt="Idosos slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+          <div class="slide-item" data-group="idosos" data-idx="2">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_carr_cuidados_com_idosos_arnaldo-3_cu87wq.png" alt="Idosos slide 3" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">03</span>
+          </div>
+          <div class="slide-item" data-group="idosos" data-idx="3">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_carr_cuidados_com_idosos_arnaldo-4_qauero.png" alt="Idosos slide 4" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">04</span>
+          </div>
+          <div class="slide-item" data-group="idosos" data-idx="4">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353970/VER_carr_cuidados_com_idosos_arnaldo-5_jin5r9.png" alt="Idosos slide 5" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">05</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Proteja quem você ama no verão!
 
 Os idosos precisam de atenção especial nos dias quentes! A hidratação deve ser constante, evitando bebidas alcoólicas e cafeína. A alimentação equilibrada também faz toda a diferença, com refeições leves e nutritivas. Além disso, manter os ambientes bem ventilados e monitorar a pressão arterial são cuidados essenciais para garantir o bem-estar nessa época do ano.
 
@@ -1487,334 +1506,212 @@ Cuidar da saúde é fundamental em todas as fases da vida! Com os planos da Vert
 Verte|Saúde-Afpergs – Sua vida, nossos cuidados.
 
 #VerteSaúde #SuaVidaNossosCuidados #CuidadosNoVerão #SaúdeDoIdoso</p>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <!-- ── CARROSSEL: Farofa Funcional ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">Farofa Funcional com Sementes e Nuts</span>
-      <span class="carrossel-subtitulo">Carrossel · 4 slides · Receita asssinada por Nutricionista</span>
-    </div>
-    <div class="carrossel-metricas-inline">
-      <span class="cm-item"><strong>1.086</strong> visualizações</span>
-      <span class="cm-item"><strong>4</strong> compartilhamentos</span>
-      <span class="cm-item"><strong>21</strong> curtidas</span>
-      <span class="cm-item">28 dez 2024</span>
-    </div>
-    <div class="slides-strip" id="strip-farofa">
-      <div class="slide-item" data-group="farofa" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_feed_Receita_Farofa_-1_1_ogsfrn.png" alt="Farofa slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="farofa" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-2_z1zpl8.png" alt="Farofa slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-      <div class="slide-item" data-group="farofa" data-idx="2">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-3_mqrxf0.png" alt="Farofa slide 3" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">03</span>
-      </div>
-      <div class="slide-item" data-group="farofa" data-idx="3">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-4_m7pbuh.png" alt="Farofa slide 4" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">04</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Verte verão na área! Hoje temos uma receita incrível de farofa funcional, para adicionar mais sabor e saúde na sua ceia de ano novo!
+      <!-- ── CARROSSEL: Farofa Funcional ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">Farofa Funcional com Sementes e Nuts</span>
+          <span class="carrossel-subtitulo">Carrossel · 4 slides · Receita asssinada por Nutricionista</span>
+        </div>
+        <div class="carrossel-metricas-inline">
+          <span class="cm-item"><strong>1.086</strong> visualizações</span>
+          <span class="cm-item"><strong>4</strong> compartilhamentos</span>
+          <span class="cm-item"><strong>21</strong> curtidas</span>
+          <span class="cm-item">28 dez 2024</span>
+        </div>
+        <div class="slides-strip" id="strip-farofa">
+          <div class="slide-item" data-group="farofa" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353971/VER_feed_Receita_Farofa_-1_1_ogsfrn.png" alt="Farofa slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="farofa" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-2_z1zpl8.png" alt="Farofa slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+          <div class="slide-item" data-group="farofa" data-idx="2">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-3_mqrxf0.png" alt="Farofa slide 3" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">03</span>
+          </div>
+          <div class="slide-item" data-group="farofa" data-idx="3">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_Receita_Farofa_-4_m7pbuh.png" alt="Farofa slide 4" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">04</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Verte verão na área! Hoje temos uma receita incrível de farofa funcional, para adicionar mais sabor e saúde na sua ceia de ano novo!
 
 Salva essa dica para fazer em casa e, se preparar, não esqueça de marcar a gente nas redes sociais!
 
 #ReceitaFuncional #VerãoSaudável #FarofaDelícia</p>
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <!-- ── CARROSSEL: Novo Ano, Novos Hábitos ── -->
-  <div class="carrossel-block">
-    <div class="carrossel-header">
-      <span class="carrossel-titulo">Novo Ano, Novos Hábitos</span>
-      <span class="carrossel-subtitulo">Carrossel · 2 slides · Virada de ano</span>
-    </div>
-    <div class="slides-strip" id="strip-novohab">
-      <div class="slide-item" data-group="novohab" data-idx="0">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_carr_Novo_ano_Novos_h%C3%A1bitos_-1_1_gikdaw.png" alt="Novos Hábitos slide 1" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">01</span>
-      </div>
-      <div class="slide-item" data-group="novohab" data-idx="1">
-        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_Novo_ano_Novos_h%C3%A1bitos_-2_1_ep00ke.png" alt="Novos Hábitos slide 2" onerror="this.closest('.slide-item').style.display='none'">
-        <span class="slide-num">02</span>
-      </div>
-    </div>
-    <div class="carrossel-legenda">
-      <span class="carrossel-legenda-label">Legenda do post</span>
-      <p class="carrossel-legenda-texto">Ano novo, novos hábitos! 🎊🌱
+      <!-- ── CARROSSEL: Novo Ano, Novos Hábitos ── -->
+      <div class="carrossel-block">
+        <div class="carrossel-header">
+          <span class="carrossel-titulo">Novo Ano, Novos Hábitos</span>
+          <span class="carrossel-subtitulo">Carrossel · 2 slides · Virada de ano</span>
+        </div>
+        <div class="slides-strip" id="strip-novohab">
+          <div class="slide-item" data-group="novohab" data-idx="0">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_carr_Novo_ano_Novos_h%C3%A1bitos_-1_1_gikdaw.png" alt="Novos Hábitos slide 1" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">01</span>
+          </div>
+          <div class="slide-item" data-group="novohab" data-idx="1">
+            <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353975/VER_carr_Novo_ano_Novos_h%C3%A1bitos_-2_1_ep00ke.png" alt="Novos Hábitos slide 2" onerror="this.closest('.slide-item').style.display='none'">
+            <span class="slide-num">02</span>
+          </div>
+        </div>
+        <div class="carrossel-legenda">
+          <span class="carrossel-legenda-label">Legenda do post</span>
+          <p class="carrossel-legenda-texto">Ano novo, novos hábitos! 🎊🌱
 
 Aproveite a virada do ano para colocar a saúde em primeiro lugar. Pequenas mudanças no dia a dia fazem toda a diferença ao longo de 2025.
 
 Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentários! 👇
 
 #NovoAno #NovosHábitos #VerteSaúde #Saúde #Afpergs</p>
-    </div>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ── FEEDS INDIVIDUAIS ── -->
-  <div style="margin-bottom: 32px;">
-    <p class="section-label">Posts individuais</p>
-    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:12px;">Peças de feed</h3>
-    <p style="font-size:0.85rem; color:var(--cinza); line-height:1.7; max-width:560px;">Lançamento, eventos, parceria comercial e serviços — posts únicos que sustentaram o calendário editorial ao longo da campanha.</p>
-  </div>
-
-  <div class="feed-grid">
-    <div class="feed-item" data-group="feeds" data-idx="0">
-      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_feed_Lan%C3%A7amento-Campanha-de-Ver%C3%A3o_uotvay.png"
-           alt="Lançamento da campanha Verte Verão"
-           onerror="this.closest('.feed-item').style.display='none'">
-      <div class="feed-overlay"><span class="feed-overlay-label">Lançamento da campanha</span></div>
-    </div>
-    <div class="feed-item" data-group="feeds" data-idx="1">
-      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_workshopskincare_arnaldo_bgz3gq.png"
-           alt="Workshop Skincare para o Verão"
-           onerror="this.closest('.feed-item').style.display='none'">
-      <div class="feed-overlay"><span class="feed-overlay-label">Workshop Skincare · 17 dez</span></div>
-    </div>
-    <div class="feed-item" data-group="feeds" data-idx="2">
-      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_feed_promocao_panvel_fevereiro_arnaldo_frv7j6.png"
-           alt="Promoção Panvel 20% OFF"
-           onerror="this.closest('.feed-item').style.display='none'">
-      <div class="feed-overlay"><span class="feed-overlay-label">Panvel · 20% OFF</span></div>
-    </div>
-    <div class="feed-item" data-group="feeds" data-idx="3">
-      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"
-           alt="Telemedicina Verte Saúde"
-           onerror="this.closest('.feed-item').style.display='none'">
-      <div class="feed-overlay"><span class="feed-overlay-label">Telemedicina · destaque</span></div>
-    </div>
-  </div>
-
-  </div> <!-- end tab-organico -->
-
-  <!-- Aba 2: Performance & Ads -->
-  <div class="case-tab-content" id="tab-performance">
-
-  <!-- 1. Headline Estratégica -->
-  <div class="performance-headline">
-    <p class="section-label">Case de performance · Meta Ads · 2026</p>
-    <h3 class="performance-section-title">Estratégia de Performance<br>&amp; Conteúdo: Verte Verão</h3>
-    <p class="performance-subtitle">Otimização de Meta Ads focada em alcance e eficiência de custo para o setor de saúde suplementar.</p>
-  </div>
-
-  <!-- 2. Comparativo de Criativos (A/B Testing) -->
-  <div style="margin-bottom: 20px;">
-    <p class="section-label">Comparativo de criativos · A/B Testing</p>
-    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Variações de Arte</h3>
-  </div>
-
-  <div class="ab-test-grid">
-    <div>
-      <div class="ab-variant">
-        <img src="VER_feed patrocinados_blitz da saude verao 1_arnaldo.png"
-             alt="Versão A — Feed patrocinado Blitz da Saúde Verão 1"
-             onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
-        <span class="ab-label">Versão A</span>
+        </div>
       </div>
-      <p class="ab-caption">Arte 01 · Variação visual para teste de engajamento</p>
-    </div>
-    <div>
-      <div class="ab-variant">
-        <img src="VER_feed patrocinados_blitz da saude verao 2_arnaldo.png"
-             alt="Versão B — Feed patrocinado Blitz da Saúde Verão 2"
-             onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
-        <span class="ab-label">Versão B</span>
-      </div>
-      <p class="ab-caption">Arte 02 · Variação visual para teste de engajamento</p>
-    </div>
-  </div>
 
-  <div class="carrossel-legenda" style="margin-bottom: 48px;">
-    <span class="carrossel-legenda-label">Nota técnica</span>
-    <p class="carrossel-legenda-texto">Testes de variação visual para identificar o melhor padrão de engajamento do público gaúcho.</p>
-  </div>
+      <hr class="section-divider">
 
-  <!-- 3. Dashboard de Resultados -->
-  <div style="margin-bottom: 24px;">
-    <p class="section-label">Dashboard de resultados · A prova real</p>
-    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Métricas da Campanha</h3>
-  </div>
+      <!-- ── FEEDS INDIVIDUAIS ── -->
+      <div style="margin-bottom: 32px;">
+        <p class="section-label">Posts individuais</p>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:12px;">Peças de feed</h3>
+        <p style="font-size:0.85rem; color:var(--cinza); line-height:1.7; max-width:560px;">Lançamento, eventos, parceria comercial e serviços — posts únicos que sustentaram o calendário editorial ao longo da campanha.</p>
+      </div>
 
-  <div class="perf-metricas-grid">
-    <div class="perf-card destaque">
-      <div class="perf-card-num">R$ 0,02</div>
-      <div class="perf-card-label">Custo por Resultado</div>
-      <div class="perf-card-desc">Alta eficiência de conversão</div>
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-num">74.685</div>
-      <div class="perf-card-label">Alcance</div>
-      <div class="perf-card-desc">Pessoas únicas impactadas</div>
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-num">201.311</div>
-      <div class="perf-card-label">Impressões</div>
-      <div class="perf-card-desc">Exposição total da marca</div>
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-num">R$ 1.222,02</div>
-      <div class="perf-card-label">Valor Investido</div>
-      <div class="perf-card-desc">Gestão otimizada de orçamento</div>
-    </div>
-  </div>
+      <div class="feed-grid">
+        <div class="feed-item" data-group="feeds" data-idx="0">
+          <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353976/VER_feed_Lan%C3%A7amento-Campanha-de-Ver%C3%A3o_uotvay.png"
+               alt="Lançamento da campanha Verte Verão"
+               onerror="this.closest('.feed-item').style.display='none'">
+          <div class="feed-overlay"><span class="feed-overlay-label">Lançamento da campanha</span></div>
+        </div>
+        <div class="feed-item" data-group="feeds" data-idx="1">
+          <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353969/VER_feed_workshopskincare_arnaldo_bgz3gq.png"
+               alt="Workshop Skincare para o Verão"
+               onerror="this.closest('.feed-item').style.display='none'">
+          <div class="feed-overlay"><span class="feed-overlay-label">Workshop Skincare · 17 dez</span></div>
+        </div>
+        <div class="feed-item" data-group="feeds" data-idx="2">
+          <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353973/VER_feed_promocao_panvel_fevereiro_arnaldo_frv7j6.png"
+               alt="Promoção Panvel 20% OFF"
+               onerror="this.closest('.feed-item').style.display='none'">
+          <div class="feed-overlay"><span class="feed-overlay-label">Panvel · 20% OFF</span></div>
+        </div>
+        <div class="feed-item" data-group="feeds" data-idx="3">
+          <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1774353972/VER_feed_telemedicina_arnaldo_pciqzv.png"
+               alt="Telemedicina Verte Saúde"
+               onerror="this.closest('.feed-item').style.display='none'">
+          <div class="feed-overlay"><span class="feed-overlay-label">Telemedicina · destaque</span></div>
+        </div>
+      </div>
 
-  <!-- 4. Descritivo Narrativo -->
-  <div style="margin-bottom: 24px;">
-    <p class="section-label">Contexto estratégico</p>
-    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Desafio, Solução &amp; Resultado</h3>
-  </div>
+      </div> <!-- end tab-organico -->
 
-  <div class="narrativa-grid">
-    <div class="narrativa-card">
-      <span class="narrativa-label">Desafio</span>
-      <p class="narrativa-text">Posicionar a Verte|Saúde como referência de bem-estar no verão de Porto Alegre.</p>
-    </div>
-    <div class="narrativa-card">
-      <span class="narrativa-label">Solução</span>
-      <p class="narrativa-text">Desenvolvimento de criativos estáticos e em vídeo com copywriting direto e focado em benefícios familiares, operados via Meta Business Suite.</p>
-    </div>
-    <div class="narrativa-card">
-      <span class="narrativa-label">Resultado</span>
-      <p class="narrativa-text">CPM de R$ 6,07 e uma frequência de 2,69, garantindo presença constante no feed do público-alvo.</p>
-    </div>
-  </div>
+      <!-- Aba 2: Performance & Ads -->
+      <div class="case-tab-content" id="tab-performance">
 
-  </div> <!-- end tab-performance -->
+      <!-- 1. Headline Estratégica -->
+      <div class="performance-headline">
+        <p class="section-label">Case de performance · Meta Ads · 2026</p>
+        <h3 class="performance-section-title">Estratégia de Performance<br>&amp; Conteúdo: Verte Verão</h3>
+        <p class="performance-subtitle">Otimização de Meta Ads focada em alcance e eficiência de custo para o setor de saúde suplementar.</p>
+      </div>
 
-</section>
+      <!-- 2. Comparativo de Criativos (A/B Testing) -->
+      <div style="margin-bottom: 20px;">
+        <p class="section-label">Comparativo de criativos · A/B Testing</p>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Variações de Arte</h3>
+      </div>
 
-<!-- TABS + COMPETÊNCIAS -->
-<section class="tab-section">
+      <div class="ab-test-grid">
+        <div>
+          <div class="ab-variant">
+            <img src="VER_feed patrocinados_blitz da saude verao 1_arnaldo.png"
+                 alt="Versão A — Feed patrocinado Blitz da Saúde Verão 1"
+                 onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+            <span class="ab-label">Versão A</span>
+          </div>
+          <p class="ab-caption">Arte 01 · Variação visual para teste de engajamento</p>
+        </div>
+        <div>
+          <div class="ab-variant">
+            <img src="VER_feed patrocinados_blitz da saude verao 2_arnaldo.png"
+                 alt="Versão B — Feed patrocinado Blitz da Saúde Verão 2"
+                 onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+            <span class="ab-label">Versão B</span>
+          </div>
+          <p class="ab-caption">Arte 02 · Variação visual para teste de engajamento</p>
+        </div>
+      </div>
 
-  <div style="margin-bottom:40px;">
-    <p class="section-label">Habilidades</p>
-    <h2 class="section-title">Como<br>trabalho</h2>
-  </div>
+      <div class="carrossel-legenda" style="margin-bottom: 48px;">
+        <span class="carrossel-legenda-label">Nota técnica</span>
+        <p class="carrossel-legenda-texto">Testes de variação visual para identificar o melhor padrão de engajamento do público gaúcho.</p>
+      </div>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="tab-editorial">Planejamento Editorial</button>
-    <button class="tab-btn" data-tab="tab-campanhas">Campanhas &amp; Meta Ads</button>
-    <button class="tab-btn" data-tab="tab-gestao">Gestão de Perfis</button>
-    <button class="tab-btn" data-tab="tab-copy">Copywriting</button>
-  </div>
+      <!-- 3. Dashboard de Resultados -->
+      <div style="margin-bottom: 24px;">
+        <p class="section-label">Dashboard de resultados · A prova real</p>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Métricas da Campanha</h3>
+      </div>
 
-  <div class="tab-content active" id="tab-editorial">
-    <p class="tab-desc">Criação de calendários editoriais mensais, definição de pautas, roteiros e diretrizes criativas alinhadas ao posicionamento da marca e ao público-alvo.</p>
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="info-card-title">Calendário Editorial</div>
-        <p class="info-card-desc">Organização mensal de conteúdos por tema, formato e canal, com antecedência suficiente para produção e revisão.</p>
+      <div class="perf-metricas-grid">
+        <div class="perf-card destaque">
+          <div class="perf-card-num">R$ 0,02</div>
+          <div class="perf-card-label">Custo por Resultado</div>
+          <div class="perf-card-desc">Alta eficiência de conversão</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-num">74.685</div>
+          <div class="perf-card-label">Alcance</div>
+          <div class="perf-card-desc">Pessoas únicas impactadas</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-num">201.311</div>
+          <div class="perf-card-label">Impressões</div>
+          <div class="perf-card-desc">Exposição total da marca</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-num">R$ 1.222,02</div>
+          <div class="perf-card-label">Valor Investido</div>
+          <div class="perf-card-desc">Gestão otimizada de orçamento</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="info-card-title">Pauta &amp; Briefing</div>
-        <p class="info-card-desc">Definição de temas, referências visuais e objetivos de comunicação para cada publicação.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Roteiros</div>
-        <p class="info-card-desc">Textos guia para Reels, stories e vídeos institucionais, com linguagem adequada ao tom de voz da marca.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Diretrizes Criativas</div>
-        <p class="info-card-desc">Padronização visual de feed, paleta, tipografia e templates para consistência entre publicações.</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="tab-content" id="tab-campanhas">
-    <p class="tab-desc">Planejamento e operação de campanhas pagas no Meta Ads com foco em alcance institucional, engajamento e geração de leads.</p>
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="info-card-title">Meta Ads</div>
-        <p class="info-card-desc">Criação e gerenciamento de campanhas no Facebook e Instagram Ads via Meta Business Suite.</p>
+      <!-- 4. Descritivo Narrativo -->
+      <div style="margin-bottom: 24px;">
+        <p class="section-label">Contexto estratégico</p>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Desafio, Solução &amp; Resultado</h3>
       </div>
-      <div class="info-card">
-        <div class="info-card-title">Segmentação</div>
-        <p class="info-card-desc">Definição de público-alvo, objetivos de campanha e orçamento por resultado esperado.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Criativos</div>
-        <p class="info-card-desc">Desenvolvimento das peças visuais e textos dos anúncios, alinhados ao objetivo de cada campanha.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Análise</div>
-        <p class="info-card-desc">Acompanhamento de métricas via Meta Business Suite e Google Analytics para otimização contínua.</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="tab-content" id="tab-gestao">
-    <p class="tab-desc">Operação completa dos perfis institucionais: publicações, agendamento, padronização visual e manutenção da identidade da marca no ambiente digital.</p>
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="info-card-title">Publicação &amp; Agendamento</div>
-        <p class="info-card-desc">Postagem e agendamento de conteúdos com consistência de frequência e horários estratégicos.</p>
+      <div class="narrativa-grid">
+        <div class="narrativa-card">
+          <span class="narrativa-label">Desafio</span>
+          <p class="narrativa-text">Posicionar a Verte|Saúde como referência de bem-estar no verão de Porto Alegre.</p>
+        </div>
+        <div class="narrativa-card">
+          <span class="narrativa-label">Solução</span>
+          <p class="narrativa-text">Desenvolvimento de criativos estáticos e em vídeo com copywriting direto e focado em benefícios familiares, operados via Meta Business Suite.</p>
+        </div>
+        <div class="narrativa-card">
+          <span class="narrativa-label">Resultado</span>
+          <p class="narrativa-text">CPM de R$ 6,07 e uma frequência de 2,69, garantindo presença constante no feed do público-alvo.</p>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="info-card-title">Padronização Visual</div>
-        <p class="info-card-desc">Identidade coerente entre posts, highlights, capa e bio, seguindo o manual da marca.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Gestão de Feed</div>
-        <p class="info-card-desc">Curadoria visual do feed para garantir coerência estética e narrativa ao longo do tempo.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Interação</div>
-        <p class="info-card-desc">Monitoramento de comentários e mensagens com respostas alinhadas ao posicionamento institucional.</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="tab-content" id="tab-copy">
-    <p class="tab-desc">Criação de textos para posts, legendas, anúncios e roteiros, com linguagem adequada ao canal, ao público e ao tom de voz da organização.</p>
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="info-card-title">Legendas &amp; Posts</div>
-        <p class="info-card-desc">Textos de feed com chamada para ação, hashtags e linguagem adaptada ao contexto institucional.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Anúncios</div>
-        <p class="info-card-desc">Copy para campanhas pagas com foco em conversão e clareza de mensagem.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Roteiros</div>
-        <p class="info-card-desc">Textos narrativos para vídeos e Reels institucionais, com estrutura de apresentação, conflito e solução.</p>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Tom de Voz</div>
-        <p class="info-card-desc">Adaptação da linguagem ao perfil da organização: profissional, acessível e consistente.</p>
-      </div>
-    </div>
-  </div>
+      </div> <!-- end tab-performance -->
 
-</section>
-
-<!-- EXPERIÊNCIA REAL -->
-<section class="experiencia-block">
-  <div class="experiencia-inner">
-    <div>
-      <p class="experiencia-label">Na prática</p>
-      <h2 class="experiencia-title">Verte Saúde · 2024–Atual</h2>
-      <p class="experiencia-text">Responsável pela gestão completa dos perfis institucionais da operadora de saúde: planejamento editorial mensal, produção de conteúdo, campanhas pagas e relatórios de desempenho. Mais de 12 meses de operação contínua com consistência visual e alinhamento estratégico.</p>
-    </div>
-    <div>
-      <ul class="experiencia-list">
-        <li>Calendários editoriais mensais entregues sem atraso</li>
-        <li>Campanha Verte Verão: 6+ formatos, parceria Panvel, collab médica</li>
-        <li>Integração entre design, vídeo e copy na mesma entrega</li>
-        <li>Uso de Meta Business Suite e Google Analytics para análise</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    </div> <!-- end case-modal-body -->
+  </div> <!-- end case-modal-content -->
+</div> <!-- end case-modal -->
 
 <footer>
   <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
@@ -1833,16 +1730,6 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
 </div>
 
 <script>
-// ── TABS ──
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-
 // ── CASE TABS (Verte Verão) ──
 document.querySelectorAll('.case-tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -1852,6 +1739,25 @@ document.querySelectorAll('.case-tab-btn').forEach(btn => {
     document.getElementById(btn.dataset.caseTab).classList.add('active');
   });
 });
+
+// ── MODAL DO CASE ──
+const btnAbrirCase = document.getElementById('btnAbrirCase');
+const caseModal = document.getElementById('caseModal');
+const caseModalClose = document.getElementById('caseModalClose');
+const caseModalOverlay = document.getElementById('caseModalOverlay');
+
+function abrirModal() {
+  caseModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal() {
+  caseModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (btnAbrirCase) btnAbrirCase.addEventListener('click', abrirModal);
+if (caseModalClose) caseModalClose.addEventListener('click', fecharModal);
+if (caseModalOverlay) caseModalOverlay.addEventListener('click', fecharModal);
 
 // ── HAMBÚRGUER + DRAWER ──
 const hamburger = document.getElementById('navHamburger');
@@ -1887,7 +1793,7 @@ if (drawerCasesBtn && drawerCasesBody) {
 }
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') { closeDrawer(); closeLightbox(); }
+  if (e.key === 'Escape') { closeDrawer(); closeLightbox(); fecharModal(); }
 });
 
 // ── DROPDOWN NAV ──
