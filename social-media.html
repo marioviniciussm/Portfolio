@@ -43,9 +43,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--preto);
     color: var(--branco);
@@ -62,15 +60,12 @@
     border-bottom: 1px solid rgba(192,57,43,0.2);
     min-height: 64px;
   }
-
-  /* wrapper interno centralizado */
   .nav-inner {
     display: flex; align-items: stretch; flex-wrap: nowrap;
     width: 100%; max-width: 1200px;
     margin: 0 auto; padding: 0 60px;
     min-height: 64px;
   }
-
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
     color: var(--white); text-decoration: none;
@@ -80,7 +75,6 @@
     margin-right: 4px;
   }
   .nav-logo span { color: var(--red); }
-
   .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
   .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
@@ -90,8 +84,6 @@
     transition: color 0.2s, background 0.2s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
-
-  /* dropdown Cases */
   .nav-dropdown { position: relative; display: flex; align-items: stretch; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
@@ -103,7 +95,6 @@
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
   .nav-dropdown:hover .nav-dropdown-btn { color: var(--white); background: var(--red); }
   .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
-
   .nav-dropdown-menu {
     position: absolute; top: 100%; left: 0;
     background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
@@ -125,8 +116,6 @@
     padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
     border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
   }
-
-  /* hambúrguer — oculto no desktop */
   .nav-hamburger {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
     width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px;
@@ -140,14 +129,11 @@
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* drawer mobile */
   .nav-drawer-overlay {
     display: none; position: fixed; inset: 0; z-index: 98;
     background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
   }
   .nav-drawer-overlay.open { display: block; }
-
   .nav-drawer {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
     width: 280px; background: #111;
@@ -158,7 +144,6 @@
     overflow-y: auto;
   }
   .nav-drawer.open { transform: translateX(0); }
-
   .drawer-links { list-style: none; padding: 0 0 20px; }
   .drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
   .drawer-links li:last-child { border-bottom: none; }
@@ -170,8 +155,6 @@
     transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
   .drawer-links li a:hover { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.08); }
-
-  /* accordion Cases no drawer */
   .drawer-cases-btn {
     width: 100%; background: none; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: space-between;
@@ -187,7 +170,6 @@
   .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--red); }
   .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--red); background: rgba(192,57,43,0.08); }
   .drawer-cases-btn.open svg { transform: rotate(180deg); }
-
   .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
   .drawer-cases-body.open { max-height: 400px; }
   .drawer-cases-body a {
@@ -213,9 +195,6 @@
     gap: 0 60px;
     align-items: end;
   }
-
-  .hero-left { /* coluna esquerda — label + título + desc */ }
-
   .hero-label {
     font-size: 0.7rem;
     font-weight: 700;
@@ -224,7 +203,6 @@
     color: var(--vermelho) !important;
     margin-bottom: 16px;
   }
-
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(5rem, 9vw, 9rem);
@@ -233,7 +211,6 @@
     color: var(--branco);
     margin-bottom: 28px;
   }
-
   .hero p {
     font-size: 1rem;
     color: var(--cinza);
@@ -241,8 +218,6 @@
     line-height: 1.7;
     font-weight: 300;
   }
-
-  /* coluna direita — elemento decorativo */
   .hero-right-deco {
     display: flex;
     flex-direction: column;
@@ -251,29 +226,12 @@
     padding-bottom: 12px;
     gap: 24px;
   }
-
-  .hero-deco-num {
-    width: clamp(10rem, 18vw, 18rem);
-    height: clamp(10rem, 18vw, 18rem);
-    opacity: 0.04;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    user-select: none;
-    pointer-events: none;
-  }
-  .hero-deco-num svg {
-    width: 100%;
-    height: 100%;
-  }
-
   .hero-deco-tags {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
   }
-
   .hero-deco-tag {
     font-size: 0.65rem;
     letter-spacing: 0.2em;
@@ -281,6 +239,411 @@
     color: rgba(255,255,255,0.2);
     border-right: 2px solid var(--vermelho);
     padding-right: 12px;
+  }
+
+  /* ── CAMPANHA DESTAQUE ── */
+  .campanha-section {
+    padding: 0 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    line-height: 0.9;
+    margin-bottom: 40px;
+  }
+
+  /* Campanha header */
+  .campanha-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .campanha-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .campanha-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 5px 12px;
+    border: 1px solid rgba(192,57,43,0.4);
+    color: rgba(192,57,43,0.9);
+  }
+
+  .campanha-period {
+    font-size: 0.75rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* Métricas gerais da campanha */
+  .metricas-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 60px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .metrica-item {
+    background: var(--preto);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .metrica-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .metrica-num span {
+    color: var(--vermelho);
+  }
+
+  .metrica-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza);
+    font-weight: 500;
+  }
+
+  /* ── CARROSSÉIS ── */
+  .carrossel-block {
+    margin-bottom: 64px;
+  }
+
+  .carrossel-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .carrossel-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    color: var(--branco);
+  }
+
+  .carrossel-subtitulo {
+    font-size: 0.75rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+  }
+
+  .carrossel-metricas-inline {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cm-item {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cm-item strong {
+    color: var(--branco);
+    font-weight: 500;
+  }
+
+  /* Strip de slides */
+  .slides-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(192,57,43,0.4) rgba(255,255,255,0.04);
+  }
+
+  .slides-strip::-webkit-scrollbar { height: 3px; }
+  .slides-strip::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+  .slides-strip::-webkit-scrollbar-thumb { background: rgba(192,57,43,0.4); }
+  .slides-strip:active { cursor: grabbing; }
+
+  .slide-item {
+    flex-shrink: 0;
+    width: 220px;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    background: var(--cinza-escuro);
+    cursor: pointer;
+  }
+
+  .slide-item img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .slide-item:hover img { transform: scale(1.04); }
+
+  .slide-num {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--branco);
+    background: rgba(0,0,0,0.6);
+    padding: 3px 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Feed individual grid */
+  .feed-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+
+  .feed-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--cinza-escuro);
+    cursor: pointer;
+  }
+
+  .feed-item img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .feed-item:hover img { transform: scale(1.04); }
+
+  .feed-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .feed-item:hover .feed-overlay { opacity: 1; }
+
+  .feed-overlay-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+  }
+
+  /* Separador de seção */
+  .section-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 60px 0;
+  }
+
+  /* Post com métrica destaque */
+  .post-metrica-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+    align-items: start;
+  }
+
+  .post-metrica-visual {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .post-metrica-visual img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .post-metrica-visual:hover img { transform: scale(1.03); }
+
+  .post-metrica-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 8px;
+  }
+
+  .pm-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--branco);
+    line-height: 1.05;
+  }
+
+  .pm-desc {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
+  .pm-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pm-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 16px;
+  }
+
+  .pm-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pm-stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cinza);
+  }
+
+  .pm-fonte {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+    border-left: 2px solid rgba(192,57,43,0.3);
+    padding-left: 10px;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-inner {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-inner img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: var(--branco);
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 201;
+    line-height: 1;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: var(--branco);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 12px 16px;
+    transition: background 0.2s;
+    z-index: 201;
+  }
+
+  .lightbox-nav:hover { background: rgba(192,57,43,0.4); }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    z-index: 201;
   }
 
   /* ── TAB MENU ── */
@@ -324,7 +687,6 @@
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: calc(100% - 40px); }
 
-  /* ── INFO CARDS ── */
   .info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -358,7 +720,6 @@
     line-height: 1.65;
   }
 
-  /* ── TAB DESCRIPTION ── */
   .tab-desc {
     font-size: 0.95rem;
     color: #aaa;
@@ -366,6 +727,9 @@
     max-width: 680px;
     margin-bottom: 8px;
   }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
   /* ── EXPERIENCE BLOCK ── */
   .experiencia-block {
@@ -430,10 +794,6 @@
     top: 3px;
   }
 
-  /* ── TABS CONTENT ── */
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
   /* ── FOOTER ── */
   footer {
     padding: 40px 48px;
@@ -452,6 +812,8 @@
   /* ── MOBILE ── */
   @media (max-width: 1024px) {
     .nav-inner { padding: 0 32px; }
+    .metricas-banner { grid-template-columns: repeat(2, 1fr); }
+    .feed-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 768px) {
     nav { min-height: 56px; }
@@ -469,21 +831,34 @@
     .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
     .hero p { max-width: 100%; margin: 0 auto; }
 
+    .campanha-section { padding: 0 24px 60px; }
+    .campanha-header { grid-template-columns: 1fr; }
+    .campanha-period { text-align: left; }
+
+    .metricas-banner { grid-template-columns: repeat(2, 1fr); }
+    .metrica-item { padding: 20px 16px; }
+
+    .feed-grid { grid-template-columns: repeat(2, 1fr); }
+    .slide-item { width: 170px; }
+
+    .post-metrica-block { grid-template-columns: 1fr; }
+    .pm-stats { grid-template-columns: repeat(2, 1fr); }
+
     .tab-section { padding: 0 24px 40px; }
     .tabs { margin-bottom: 0; }
     .tab-content { padding-top: 32px; }
-    .tab-btn { padding: 14px 16px; font-size: 1rem; }
-    .tab-btn.active::after { width: calc(100% - 32px); }
-
+    .tab-btn { padding: 14px 12px; font-size: 0.9rem; }
+    .tab-btn.active::after { width: calc(100% - 24px); }
     .info-grid { grid-template-columns: 1fr; gap: 14px; }
+
     .experiencia-block { padding: 40px 24px; }
     .experiencia-inner { grid-template-columns: 1fr; gap: 24px; }
-
     footer { padding: 32px 24px; }
   }
-
   @media (max-width: 420px) {
     .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
+    .feed-grid { grid-template-columns: repeat(2, 1fr); }
+    .metricas-banner { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -551,11 +926,6 @@
     <p>Do planejamento ao resultado. Calendário editorial, campanhas de Meta Ads, copywriting e gestão de perfis — tudo integrado à identidade visual e aos objetivos da marca.</p>
   </div>
   <div class="hero-right-deco">
-    <div class="hero-deco-num">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="0.8">
-        <path d="M3 11l19-9-9 19-2-8-8-2z"/>
-      </svg>
-    </div>
     <div class="hero-deco-tags">
       <span class="hero-deco-tag">Planejamento Editorial</span>
       <span class="hero-deco-tag">Meta Ads</span>
@@ -565,8 +935,315 @@
   </div>
 </section>
 
-<!-- TABS + CONTENT -->
+<!-- ═══════════════════════════════════════════════
+     CAMPANHA VERTE VERÃO — DESTAQUE
+════════════════════════════════════════════════ -->
+<section class="campanha-section">
+
+  <div class="campanha-header">
+    <div>
+      <p class="section-label">Case completo · Campanha sazonal</p>
+      <h2 class="section-title">Verte Verão<br>2024/2025</h2>
+      <div class="campanha-meta">
+        <span class="campanha-tag">Planejamento Editorial</span>
+        <span class="campanha-tag">Design Gráfico</span>
+        <span class="campanha-tag">Copywriting</span>
+        <span class="campanha-tag">Meta Business Suite</span>
+        <span class="campanha-tag">Parceria Panvel</span>
+      </div>
+    </div>
+    <div class="campanha-period">
+      Dez 2024 — Mar 2025<br>
+      <span style="color:rgba(255,255,255,0.3); font-size:0.65rem;">Verte Saúde · Afpergs</span>
+    </div>
+  </div>
+
+  <!-- Métricas gerais -->
+  <div class="metricas-banner">
+    <div class="metrica-item">
+      <div class="metrica-num">6<span>+</span></div>
+      <div class="metrica-label">Publicações monitoradas</div>
+    </div>
+    <div class="metrica-item">
+      <div class="metrica-num">4<span>,</span>5<span>k</span></div>
+      <div class="metrica-label">Visualizações totais</div>
+    </div>
+    <div class="metrica-item">
+      <div class="metrica-num">43</div>
+      <div class="metrica-label">Compartilhamentos (pico)</div>
+    </div>
+    <div class="metrica-item">
+      <div class="metrica-num">6</div>
+      <div class="metrica-label">Formatos de conteúdo</div>
+    </div>
+  </div>
+
+  <!-- ── POST DESTAQUE: Telemedicina (melhor desempenho) ── -->
+  <div class="post-metrica-block">
+    <div class="post-metrica-visual" data-lightbox="single" data-imgs='["https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_telemedicina_arnaldo.png"]'>
+      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_telemedicina_arnaldo.png"
+           alt="Post Telemedicina — Neste verão, viaje tranquilo!"
+           onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+    </div>
+    <div class="post-metrica-dados">
+      <div>
+        <p class="section-label" style="margin-bottom:8px;">Destaque da campanha</p>
+        <p class="pm-titulo">Neste verão,<br>viaje tranquilo!</p>
+      </div>
+      <p class="pm-desc">Post de serviço promovendo a Telemedicina da Verte Saúde com copy direcionado à liberdade de veraneio. Publicado em 29 jan 2025, obteve desempenho acima da média histórica no Instagram com alcance de 500 pessoas.</p>
+      <div class="pm-stats">
+        <div class="pm-stat">
+          <div class="pm-stat-num">743</div>
+          <div class="pm-stat-label">Visualizações · Instagram</div>
+        </div>
+        <div class="pm-stat">
+          <div class="pm-stat-num">500</div>
+          <div class="pm-stat-label">Alcance · Instagram</div>
+        </div>
+        <div class="pm-stat">
+          <div class="pm-stat-num">272</div>
+          <div class="pm-stat-label">Visualizações · Facebook</div>
+        </div>
+        <div class="pm-stat">
+          <div class="pm-stat-num">30</div>
+          <div class="pm-stat-label">Interações líquidas</div>
+        </div>
+      </div>
+      <p class="pm-fonte">Métricas via Meta Business Suite · @vertesaude · jan/2025</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── CARROSSEL: PROTETOR SOLAR ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">Como escolher o Protetor Solar</span>
+      <span class="carrossel-subtitulo">Carrossel · 4 slides · Parceria Panvel Farmácias</span>
+    </div>
+    <div class="carrossel-metricas-inline">
+      <span class="cm-item"><strong>877</strong> visualizações</span>
+      <span class="cm-item"><strong>43</strong> compartilhamentos</span>
+      <span class="cm-item"><strong>57</strong> interações</span>
+      <span class="cm-item">31 jan 2025</span>
+    </div>
+    <div class="slides-strip" id="strip-protetor">
+      <div class="slide-item" data-group="protetor" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Protetor_arnaldo-1.png" alt="Protetor Solar slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="protetor" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Protetor_arnaldo-2.png" alt="Protetor Solar slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+      <div class="slide-item" data-group="protetor" data-idx="2">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Protetor_arnaldo-3.png" alt="Protetor Solar slide 3" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">03</span>
+      </div>
+      <div class="slide-item" data-group="protetor" data-idx="3">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Protetor_arnaldo-4.png" alt="Protetor Solar slide 4" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">04</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARROSSEL: UVA e UVB ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">O que é UVA e UVB?</span>
+      <span class="carrossel-subtitulo">Carrossel · 4 slides · Educativo</span>
+    </div>
+    <div class="carrossel-metricas-inline">
+      <span class="cm-item"><strong>863</strong> visualizações</span>
+      <span class="cm-item"><strong>12</strong> interações</span>
+      <span class="cm-item">13 jan 2025</span>
+    </div>
+    <div class="slides-strip" id="strip-uva">
+      <div class="slide-item" data-group="uva" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Carrossel_UVA_e_UVB_arnaldo-1.png" alt="UVA e UVB slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="uva" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Carrossel_UVA_e_UVB_arnaldo-2.png" alt="UVA e UVB slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+      <div class="slide-item" data-group="uva" data-idx="2">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Carrossel_UVA_e_UVB_arnaldo-3.png" alt="UVA e UVB slide 3" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">03</span>
+      </div>
+      <div class="slide-item" data-group="uva" data-idx="3">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Carrossel_UVA_e_UVB_arnaldo-4.png" alt="UVA e UVB slide 4" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">04</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARROSSEL: Doenças do Ouvido ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">Doenças do Ouvido no Verão</span>
+      <span class="carrossel-subtitulo">Carrossel · 5 slides · Parceria médica · Dra. Luciane Maltchik Kohem</span>
+    </div>
+    <div class="carrossel-metricas-inline">
+      <span class="cm-item"><strong>812</strong> visualizações</span>
+      <span class="cm-item"><strong>11</strong> compartilhamentos</span>
+      <span class="cm-item"><strong>23</strong> interações</span>
+      <span class="cm-item">8 jan 2025</span>
+    </div>
+    <div class="slides-strip" id="strip-otite">
+      <div class="slide-item" data-group="otite" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_otite_arnaldo-1.png" alt="Otite slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="otite" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_otite_arnaldo-2.png" alt="Otite slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+      <div class="slide-item" data-group="otite" data-idx="2">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_otite_arnaldo-3.png" alt="Otite slide 3" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">03</span>
+      </div>
+      <div class="slide-item" data-group="otite" data-idx="3">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_otite_arnaldo-4.png" alt="Otite slide 4" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">04</span>
+      </div>
+      <div class="slide-item" data-group="otite" data-idx="4">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_otite_arnaldo-5.png" alt="Otite slide 5" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">05</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARROSSEL: Cuidados com Idosos ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">Verão e Saúde: Cuidados com Idosos</span>
+      <span class="carrossel-subtitulo">Carrossel · 5 slides · Educativo</span>
+    </div>
+    <div class="carrossel-metricas-inline">
+      <span class="cm-item"><strong>569</strong> visualizações · Instagram</span>
+      <span class="cm-item"><strong>320</strong> alcance</span>
+      <span class="cm-item">13 fev 2025</span>
+    </div>
+    <div class="slides-strip" id="strip-idosos">
+      <div class="slide-item" data-group="idosos" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_cuidados_com_idosos_arnaldo-1.png" alt="Idosos slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="idosos" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_cuidados_com_idosos_arnaldo-2.png" alt="Idosos slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+      <div class="slide-item" data-group="idosos" data-idx="2">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_cuidados_com_idosos_arnaldo-3.png" alt="Idosos slide 3" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">03</span>
+      </div>
+      <div class="slide-item" data-group="idosos" data-idx="3">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_cuidados_com_idosos_arnaldo-4.png" alt="Idosos slide 4" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">04</span>
+      </div>
+      <div class="slide-item" data-group="idosos" data-idx="4">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_cuidados_com_idosos_arnaldo-5.png" alt="Idosos slide 5" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">05</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARROSSEL: Farofa Funcional ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">Farofa Funcional com Sementes e Nuts</span>
+      <span class="carrossel-subtitulo">Carrossel · 4 slides · Receita asssinada por Nutricionista</span>
+    </div>
+    <div class="carrossel-metricas-inline">
+      <span class="cm-item"><strong>1.086</strong> visualizações</span>
+      <span class="cm-item"><strong>4</strong> compartilhamentos</span>
+      <span class="cm-item"><strong>21</strong> curtidas</span>
+      <span class="cm-item">28 dez 2024</span>
+    </div>
+    <div class="slides-strip" id="strip-farofa">
+      <div class="slide-item" data-group="farofa" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Receita_Farofa_-1__1_.png" alt="Farofa slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="farofa" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Receita_Farofa_-2.png" alt="Farofa slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+      <div class="slide-item" data-group="farofa" data-idx="2">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Receita_Farofa_-3.png" alt="Farofa slide 3" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">03</span>
+      </div>
+      <div class="slide-item" data-group="farofa" data-idx="3">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Receita_Farofa_-4.png" alt="Farofa slide 4" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">04</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARROSSEL: Novo Ano, Novos Hábitos ── -->
+  <div class="carrossel-block">
+    <div class="carrossel-header">
+      <span class="carrossel-titulo">Novo Ano, Novos Hábitos</span>
+      <span class="carrossel-subtitulo">Carrossel · 2 slides · Virada de ano</span>
+    </div>
+    <div class="slides-strip" id="strip-novohab">
+      <div class="slide-item" data-group="novohab" data-idx="0">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Novo_ano__Novos_habitos_-1__1_.png" alt="Novos Hábitos slide 1" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">01</span>
+      </div>
+      <div class="slide-item" data-group="novohab" data-idx="1">
+        <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_carr_Novo_ano__Novos_habitos_-2__1_.png" alt="Novos Hábitos slide 2" onerror="this.closest('.slide-item').style.display='none'">
+        <span class="slide-num">02</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── FEEDS INDIVIDUAIS ── -->
+  <div style="margin-bottom: 32px;">
+    <p class="section-label">Posts individuais</p>
+    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:12px;">Peças de feed</h3>
+    <p style="font-size:0.85rem; color:var(--cinza); line-height:1.7; max-width:560px;">Lançamento, eventos, parceria comercial e serviços — posts únicos que sustentaram o calendário editorial ao longo da campanha.</p>
+  </div>
+
+  <div class="feed-grid">
+    <div class="feed-item" data-group="feeds" data-idx="0">
+      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_Lançamento-Campanha-de-Verão.png"
+           alt="Lançamento da campanha Verte Verão"
+           onerror="this.closest('.feed-item').style.display='none'">
+      <div class="feed-overlay"><span class="feed-overlay-label">Lançamento da campanha</span></div>
+    </div>
+    <div class="feed-item" data-group="feeds" data-idx="1">
+      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_workshopskincare_arnaldo.png"
+           alt="Workshop Skincare para o Verão"
+           onerror="this.closest('.feed-item').style.display='none'">
+      <div class="feed-overlay"><span class="feed-overlay-label">Workshop Skincare · 17 dez</span></div>
+    </div>
+    <div class="feed-item" data-group="feeds" data-idx="2">
+      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_promocao_panvel_fevereiro_arnaldo.png"
+           alt="Promoção Panvel 20% OFF"
+           onerror="this.closest('.feed-item').style.display='none'">
+      <div class="feed-overlay"><span class="feed-overlay-label">Panvel · 20% OFF</span></div>
+    </div>
+    <div class="feed-item" data-group="feeds" data-idx="3">
+      <img src="https://res.cloudinary.com/di2aesnlv/image/upload/v1/portfolio/verao/VER_feed_telemedicina_arnaldo.png"
+           alt="Telemedicina Verte Saúde"
+           onerror="this.closest('.feed-item').style.display='none'">
+      <div class="feed-overlay"><span class="feed-overlay-label">Telemedicina · destaque</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TABS + COMPETÊNCIAS -->
 <section class="tab-section">
+
+  <div style="margin-bottom:40px;">
+    <p class="section-label">Habilidades</p>
+    <h2 class="section-title">Como<br>trabalho</h2>
+  </div>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="tab-editorial">Planejamento Editorial</button>
@@ -575,7 +1252,6 @@
     <button class="tab-btn" data-tab="tab-copy">Copywriting</button>
   </div>
 
-  <!-- Tab 1 — Planejamento Editorial -->
   <div class="tab-content active" id="tab-editorial">
     <p class="tab-desc">Criação de calendários editoriais mensais, definição de pautas, roteiros e diretrizes criativas alinhadas ao posicionamento da marca e ao público-alvo.</p>
     <div class="info-grid">
@@ -598,7 +1274,6 @@
     </div>
   </div>
 
-  <!-- Tab 2 — Campanhas & Meta Ads -->
   <div class="tab-content" id="tab-campanhas">
     <p class="tab-desc">Planejamento e operação de campanhas pagas no Meta Ads com foco em alcance institucional, engajamento e geração de leads.</p>
     <div class="info-grid">
@@ -621,7 +1296,6 @@
     </div>
   </div>
 
-  <!-- Tab 3 — Gestão de Perfis -->
   <div class="tab-content" id="tab-gestao">
     <p class="tab-desc">Operação completa dos perfis institucionais: publicações, agendamento, padronização visual e manutenção da identidade da marca no ambiente digital.</p>
     <div class="info-grid">
@@ -644,7 +1318,6 @@
     </div>
   </div>
 
-  <!-- Tab 4 — Copywriting -->
   <div class="tab-content" id="tab-copy">
     <p class="tab-desc">Criação de textos para posts, legendas, anúncios e roteiros, com linguagem adequada ao canal, ao público e ao tom de voz da organização.</p>
     <div class="info-grid">
@@ -680,7 +1353,7 @@
     <div>
       <ul class="experiencia-list">
         <li>Calendários editoriais mensais entregues sem atraso</li>
-        <li>Campanhas sazonais (Dia da Saúde, eventos corporativos, datas comemorativas)</li>
+        <li>Campanha Verte Verão: 6+ formatos, parceria Panvel, collab médica</li>
         <li>Integração entre design, vídeo e copy na mesma entrega</li>
         <li>Uso de Meta Business Suite e Google Analytics para análise</li>
       </ul>
@@ -692,6 +1365,17 @@
   <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
   <p>Feito com <strong>propósito</strong></p>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lbClose" aria-label="Fechar">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <div class="lightbox-inner">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Próximo">›</button>
+  <span class="lightbox-counter" id="lbCounter"></span>
+</div>
 
 <script>
 // ── TABS ──
@@ -725,12 +1409,9 @@ if (hamburger && drawer && overlay) {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
   overlay.addEventListener('click', closeDrawer);
-  drawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeDrawer);
-  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 }
 
-// ── ACCORDION CASES NO DRAWER ──
 const drawerCasesBtn = document.getElementById('drawerCasesBtn');
 const drawerCasesBody = document.getElementById('drawerCasesBody');
 if (drawerCasesBtn && drawerCasesBody) {
@@ -740,12 +1421,11 @@ if (drawerCasesBtn && drawerCasesBody) {
   });
 }
 
-// fechar dropdown ao pressionar Escape
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeDrawer();
+  if (e.key === 'Escape') { closeDrawer(); closeLightbox(); }
 });
 
-// ── DROPDOWN NAV — acessibilidade teclado ──
+// ── DROPDOWN NAV ──
 const navDropdown = document.getElementById('navDropdown');
 const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
 const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
@@ -757,16 +1437,6 @@ if (dropBtn && dropMenu) {
     dropMenu.style.pointerEvents = !isExpanded ? 'all' : '';
     dropMenu.style.transform = !isExpanded ? 'translateY(0)' : '';
   });
-  dropBtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dropBtn.click(); }
-    if (e.key === 'Escape') {
-      dropBtn.setAttribute('aria-expanded', 'false');
-      dropMenu.style.opacity = '';
-      dropMenu.style.pointerEvents = '';
-      dropMenu.style.transform = '';
-      dropBtn.focus();
-    }
-  });
   document.addEventListener('click', (e) => {
     if (navDropdown && !navDropdown.contains(e.target)) {
       dropBtn.setAttribute('aria-expanded', 'false');
@@ -776,6 +1446,115 @@ if (dropBtn && dropMenu) {
     }
   });
 }
+
+// ── DRAG SCROLL nos strips ──
+document.querySelectorAll('.slides-strip').forEach(strip => {
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => {
+    isDown = true; strip.classList.add('active');
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+  strip.addEventListener('mouseleave', () => { isDown = false; });
+  strip.addEventListener('mouseup', () => { isDown = false; });
+  strip.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    strip.scrollLeft = scrollLeft - walk;
+  });
+});
+
+// ── LIGHTBOX ──
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCounter = document.getElementById('lbCounter');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+
+// Registrar grupos de imagens
+const groups = {};
+
+// Carrosséis
+document.querySelectorAll('.slide-item').forEach(item => {
+  const group = item.dataset.group;
+  const idx = parseInt(item.dataset.idx);
+  if (!groups[group]) groups[group] = [];
+  const img = item.querySelector('img');
+  groups[group][idx] = img ? img.src : '';
+  item.addEventListener('click', () => {
+    openLightbox(group, idx);
+  });
+});
+
+// Feeds
+document.querySelectorAll('.feed-item').forEach(item => {
+  const group = item.dataset.group;
+  const idx = parseInt(item.dataset.idx);
+  if (!groups[group]) groups[group] = [];
+  const img = item.querySelector('img');
+  groups[group][idx] = img ? img.src : '';
+  item.addEventListener('click', () => {
+    openLightbox(group, idx);
+  });
+});
+
+// Post destaque
+document.querySelectorAll('[data-lightbox="single"]').forEach(el => {
+  el.addEventListener('click', () => {
+    const imgs = JSON.parse(el.dataset.imgs || '[]');
+    if (imgs.length) {
+      groups['_single'] = imgs;
+      openLightbox('_single', 0);
+    }
+  });
+});
+
+let currentGroup = null;
+let currentIdx = 0;
+
+function openLightbox(group, idx) {
+  const imgs = groups[group];
+  if (!imgs || !imgs[idx]) return;
+  currentGroup = group;
+  currentIdx = idx;
+  lbImg.src = imgs[idx];
+  lbImg.alt = 'Imagem ' + (idx + 1);
+  lbCounter.textContent = (idx + 1) + ' / ' + imgs.filter(Boolean).length;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lbPrev.style.display = idx === 0 ? 'none' : '';
+  lbNext.style.display = idx >= imgs.filter(Boolean).length - 1 ? 'none' : '';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+function navLightbox(dir) {
+  if (!currentGroup) return;
+  const imgs = groups[currentGroup].filter(Boolean);
+  currentIdx = Math.max(0, Math.min(imgs.length - 1, currentIdx + dir));
+  lbImg.src = imgs[currentIdx];
+  lbCounter.textContent = (currentIdx + 1) + ' / ' + imgs.length;
+  lbPrev.style.display = currentIdx === 0 ? 'none' : '';
+  lbNext.style.display = currentIdx >= imgs.length - 1 ? 'none' : '';
+}
+
+lbClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+lbPrev.addEventListener('click', () => navLightbox(-1));
+lbNext.addEventListener('click', () => navLightbox(1));
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
 </script>
 </body>
 </html>
