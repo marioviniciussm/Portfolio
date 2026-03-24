@@ -546,23 +546,56 @@
     letter-spacing: 0.08em;
   }
 
-  .carrossel-metricas-inline {
+  .carrossel-metricas-grid {
     display: flex;
-    gap: 20px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
   }
 
-  .cm-item {
-    font-size: 0.7rem;
-    color: rgba(192,57,43,0.85);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .cm-card {
+    background: rgba(192,57,43,0.1);
+    border: 1px solid rgba(192,57,43,0.28);
+    padding: 10px 14px;
+    min-width: 76px;
+    flex-shrink: 0;
   }
 
-  .cm-item strong {
+  .cm-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
     color: var(--branco);
-    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+
+  .cm-card-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(192,57,43,0.9);
+    margin-top: 3px;
+  }
+
+  .cm-card-sub {
+    font-size: 0.56rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .cm-card-date {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .cm-card-date .cm-card-num {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .cm-card-date .cm-card-label {
+    color: rgba(255,255,255,0.3);
   }
 
   /* Strip de slides */
@@ -1520,11 +1553,23 @@ Verte|Saúde – Sua vida, nossos cuidados.
           <span class="carrossel-titulo">Como escolher o Protetor Solar</span>
           <span class="carrossel-subtitulo">Carrossel · 4 slides · Parceria Panvel Farmácias</span>
         </div>
-        <div class="carrossel-metricas-inline">
-          <span class="cm-item"><strong>877</strong> visualizações</span>
-          <span class="cm-item"><strong>43</strong> compartilhamentos</span>
-          <span class="cm-item"><strong>57</strong> interações</span>
-          <span class="cm-item">31 jan 2025</span>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">877</div>
+            <div class="cm-card-label">Visualizações</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">43</div>
+            <div class="cm-card-label">Compartilhamentos</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">57</div>
+            <div class="cm-card-label">Interações</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">31 jan</div>
+            <div class="cm-card-label">2025</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-protetor">
           <div class="slide-item" data-group="protetor" data-idx="0">
@@ -1563,10 +1608,19 @@ Verte|Saúde – Sua vida, nossos cuidados.
           <span class="carrossel-titulo">O que é UVA e UVB?</span>
           <span class="carrossel-subtitulo">Carrossel · 4 slides · Educativo</span>
         </div>
-        <div class="carrossel-metricas-inline">
-          <span class="cm-item"><strong>863</strong> visualizações</span>
-          <span class="cm-item"><strong>12</strong> interações</span>
-          <span class="cm-item">13 jan 2025</span>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">863</div>
+            <div class="cm-card-label">Visualizações</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">12</div>
+            <div class="cm-card-label">Interações</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">13 jan</div>
+            <div class="cm-card-label">2025</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-uva">
           <div class="slide-item" data-group="uva" data-idx="0">
@@ -1604,11 +1658,23 @@ Verte|Saúde - sua vida, nossos cuidados.
           <span class="carrossel-titulo">Doenças do Ouvido no Verão</span>
           <span class="carrossel-subtitulo">Carrossel · 5 slides · Parceria médica · Dra. Luciane Maltchik Kohem</span>
         </div>
-        <div class="carrossel-metricas-inline">
-          <span class="cm-item"><strong>812</strong> visualizações</span>
-          <span class="cm-item"><strong>11</strong> compartilhamentos</span>
-          <span class="cm-item"><strong>23</strong> interações</span>
-          <span class="cm-item">8 jan 2025</span>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">812</div>
+            <div class="cm-card-label">Visualizações</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">11</div>
+            <div class="cm-card-label">Compartilhamentos</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">23</div>
+            <div class="cm-card-label">Interações</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">8 jan</div>
+            <div class="cm-card-label">2025</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-otite">
           <div class="slide-item" data-group="otite" data-idx="0">
@@ -1652,10 +1718,20 @@ Conte com a Verte|Saúde para manter sua saúde sempre em dia!
           <span class="carrossel-titulo">Verão e Saúde: Cuidados com Idosos</span>
           <span class="carrossel-subtitulo">Carrossel · 5 slides · Educativo</span>
         </div>
-        <div class="carrossel-metricas-inline">
-          <span class="cm-item"><strong>569</strong> visualizações · Instagram</span>
-          <span class="cm-item"><strong>320</strong> alcance</span>
-          <span class="cm-item">13 fev 2025</span>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">569</div>
+            <div class="cm-card-label">Visualizações</div>
+            <div class="cm-card-sub">Instagram</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">320</div>
+            <div class="cm-card-label">Alcance</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">13 fev</div>
+            <div class="cm-card-label">2025</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-idosos">
           <div class="slide-item" data-group="idosos" data-idx="0">
@@ -1699,13 +1775,25 @@ Verte|Saúde-Afpergs – Sua vida, nossos cuidados.
       <div class="carrossel-block">
         <div class="carrossel-header">
           <span class="carrossel-titulo">Farofa Funcional com Sementes e Nuts</span>
-          <span class="carrossel-subtitulo">Carrossel · 4 slides · Receita asssinada por Nutricionista</span>
+          <span class="carrossel-subtitulo">Carrossel · 4 slides · Receita assinada por Nutricionista</span>
         </div>
-        <div class="carrossel-metricas-inline">
-          <span class="cm-item"><strong>1.086</strong> visualizações</span>
-          <span class="cm-item"><strong>4</strong> compartilhamentos</span>
-          <span class="cm-item"><strong>21</strong> curtidas</span>
-          <span class="cm-item">28 dez 2024</span>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">1.086</div>
+            <div class="cm-card-label">Visualizações</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">4</div>
+            <div class="cm-card-label">Compartilhamentos</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">21</div>
+            <div class="cm-card-label">Curtidas</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">28 dez</div>
+            <div class="cm-card-label">2024</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-farofa">
           <div class="slide-item" data-group="farofa" data-idx="0">
@@ -1740,6 +1828,30 @@ Salva essa dica para fazer em casa e, se preparar, não esqueça de marcar a gen
         <div class="carrossel-header">
           <span class="carrossel-titulo">Novo Ano, Novos Hábitos</span>
           <span class="carrossel-subtitulo">Carrossel · 2 slides · Virada de ano</span>
+        </div>
+        <div class="carrossel-metricas-grid">
+          <div class="cm-card">
+            <div class="cm-card-num">977</div>
+            <div class="cm-card-label">Visualizações</div>
+            <div class="cm-card-sub">378 FB · 599 IG</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">53</div>
+            <div class="cm-card-label">Interações</div>
+            <div class="cm-card-sub">40 FB · 13 IG</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">36</div>
+            <div class="cm-card-label">Compartilhamentos</div>
+          </div>
+          <div class="cm-card">
+            <div class="cm-card-num">17</div>
+            <div class="cm-card-label">Curtidas</div>
+          </div>
+          <div class="cm-card cm-card-date">
+            <div class="cm-card-num">7 jan</div>
+            <div class="cm-card-label">2025</div>
+          </div>
         </div>
         <div class="slides-strip" id="strip-novohab">
           <div class="slide-item" data-group="novohab" data-idx="0">
