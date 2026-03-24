@@ -909,6 +909,184 @@
     .feed-grid { grid-template-columns: repeat(2, 1fr); }
     .metricas-banner { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* ── PERFORMANCE CASE: VERTE VERÃO 2026 ── */
+  .performance-section {
+    padding: 0 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .performance-headline {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .performance-subtitle {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.7;
+    max-width: 620px;
+    margin-top: 12px;
+  }
+
+  /* A/B test grid */
+  .ab-test-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .ab-variant {
+    position: relative;
+    overflow: hidden;
+    background: var(--cinza-escuro);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    cursor: pointer;
+  }
+
+  .ab-variant img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+  }
+
+  .ab-variant:hover img { transform: scale(1.03); }
+
+  .ab-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--branco);
+    background: rgba(192,57,43,0.85);
+    padding: 4px 10px;
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+  }
+
+  .ab-caption {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* Performance metrics dashboard */
+  .perf-metricas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .perf-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 28px 20px;
+    text-align: center;
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .perf-card:hover {
+    border-color: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .perf-card.destaque {
+    border-color: rgba(0,200,100,0.4);
+    background: rgba(0,200,100,0.04);
+  }
+
+  .perf-card.destaque:hover {
+    border-color: rgba(0,200,100,0.65);
+    background: rgba(0,200,100,0.08);
+  }
+
+  .perf-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .perf-card.destaque .perf-card-num { color: #00c864; }
+
+  .perf-card-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cinza);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .perf-card-desc {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  .perf-card.destaque .perf-card-desc { color: rgba(0,200,100,0.55); }
+
+  /* Narrative blocks */
+  .narrativa-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .narrativa-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(192,57,43,0.5);
+    padding: 24px;
+    border-radius: 0 4px 4px 0;
+    transition: border-color 0.2s;
+  }
+
+  .narrativa-card:hover {
+    border-left-color: var(--vermelho);
+    background: rgba(192,57,43,0.03);
+  }
+
+  .narrativa-label {
+    display: block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 10px;
+  }
+
+  .narrativa-text {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .performance-section { padding: 0 24px 60px; }
+    .ab-test-grid { grid-template-columns: 1fr; }
+    .perf-metricas-grid { grid-template-columns: repeat(2, 1fr); }
+    .narrativa-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -1361,6 +1539,109 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
            alt="Telemedicina Verte Saúde"
            onerror="this.closest('.feed-item').style.display='none'">
       <div class="feed-overlay"><span class="feed-overlay-label">Telemedicina · destaque</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PERFORMANCE CASE: VERTE VERÃO 2026
+════════════════════════════════════════════════ -->
+<section class="performance-section">
+
+  <!-- 1. Headline Estratégica -->
+  <div class="performance-headline">
+    <p class="section-label">Case de performance · Meta Ads · 2026</p>
+    <h2 class="section-title">Estratégia de Performance<br>&amp; Conteúdo: Verte Verão</h2>
+    <p class="performance-subtitle">Otimização de Meta Ads focada em alcance e eficiência de custo para o setor de saúde suplementar.</p>
+    <div class="campanha-meta">
+      <span class="campanha-tag">Meta Ads</span>
+      <span class="campanha-tag">A/B Testing</span>
+      <span class="campanha-tag">Performance</span>
+      <span class="campanha-tag">Saúde Suplementar</span>
+      <span class="campanha-tag">Meta Business Suite</span>
+    </div>
+  </div>
+
+  <!-- 2. Comparativo de Criativos (A/B Testing) -->
+  <div style="margin-bottom: 20px;">
+    <p class="section-label">Comparativo de criativos · A/B Testing</p>
+    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Variações de Arte</h3>
+  </div>
+
+  <div class="ab-test-grid">
+    <div>
+      <div class="ab-variant">
+        <img src="VER_feed patrocinados_blitz da saude verao 1_arnaldo.png"
+             alt="Versão A — Feed patrocinado Blitz da Saúde Verão 1"
+             onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+        <span class="ab-label">Versão A</span>
+      </div>
+      <p class="ab-caption">Arte 01 · Variação visual para teste de engajamento</p>
+    </div>
+    <div>
+      <div class="ab-variant">
+        <img src="VER_feed patrocinados_blitz da saude verao 2_arnaldo.png"
+             alt="Versão B — Feed patrocinado Blitz da Saúde Verão 2"
+             onerror="this.style.background='#1a1a1a';this.style.aspectRatio='4/5';this.removeAttribute('src')">
+        <span class="ab-label">Versão B</span>
+      </div>
+      <p class="ab-caption">Arte 02 · Variação visual para teste de engajamento</p>
+    </div>
+  </div>
+
+  <div class="carrossel-legenda" style="margin-bottom: 48px;">
+    <span class="carrossel-legenda-label">Nota técnica</span>
+    <p class="carrossel-legenda-texto">Testes de variação visual para identificar o melhor padrão de engajamento do público gaúcho.</p>
+  </div>
+
+  <!-- 3. Dashboard de Resultados -->
+  <div style="margin-bottom: 24px;">
+    <p class="section-label">Dashboard de resultados · A prova real</p>
+    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Métricas da Campanha</h3>
+  </div>
+
+  <div class="perf-metricas-grid">
+    <div class="perf-card destaque">
+      <div class="perf-card-num">R$ 0,02</div>
+      <div class="perf-card-label">Custo por Resultado</div>
+      <div class="perf-card-desc">Alta eficiência de conversão</div>
+    </div>
+    <div class="perf-card">
+      <div class="perf-card-num">74.685</div>
+      <div class="perf-card-label">Alcance</div>
+      <div class="perf-card-desc">Pessoas únicas impactadas</div>
+    </div>
+    <div class="perf-card">
+      <div class="perf-card-num">201.311</div>
+      <div class="perf-card-label">Impressões</div>
+      <div class="perf-card-desc">Exposição total da marca</div>
+    </div>
+    <div class="perf-card">
+      <div class="perf-card-num">R$ 1.222,02</div>
+      <div class="perf-card-label">Valor Investido</div>
+      <div class="perf-card-desc">Gestão otimizada de orçamento</div>
+    </div>
+  </div>
+
+  <!-- 4. Descritivo Narrativo -->
+  <div style="margin-bottom: 24px;">
+    <p class="section-label">Contexto estratégico</p>
+    <h3 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); letter-spacing:0.04em; color:var(--branco); margin-bottom:8px;">Desafio, Solução &amp; Resultado</h3>
+  </div>
+
+  <div class="narrativa-grid">
+    <div class="narrativa-card">
+      <span class="narrativa-label">Desafio</span>
+      <p class="narrativa-text">Posicionar a Verte|Saúde como referência de bem-estar no verão de Porto Alegre.</p>
+    </div>
+    <div class="narrativa-card">
+      <span class="narrativa-label">Solução</span>
+      <p class="narrativa-text">Desenvolvimento de criativos estáticos e em vídeo com copywriting direto e focado em benefícios familiares, operados via Meta Business Suite.</p>
+    </div>
+    <div class="narrativa-card">
+      <span class="narrativa-label">Resultado</span>
+      <p class="narrativa-text">CPM de R$ 6,07 e uma frequência de 2,69, garantindo presença constante no feed do público-alvo.</p>
     </div>
   </div>
 
