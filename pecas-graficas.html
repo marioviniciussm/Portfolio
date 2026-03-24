@@ -869,6 +869,35 @@
   .baristo-swatch { flex: 1 1 60px; min-width: 60px; }
   .baristo-swatch::before { height: 44px; }
 }
+
+  /* ── ACCORDION DESTAQUE (Relatório) ── */
+  .cobertura-block--destaque {
+    border-bottom: 1px solid rgba(192,57,43,0.2);
+    background: rgba(192,57,43,0.03);
+    margin-bottom: 4px;
+  }
+  .cobertura-block--destaque .cobertura-toggle {
+    padding-top: 2px;
+  }
+  .cobertura-block--destaque .cobertura-titulo {
+    color: var(--branco);
+  }
+  .cobertura-block--destaque .cobertura-toggle::before {
+    content: 'Case em destaque';
+    display: block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    margin-bottom: 6px;
+  }
+  .cobertura-block--destaque .accordion-icon {
+    border-color: rgba(192,57,43,0.4);
+  }
+  .cobertura-block--destaque:not(.open) .cobertura-toggle:hover .cobertura-titulo {
+    color: var(--vermelho);
+  }
 </style>
 </head>
 <body>
@@ -961,6 +990,67 @@
 
   <!-- VERTE|SAÚDE -->
   <div class="tab-content active" id="verte-saude">
+
+    <!-- Relatório de Atividades 2024 — DESTAQUE -->
+    <div class="cobertura-block cobertura-block--destaque">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">Relatório de Atividades 2024</h2>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <div class="case-intro" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Case em destaque · Design Editorial</p>
+              <p class="case-intro-desc">
+                Projeto gráfico completo do Relatório de Atividades 2024 da Verte Saúde,
+                publicação anual entregue ao conselho diretivo e parceiros estratégicos da organização.
+              </p>
+              <p class="case-intro-desc">
+                O desafio foi transformar dados institucionais, registros de eventos e narrativas
+                de impacto em uma publicação visualmente coesa e profissional.
+                Responsável por todo o design: capa, diagramação interna, hierarquia tipográfica,
+                tratamento de imagens e identidade editorial do documento.
+              </p>
+              <p class="case-intro-desc">
+                Resultado: uma publicação de prestação de contas que também funciona como
+                peça de comunicação institucional, demonstrando profissionalismo e
+                transparência da organização para seus stakeholders.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">Publicação PDF · 2025</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Escopo</span><span class="case-intro-meta-value">Projeto gráfico completo: capa, diagramação e identidade editorial</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe InDesign · Illustrator · Photoshop</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Público</span><span class="case-intro-meta-value">Conselho diretivo e parceiros estratégicos</span></div>
+            </div>
+          </div>
+          <div class="doc-preview" style="margin-top:32px; padding-top:0;">
+            <div class="doc-preview-cover">
+              <img src="capa-relatorio-verte-2024.png" alt="Capa do Relatório de Atividades 2024 — Verte Saúde">
+            </div>
+            <div class="doc-preview-info">
+              <p class="doc-preview-label">Design Editorial · Verte Saúde · 2024</p>
+              <h3 class="doc-preview-title">Relatório de Atividades 2024</h3>
+              <p class="doc-preview-desc">
+                Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial.
+                Entregue ao conselho diretivo da Verte Saúde em 2025.
+                Inclui identidade visual, tipografia, paleta de cores e estrutura editorial do relatório anual.
+              </p>
+              <button class="doc-preview-btn" id="btnAbrirRelatorio">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Ver Relatório
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Caixa de doação de tampinhas -->
     <div class="cobertura-block">
@@ -1128,67 +1218,6 @@
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/7_fldk2x.jpg" alt="7" loading="lazy"></div>
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/8_gjqzxy.jpg" alt="8" loading="lazy"></div>
             <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/9_jfiyh6.jpg" alt="9" loading="lazy"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Relatório de Atividades 2024 -->
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">Relatório de Atividades 2024</h2>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="case-intro" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
-            <div class="case-intro-context">
-              <p class="case-intro-label">Case em destaque · Design Editorial</p>
-              <p class="case-intro-desc">
-                Projeto gráfico completo do Relatório de Atividades 2024 da Verte Saúde,
-                publicação anual entregue ao conselho diretivo e parceiros estratégicos da organização.
-              </p>
-              <p class="case-intro-desc">
-                O desafio foi transformar dados institucionais, registros de eventos e narrativas
-                de impacto em uma publicação visualmente coesa e profissional.
-                Responsável por todo o design: capa, diagramação interna, hierarquia tipográfica,
-                tratamento de imagens e identidade editorial do documento.
-              </p>
-              <p class="case-intro-desc">
-                Resultado: uma publicação de prestação de contas que também funciona como
-                peça de comunicação institucional, demonstrando profissionalismo e
-                transparência da organização para seus stakeholders.
-              </p>
-            </div>
-            <div class="case-intro-meta">
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">Publicação PDF · 2025</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Escopo</span><span class="case-intro-meta-value">Projeto gráfico completo: capa, diagramação e identidade editorial</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Adobe InDesign · Illustrator · Photoshop</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Público</span><span class="case-intro-meta-value">Conselho diretivo e parceiros estratégicos</span></div>
-            </div>
-          </div>
-          <div class="doc-preview" style="margin-top:32px; padding-top:0;">
-            <div class="doc-preview-cover">
-              <img src="capa-relatorio-verte-2024.png" alt="Capa do Relatório de Atividades 2024 — Verte Saúde">
-            </div>
-            <div class="doc-preview-info">
-              <p class="doc-preview-label">Design Editorial · Verte Saúde · 2024</p>
-              <h3 class="doc-preview-title">Relatório de Atividades 2024</h3>
-              <p class="doc-preview-desc">
-                Projeto gráfico completo: diagramação, hierarquia visual e identidade editorial.
-                Entregue ao conselho diretivo da Verte Saúde em 2025.
-                Inclui identidade visual, tipografia, paleta de cores e estrutura editorial do relatório anual.
-              </p>
-              <button class="doc-preview-btn" id="btnAbrirRelatorio">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                Ver Relatório
-              </button>
-            </div>
           </div>
         </div>
       </div>
