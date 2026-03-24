@@ -898,6 +898,21 @@
   .cobertura-block--destaque:not(.open) .cobertura-toggle:hover .cobertura-titulo {
     color: var(--vermelho);
   }
+  .modal-fechar-btn {
+    background: none;
+    border: 2px solid var(--vermelho);
+    color: var(--vermelho);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .modal-fechar-btn:hover,
+  .modal-fechar-btn:active { background: var(--vermelho); color: var(--branco); }
 </style>
 </head>
 <body>
@@ -1560,11 +1575,7 @@ document.querySelectorAll('.baristo-swatch').forEach(sw => {
         <p style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#C0392B; margin-bottom:2px;">Design Editorial · Verte Saúde · 2024</p>
         <p style="font-family:'Bebas Neue',sans-serif; font-size:1.2rem; color:#fff; letter-spacing:0.05em;">Relatório de Atividades 2024</p>
       </div>
-      <button id="fecharRelatorio" style="
-        background:none; border:1px solid rgba(255,255,255,0.15); color:#fff;
-        width:36px; height:36px; cursor:pointer; font-size:16px;
-        display:flex; align-items:center; justify-content:center;
-        transition:background 0.2s;" aria-label="Fechar">✕</button>
+      <button id="fecharRelatorio" class="modal-fechar-btn" aria-label="Fechar">✕</button>
     </div>
     <!-- iframe Heyzine -->
     <iframe

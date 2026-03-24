@@ -548,20 +548,21 @@
     position: absolute;
     top: 12px; right: 12px;
     z-index: 10;
-    background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--branco);
+    background: none;
+    border: 2px solid var(--vermelho);
+    color: var(--vermelho);
     width: 36px; height: 36px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1rem;
     line-height: 1;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s, color 0.2s;
   }
 
-  .video-modal-close:hover {
+  .video-modal-close:hover,
+  .video-modal-close:active {
     background: var(--vermelho);
-    border-color: var(--vermelho);
+    color: var(--branco);
   }
 
   .video-modal-player {
