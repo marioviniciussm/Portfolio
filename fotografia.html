@@ -564,8 +564,11 @@
     padding: 40px 48px;
     border-top: 1px solid rgba(255,255,255,0.07);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
     margin-top: 80px;
   }
 
@@ -575,12 +578,7 @@
     letter-spacing: 0.08em;
   }
 
-  footer a {
-    color: var(--vermelho);
-    text-decoration: none;
-  }
-
-  footer a:hover { color: var(--branco); }
+  footer strong { color: var(--vermelho); }
 
   /* ── MOBILE ── */
   @media (max-width: 1024px) {
@@ -614,7 +612,7 @@
 
     .grid-masonry { columns: 2; column-gap: 6px; }
     .grid-item { margin-bottom: 6px; }
-    footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    footer { padding: 32px 24px; }
   }
 
   @media (max-width: 420px) {
@@ -1055,7 +1053,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Mário Vinicius · <a href="index.html">Voltar ao portfólio</a></p>
+  <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
   <p>Feito com <strong>propósito</strong></p>
 </footer>
 
