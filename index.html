@@ -644,6 +644,18 @@
   .contato-info-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
   .contato-info-value { font-size: 14px; color: var(--white); font-weight: 400; }
 
+  /* ── VERTE SAÚDE DESTAQUE ── */
+  #verte-destaque { background: var(--dark); max-width: 100%; padding: 80px 60px; border-top: 3px solid var(--red); }
+  .verte-destaque-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+  .verte-destaque-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; }
+  .verte-destaque-badge svg { width: 14px; height: 14px; stroke: var(--red); fill: none; stroke-width: 2; flex-shrink: 0; }
+  .verte-destaque-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 64px); letter-spacing: 2px; color: var(--white); line-height: 1; }
+  .verte-destaque-desc { font-size: 15px; color: #aaa; max-width: 540px; line-height: 1.75; }
+  .verte-destaque-cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; padding: 16px 32px; background: var(--red); color: var(--white); text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; border: 2px solid var(--red); box-shadow: 0 8px 32px rgba(192,57,43,0.35); transition: background 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .verte-destaque-cta svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 2; flex-shrink: 0; }
+  .verte-destaque-cta:hover { background: var(--red-dark); box-shadow: 0 12px 40px rgba(192,57,43,0.5); transform: translateY(-2px); }
+  .verte-destaque-cta:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+
   /* ── FOOTER ── */
   footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
   footer p { font-size: 0.75rem; color: var(--gray); letter-spacing: 0.08em; }
@@ -661,7 +673,7 @@
   @media (max-width: 1024px) {
     .nav-inner { padding: 0 32px; }
     .hero-left { padding: 80px 32px; }
-    section, #cases, #contato { padding: 80px 32px; }
+    section, #cases, #contato, #verte-destaque { padding: 80px 32px; }
     footer { padding: 24px 32px; }
   }
 
@@ -687,7 +699,7 @@
     .hero-disciplines { gap: 8px; }
     .discipline-item { padding: 12px 16px; gap: 12px; }
     .discipline-item::before { font-size: clamp(56px, 14vw, 88px); left: 8px; }
-    section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
+    section, #cases, #contato, #verte-destaque { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
     .sobre-text p { font-size: 14px; }
@@ -1149,6 +1161,24 @@
         <div class="contato-item-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
       </a>
     </div>
+  </div>
+</div>
+
+<!-- ── VERTE SAÚDE DESTAQUE ── -->
+<div id="verte-destaque">
+  <div class="verte-destaque-inner">
+    <span class="verte-destaque-badge">
+      <!-- Ícone Instagram -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--red)" stroke="none"/></svg>
+      Principal perfil gerenciado
+    </span>
+    <h2 class="verte-destaque-title">Acompanhe a Verte Saúde</h2>
+    <p class="verte-destaque-desc">O Instagram da Verte Saúde é o principal perfil que administro — conteúdo estratégico de saúde, bem-estar e prevenção para uma marca que transforma vidas.</p>
+    <!-- Ajuste a URL abaixo se o handle do perfil mudar -->
+    <a href="https://www.instagram.com/vertesaude/" class="verte-destaque-cta" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Verte Saúde em nova aba">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      Abrir Instagram @vertesaude
+    </a>
   </div>
 </div>
 
