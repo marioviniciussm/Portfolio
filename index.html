@@ -645,12 +645,12 @@
   .contato-info-value { font-size: 14px; color: var(--white); font-weight: 400; }
 
   /* ── VERTE CTA ── */
-  .verte-cta { background: var(--dark); border-top: 3px solid var(--red); padding: 64px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
-  .verte-cta-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); }
-  .verte-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: 0.05em; color: var(--white); line-height: 1.1; }
-  .verte-cta-desc { font-size: 14px; color: var(--gray); max-width: 480px; line-height: 1.7; }
-  .verte-cta-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; padding: 14px 32px; background: var(--red); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, outline-offset 0.1s; }
-  .verte-cta-btn:hover { background: var(--red-dark); }
+  .verte-cta { background: var(--red); padding: 36px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+  .verte-cta-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+  .verte-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: 0.05em; color: var(--white); line-height: 1.1; }
+  .verte-cta-desc { font-size: 13px; color: rgba(255,255,255,0.85); max-width: 440px; line-height: 1.6; }
+  .verte-cta-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 4px; padding: 12px 28px; background: var(--white); color: var(--red); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, outline-offset 0.1s; }
+  .verte-cta-btn:hover { background: rgba(255,255,255,0.88); }
   .verte-cta-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
   .verte-cta-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
@@ -673,7 +673,7 @@
     .hero-left { padding: 80px 32px; }
     section, #cases, #contato { padding: 80px 32px; }
     footer { padding: 24px 32px; }
-    .verte-cta { padding: 48px 32px; }
+    .verte-cta { padding: 28px 32px; }
   }
 
   @media (max-width: 768px) {
@@ -718,7 +718,7 @@
     .contato-info-value { font-size: 13px; word-break: break-word; }
     footer { padding: 28px 24px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
     footer p { font-size: 11px; }
-    .verte-cta { padding: 48px 24px; gap: 16px; }
+    .verte-cta { padding: 28px 24px; gap: 10px; }
     .verte-cta-btn { width: 100%; justify-content: center; }
     .hero-left::before { display: none; }
     #habilidades { padding-left: 24px; }
@@ -1168,7 +1168,7 @@
 <section class="verte-cta" aria-label="Destaque Verte Saúde">
   <p class="verte-cta-eyebrow">Projeto em Destaque</p>
   <h2 class="verte-cta-title">Verte Saúde</h2>
-  <p class="verte-cta-desc">Acompanhe o perfil que administro no Instagram — conteúdo de saúde, bem-estar e comunicação com propósito.</p>
+  <p class="verte-cta-desc">Acompanhe o perfil que administro no Instagram: conteúdo de saúde, bem-estar e comunicação com propósito.</p>
   <a class="verte-cta-btn" href="https://www.instagram.com/vertesaude/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil do Instagram da Verte Saúde (abre em nova aba)">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     Ver no Instagram
