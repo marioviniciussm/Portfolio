@@ -1098,6 +1098,175 @@
     .perf-metricas-grid { grid-template-columns: repeat(2, 1fr); }
     .narrativa-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── PLANEJAMENTO EDITORIAL ── */
+  .plan-intro {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .plan-intro-text {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    max-width: 680px;
+    margin-top: 12px;
+  }
+
+  .plan-nota {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(192,57,43,0.06);
+    border: 1px solid rgba(192,57,43,0.25);
+    border-left: 3px solid var(--vermelho);
+    padding: 16px 20px;
+    margin-bottom: 48px;
+  }
+
+  .plan-nota-label {
+    flex-shrink: 0;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    padding-top: 2px;
+  }
+
+  .plan-nota-text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  .plan-month {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    margin-bottom: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .plan-month-label {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 24px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.22em;
+    color: var(--vermelho);
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  .plan-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-row {
+    display: grid;
+    grid-template-columns: 106px 152px 1fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 15px 0 15px 20px;
+    align-items: start;
+    transition: background 0.15s;
+  }
+
+  .plan-row:hover { background: rgba(255,255,255,0.02); }
+  .plan-row:last-child { border-bottom: none; }
+
+  .plan-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+
+  .plan-type {
+    padding-top: 1px;
+  }
+
+  .plan-tag {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .plan-tag--saiba {
+    color: #2ecc71;
+    border-color: rgba(46,204,113,0.35);
+    background: rgba(46,204,113,0.05);
+  }
+
+  .plan-tag--curiosidades {
+    color: #e67e22;
+    border-color: rgba(230,126,34,0.35);
+    background: rgba(230,126,34,0.05);
+  }
+
+  .plan-tag--dicas {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .plan-tag--evento {
+    color: var(--vermelho);
+    border-color: rgba(192,57,43,0.4);
+    background: rgba(192,57,43,0.06);
+  }
+
+  .plan-tag--especial {
+    color: #f1c40f;
+    border-color: rgba(241,196,15,0.35);
+    background: rgba(241,196,15,0.05);
+  }
+
+  .plan-proposta {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.65;
+    padding-right: 8px;
+  }
+
+  .plan-legenda {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .plan-legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 768px) {
+    .plan-month { grid-template-columns: 40px 1fr; }
+    .plan-month-label { font-size: 0.85rem; }
+    .plan-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 0 14px 12px; }
+    .plan-date { font-size: 0.78rem; }
+    .plan-legenda { gap: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -1251,6 +1420,7 @@
       <div class="case-tabs">
         <button class="case-tab-btn active" data-case-tab="tab-organico">Conteúdo Orgânico</button>
         <button class="case-tab-btn" data-case-tab="tab-performance">Performance &amp; Ads</button>
+        <button class="case-tab-btn" data-case-tab="tab-planejamento">Planejamento Editorial</button>
       </div>
 
       <!-- Aba 1: Conteúdo Orgânico -->
@@ -1708,6 +1878,191 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
       </div>
 
       </div> <!-- end tab-performance -->
+
+      <!-- Aba 3: Planejamento Editorial -->
+      <div class="case-tab-content" id="tab-planejamento">
+
+        <!-- Intro -->
+        <div class="plan-intro">
+          <p class="section-label">Documento de planejamento · Campanha sazonal</p>
+          <h3 class="performance-section-title">Calendário Editorial<br>Verte Verão 24/25</h3>
+          <p class="plan-intro-text">Planejamento editorial desenvolvido para organizar as ações de conteúdo e os eventos da campanha Verte Verão, de dezembro de 2024 a março de 2025. O calendário orientou a produção de posts, parcerias, eventos e chamadas comerciais ao longo de toda a temporada.</p>
+        </div>
+
+        <!-- Nota: Evento Externo -->
+        <div class="plan-nota">
+          <span class="plan-nota-label">Nota</span>
+          <p class="plan-nota-text"><strong style="color:rgba(255,255,255,0.8);">Evento Externo: 18 ou 25 de janeiro — A CONFIRMAR.</strong> Evento presencial previsto para ser realizado em uma das datas, aguardando confirmação da localidade e da organização.</p>
+        </div>
+
+        <!-- ── DEZEMBRO ── -->
+        <div class="plan-month">
+          <div class="plan-month-label">Dezembro</div>
+          <div class="plan-rows">
+            <div class="plan-row">
+              <div class="plan-date">17/12/2024</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--evento">Workshop</span></div>
+              <div class="plan-proposta">Workshop de pré-lançamento do Verte Verão — Skincare para o Verão.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">21/12/2024</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--especial">Lançamento</span></div>
+              <div class="plan-proposta">Post nas redes sociais, Intranet, Cartazes e Banner no prédio. A ideia é comunicar oficialmente o início da campanha e informar que as pessoas poderão acompanhar a programação até março, com dicas, informações e eventos de saúde e bem-estar no verão.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">23/12/2024</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre saúde mental, com foco nas festas de final de ano. Vídeo ou texto com profissional da área (psicólogo ou psiquiatra). Incluir chamada comercial sobre os pacotes de psicologia e planos (incluem psiquiatria).</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">28/12/2024</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Foco no feriado de Ano-Novo. Dica de alguma receita para fazer no réveillon. Indicação de alguma nutricionista. Incluir chamada comercial sobre os pacotes de nutrição.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── JANEIRO ── -->
+        <div class="plan-month">
+          <div class="plan-month-label">Janeiro</div>
+          <div class="plan-rows">
+            <div class="plan-row">
+              <div class="plan-date">02/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Dicas para o ano que está começando: organização, hábitos saudáveis, prevenção de saúde, etc.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">08/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Otite — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com otorrino). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">13/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--curiosidades">Curiosidades</span></div>
+              <div class="plan-proposta">O que é UVA e UVB?</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">15/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Insolação — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com dermato). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">17/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Dicas sobre como escolher o protetor solar. Parceria com alguma marca que tenha protetor solar no clube de benefícios.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">21/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Conjuntivite — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com oftalmologista). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">23/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Dicas sobre como escolher óculos de sol. Parceria com alguma ótica do clube de benefícios.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">28/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Intoxicação Alimentar — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com gastroenterologista ou clínico geral). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">30/01/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Dicas sobre armazenamento de alimentos (nutricionista ou conteúdo de órgão renomado, citando a fonte). Incluir chamada comercial sobre os pacotes de nutrição.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FEVEREIRO ── -->
+        <div class="plan-month">
+          <div class="plan-month-label">Fevereiro</div>
+          <div class="plan-rows">
+            <div class="plan-row">
+              <div class="plan-date">04/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Desidratação — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com clínico geral). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">06/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--curiosidades">Curiosidades</span></div>
+              <div class="plan-proposta">Quantos litros de água uma pessoa precisa tomar por dia? Aproveitar o mesmo médico do post sobre desidratação. Ação engajamento: os XX primeiros que responderem o post ganham uma garrafinha da Verte|Saúde.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">12/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Micoses — o que causa, sintomas, tipos, cuidados, etc. (Vídeo ou texto com dermatologista). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">18/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Crianças: Como proteger e cuidar no verão. Vídeo ou texto com pediatra e com bombeiro (segurança com crianças em locais abertos — praia, praças, etc). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">20/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre Idosos: Como proteger e cuidar no verão. Vídeo ou texto com geriatra. Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">26/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--evento">Evento</span></div>
+              <div class="plan-proposta">Aulão de Dança — temático Carnaval. Evento com vagas limitadas. Realização: Verte|Saúde via Verte Verão e Programa ComVida. Dia 26/02, 10h, no Auditório da Verte|Saúde. Distribuição de preservativos no final do evento.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">28/02/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Dicas com foco no Carnaval (conforme anos anteriores). Distribuição de preservativos durante todo o dia na sede (acolhimentos, CAC e portaria).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── MARÇO ── -->
+        <div class="plan-month">
+          <div class="plan-month-label">Março</div>
+          <div class="plan-rows">
+            <div class="plan-row">
+              <div class="plan-date">05/03/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--dicas">Dicas</span></div>
+              <div class="plan-proposta">Foco no pós-carnaval. Dica de receitas de sucos e comidas leves. Indicação de alguma nutricionista. Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">12/03/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--saiba">Saiba Mais</span></div>
+              <div class="plan-proposta">Conteúdo sobre a importância do exercício físico durante o ano todo, estimulando a continuidade após o verão. Vídeo ou texto com clínico geral. Sugestão: Dr. Grimário (lançou livro recente sobre atividade física). Incluir chamada comercial sobre os planos.</div>
+            </div>
+            <div class="plan-row">
+              <div class="plan-date">20/03/2025</div>
+              <div class="plan-type"><span class="plan-tag plan-tag--especial">Encerramento</span></div>
+              <div class="plan-proposta">Post de encerramento da campanha nas redes sociais e Intranet.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legenda de tipos -->
+        <div class="plan-legenda">
+          <div class="plan-legenda-item">
+            <span class="plan-tag plan-tag--saiba" style="font-size:0.5rem; padding:3px 8px;">Saiba Mais</span>
+            <span>Conteúdo educativo com especialista médico</span>
+          </div>
+          <div class="plan-legenda-item">
+            <span class="plan-tag plan-tag--curiosidades" style="font-size:0.5rem; padding:3px 8px;">Curiosidades</span>
+            <span>Post de engajamento e curiosidade</span>
+          </div>
+          <div class="plan-legenda-item">
+            <span class="plan-tag plan-tag--dicas" style="font-size:0.5rem; padding:3px 8px;">Dicas</span>
+            <span>Conteúdo prático e preventivo</span>
+          </div>
+          <div class="plan-legenda-item">
+            <span class="plan-tag plan-tag--evento" style="font-size:0.5rem; padding:3px 8px;">Evento</span>
+            <span>Ação ou evento presencial</span>
+          </div>
+          <div class="plan-legenda-item">
+            <span class="plan-tag plan-tag--especial" style="font-size:0.5rem; padding:3px 8px;">Especial</span>
+            <span>Lançamento ou encerramento de campanha</span>
+          </div>
+        </div>
+
+      </div> <!-- end tab-planejamento -->
 
     </div> <!-- end case-modal-body -->
   </div> <!-- end case-modal-content -->
