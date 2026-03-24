@@ -645,14 +645,6 @@
   .contato-info-value { font-size: 14px; color: var(--white); font-weight: 400; }
 
   /* ── VERTE CTA ── */
-  .verte-cta { background: var(--red); padding: 36px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; max-width: 100%; width: 100%; }
-  .verte-cta-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.75); }
-  .verte-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: 0.05em; color: var(--white); line-height: 1.1; }
-  .verte-cta-desc { font-size: 13px; color: rgba(255,255,255,0.85); max-width: 440px; line-height: 1.6; }
-  .verte-cta-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 4px; padding: 12px 28px; background: var(--white); color: var(--red); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, color 0.2s, outline-offset 0.1s; }
-  .verte-cta-btn:hover { background: rgba(255,255,255,0.88); }
-  .verte-cta-btn:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
-  .verte-cta-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
   /* ── FOOTER ── */
   footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; }
@@ -673,7 +665,6 @@
     .hero-left { padding: 80px 32px; }
     section, #cases, #contato { padding: 80px 32px; }
     footer { padding: 24px 32px; }
-    .verte-cta { padding: 28px 32px; }
   }
 
   @media (max-width: 768px) {
@@ -718,8 +709,6 @@
     .contato-info-value { font-size: 13px; word-break: break-word; }
     footer { padding: 28px 24px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
     footer p { font-size: 11px; }
-    .verte-cta { padding: 28px 24px; gap: 10px; }
-    .verte-cta-btn { width: 100%; justify-content: center; }
     .hero-left::before { display: none; }
     #habilidades { padding-left: 24px; }
     .ps-toolbar { display: none; }
@@ -729,6 +718,119 @@
 
   /* ── HERO — localização e disponibilidade ── */
   .hero-location { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
+
+
+  /* ── FAIXA CONTEXTO VERTE SAÚDE ── */
+  .verte-contexto {
+    background: var(--red);
+    width: 100%;
+  }
+
+  .verte-ctx-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 60px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .verte-ctx-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 10px;
+  }
+
+  .verte-ctx-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 0.9;
+    margin-bottom: 8px;
+  }
+
+  .verte-ctx-tagline {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .verte-ctx-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .verte-ctx-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .verte-ctx-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .verte-ctx-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .verte-ctx-stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+  }
+
+  .verte-ctx-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .verte-ctx-link:hover {
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  @media (max-width: 1024px) {
+    .verte-ctx-inner { padding: 48px 32px; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .verte-ctx-inner {
+      grid-template-columns: 1fr;
+      padding: 40px 24px;
+      gap: 28px;
+    }
+    .verte-ctx-stats { gap: 20px; }
+    .verte-ctx-title { font-size: clamp(2rem, 10vw, 3rem); }
+  }
 
 </style>
 </head>
@@ -932,6 +1034,39 @@
   </div>
 
 </section>
+
+<section class="verte-contexto" aria-label="Contexto — Verte Saúde">
+  <div class="verte-ctx-inner">
+    <div class="verte-ctx-left">
+      <p class="verte-ctx-eyebrow">Empresa onde atuo</p>
+      <h2 class="verte-ctx-title">Verte Saúde</h2>
+      <p class="verte-ctx-tagline">Sua vida, nossos cuidados.</p>
+    </div>
+    <div class="verte-ctx-right">
+      <p class="verte-ctx-desc">Operadora de planos de saúde da Afpergs — Associação dos Funcionários Públicos do Estado do Rio Grande do Sul, com mais de 90 anos de história. Sediada em Porto Alegre/RS, a Verte Saúde atende cerca de 41.500 beneficiários com uma rede integrada de cuidados que inclui hospitais próprios e credenciados, telemedicina e Clube de Benefícios.</p>
+      <div class="verte-ctx-stats">
+        <div class="verte-ctx-stat">
+          <span class="verte-ctx-stat-num">41.5k</span>
+          <span class="verte-ctx-stat-label">Beneficiários</span>
+        </div>
+        <div class="verte-ctx-stat">
+          <span class="verte-ctx-stat-num">90+</span>
+          <span class="verte-ctx-stat-label">Anos · Afpergs</span>
+        </div>
+        <div class="verte-ctx-stat">
+          <span class="verte-ctx-stat-num">ANS</span>
+          <span class="verte-ctx-stat-label">Reg. 41759-9</span>
+        </div>
+      </div>
+      <a class="verte-ctx-link" href="https://www.instagram.com/vertesaude/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @vertesaude no Instagram
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <div id="cases">
   <div class="cases-header">
     <p class="section-label">Trabalhos selecionados</p>
@@ -1141,9 +1276,9 @@
       <p>Estou em busca de um ambiente onde comunicação, criatividade e estratégia se encontrem. Se você precisa de alguém que entende o briefing antes de abrir qualquer software, com autonomia e visão de negócio, vamos conversar.</p>
     </div>
     <div class="contato-links">
-      <a href="mailto:marioviniciussm@gmail.com" class="contato-item" rel="noopener noreferrer">
+      <a href="/cdn-cgi/l/email-protection#375a56455e58415e595e545e4244445a77505a565e5b1954585a" class="contato-item" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
-        <div class="contato-item-body"><div class="contato-info-label">E-mail</div><div class="contato-info-value">marioviniciussm@gmail.com</div></div>
+        <div class="contato-item-body"><div class="contato-info-label">E-mail</div><div class="contato-info-value"><span class="__cf_email__" data-cfemail="b6dbd7c4dfd9c0dfd8dfd5dfc3c5c5dbf6d1dbd7dfda98d5d9db">[email&#160;protected]</span></div></div>
         <div class="contato-item-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
       </a>
       <a href="https://wa.me/5513981978095" class="contato-item" target="_blank" rel="noopener noreferrer">
@@ -1165,22 +1300,14 @@
   </div>
 </div>
 
-<section class="verte-cta" aria-label="Destaque Verte Saúde">
-  <p class="verte-cta-eyebrow">Projeto em Destaque</p>
-  <h2 class="verte-cta-title">Verte Saúde</h2>
-  <p class="verte-cta-desc">Acompanhe o perfil que administro no Instagram: conteúdo de saúde, bem-estar e comunicação com propósito.</p>
-  <a class="verte-cta-btn" href="https://www.instagram.com/vertesaude/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil do Instagram da Verte Saúde (abre em nova aba)">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-    Ver no Instagram
-  </a>
-</section>
+
 
 <footer>
   <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
   <p>Feito com <strong>propósito</strong></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── HAMBÚRGUER + DRAWER ──
   const hamburger = document.getElementById('navHamburger');
   const drawer = document.getElementById('navDrawer');
@@ -1266,13 +1393,4 @@
 
   // ── PHOTOSHOP TOOLBAR — animação ──
   const psTools = document.querySelectorAll('.ps-tool');
-  if (psTools.length) {
-    let activeIdx = 0;
-    setInterval(() => {
-      psTools[activeIdx].classList.remove('active');
-      activeIdx = (activeIdx + 1) % psTools.length;
-      psTools[activeIdx].classList.add('active');
-    }, 1800);
-  }
-
-  // ── PHOTOSHOP TOOLBAR
+  if (psTools.length
