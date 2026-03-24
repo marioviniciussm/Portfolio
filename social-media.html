@@ -241,11 +241,55 @@
     padding-right: 12px;
   }
 
-  /* ── CAMPANHA DESTAQUE ── */
-  .campanha-section {
+  /* ── CASE SECTION (Verte Verão unificado) ── */
+  .case-section {
     padding: 0 48px 80px;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .case-header {
+    margin-bottom: 40px;
+  }
+
+  .case-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 48px;
+  }
+
+  .case-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--cinza);
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    text-transform: uppercase;
+  }
+
+  .case-tab-btn:hover { color: var(--branco); }
+
+  .case-tab-btn.active {
+    color: var(--branco);
+    border-bottom-color: var(--vermelho);
+  }
+
+  .case-tab-content { display: none; }
+  .case-tab-content.active { display: block; }
+
+  .performance-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    color: var(--branco);
+    margin-bottom: 8px;
   }
 
   .section-label {
@@ -880,7 +924,8 @@
     .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
     .hero p { max-width: 100%; margin: 0 auto; }
 
-    .campanha-section { padding: 0 24px 60px; }
+    .case-section { padding: 0 24px 60px; }
+    .case-tab-btn { padding: 12px 18px; font-size: 0.95rem; }
     .campanha-header { grid-template-columns: 1fr; }
     .campanha-period { text-align: left; }
 
@@ -911,13 +956,6 @@
   }
 
   /* ── PERFORMANCE CASE: VERTE VERÃO 2026 ── */
-  .performance-section {
-    padding: 0 48px 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-
   .performance-headline {
     margin-bottom: 48px;
     padding-bottom: 32px;
@@ -1082,7 +1120,6 @@
   }
 
   @media (max-width: 768px) {
-    .performance-section { padding: 0 24px 60px; }
     .ab-test-grid { grid-template-columns: 1fr; }
     .perf-metricas-grid { grid-template-columns: repeat(2, 1fr); }
     .narrativa-grid { grid-template-columns: 1fr; }
@@ -1163,27 +1200,42 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     CAMPANHA VERTE VERÃO — DESTAQUE
+     VERTE VERÃO — CASE COMPLETO (abas internas)
 ════════════════════════════════════════════════ -->
-<section class="campanha-section">
+<section id="verte-verao" class="case-section">
 
-  <div class="campanha-header">
-    <div>
-      <p class="section-label">Case completo · Campanha sazonal</p>
-      <h2 class="section-title">Verte Verão<br>2024/2025</h2>
-      <div class="campanha-meta">
-        <span class="campanha-tag">Planejamento Editorial</span>
-        <span class="campanha-tag">Design Gráfico</span>
-        <span class="campanha-tag">Copywriting</span>
-        <span class="campanha-tag">Meta Business Suite</span>
-        <span class="campanha-tag">Parceria Panvel</span>
+  <!-- Cabeçalho único do case -->
+  <div class="case-header">
+    <div class="campanha-header">
+      <div>
+        <p class="section-label">Case completo · Campanha sazonal</p>
+        <h2 class="section-title">Verte Verão</h2>
+        <div class="campanha-meta">
+          <span class="campanha-tag">Planejamento Editorial</span>
+          <span class="campanha-tag">Design Gráfico</span>
+          <span class="campanha-tag">Copywriting</span>
+          <span class="campanha-tag">Meta Business Suite</span>
+          <span class="campanha-tag">Parceria Panvel</span>
+          <span class="campanha-tag">Meta Ads</span>
+          <span class="campanha-tag">A/B Testing</span>
+          <span class="campanha-tag">Performance</span>
+        </div>
+      </div>
+      <div class="campanha-period">
+        Dez 2024 — Mar 2025 · Meta Ads 2026<br>
+        <span style="color:rgba(255,255,255,0.3); font-size:0.65rem;">Verte Saúde · Afpergs</span>
       </div>
     </div>
-    <div class="campanha-period">
-      Dez 2024 — Mar 2025<br>
-      <span style="color:rgba(255,255,255,0.3); font-size:0.65rem;">Verte Saúde · Afpergs</span>
-    </div>
   </div>
+
+  <!-- Abas internas do case -->
+  <div class="case-tabs">
+    <button class="case-tab-btn active" data-case-tab="tab-organico">Conteúdo Orgânico</button>
+    <button class="case-tab-btn" data-case-tab="tab-performance">Performance &amp; Ads</button>
+  </div>
+
+  <!-- Aba 1: Conteúdo Orgânico -->
+  <div class="case-tab-content active" id="tab-organico">
 
   <!-- Métricas gerais -->
   <div class="metricas-banner">
@@ -1542,25 +1594,16 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
     </div>
   </div>
 
-</section>
+  </div> <!-- end tab-organico -->
 
-<!-- ═══════════════════════════════════════════════
-     PERFORMANCE CASE: VERTE VERÃO 2026
-════════════════════════════════════════════════ -->
-<section class="performance-section">
+  <!-- Aba 2: Performance & Ads -->
+  <div class="case-tab-content" id="tab-performance">
 
   <!-- 1. Headline Estratégica -->
   <div class="performance-headline">
     <p class="section-label">Case de performance · Meta Ads · 2026</p>
-    <h2 class="section-title">Estratégia de Performance<br>&amp; Conteúdo: Verte Verão</h2>
+    <h3 class="performance-section-title">Estratégia de Performance<br>&amp; Conteúdo: Verte Verão</h3>
     <p class="performance-subtitle">Otimização de Meta Ads focada em alcance e eficiência de custo para o setor de saúde suplementar.</p>
-    <div class="campanha-meta">
-      <span class="campanha-tag">Meta Ads</span>
-      <span class="campanha-tag">A/B Testing</span>
-      <span class="campanha-tag">Performance</span>
-      <span class="campanha-tag">Saúde Suplementar</span>
-      <span class="campanha-tag">Meta Business Suite</span>
-    </div>
   </div>
 
   <!-- 2. Comparativo de Criativos (A/B Testing) -->
@@ -1644,6 +1687,8 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
       <p class="narrativa-text">CPM de R$ 6,07 e uma frequência de 2,69, garantindo presença constante no feed do público-alvo.</p>
     </div>
   </div>
+
+  </div> <!-- end tab-performance -->
 
 </section>
 
@@ -1795,6 +1840,16 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── CASE TABS (Verte Verão) ──
+document.querySelectorAll('.case-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.case-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.case-tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.caseTab).classList.add('active');
   });
 });
 
