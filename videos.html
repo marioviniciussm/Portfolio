@@ -1140,6 +1140,8 @@ const navDropdown = document.getElementById('navDropdown');
 const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
 const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
 if (dropBtn && dropMenu) {
+  navDropdown.addEventListener('mouseenter', () => dropBtn.setAttribute('aria-expanded', 'true'));
+  navDropdown.addEventListener('mouseleave', () => dropBtn.setAttribute('aria-expanded', 'false'));
   dropBtn.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       dropMenu.style.opacity = '';
