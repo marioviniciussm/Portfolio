@@ -872,10 +872,10 @@
       <li><a href="#hero">Início</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li class="nav-dropdown" id="navDropdown">
-        <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-dropdown-btn" href="#cases" aria-haspopup="true" aria-expanded="false">
           Portfólio
           <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        </a>
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
           <a href="fotografia.html" role="menuitem">Fotografia</a>
@@ -1395,17 +1395,10 @@
   const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
   const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
   if (dropBtn && dropMenu) {
-    dropBtn.addEventListener('click', () => {
-      const isExpanded = dropBtn.getAttribute('aria-expanded') === 'true';
-      dropBtn.setAttribute('aria-expanded', String(!isExpanded));
-      dropMenu.style.opacity = !isExpanded ? '1' : '';
-      dropMenu.style.pointerEvents = !isExpanded ? 'all' : '';
-      dropMenu.style.transform = !isExpanded ? 'translateY(0)' : '';
-    });
+    navDropdown.addEventListener('mouseenter', () => dropBtn.setAttribute('aria-expanded', 'true'));
+    navDropdown.addEventListener('mouseleave', () => dropBtn.setAttribute('aria-expanded', 'false'));
     dropBtn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dropBtn.click(); }
       if (e.key === 'Escape') {
-        dropBtn.setAttribute('aria-expanded', 'false');
         dropMenu.style.opacity = '';
         dropMenu.style.pointerEvents = '';
         dropMenu.style.transform = '';
