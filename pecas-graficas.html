@@ -934,6 +934,28 @@
 
   .modal-fechar-btn:hover,
   .modal-fechar-btn:active { background: var(--vermelho); color: var(--branco); }
+
+  /* ── VOLTAR AO TOPO ── */
+  .btn-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--vermelho, var(--red, #C0392B));
+    color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  }
+  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #a93226)); }
+  .btn-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+  @media (max-width: 768px) {
+    .btn-top { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1021,6 +1043,7 @@
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="verte-saude">Verte|Saúde</button>
+    <button class="tab-btn" data-tab="avant-energia">AVANT Energia</button>
     <button class="tab-btn" data-tab="projetos">Projetos</button>
   </div>
 
@@ -1394,6 +1417,58 @@
       </div><!-- /cobertura-body -->
     </div>
 
+
+  <!-- AVANT ENERGIA -->
+  <div class="tab-content" id="avant-energia">
+
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">AVANT Energia</h2>
+          <span class="cobertura-data">Abr 2026 — Atual</span>
+          <span class="cobertura-count">Em produção</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Peças gráficas produzidas para a AVANT Energia desde abril de 2026. Design para redes sociais,
+                campanhas institucionais, materiais internos e comunicação B2B no setor de energia limpa por assinatura.
+                Posts, stories, carrosséis e peças estáticas para Instagram, Facebook e LinkedIn.
+              </p>
+              <p class="case-intro-desc">
+                As peças serão adicionadas aqui conforme as mídias forem enviadas via Cloudinary.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">AVANT Energia</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">Abril 2026 — Atual</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Formatos</span><span class="case-intro-meta-value">Posts · Stories · Carrosséis · Materiais Internos</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Photoshop · Illustrator · Canva · Adobe Express</span></div>
+            </div>
+          </div>
+          <div class="grid-4col" data-gallery="avant-pecas">
+            <!-- Peças da AVANT Energia serão adicionadas aqui via Cloudinary -->
+            <!-- Exemplo de formato:
+            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" alt="Descrição" loading="lazy"></div>
+            -->
+          </div>
+          <p style="text-align:center; color:rgba(255,255,255,0.25); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:40px 0;">
+            Mídias em preparação — adicione os links do Cloudinary acima
+          </p>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
+    </div>
+
+  </div><!-- /avant-energia -->
+
+
   </div><!-- /projetos -->
 
 </section>
@@ -1627,6 +1702,24 @@ document.querySelectorAll('.baristo-swatch').forEach(sw => {
       document.body.style.overflow = '';
     }
   }
+
+// ── VOLTAR AO TOPO ──
+const btnTop = document.getElementById('btnTop');
+if (btnTop) {
+  window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 </script>
+
+<!-- VOLTAR AO TOPO -->
+<button class="btn-top" id="btnTop" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 </body>
 </html>
