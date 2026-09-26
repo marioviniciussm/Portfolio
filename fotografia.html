@@ -10,11 +10,44 @@
 <meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/fotografia.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
+<meta property="og:image:alt" content="Mário Vinicius — Fotografia">
 <meta name="robots" content="index, follow">
+<meta name="author" content="Mário Vinicius">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Mário Vinicius — Comunicador Visual">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fotografia — Mário Vinicius | Comunicador Visual">
+<meta name="twitter:description" content="Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão.">
+<meta name="twitter:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
+<meta name="keywords" content="fotografia, fotógrafo, cobertura fotográfica, fotografia editorial, fotografia urbana, fotografia esportiva, Porto Alegre, Mário Vinicius">
+<link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/fotografia.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mário Vinicius",
+  "jobTitle": "Comunicador Visual",
+  "url": "https://marioviniciussm.github.io/Portfolio/",
+  "image": "https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png",
+  "description": "Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Porto Alegre",
+    "addressRegion": "RS",
+    "addressCountry": "BR"
+  },
+  "sameAs": [
+    "https://www.instagram.com/mariovinicius.fotografia/",
+    "https://www.linkedin.com/in/mario-vinicius/"
+  ]
+}
+</script>
 <style>
   :root {
     --preto: #0f0f0f;
@@ -23,120 +56,606 @@
     --branco: #ffffff;
     --cinza: #888;
     --cinza-escuro: #1a1a1a;
+    --black: var(--preto);
+    --red: var(--vermelho);
+    --red-dark: var(--vermelho-dark);
+    --white: var(--branco);
+    --gray: var(--cinza);
+    --dark: var(--cinza-escuro);
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--preto); color: var(--branco); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
 
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: stretch; background: rgba(15,15,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(192,57,43,0.2); min-height: 64px; }
-  .nav-inner { display: flex; align-items: stretch; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 60px; min-height: 64px; }
-  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--branco); text-decoration: none; display: flex; align-items: center; padding: 0 28px 0 0; border-right: 1px solid rgba(255,255,255,0.08); margin-right: 4px; }
-  .nav-logo span { color: var(--vermelho); }
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: stretch;
+    background: rgba(15,15,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(192,57,43,0.2);
+    min-height: 64px;
+  }
+
+  /* wrapper interno centralizado */
+  .nav-inner {
+    display: flex; align-items: stretch; flex-wrap: nowrap;
+    width: 100%; max-width: 1200px;
+    margin: 0 auto; padding: 0 60px;
+    min-height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px;
+    color: var(--white); text-decoration: none;
+    display: flex; align-items: center; align-self: center;
+    padding: 0 28px 0 0; white-space: nowrap; flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    margin-right: 4px;
+  }
+  .nav-logo span { color: var(--red); }
+
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
   .nav-links > li { display: flex; align-items: stretch; }
-  .nav-links a { color: var(--cinza); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0 20px; display: flex; align-items: center; transition: 0.2s; }
-  .nav-links a:hover { color: var(--branco); background: var(--vermelho); }
+  .nav-links a {
+    color: var(--gray); text-decoration: none;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); background: var(--red); }
+
+  /* dropdown Cases */
   .nav-dropdown { position: relative; display: flex; align-items: stretch; }
-  .nav-dropdown-btn { color: var(--cinza); background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0 20px; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
-  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: 0.25s; }
-  .nav-dropdown:hover .nav-dropdown-btn { color: var(--branco); background: var(--vermelho); }
+  .nav-dropdown-btn {
+    color: var(--gray); background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
+  .nav-dropdown:hover .nav-dropdown-btn { color: var(--white); background: var(--red); }
   .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
-  .nav-dropdown-menu { position: absolute; top: 100%; left: 0; background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25); min-width: 240px; padding: 6px 0; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: 0.18s; }
+
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 0;
+    background: rgba(15,15,15,0.98); border: 1px solid rgba(192,57,43,0.25);
+    min-width: 240px; padding: 6px 0;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: opacity 0.18s, transform 0.18s;
+    backdrop-filter: blur(12px);
+  }
   .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .nav-dropdown-menu a { display: block; padding: 10px 20px; font-size: 11px; font-weight: 500; }
-  .nav-dropdown-menu a:hover { background: rgba(192,57,43,0.15); }
-  
-  .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; margin-left: auto; align-self: center; }
-  .nav-hamburger span { display: block; height: 2px; background: var(--branco); transition: 0.3s; transform-origin: center; }
+  .nav-dropdown-menu a {
+    display: block; padding: 10px 20px;
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none;
+    transition: color 0.15s, background 0.15s; white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { color: var(--white); background: rgba(192,57,43,0.15); }
+  .nav-dropdown-menu .dropdown-label {
+    font-size: 9px; letter-spacing: 2px; color: rgba(192,57,43,0.7);
+    padding: 8px 20px 4px; pointer-events: none; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 4px;
+  }
+
+  /* hambúrguer — oculto no desktop */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px;
+    margin-left: auto; flex-shrink: 0; align-self: center;
+  }
+  .nav-hamburger span {
+    display: block; height: 2px; background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .nav-drawer-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); }
+
+  /* drawer mobile */
+  .nav-drawer-overlay {
+    display: none; position: fixed; inset: 0; z-index: 98;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+  }
   .nav-drawer-overlay.open { display: block; }
-  .nav-drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 99; width: 280px; background: #111; border-left: 1px solid rgba(192,57,43,0.2); transform: translateX(100%); transition: 0.35s; display: flex; flex-direction: column; padding: 80px 0 40px; overflow-y: auto; }
+
+  .nav-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 99;
+    width: 280px; background: #111;
+    border-left: 1px solid rgba(192,57,43,0.2);
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column;
+    padding: 80px 0 40px;
+    overflow-y: auto;
+  }
   .nav-drawer.open { transform: translateX(0); }
+
   .drawer-links { list-style: none; padding: 0 0 20px; }
-  .drawer-links li a, .drawer-cases-btn { display: block; padding: 14px 32px; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cinza); text-decoration: none; border-left: 3px solid transparent; border-bottom: 1px solid rgba(255,255,255,0.07); transition: 0.2s; background: none; text-align: left; width: 100%; cursor: pointer; }
-  .drawer-links li a:hover, .drawer-cases-btn:hover { color: var(--branco); border-left-color: var(--vermelho); background: rgba(192,57,43,0.08); }
-  .drawer-cases-body { overflow: hidden; max-height: 0; transition: 0.35s; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
+  .drawer-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .drawer-links li:last-child { border-bottom: none; }
+  .drawer-links li a {
+    display: block; padding: 14px 32px;
+    font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-links li a:hover { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.08); }
+
+  /* accordion Cases no drawer */
+  .drawer-cases-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px; border-left: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .drawer-cases-btn span {
+    font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
+    transition: color 0.2s;
+  }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--gray); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--white); }
+  .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--red); }
+  .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--red); background: rgba(192,57,43,0.08); }
+  .drawer-cases-btn.open svg { transform: rotate(180deg); }
+
+  .drawer-cases-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; background: rgba(0,0,0,0.3); border-left: 3px solid rgba(192,57,43,0.35); }
   .drawer-cases-body.open { max-height: 400px; }
-  .drawer-cases-body a { font-size: 12px; padding: 11px 24px 11px 40px; }
+  .drawer-cases-body a {
+    display: block; padding: 11px 24px 11px 40px;
+    font-size: 12px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(155,155,155,0.9); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    transition: color 0.15s, background 0.15s, padding-left 0.15s;
+  }
+  .drawer-cases-body a::before { content: '—'; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: rgba(192,57,43,0.5); font-size: 9px; }
+  .drawer-cases-body a:last-of-type { border-bottom: none; }
+  .drawer-cases-body a:hover { color: var(--white); background: rgba(192,57,43,0.1); padding-left: 46px; }
+  .drawer-cases-body a.active { color: var(--white); }
 
-  /* HERO */
-  .hero { padding: 140px 48px 80px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; align-items: end; }
-  .hero-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--vermelho); margin-bottom: 16px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 9vw, 9rem); line-height: 0.88; letter-spacing: 0.02em; color: var(--branco); margin-bottom: 28px; }
-  .hero p { font-size: 1rem; color: var(--cinza); max-width: 420px; line-height: 1.7; font-weight: 300; }
+  /* ── HERO ── */
+  .hero {
+    padding: 140px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+    align-items: end;
+  }
 
-  /* TABS */
-  .tab-section { padding: 0 48px 60px; max-width: 1200px; margin: 0 auto; }
-  .tabs { display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 48px; width: 100%; overflow-x: auto; scrollbar-width: none; }
-  .tab-btn { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--cinza); background: none; border: none; padding: 18px 20px; cursor: pointer; position: relative; transition: 0.25s; flex: 1; text-align: center; white-space: nowrap; }
-  .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--vermelho); transition: 0.3s; }
+  .hero-left { /* coluna esquerda — label + título + desc */ }
+
+  .hero-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermelho) !important;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 9vw, 9rem);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: var(--branco);
+    margin-bottom: 28px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--cinza);
+    max-width: 420px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* coluna direita — elemento decorativo */
+  .hero-right-deco {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+    gap: 24px;
+  }
+
+  .hero-deco-num {
+    width: clamp(10rem, 18vw, 18rem);
+    height: clamp(10rem, 18vw, 18rem);
+    opacity: 0.04;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    user-select: none;
+    pointer-events: none;
+  }
+  .hero-deco-num svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-deco-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .hero-deco-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    border-right: 2px solid var(--vermelho);
+    padding-right: 12px;
+  }
+
+  /* ── TAB MENU ── */
+  .tab-section {
+    padding: 0 48px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 48px;
+    width: 100%;
+  }
+
+  .tab-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--cinza);
+    background: none;
+    border: none;
+    padding: 18px 20px;
+    cursor: pointer;
+    position: relative;
+    transition: color .25s;
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: var(--vermelho);
+    transition: width .3s ease;
+  }
+
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: calc(100% - 40px); }
 
-  /* COBERTURAS & GRIDS */
-  .cobertura-block { border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .cobertura-header { display: flex; align-items: center; gap: 20px; padding: 24px 0; }
-  .cobertura-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.05em; color: var(--branco); transition: 0.2s;}
-  .cobertura-data { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--vermelho); }
-  .cobertura-count { font-size: 0.7rem; color: var(--cinza); margin-left: auto; }
-  .cobertura-toggle { width: 100%; background: none; border: none; cursor: pointer; text-align: left; }
-  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
-  .accordion-icon { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.12); margin-left: 16px; transition: 0.2s; }
-  .accordion-icon svg { width: 14px; height: 14px; stroke: var(--cinza); fill: none; stroke-width: 2; transition: 0.3s; }
-  .cobertura-block.open .accordion-icon { background: var(--vermelho); border-color: var(--vermelho); }
-  .cobertura-block.open .accordion-icon svg { stroke: var(--branco); transform: rotate(180deg); }
-  .cobertura-body { overflow: hidden; max-height: 0; transition: max-height 0.5s; }
-  .cobertura-block.open .cobertura-body { max-height: 99999px; }
-  .cobertura-body-inner { padding-top: 28px; padding-bottom: 8px; }
-  
-  .grid-masonry { columns: 3; column-gap: 8px; }
-  .grid-item { break-inside: avoid; margin-bottom: 8px; overflow: hidden; cursor: pointer; position: relative; }
-  .grid-item img { width: 100%; display: block; transition: 0.4s; filter: brightness(0.92); }
-  .grid-item:hover img { transform: scale(1.03); filter: brightness(1); }
+  /* ── COBERTURAS ── */
+  .cobertura-block {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
 
-  /* LIGHTBOX */
-  .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.96); align-items: center; justify-content: center; flex-direction: column; }
-  .lightbox.open { display: flex; }
-  .lightbox-img-wrap { position: relative; max-width: 90vw; max-height: 85vh; display: flex; align-items: center; justify-content: center; }
-  .lightbox-img-wrap img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
-  .lightbox-close { position: fixed; top: 24px; right: 32px; background: none; border: 2px solid var(--vermelho); color: var(--vermelho); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: 0.2s; z-index: 210; }
-  .lightbox-close:hover { background: var(--vermelho); color: var(--branco); }
-  .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.5); font-size: 2.5rem; cursor: pointer; padding: 20px; transition: 0.2s; z-index: 210; }
+  .cobertura-block:last-child { border-bottom: none; }
+
+  .cobertura-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .cobertura-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: var(--branco);
+  }
+
+  .cobertura-data {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vermelho);
+  }
+
+  .cobertura-count {
+    font-size: 0.7rem;
+    color: var(--cinza);
+    letter-spacing: 0.1em;
+    margin-left: auto;
+  }
+
+  /* ── ACCORDION ── */
+  .cobertura-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+
+  .cobertura-toggle .cobertura-header {
+    transition: border-color .25s;
+  }
+
+  .cobertura-toggle:hover .cobertura-titulo { color: var(--vermelho); }
+  .cobertura-toggle:hover .cobertura-header { border-color: rgba(192,57,43,0.3); }
+
+  .accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-left: 16px;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s, transform .35s ease;
+  }
+
+  .accordion-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--cinza);
+    fill: none;
+    stroke-width: 2;
+    transition: stroke .2s, transform .35s ease;
+  }
+
+  .cobertura-toggle:hover .accordion-icon {
+    background: rgba(192,57,43,0.12);
+    border-color: var(--vermelho);
+  }
+
+  .cobertura-toggle:hover .accordion-icon svg { stroke: var(--vermelho); }
+
+  /* estado aberto */
+  .cobertura-block.open .accordion-icon {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+  }
+  .cobertura-block.open .accordion-icon svg {
+    stroke: var(--branco);
+    transform: rotate(180deg);
+  }
+
+  /* corpo do accordion */
+  .cobertura-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cobertura-block.open .cobertura-body {
+    max-height: 99999px;
+  }
+
+  .cobertura-body-inner {
+    padding-top: 28px;
+    padding-bottom: 8px;
+  }
+
+  /* ── MASONRY GRID ── */
+  .grid-masonry {
+    columns: 3;
+    column-gap: 8px;
+  }
+
+  @media (max-width: 900px) { .grid-masonry { columns: 2; } }
+  @media (max-width: 560px) { .grid-masonry { columns: 1; } }
+
+  .grid-item {
+    break-inside: avoid;
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform .4s ease, filter .4s ease;
+    filter: brightness(0.92);
+  }
+
+  .grid-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1);
+  }
+
+  .grid-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(192,57,43,0);
+    transition: background .3s;
+    pointer-events: none;
+  }
+
+  .grid-item:hover::after {
+    background: rgba(192,57,43,0.08);
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.96);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lightbox.open {
+    display: flex;
+    animation: fadeIn .2s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .lightbox-img-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-img-wrap img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 24px; right: 32px;
+    background: none;
+    border: 2px solid var(--vermelho);
+    color: var(--vermelho);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+    z-index: 210;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-close:active { background: var(--vermelho); color: var(--branco); }
+
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: color .2s;
+    z-index: 210;
+    line-height: 1;
+  }
+
   .lightbox-nav:hover { color: var(--branco); }
   .lightbox-prev { left: 12px; }
   .lightbox-next { right: 12px; }
-  .lightbox-counter { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
 
-  /* BACK TO TOP */
-  .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--vermelho); color: var(--branco); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); transition: 0.3s; z-index: 90; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-  .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-  .back-to-top:hover { background: var(--vermelho-dark); transform: translateY(-3px); }
-  .back-to-top svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .nav-inner { padding: 0 20px; }
-    .nav-logo { font-size: 20px; border-right: none; }
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; text-align: center; }
-    .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
-    .hero p { margin: 0 auto; }
-    .tab-section { padding: 0 24px 40px; }
-    .tab-btn { padding: 14px 16px; font-size: 1rem; }
-    .cobertura-header { flex-wrap: wrap; }
-    .grid-masonry { columns: 2; }
-    .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+  .lightbox-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
   }
-  @media (max-width: 480px) { .grid-masonry { columns: 1; } }
 
+  /* ── TABS CONTENT ── */
   .tab-content { display: none; }
   .tab-content.active { display: block; }
-  .case-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; padding: 0 0 32px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    margin-top: 80px;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--cinza);
+    letter-spacing: 0.08em;
+  }
+
+  footer strong { color: var(--vermelho); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 1024px) {
+    .nav-inner { padding: 0 32px; }
+  }
+  @media (max-width: 768px) {
+    nav { min-height: 56px; }
+    .nav-inner { padding: 0 20px; width: 100%; }
+    .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 48px;
+      text-align: center;
+    }
+    .hero-right-deco { display: none; }
+    .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
+    .hero p { max-width: 100%; margin: 0 auto; }
+
+    .tab-section { padding: 0 24px 40px; }
+    .tabs { margin-bottom: 0; }
+    .tab-content { padding-top: 32px; }
+    .tab-btn { padding: 14px 16px; font-size: 1rem; }
+    .tab-btn.active::after { width: calc(100% - 32px); }
+
+    .cobertura-header { flex-wrap: wrap; gap: 8px; padding: 20px 0; }
+    .cobertura-count { margin-left: 0; }
+    .cobertura-titulo { font-size: 1.3rem; }
+
+    .grid-masonry { columns: 2; column-gap: 6px; }
+    .grid-item { margin-bottom: 6px; }
+    footer { padding: 32px 24px; }
+  }
+
+  @media (max-width: 420px) {
+    .grid-masonry { columns: 1; }
+    .hero h1 { font-size: clamp(3.5rem, 18vw, 5rem); }
+  }
+
+  /* ── CASE INTRO ── */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
+  }
   .case-intro-context { display: flex; flex-direction: column; gap: 12px; }
   .case-intro-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--vermelho); }
   .case-intro-desc { font-size: 0.9rem; color: #bbb; line-height: 1.75; }
@@ -144,14 +663,15 @@
   .case-intro-meta-item { display: flex; flex-direction: column; gap: 3px; }
   .case-intro-meta-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(192,57,43,0.7); }
   .case-intro-meta-value { font-size: 0.82rem; color: var(--branco); font-weight: 500; }
-  @media (max-width: 768px) { .case-intro { grid-template-columns: 1fr; } .case-intro-meta { padding-left: 16px; } }
-
-  footer { padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.07); text-align: center; margin-top: 80px; }
-  footer p { font-size: 0.75rem; color: var(--cinza); letter-spacing: 0.08em; }
+  @media (max-width: 768px) {
+    .case-intro { grid-template-columns: 1fr; gap: 20px; }
+    .case-intro-meta { padding-left: 16px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html#hero">M<span>·</span>V</a>
@@ -160,7 +680,8 @@
       <li><a href="index.html#sobre">Sobre</a></li>
       <li class="nav-dropdown" id="navDropdown">
         <a class="nav-dropdown-btn" href="index.html#cases" aria-haspopup="true" aria-expanded="false">
-          Portfólio <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          Portfólio
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="nav-dropdown-menu" role="menu">
           <div class="dropdown-label">Trabalhos selecionados</div>
@@ -173,17 +694,25 @@
       <li><a href="index.html#habilidades">Habilidades</a></li>
       <li><a href="index.html#contato">Contato</a></li>
     </ul>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- OVERLAY -->
 <div class="nav-drawer-overlay" id="drawerOverlay"></div>
+
+<!-- DRAWER -->
 <div class="nav-drawer" id="navDrawer">
   <ul class="drawer-links">
     <li><a href="index.html#hero">Início</a></li>
     <li><a href="index.html#sobre">Sobre</a></li>
     <li>
-      <button class="drawer-cases-btn" id="drawerCasesBtn">Portfólio <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="drawer-cases-btn" id="drawerCasesBtn">
+        <span>Portfólio</span>
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
       <div class="drawer-cases-body" id="drawerCasesBody">
         <a href="fotografia.html" class="active">Fotografia</a>
         <a href="videos.html">Vídeos</a>
@@ -196,14 +725,29 @@
   </ul>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-label">Fotografia</p>
+    <p class="hero-label" style="font-family:'DM Sans',sans-serif; font-weight:800; letter-spacing:0.2em;">Fotografia</p>
     <h1>Foto<br>grafia</h1>
-    <p>Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão, do campo ao evento corporativo.</p>
+    <p> Coberturas institucionais, fotografia esportiva e registro urbano. Mais de 2 anos documentando histórias reais com câmera na mão, do campo ao evento corporativo, com olhar autoral e entrega profissional.</p>
+  </div>
+  <div class="hero-right-deco">
+    <div class="hero-deco-num">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="0.8">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+    </div>
+    <div class="hero-deco-tags">
+      <span class="hero-deco-tag">Eventos Corporativos</span>
+      <span class="hero-deco-tag">Fotografia Esportiva</span>
+      <span class="hero-deco-tag">Registro Documental</span>
+    </div>
   </div>
 </section>
 
+<!-- TABS + GRID -->
 <section class="tab-section">
   <div class="tabs">
     <button class="tab-btn active" data-tab="coberturas">Coberturas</button>
@@ -212,71 +756,142 @@
     <button class="tab-btn" data-tab="verte-saude">Verte|Saúde</button>
   </div>
 
+  <!-- COBERTURAS -->
   <div class="tab-content active" id="coberturas">
+
+    <!-- Manifestação Juntos! -->
     <div class="cobertura-block">
       <button class="cobertura-toggle" aria-expanded="false">
         <div class="cobertura-header">
           <h2 class="cobertura-titulo">Manifestação do Juntos!</h2>
           <span class="cobertura-data">02 Out 2025</span>
-          <span class="cobertura-count">10 fotos</span>
-          <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <span class="cobertura-count">35 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </div>
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Cobertura fotojornalística da manifestação organizada pelo movimento Juntos!
+                em Porto Alegre. O desafio foi capturar a pluralidade do evento:
+                rostos, cartazes, tensão e celebração, em um registro documental que
+                preservasse a autenticidade do momento sem perder o enquadramento editorial.
+              </p>
+              <p class="case-intro-desc">
+                Das mais de 60 capturas realizadas, 35 fotografias foram selecionadas
+                como o conjunto mais representativo da cobertura.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Fotojornalismo · Cobertura de evento</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Data</span><span class="case-intro-meta-value">02 de outubro de 2025</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">35 fotografias selecionadas e tratadas</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Captação + Edição em Lightroom</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="manifestacao">
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-03_ccfkly.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-04_pslrnk.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-05_lozw2p.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-06_kwbnif.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422713/mariovinicius.fotografia_02_10_2025-07_dhqvpp.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422707/mariovinicius.fotografia_02_10_2025-16_mghbjh.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422706/mariovinicius.fotografia_02_10_2025-17_witqrc.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422705/mariovinicius.fotografia_02_10_2025-18_klaniw.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422723/mariovinicius.fotografia_02_10_2025-01_lhg5vx.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-02_tsmkk0.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-03_ccfkly.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422717/mariovinicius.fotografia_02_10_2025-04_pslrnk.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-05_lozw2p.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422718/mariovinicius.fotografia_02_10_2025-06_kwbnif.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="6"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422713/mariovinicius.fotografia_02_10_2025-07_dhqvpp.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="7"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422707/mariovinicius.fotografia_02_10_2025-16_mghbjh.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="8"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422706/mariovinicius.fotografia_02_10_2025-17_witqrc.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="9"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422705/mariovinicius.fotografia_02_10_2025-18_klaniw.jpg" loading="lazy" alt=""></div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- São José VS Vila Olímpica -->
     <div class="cobertura-block">
       <button class="cobertura-toggle" aria-expanded="false">
         <div class="cobertura-header">
           <h2 class="cobertura-titulo">São José VS Vila Olímpica</h2>
           <span class="cobertura-data">17 Ago 2025</span>
-          <span class="cobertura-count">6 fotos</span>
-          <div class="accordion-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <span class="cobertura-count">97 fotos</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </div>
       </button>
       <div class="cobertura-body">
         <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Cobertura completa de partida de futebol feminino entre São José EC
+                e Vila Olímpica. Fotografia esportiva exige velocidade de reação,
+                domínio da iluminação adversa de estádio e capacidade de antecipar
+                o lance decisivo, tudo com equipamento portátil e sem segunda chance.
+              </p>
+              <p class="case-intro-desc">
+                97 fotografias entregues registrando lances, emoções e o ambiente da partida,
+                de aquecimento ao apito final.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Fotografia Esportiva · Futebol Feminino</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Data</span><span class="case-intro-meta-value">17 de agosto de 2025</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Entrega</span><span class="case-intro-meta-value">97 fotografias selecionadas e tratadas</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Captação + Edição em Lightroom</span></div>
+            </div>
+          </div>
           <div class="grid-masonry" data-gallery="futebol">
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-03_lzzpyk.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-04_vuuqfe.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422794/sao-jose_vs_vila-olimpica_17-08-2025-05_hpk99a.jpg" loading="lazy" alt=""></div>
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422792/sao-jose_vs_vila-olimpica_17-08-2025-06_jnus3o.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422793/sao-jose_vs_vila-olimpica_17-08-2025-01_t0ueh1.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422795/sao-jose_vs_vila-olimpica_17-08-2025-02_c3jgkq.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-03_lzzpyk.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="3"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422797/sao-jose_vs_vila-olimpica_17-08-2025-04_vuuqfe.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="4"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422794/sao-jose_vs_vila-olimpica_17-08-2025-05_hpk99a.jpg" loading="lazy" alt=""></div>
+            <div class="grid-item" data-index="5"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773422792/sao-jose_vs_vila-olimpica_17-08-2025-06_jnus3o.jpg" loading="lazy" alt=""></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div><!-- /coberturas -->
+
+  <!-- URBANO -->
   <div class="tab-content" id="urbano">
-    <div class="grid-masonry" data-gallery="urbano">
-      <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/20240812-_DSC0147_t3yz9t.jpg" loading="lazy" alt=""></div>
-      <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/20240124-mario-19_hkeba3.jpg" loading="lazy" alt=""></div>
-      <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428881/20240810-_DSC0021_yifjug.jpg" loading="lazy" alt=""></div>
+    <div class="case-intro">
+      <div class="case-intro-context">
+        <p class="case-intro-label">Contexto do projeto</p>
+        <p class="case-intro-desc">
+          Série autoral de fotografia urbana pelas ruas de Porto Alegre.
+          Um exercício permanente de olhar: encontrar composição, luz e história
+          em cenas cotidianas que a maioria passa sem perceber.
+          Fotografia de rua como linguagem e laboratório criativo.
+        </p>
+      </div>
+      <div class="case-intro-meta">
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Projeto Autoral · Street Photography</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Local</span><span class="case-intro-meta-value">Porto Alegre/RS, em curso</span></div>
+      </div>
     </div>
-  </div>
+    <div class="grid-masonry" data-gallery="urbano">
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/20240812-_DSC0147_t3yz9t.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/20240124-mario-19_hkeba3.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="2"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428881/20240810-_DSC0021_yifjug.jpg" loading="lazy" alt=""></div>
+    </div>
+  </div><!-- /urbano -->
 
   <!-- AVANT ENERGIA -->
   <div class="tab-content" id="avant-energia">
     <div class="case-intro">
       <div class="case-intro-context">
         <p class="case-intro-label">Contexto do projeto</p>
-        <p class="case-intro-desc">Série documental e institucional focada na infraestrutura de energia e rotina de operações. (Imagens ilustrativas aguardando inserção das fotos reais via Cloudinary).</p>
+        <p class="case-intro-desc">
+          Série documental e institucional com foco em energia, arquitetura e operação.
+          Trabalhos de registro técnico e visual para apresentação de marca, processo e rotina.
+        </p>
       </div>
       <div class="case-intro-meta">
         <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Registro documental · Institucional</span></div>
@@ -284,142 +899,37 @@
       </div>
     </div>
     <div class="grid-masonry" data-gallery="avant-energia">
-      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/avant-energia-01.jpg" loading="lazy" alt="AVANT Energia 01" onerror="this.src='https://placehold.co/800x800/1a1a1a/c0392b?text=Imagem+Indisponível'"></div>
-      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/avant-energia-02.jpg" loading="lazy" alt="AVANT Energia 02" onerror="this.src='https://placehold.co/800x800/1a1a1a/c0392b?text=Imagem+Indisponível'"></div>
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/avant-energia-01.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/avant-energia-02.jpg" loading="lazy" alt=""></div>
     </div>
   </div><!-- /avant-energia -->
 
   <!-- VERTE SAÚDE -->
   <div class="tab-content" id="verte-saude">
     <div class="case-intro">
-  <!-- VERTE SAÚDE -->
-  <div class="tab-content" id="verte-saude">
-    <div class="grid-masonry" data-gallery="verte-saude">
-      <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/verte-saude-01.jpg" loading="lazy" alt=""></div>
-      <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/verte-saude-02.jpg" loading="lazy" alt=""></div>
-    </div>
-  </div>
-</section>
-
+      <div class="case-intro-context">
+        <p class="case-intro-label">Contexto do projeto</p>
+        <p class="case-intro-desc">
+          Cobertura fotográfica institucional da Verte Saúde, com foco em pessoas,
+          rotina, ambiente e comunicação visual da marca em múltiplos contextos.
+        </p>
+      </div>
       <div class="case-intro-meta">
         <div class="case-intro-meta-item"><span class="case-intro-meta-label">Tipo</span><span class="case-intro-meta-value">Fotografia institucional</span></div>
         <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">Verte Saúde</span></div>
       </div>
     </div>
     <div class="grid-masonry" data-gallery="verte-saude">
-      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/verte-saude-01.jpg" loading="lazy" alt="Verte Saúde 01" onerror="this.src='https://placehold.co/800x800/1a1a1a/c0392b?text=Imagem+Indisponível'"></div>
-      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/verte-saude-02.jpg" loading="lazy" alt="Verte Saúde 02" onerror="this.src='https://placehold.co/800x800/1a1a1a/c0392b?text=Imagem+Indisponível'"></div>
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428888/verte-saude-01.jpg" loading="lazy" alt=""></div>
+      <div class="grid-item" data-index="1"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/v1773428885/verte-saude-02.jpg" loading="lazy" alt=""></div>
     </div>
   </div><!-- /verte-saude -->
 
 </section>
 
 <footer>
-  <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
-  <p>Feito com <strong>propósito</strong></p>
+  <p><strong>Mário Vinicius</strong> — Fotografia</p>
 </footer>
 
-<script>
-// TABS
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-
-// ACCORDION
-document.querySelectorAll('.cobertura-toggle').forEach(toggle => {
-  toggle.addEventListener('click', () => {
-    const block = toggle.closest('.cobertura-block');
-    const isOpen = block.classList.contains('open');
-    block.classList.toggle('open', !isOpen);
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-  });
-});
-
-// LIGHTBOX
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lb-img');
-const lbCounter = document.getElementById('lb-counter');
-let currentGallery = [];
-let currentIndex = 0;
-
-function getFullUrl(thumb) { return thumb.replace('w_800,q_auto,f_auto', 'w_1600,q_auto,f_auto'); }
-
-function openLightbox(items, index) {
-  currentGallery = items;
-  showImage(index);
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function showImage(index) {
-  currentIndex = (index + currentGallery.length) % currentGallery.length;
-  lbImg.src = getFullUrl(currentGallery[currentIndex]);
-  lbCounter.textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
-}
-
-function closeLightbox() {
-  lb.classList.remove('open');
-  document.body.style.overflow = '';
-  lbImg.src = '';
-}
-
-document.getElementById('lb-close').addEventListener('click', closeLightbox);
-document.getElementById('lb-prev').addEventListener('click', () => showImage(currentIndex - 1));
-document.getElementById('lb-next').addEventListener('click', () => showImage(currentIndex + 1));
-lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-});
-
-document.querySelectorAll('.grid-masonry').forEach(grid => {
-  const items = Array.from(grid.querySelectorAll('.grid-item img')).map(img => img.src);
-  if (items.length === 0) return;
-  grid.querySelectorAll('.grid-item').forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(items, i));
-  });
-});
-
-// DRAWER & BACK TO TOP
-const hamburger = document.getElementById('navHamburger');
-const drawer = document.getElementById('navDrawer');
-const overlay = document.getElementById('drawerOverlay');
-
-function closeDrawer() {
-  if (!hamburger || !drawer || !overlay) return;
-  hamburger.classList.remove('open');
-  drawer.classList.remove('open');
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    overlay.classList.toggle('open', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-  overlay.addEventListener('click', closeDrawer);
-  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-}
-
-const backToTopBtn = document.getElementById('backToTop');
-if (backToTopBtn) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) backToTopBtn.classList.add('visible');
-    else backToTopBtn.classList.remove('visible');
-  });
-  backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-</script>
 </body>
 </html>
