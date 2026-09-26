@@ -25,15 +25,27 @@ async function listarPasta(caminho) {
   return (data.resources || []).map(r => r.secure_url);
 }
 
+async function listarTodasPastas(prefixo = "") {
+  const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/folders` + (prefixo ? `/${encodeURIComponent(prefixo)}` : "");
+  const res = await fetch(url, { headers: { Authorization: `Basic ${auth}` } });
+  return res.json();
+}
+
+async function listarTodosRecursos() {
+  // Lista todos os recursos da conta para ver os public_ids reais
+  const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?max_results=10&type=upload`;
+  const res = await fetch(url, { headers: { Authorization: `Basic ${auth}` } });
+  return res.json();
+}
+
 async function main() {
-  const resultado = {};
-  for (const [id, caminho] of Object.entries(PASTAS)) {
-    console.error(`Buscando: ${caminho}...`);
-    resultado[id] = await listarPasta(caminho);
-    console.error(`  → ${resultado[id].length} fotos encontradas`);
-  }
-  // Imprime JSON limpo no stdout — copie e cole aqui no chat
-  console.log(JSON.stringify(resultado, null, 2));
+  console.error("=== Listando pastas raiz ===");
+  const pastas = await listarTodasPastas();
+  console.log("PASTAS:", JSON.stringify(pastas, null, 2));
+
+  console.error("\n=== Primeiros 10 recursos (para ver public_id real) ===");
+  const recursos = await listarTodosRecursos();
+  console.log("RECURSOS:", JSON.stringify(recursos.resources?.map(r => r.public_id), null, 2));
 }
 
 main().catch(console.error);
