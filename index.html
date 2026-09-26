@@ -885,6 +885,28 @@
     .verte-ctx-title { font-size: clamp(2rem, 10vw, 3rem); }
   }
 
+
+  /* ── VOLTAR AO TOPO ── */
+  .btn-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--red, #C0392B);
+    color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  }
+  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .btn-top:hover { background: var(--red-dark, #922b21); }
+  .btn-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+  @media (max-width: 768px) {
+    .btn-top { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1394,7 +1416,19 @@
   <p>Feito com <strong>propósito</strong></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  // ── VOLTAR AO TOPO ──
+  const btnTop = document.getElementById('btnTop');
+  if (btnTop) {
+    window.addEventListener('scroll', () => {
+      btnTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+</script>
 <script>
   // ── HAMBÚRGUER + DRAWER ──
   const hamburger = document.getElementById('navHamburger');
