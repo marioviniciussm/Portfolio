@@ -679,7 +679,7 @@
 
   .btn-top {
     display: flex; align-items: center; gap: 8px;
-    background: var(--vermelho, var(--red, #C0392B));
+    background: var(--vermelho);
     border: none; cursor: pointer;
     padding: 10px 16px;
     color: #fff;
@@ -692,8 +692,8 @@
     white-space: nowrap;
   }
   .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #922b21)); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+  .btn-top:hover { background: var(--vermelho-dark, #922b21); }
+  .btn-top svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; flex-shrink: 0; }
 
   .btn-whatsapp {
     display: flex; align-items: center; gap: 8px;
@@ -707,62 +707,12 @@
     white-space: nowrap;
   }
   .btn-whatsapp:hover { background: #1ebe5d; }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+  .btn-whatsapp svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
 
   @media (max-width: 768px) {
-    .fab-group {
-      bottom: max(16px, env(safe-area-inset-bottom));
-      right: 16px;
-      gap: 8px;
-    }
-    .btn-top, .btn-whatsapp {
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      padding: 11px 14px;
-      min-height: 44px;
-    }
+    .fab-group { bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
+    .btn-top, .btn-whatsapp { font-size: 9px; letter-spacing: 0.12em; padding: 11px 14px; min-height: 44px; }
   }
-
-  /* Voltar ao topo */
-  .btn-top {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--vermelho, var(--red, #C0392B));
-    border: none; cursor: pointer;
-    padding: 10px 16px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0; pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity 0.25s, transform 0.25s, background 0.2s;
-    white-space: nowrap;
-  }
-  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #922b21)); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
-
-  /* WhatsApp */
-  .btn-whatsapp {
-    display: flex; align-items: center; gap: 8px;
-    background: #25D366;
-    padding: 10px 16px;
-    color: #fff; text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    transition: background 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
-  .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
-
-  @media (max-width: 768px) {
-    .fab-group { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
-    .btn-top, .btn-whatsapp { font-size: 9px; padding: 9px 13px; }
-  }
-  }
-
 </style>
 </head>
 <body>
@@ -1162,8 +1112,26 @@
     </div>
   </div><!-- /verte-saude -->
 
+</section>
 
-  <!-- AVANT ENERGIA -->
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lb-close" aria-label="Fechar">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8594;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
+  <p>Feito com <strong>propósito</strong></p>
+</footer>
+
+
   <div class="tab-content" id="avant-energia">
     <div class="case-intro">
       <div class="case-intro-context">
@@ -1194,26 +1162,6 @@
       Mídias em preparação — adicione os links do Cloudinary acima
     </p>
   </div><!-- /avant-energia -->
-
-
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" id="lb-close" aria-label="Fechar">✕</button>
-  <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8592;</button>
-  <div class="lightbox-img-wrap">
-    <img id="lb-img" src="" alt="">
-  </div>
-  <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Próxima">&#8594;</button>
-  <div class="lightbox-counter" id="lb-counter"></div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
-  <p>Feito com <strong>propósito</strong></p>
-</footer>
 
 <script>
 // ── TABS ──
@@ -1357,17 +1305,17 @@ if (dropBtn && dropMenu) {
 }
 
 // ── VOLTAR AO TOPO ──
-document.addEventListener('DOMContentLoaded', () => {
-  const btnTop = document.getElementById('btnTop');
-if (btnTop) {
-  window.addEventListener('scroll', () => {
-    btnTop.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
+document.addEventListener('DOMContentLoaded', function() {
+  var btnTop = document.getElementById('btnTop');
+  if (btnTop) {
+    window.addEventListener('scroll', function() {
+      btnTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    btnTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
 </script>
 
 <!-- BOTÕES FLUTUANTES -->
@@ -1381,6 +1329,5 @@ if (btnTop) {
     WhatsApp
   </a>
 </div>
-
 </body>
 </html>
