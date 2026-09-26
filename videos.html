@@ -731,6 +731,28 @@
   @media (max-width: 600px) {
     .video-modal-processo { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── VOLTAR AO TOPO ── */
+  .btn-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--vermelho, var(--red, #C0392B));
+    color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  }
+  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #a93226)); }
+  .btn-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+  @media (max-width: 768px) {
+    .btn-top { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -816,6 +838,7 @@
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="tab-verte">Verte Saúde</button>
+    <button class="tab-btn" data-tab="tab-avant">AVANT Energia</button>
     <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
   </div>
 
@@ -951,6 +974,34 @@
     </div>
 
   </div><!-- /tab-verte -->
+
+
+  <!-- AVANT ENERGIA -->
+  <div class="tab-content" id="tab-avant">
+
+    <div style="padding:24px 0 32px; border-bottom:1px solid rgba(255,255,255,0.06); margin-bottom:32px;">
+      <p style="font-size:0.62rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--vermelho); margin-bottom:8px;">Contexto do projeto</p>
+      <p style="font-size:0.9rem; color:#bbb; line-height:1.75; max-width:680px;">
+        Reels e vídeos institucionais produzidos para a AVANT Energia desde abril de 2026. Conteúdo para redes sociais com foco em comunicação B2B no setor de energia limpa,
+        cobrindo desde datas comemorativas até campanhas de produto e institucional. Links serão adicionados em breve.
+      </p>
+    </div>
+
+    <div class="video-grid" id="avant-video-grid">
+      <div class="video-card" style="opacity:0.55; cursor:default; pointer-events:none;">
+        <div class="video-thumb-wrap" style="background:#1a1a1a; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.4)" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="video-card-info">
+          <p class="video-card-label">Reel Institucional · AVANT Energia · 2026</p>
+          <h3 class="video-card-title">Em breve</h3>
+          <p class="video-card-desc">Vídeos da AVANT Energia serão adicionados aqui. Suba as mídias no Cloudinary e passe os links para incluir.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tab-avant -->
+
 
   <!-- AUTORAL -->
   <div class="tab-content" id="tab-autoral">
@@ -1180,6 +1231,24 @@ if (dropBtn && dropMenu) {
     }
   });
 }
+
+// ── VOLTAR AO TOPO ──
+const btnTop = document.getElementById('btnTop');
+if (btnTop) {
+  window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 </script>
+
+<!-- VOLTAR AO TOPO -->
+<button class="btn-top" id="btnTop" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 </body>
 </html>
