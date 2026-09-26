@@ -1334,6 +1334,28 @@
     .plan-date { font-size: 0.78rem; }
     .plan-legenda { gap: 14px; }
   }
+
+  /* ── VOLTAR AO TOPO ── */
+  .btn-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--vermelho, var(--red, #C0392B));
+    color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  }
+  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #a93226)); }
+  .btn-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+  @media (max-width: 768px) {
+    .btn-top { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -2218,6 +2240,59 @@ Qual hábito saudável você vai adotar este ano? Conta pra gente nos comentári
   </div> <!-- end case-modal-content -->
 </div> <!-- end case-modal -->
 
+
+
+<!-- ═══════════════════════════════════════════════
+     AVANT ENERGIA: CARD DESTAQUE
+════════════════════════════════════════════════ -->
+<section id="avant-destaque" class="destaque-section">
+  <div class="destaque-inner" style="cursor:default; pointer-events:none; opacity:0.65;">
+
+    <div class="destaque-info">
+      <p class="section-label">Social Media · Energia por Assinatura</p>
+      <h2 class="destaque-titulo">AVANT<br>Energia</h2>
+      <p class="destaque-desc">
+        Estratégia e produção de conteúdo para os perfis da AVANT Energia no Instagram, Facebook e LinkedIn.
+        Planejamento editorial mensal, copywriting orientado a B2B, identidade visual adaptada para cada formato
+        e gestão de publicações via Meta Business Suite.
+      </p>
+      <div class="destaque-tags">
+        <span class="campanha-tag">Planejamento Editorial</span>
+        <span class="campanha-tag">Copywriting B2B</span>
+        <span class="campanha-tag">Design de Posts</span>
+        <span class="campanha-tag">Meta Business Suite</span>
+        <span class="campanha-tag">LinkedIn</span>
+        <span class="campanha-tag">IAGente</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="destaque-metric-row">
+        <div class="destaque-metric">
+          <div class="destaque-metric-num">Abr</div>
+          <div class="destaque-metric-label">Início</div>
+        </div>
+        <div class="destaque-metric">
+          <div class="destaque-metric-num">2026</div>
+          <div class="destaque-metric-label">Ano</div>
+        </div>
+        <div class="destaque-metric">
+          <div class="destaque-metric-num">Sul</div>
+          <div class="destaque-metric-label">do Brasil</div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:#aaa; line-height:1.7; margin-bottom:20px;">
+        Conteúdo em produção. Cases, métricas e exemplos de posts serão adicionados aqui.
+        Suba as mídias no Cloudinary e passe os links para incluir.
+      </p>
+      <p style="font-size:0.65rem; color:rgba(255,255,255,0.3); letter-spacing:0.2em; text-transform:uppercase;">
+        Em preparação — em breve
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <footer>
   <p>© 2026 Mário Vinicius · Porto Alegre/RS</p>
   <p>Feito com <strong>propósito</strong></p>
@@ -2438,6 +2513,24 @@ lbClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 lbPrev.addEventListener('click', () => navLightbox(-1));
 lbNext.addEventListener('click', () => navLightbox(1));
+
+// ── VOLTAR AO TOPO ──
+const btnTop = document.getElementById('btnTop');
+if (btnTop) {
+  window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 </script>
+
+<!-- VOLTAR AO TOPO -->
+<button class="btn-top" id="btnTop" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 </body>
 </html>
