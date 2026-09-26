@@ -665,6 +665,28 @@
     .case-intro { grid-template-columns: 1fr; gap: 20px; }
     .case-intro-meta { padding-left: 16px; }
   }
+
+  /* ── VOLTAR AO TOPO ── */
+  .btn-top {
+    position: fixed;
+    bottom: 28px; right: 24px;
+    width: 44px; height: 44px;
+    background: var(--vermelho, var(--red, #C0392B));
+    color: #fff;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 90;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+  }
+  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #a93226)); }
+  .btn-top svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.5; }
+  @media (max-width: 768px) {
+    .btn-top { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -752,6 +774,7 @@
     <button class="tab-btn active" data-tab="coberturas">Coberturas</button>
     <button class="tab-btn" data-tab="urbano">Urbano</button>
     <button class="tab-btn" data-tab="verte-saude">Verte|Saúde</button>
+    <button class="tab-btn" data-tab="avant-energia">AVANT Energia</button>
   </div>
 
   <!-- COBERTURAS -->
@@ -1063,6 +1086,40 @@
     </div>
   </div><!-- /verte-saude -->
 
+
+  <!-- AVANT ENERGIA -->
+  <div class="tab-content" id="avant-energia">
+    <div class="case-intro">
+      <div class="case-intro-context">
+        <p class="case-intro-label">Contexto do projeto</p>
+        <p class="case-intro-desc">
+          Fotografias institucionais produzidas para a AVANT Energia a partir de abril de 2026.
+          Cobertura de eventos internos, registros de equipe e materiais para comunicação digital
+          e institucional no setor de energia limpa por assinatura.
+        </p>
+        <p class="case-intro-desc">
+          As imagens serão adicionadas aqui conforme as mídias forem enviadas via Cloudinary.
+        </p>
+      </div>
+      <div class="case-intro-meta">
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">AVANT Energia</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">Abril 2026 — Atual</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Uso</span><span class="case-intro-meta-value">Institucional · Redes Sociais · Comunicação B2B</span></div>
+        <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Captação + Edição em Lightroom</span></div>
+      </div>
+    </div>
+    <div class="grid-masonry" data-gallery="avant-energia">
+      <!-- Fotos da AVANT Energia serão adicionadas aqui via Cloudinary -->
+      <!-- Exemplo de formato:
+      <div class="grid-item" data-index="0"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" loading="lazy" alt=""></div>
+      -->
+    </div>
+    <p style="text-align:center; color:rgba(255,255,255,0.25); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:40px 0;">
+      Mídias em preparação — adicione os links do Cloudinary acima
+    </p>
+  </div><!-- /avant-energia -->
+
+
 </section>
 
 <!-- LIGHTBOX -->
@@ -1222,6 +1279,24 @@ if (dropBtn && dropMenu) {
     }
   });
 }
+
+// ── VOLTAR AO TOPO ──
+const btnTop = document.getElementById('btnTop');
+if (btnTop) {
+  window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 </script>
+
+<!-- VOLTAR AO TOPO -->
+<button class="btn-top" id="btnTop" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 </body>
 </html>
