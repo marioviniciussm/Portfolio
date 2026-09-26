@@ -262,6 +262,21 @@
   .discipline-text { font-size: 14px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--white); margin-bottom: 3px; }
   .discipline-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.4px; }
 
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal[data-delay="1"] { transition-delay: 0.08s; }
+  .reveal[data-delay="2"] { transition-delay: 0.18s; }
+  .reveal[data-delay="3"] { transition-delay: 0.28s; }
+  .reveal[data-delay="4"] { transition-delay: 0.38s; }
+
   /* ── SECTIONS ── */
   section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
@@ -331,7 +346,12 @@
   }
 
   /* trajetória — linha do tempo horizontal limpa */
-  .sobre-trajetoria { }
+  .sobre-trajetoria {
+    background: #141414;
+    border-top: 2px solid rgba(192,57,43,0.35);
+    margin: 0 -60px -100px;
+    padding: 60px 60px 80px;
+  }
 
   .trajetoria-items {
     display: grid;
@@ -1040,7 +1060,7 @@
 </div>
 
 <section id="hero">
-  <div class="hero-left">
+  <div class="hero-left reveal">
     <span class="hero-tag">Portfólio 2026</span>
     <h1 class="hero-name">Mário<br><span>Vinicius</span></h1>
     <p class="hero-title">
@@ -1057,7 +1077,7 @@
     </div>
   </div>
 
-  <div class="hero-right">
+  <div class="hero-right reveal" data-delay="2">
     <img src="foto-hero-mariov.png" alt="Mário Vinicius" class="hero-photo">
     <div class="hero-right-content">
       <div class="hero-disciplines">
@@ -1093,7 +1113,7 @@
 
 <section id="sobre">
   <div class="sobre-main">
-    <div class="sobre-text">
+    <div class="sobre-text reveal">
       <p class="section-label">Quem sou</p>
       <h2 class="section-title">Sobre Mim</h2>
 
@@ -1104,7 +1124,7 @@
       <p>Atualmente em Porto Alegre/RS, atuando como <strong>Social Media na AVANT Energia</strong> e disponível para projetos freelance de edição de vídeo, design, fotografia e estratégia de conteúdo. A câmera faz parte do processo — seja num evento corporativo, num ensaio editorial ou num registro de equipe.</p>
     </div>
 
-    <div class="sobre-areas-list">
+    <div class="sobre-areas-list reveal" data-delay="2">
       <div class="sobre-area-item">
         <div class="sobre-area-icon">
           <svg viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
@@ -1162,7 +1182,7 @@
     </div>
   </div>
 
-  <div class="sobre-trajetoria">
+  <div class="sobre-trajetoria reveal">
     <div class="trajetoria-items">
 
       <div class="trajetoria-item">
@@ -1253,14 +1273,14 @@
 </div>
 
 <div id="cases">
-  <div class="cases-header">
+  <div class="cases-header reveal">
     <p class="section-label">Trabalhos selecionados</p>
     <h2 class="section-title">Portfólio</h2>
   </div>
   <div class="cases-grid">
 
     <!-- Acervo Fotográfico -->
-    <a href="fotografia.html" class="case-card" data-ghost="FOTO">
+    <a href="fotografia.html" class="case-card reveal" data-ghost="FOTO">
       <div class="case-icon">
         <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </div>
@@ -1274,7 +1294,7 @@
     </a>
 
     <!-- Acervo de Vídeos -->
-    <a href="videos.html" class="case-card" data-ghost="VIDEO">
+    <a href="videos.html" class="case-card reveal" data-delay="2" data-ghost="VIDEO">
       <div class="case-icon">
         <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
@@ -1288,7 +1308,7 @@
     </a>
 
     <!-- Peças Gráficas -->
-    <a href="pecas-graficas.html" class="case-card" data-ghost="DESIGN">
+    <a href="pecas-graficas.html" class="case-card reveal" data-delay="3" data-ghost="DESIGN">
       <div class="case-icon">
         <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
       </div>
@@ -1302,7 +1322,7 @@
     </a>
 
     <!-- Social Media -->
-    <a href="social-media.html" class="case-card" data-ghost="MEDIA">
+    <a href="social-media.html" class="case-card reveal" data-delay="4" data-ghost="MEDIA">
       <div class="case-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
       </div>
@@ -1355,12 +1375,12 @@
       </div>
     </div>
   </div>
-  <p class="section-label">Ferramentas e competências</p>
-  <h2 class="section-title">Habilidades</h2>
+  <p class="section-label reveal">Ferramentas e competências</p>
+  <h2 class="section-title reveal" data-delay="1">Habilidades</h2>
   <div class="skills-grid">
 
     <!-- Design Gráfico/Digital -->
-    <div class="skill-block">
+    <div class="skill-block reveal" data-delay="1">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
         Design Gráfico/Digital
@@ -1376,7 +1396,7 @@
     </div>
 
     <!-- Audiovisual -->
-    <div class="skill-block">
+    <div class="skill-block reveal" data-delay="2">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="var(--black)"/><circle cx="12" cy="13" r="2.2"/></svg>
         Audiovisual
@@ -1396,7 +1416,7 @@
     </div>
 
     <!-- Social Media & Ads -->
-    <div class="skill-block">
+    <div class="skill-block reveal" data-delay="3">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
         Social Media &amp; Ads
@@ -1412,7 +1432,7 @@
     </div>
 
     <!-- Gestão & UX/UI -->
-    <div class="skill-block">
+    <div class="skill-block reveal" data-delay="4">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 0 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
         Gestão &amp; UX/UI
@@ -1428,7 +1448,7 @@
     </div>
 
     <!-- Soft Skills — span 2 colunas -->
-    <div class="skill-block soft">
+    <div class="skill-block soft reveal" data-delay="2">
       <div class="skill-category">
         <svg class="skill-cat-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         Soft Skills
@@ -1454,12 +1474,12 @@
 
 <div id="contato">
   <div class="contato-inner">
-    <div class="contato-left">
+    <div class="contato-left reveal">
       <p class="section-label">Vamos conversar</p>
       <h2 class="section-title">Contato</h2>
       <p>Estou em busca de um ambiente onde comunicação, criatividade e estratégia se encontrem. Se você precisa de alguém que entende o briefing antes de abrir qualquer software, com autonomia e visão de negócio, vamos conversar.</p>
     </div>
-    <div class="contato-links">
+    <div class="contato-links reveal" data-delay="2">
       <a href="mailto:marioviniciussm@gmail.com" class="contato-item" rel="noopener noreferrer">
         <div class="contato-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
         <div class="contato-item-body"><div class="contato-info-label">E-mail</div><div class="contato-info-value">marioviniciussm@gmail.com</div></div>
@@ -1592,6 +1612,17 @@
       });
     }
   });
+
+  // ── SCROLL REVEAL — IntersectionObserver (once) ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 </script>
 

@@ -346,6 +346,23 @@
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: 100%; }
 
+  .badge-novo {
+    display: inline-block;
+    background: #ffffff;
+    color: #0f0f0f;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 10px;
+    line-height: 16px;
+    position: relative;
+    top: -2px;
+  }
+
   /* categoria em destaque — quando há apenas 1 tab */
   .tabs.single-category {
     border-bottom: none;
@@ -1070,7 +1087,7 @@
   <div class="tabs">
     <button class="tab-btn active" data-tab="verte-saude">Verte|Saúde</button>
     <button class="tab-btn" data-tab="projetos">Projetos</button>
-    <button class="tab-btn" data-tab="avant-energia">AVANT Energia</button>
+    <button class="tab-btn" data-tab="avant-energia">AVANT Energia <span class="badge-novo">NOVO</span></button>
   </div>
 
   <!-- VERTE|SAÚDE -->

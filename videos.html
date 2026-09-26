@@ -345,6 +345,23 @@
   .tab-btn.active { color: var(--branco); }
   .tab-btn.active::after { width: calc(100% - 40px); }
 
+  .badge-novo {
+    display: inline-block;
+    background: #ffffff;
+    color: #0f0f0f;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 10px;
+    line-height: 16px;
+    position: relative;
+    top: -2px;
+  }
+
   /* ── COBERTURAS ── */
   .cobertura-block {
     margin-bottom: 0;
@@ -865,7 +882,7 @@
   <div class="tabs">
     <button class="tab-btn active" data-tab="tab-verte">Verte Saúde</button>
     <button class="tab-btn" data-tab="tab-autoral">Autoral</button>
-    <button class="tab-btn" data-tab="tab-avant">AVANT Energia</button>
+    <button class="tab-btn" data-tab="tab-avant">AVANT Energia <span class="badge-novo">NOVO</span></button>
   </div>
 
   <!-- VERTE SAÚDE -->
