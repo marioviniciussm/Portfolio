@@ -948,7 +948,7 @@
 
   .btn-top {
     display: flex; align-items: center; gap: 8px;
-    background: var(--vermelho, var(--red, #C0392B));
+    background: var(--vermelho);
     border: none; cursor: pointer;
     padding: 10px 16px;
     color: #fff;
@@ -961,8 +961,8 @@
     white-space: nowrap;
   }
   .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #922b21)); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+  .btn-top:hover { background: var(--vermelho-dark, #922b21); }
+  .btn-top svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; flex-shrink: 0; }
 
   .btn-whatsapp {
     display: flex; align-items: center; gap: 8px;
@@ -976,62 +976,12 @@
     white-space: nowrap;
   }
   .btn-whatsapp:hover { background: #1ebe5d; }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+  .btn-whatsapp svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
 
   @media (max-width: 768px) {
-    .fab-group {
-      bottom: max(16px, env(safe-area-inset-bottom));
-      right: 16px;
-      gap: 8px;
-    }
-    .btn-top, .btn-whatsapp {
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      padding: 11px 14px;
-      min-height: 44px;
-    }
+    .fab-group { bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
+    .btn-top, .btn-whatsapp { font-size: 9px; letter-spacing: 0.12em; padding: 11px 14px; min-height: 44px; }
   }
-
-  /* Voltar ao topo */
-  .btn-top {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--vermelho, var(--red, #C0392B));
-    border: none; cursor: pointer;
-    padding: 10px 16px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0; pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity 0.25s, transform 0.25s, background 0.2s;
-    white-space: nowrap;
-  }
-  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #922b21)); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
-
-  /* WhatsApp */
-  .btn-whatsapp {
-    display: flex; align-items: center; gap: 8px;
-    background: #25D366;
-    padding: 10px 16px;
-    color: #fff; text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    transition: background 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
-  .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
-
-  @media (max-width: 768px) {
-    .fab-group { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
-    .btn-top, .btn-whatsapp { font-size: 9px; padding: 9px 13px; }
-  }
-  }
-
 </style>
 </head>
 <body>
@@ -1119,8 +1069,8 @@
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="verte-saude">Verte|Saúde</button>
-    <button class="tab-btn" data-tab="avant-energia">AVANT Energia</button>
     <button class="tab-btn" data-tab="projetos">Projetos</button>
+    <button class="tab-btn" data-tab="avant-energia">AVANT Energia</button>
   </div>
 
   <!-- VERTE|SAÚDE -->
@@ -1493,58 +1443,6 @@
       </div><!-- /cobertura-body -->
     </div>
 
-
-  <!-- AVANT ENERGIA -->
-  <div class="tab-content" id="avant-energia">
-
-    <div class="cobertura-block">
-      <button class="cobertura-toggle" aria-expanded="false">
-        <div class="cobertura-header">
-          <h2 class="cobertura-titulo">AVANT Energia</h2>
-          <span class="cobertura-data">Abr 2026 — Atual</span>
-          <span class="cobertura-count">Em produção</span>
-          <div class="accordion-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-      </button>
-      <div class="cobertura-body">
-        <div class="cobertura-body-inner">
-          <div class="case-intro">
-            <div class="case-intro-context">
-              <p class="case-intro-label">Contexto do projeto</p>
-              <p class="case-intro-desc">
-                Peças gráficas produzidas para a AVANT Energia desde abril de 2026. Design para redes sociais,
-                campanhas institucionais, materiais internos e comunicação B2B no setor de energia limpa por assinatura.
-                Posts, stories, carrosséis e peças estáticas para Instagram, Facebook e LinkedIn.
-              </p>
-              <p class="case-intro-desc">
-                As peças serão adicionadas aqui conforme as mídias forem enviadas via Cloudinary.
-              </p>
-            </div>
-            <div class="case-intro-meta">
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">AVANT Energia</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">Abril 2026 — Atual</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Formatos</span><span class="case-intro-meta-value">Posts · Stories · Carrosséis · Materiais Internos</span></div>
-              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Photoshop · Illustrator · Canva · Adobe Express</span></div>
-            </div>
-          </div>
-          <div class="grid-4col" data-gallery="avant-pecas">
-            <!-- Peças da AVANT Energia serão adicionadas aqui via Cloudinary -->
-            <!-- Exemplo de formato:
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" alt="Descrição" loading="lazy"></div>
-            -->
-          </div>
-          <p style="text-align:center; color:rgba(255,255,255,0.25); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:40px 0;">
-            Mídias em preparação — adicione os links do Cloudinary acima
-          </p>
-        </div><!-- /cobertura-body-inner -->
-      </div><!-- /cobertura-body -->
-    </div>
-
-  </div><!-- /avant-energia -->
-
-
   </div><!-- /projetos -->
 
 </section>
@@ -1754,6 +1652,56 @@ document.querySelectorAll('.baristo-swatch').forEach(sw => {
   </div>
 </div>
 
+
+  <div class="tab-content" id="avant-energia">
+
+    <div class="cobertura-block">
+      <button class="cobertura-toggle" aria-expanded="false">
+        <div class="cobertura-header">
+          <h2 class="cobertura-titulo">AVANT Energia</h2>
+          <span class="cobertura-data">Abr 2026 — Atual</span>
+          <span class="cobertura-count">Em produção</span>
+          <div class="accordion-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </button>
+      <div class="cobertura-body">
+        <div class="cobertura-body-inner">
+          <div class="case-intro">
+            <div class="case-intro-context">
+              <p class="case-intro-label">Contexto do projeto</p>
+              <p class="case-intro-desc">
+                Peças gráficas produzidas para a AVANT Energia desde abril de 2026. Design para redes sociais,
+                campanhas institucionais, materiais internos e comunicação B2B no setor de energia limpa por assinatura.
+                Posts, stories, carrosséis e peças estáticas para Instagram, Facebook e LinkedIn.
+              </p>
+              <p class="case-intro-desc">
+                As peças serão adicionadas aqui conforme as mídias forem enviadas via Cloudinary.
+              </p>
+            </div>
+            <div class="case-intro-meta">
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Cliente</span><span class="case-intro-meta-value">AVANT Energia</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Período</span><span class="case-intro-meta-value">Abril 2026 — Atual</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Formatos</span><span class="case-intro-meta-value">Posts · Stories · Carrosséis · Materiais Internos</span></div>
+              <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Photoshop · Illustrator · Canva · Adobe Express</span></div>
+            </div>
+          </div>
+          <div class="grid-4col" data-gallery="avant-pecas">
+            <!-- Peças da AVANT Energia serão adicionadas aqui via Cloudinary -->
+            <!-- Exemplo de formato:
+            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" alt="Descrição" loading="lazy"></div>
+            -->
+          </div>
+          <p style="text-align:center; color:rgba(255,255,255,0.25); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:40px 0;">
+            Mídias em preparação — adicione os links do Cloudinary acima
+          </p>
+        </div><!-- /cobertura-body-inner -->
+      </div><!-- /cobertura-body -->
+    </div>
+
+  </div><!-- /avant-energia -->
+
 <script>
   const btnAbrir = document.getElementById('btnAbrirRelatorio');
   const modal = document.getElementById('relatorioModal');
@@ -1780,17 +1728,17 @@ document.querySelectorAll('.baristo-swatch').forEach(sw => {
   }
 
 // ── VOLTAR AO TOPO ──
-document.addEventListener('DOMContentLoaded', () => {
-  const btnTop = document.getElementById('btnTop');
-if (btnTop) {
-  window.addEventListener('scroll', () => {
-    btnTop.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  btnTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
+document.addEventListener('DOMContentLoaded', function() {
+  var btnTop = document.getElementById('btnTop');
+  if (btnTop) {
+    window.addEventListener('scroll', function() {
+      btnTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    btnTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});
 </script>
 
 <!-- BOTÕES FLUTUANTES -->
@@ -1804,6 +1752,5 @@ if (btnTop) {
     WhatsApp
   </a>
 </div>
-
 </body>
 </html>
