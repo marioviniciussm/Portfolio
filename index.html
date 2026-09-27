@@ -319,7 +319,7 @@
   .sobre-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 120px;
     align-items: center;
     margin-bottom: 80px;
   }
@@ -423,7 +423,7 @@
   }
 
   .trajetoria-period {
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--red);
   }
 
@@ -432,29 +432,29 @@
     font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: #777;
     border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 3px; padding: 1px 5px;
+    border-radius: 3px; padding: 2px 6px;
     position: relative; top: -1px;
   }
 
   .trajetoria-role {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem; color: var(--white);
-    line-height: 1.1; margin-bottom: 3px; letter-spacing: 0.04em;
+    font-size: 1.6rem; color: var(--white);
+    line-height: 1.1; margin-bottom: 4px; letter-spacing: 0.04em;
   }
 
   .trajetoria-company {
-    font-size: 10px; color: var(--gray);
+    font-size: 11px; color: var(--gray);
     letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px;
   }
 
-  .trajetoria-desc { font-size: 13px; color: #999; line-height: 1.7; max-width: 560px; }
+  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; max-width: 560px; }
 
   @media (max-width: 768px) {
     .sobre-main { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
     .sobre-area-item { padding: 14px 0; }
     .sobre-trajetoria { margin-top: 48px; padding-top: 36px; }
     .trajetoria-item { padding-bottom: 28px; }
-    .trajetoria-role { font-size: 1.15rem; }
+    .trajetoria-role { font-size: 1.35rem; }
   }
 
   /* ── CASES — Card Grid ── */
@@ -673,11 +673,13 @@
     .ps-toolbar { left: 32px; }
   }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-  .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid rgba(255,255,255,0.04); }
+  .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid rgba(255,255,255,0.04); transition: border-left-color 0.2s, background 0.2s; }
+  .skill-block:hover { border-left-color: rgba(192,57,43,0.6); background: rgba(192,57,43,0.04); }
   .skill-category { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
   .skill-cat-icon { width: 14px; height: 14px; fill: var(--red); flex-shrink: 0; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tag { font-size: 12px; color: #bbb; background: rgba(255,255,255,0.05); padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); }
+  .skill-tag { font-size: 12px; color: #bbb; background: rgba(255,255,255,0.05); padding: 5px 12px; border: 1px solid rgba(255,255,255,0.08); transition: color 0.15s, background 0.15s, border-color 0.15s; cursor: default; }
+  .skill-tag:hover { color: var(--white); background: rgba(192,57,43,0.15); border-color: rgba(192,57,43,0.4); }
   .skill-block.soft .skill-tag { border-color: rgba(255,255,255,0.08); color: #ccc; }
   .skill-block.soft { grid-column: span 2; }
 
@@ -1068,89 +1070,47 @@
     .cv-modal-btn { padding: 7px 10px; }
   }
 
-  .btn-top {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--vermelho, var(--red, #C0392B));
-    border: none; cursor: pointer;
-    padding: 10px 16px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    opacity: 0; pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity 0.25s, transform 0.25s, background 0.2s;
-    white-space: nowrap;
-  }
-  .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, var(--red-dark, #922b21)); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
-
-  .btn-whatsapp {
-    display: flex; align-items: center; gap: 8px;
-    background: #25D366;
-    padding: 10px 16px;
-    color: #fff; text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-  .btn-whatsapp:hover { background: #1ebe5d; }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
-
-  @media (max-width: 768px) {
-    .fab-group {
-      bottom: max(16px, env(safe-area-inset-bottom));
-      right: 16px;
-      gap: 8px;
-    }
-    .btn-top, .btn-whatsapp {
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      padding: 11px 14px;
-      min-height: 44px;
-    }
-  }
-
   /* Voltar ao topo */
   .btn-top {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 9px;
     background: var(--red);
     border: none; cursor: pointer;
-    padding: 10px 16px;
+    padding: 13px 20px;
     color: #fff;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
+    font-size: 11px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
     opacity: 0; pointer-events: none;
     transform: translateY(8px);
     transition: opacity 0.25s, transform 0.25s, background 0.2s;
     white-space: nowrap;
+    border-radius: 8px;
   }
   .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--red-dark); }
-  .btn-top svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
+  .btn-top:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-top svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
 
   /* WhatsApp */
   .btn-whatsapp {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 9px;
     background: #25D366;
-    padding: 10px 16px;
+    padding: 13px 20px;
     color: #fff; text-decoration: none;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px; font-weight: 700;
+    font-size: 11px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
     transition: background 0.2s, transform 0.2s;
     white-space: nowrap;
+    border-radius: 8px;
   }
   .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-  .btn-whatsapp svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+  .btn-whatsapp svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
 
   @media (max-width: 768px) {
-    .fab-group { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; }
-    .btn-top, .btn-whatsapp { font-size: 9px; padding: 9px 13px; }
+    .fab-group { bottom: max(20px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
+    .btn-top, .btn-whatsapp { font-size: 10px; padding: 12px 16px; border-radius: 8px; }
+    .btn-top svg { width: 15px; height: 15px; }
+    .btn-whatsapp svg { width: 16px; height: 16px; }
   }
 
 </style>
@@ -1218,7 +1178,7 @@
       <strong>Fotógrafo & Comunicador Visual</strong>
       <span class="hero-subtitle">Fotógrafo&nbsp;&nbsp;●&nbsp;&nbsp;Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media</span>
     </p>
-    <p class="hero-desc">Três anos cobrindo eventos e produzindo conteúdo para empresas em Porto Alegre. Fotografia, design e vídeo no mesmo processo — do registro à publicação.</p>
+    <p class="hero-desc">3 anos cobrindo eventos e produzindo conteúdo para empresas em Porto Alegre.</p>
     <p class="hero-location">Porto Alegre/RS · Disponível para CLT, PJ e projetos freelance</p>
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
