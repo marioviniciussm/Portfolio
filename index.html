@@ -358,79 +358,114 @@
     font-size: 12px; color: var(--gray); line-height: 1.55;
   }
 
-  /* trajetória — linha do tempo horizontal limpa */
+  /* ── TRAJETÓRIA ROADMAP ── */
   .sobre-trajetoria {
     background: #141414;
     border-top: 2px solid rgba(192,57,43,0.35);
     margin: 0 -60px -100px;
-    padding: 60px 60px 80px;
+    padding: 52px 60px 80px;
   }
 
-  .trajetoria-items {
+  .trajetoria-header {
+    margin-bottom: 44px;
+  }
+  .trajetoria-header .section-label { color: var(--red); margin-bottom: 6px; }
+  .trajetoria-header .section-title { font-size: clamp(32px, 4vw, 48px); margin-bottom: 0; }
+
+  /* linha de conexão entre os pontos */
+  .trajetoria-track {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* linha horizontal passando pelos pontos */
+  .trajetoria-track::before {
+    content: '';
+    position: absolute;
+    top: 20px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      rgba(192,57,43,0.2) 0%,
+      rgba(192,57,43,0.5) 33%,
+      rgba(192,57,43,0.8) 66%,
+      var(--red) 100%
+    );
+    z-index: 0;
   }
 
   .trajetoria-item {
-    padding: 32px 28px 28px;
-    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 0 20px 0 0;
     position: relative;
+    z-index: 1;
   }
+  .trajetoria-item:last-child { padding-right: 0; }
 
-  .trajetoria-item:last-child { border-right: none; }
-
-  /* ponto vermelho no topo, alinhado à linha */
-  .trajetoria-item::before {
-    content: '';
-    position: absolute;
-    top: -5px; left: 28px;
-    width: 9px; height: 9px;
-    background: var(--red);
+  /* número do passo */
+  .trajetoria-step {
+    width: 40px; height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--black);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem; letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 20px;
+    position: relative;
+    flex-shrink: 0;
   }
-
-  /* intensidade progressiva da cor do ponto */
-  .trajetoria-item:nth-child(1)::before { background: rgba(192,57,43,0.3); }
-  .trajetoria-item:nth-child(2)::before { background: rgba(192,57,43,0.55); }
-  .trajetoria-item:nth-child(3)::before { background: rgba(192,57,43,0.8); }
-  .trajetoria-item:nth-child(4)::before { background: var(--red); }
+  .trajetoria-item:nth-child(1) .trajetoria-step { background: rgba(192,57,43,0.3); border: 2px solid rgba(192,57,43,0.4); }
+  .trajetoria-item:nth-child(2) .trajetoria-step { background: rgba(192,57,43,0.5); border: 2px solid rgba(192,57,43,0.6); }
+  .trajetoria-item:nth-child(3) .trajetoria-step { background: rgba(192,57,43,0.75); border: 2px solid rgba(192,57,43,0.9); }
+  .trajetoria-item:nth-child(4) .trajetoria-step { background: var(--red); border: 2px solid var(--red); }
 
   .trajetoria-period {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--red);
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
   .trajetoria-role {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem; color: var(--white);
-    line-height: 1.1; margin-bottom: 8px; letter-spacing: 0.04em;
+    font-size: 1.4rem; color: var(--white);
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: 0.04em;
   }
 
   .trajetoria-company {
-    font-size: 12px; color: var(--gray);
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+    font-size: 11px; color: var(--gray);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;
   }
 
-  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; }
+  .trajetoria-desc { font-size: 13px; color: #aaa; line-height: 1.7; }
 
   @media (max-width: 900px) {
-    .trajetoria-items { grid-template-columns: repeat(2, 1fr); }
-    .trajetoria-item:nth-child(2) { border-right: none; }
-    .trajetoria-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.05); }
-    .trajetoria-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.05); }
+    .trajetoria-track { grid-template-columns: repeat(2, 1fr); }
+    .trajetoria-track::before { display: none; }
+    .trajetoria-item { padding: 0 0 40px 56px; }
+    .trajetoria-item:last-child { padding-bottom: 0; }
+    /* linha vertical no mobile 2-col */
+    .trajetoria-step { position: absolute; left: 0; top: 0; }
   }
 
   @media (max-width: 768px) {
     .sobre-main { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
     .sobre-area-item { padding: 14px 0; }
-    .trajetoria-items { grid-template-columns: 1fr; }
-    .trajetoria-item { border-right: none; border-top: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 24px 0 24px 24px; }
-    .trajetoria-item:last-child { border-bottom: none; }
-    .trajetoria-item::before { left: 0; top: 30px; }
+    .sobre-trajetoria { margin: 0 -24px -60px; padding: 40px 24px 60px; }
+    .trajetoria-track { grid-template-columns: 1fr; }
+    .trajetoria-track::before { display: none; }
+    /* linha vertical nos itens */
+    .trajetoria-track::after {
+      content: '';
+      position: absolute;
+      left: 19px; top: 40px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(192,57,43,0.3), var(--red));
+    }
+    .trajetoria-item { padding: 0 0 32px 56px; position: relative; }
+    .trajetoria-item:last-child { padding-bottom: 0; }
+    .trajetoria-step { position: absolute; left: 0; top: 0; width: 38px; height: 38px; }
+    .trajetoria-role { font-size: 1.25rem; }
   }
 
   /* ── CASES — Card Grid ── */
@@ -726,8 +761,8 @@
 
   @media (max-width: 768px) {
     nav { padding: 10px 16px 0; }
-    .nav-inner { padding: 0 16px; width: 100%; max-width: 100%; min-height: 54px; }
-    .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; }
+    .nav-inner { padding: 0 16px; width: 100%; max-width: 100%; min-height: 54px; justify-content: space-between; }
+    .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; flex: 1; text-align: center; justify-content: center; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     #hero { grid-template-columns: 1fr; min-height: auto; padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
@@ -909,11 +944,27 @@
   @media (max-width: 768px) {
     .verte-ctx-inner {
       grid-template-columns: 1fr;
-      padding: 20px 24px;
-      gap: 14px;
+      padding: 28px 24px 32px;
+      gap: 20px;
     }
-    .verte-ctx-stats { gap: 16px; }
-    .verte-ctx-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+    .verte-ctx-title { font-size: clamp(2rem, 10vw, 2.8rem); line-height: 0.88; }
+    .verte-ctx-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      border-bottom: none;
+      padding: 16px 0 0;
+      margin-bottom: 20px;
+    }
+    .verte-ctx-stat {
+      border-right: 1px solid rgba(255,255,255,0.15);
+      padding: 0 12px;
+    }
+    .verte-ctx-stat:last-child { border-right: none; }
+    .verte-ctx-stat-num { font-size: 1.5rem; }
+    .verte-ctx-links { gap: 8px; }
+    .verte-ctx-link { font-size: 9px; padding: 7px 12px; }
   }
 
 
@@ -1194,34 +1245,43 @@
   </div>
 
   <div class="sobre-trajetoria reveal">
-    <div class="trajetoria-items">
+    <div class="trajetoria-header">
+      <p class="section-label">Trajetória</p>
+      <h2 class="section-title">Como cheguei até aqui</h2>
+    </div>
+
+    <div class="trajetoria-track">
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Fev 2019 a Dez 2022</div>
+        <div class="trajetoria-step">01</div>
+        <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
         <div class="trajetoria-role">Técnico em Informática para Internet</div>
         <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
-        <div class="trajetoria-desc">Desenvolvimento web, design de interfaces, programação e banco de dados. Base técnica que sustenta o olhar estratégico atual em UX e comunicação digital.</div>
+        <div class="trajetoria-desc">Web, design de interfaces, banco de dados. A base técnica que hoje alimenta o olhar estratégico em comunicação digital.</div>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Abr 2024 a Dez 2024</div>
-        <div class="trajetoria-role">Estagiário de Comunicação e Social Media</div>
+        <div class="trajetoria-step">02</div>
+        <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
+        <div class="trajetoria-role">Estagiário de Comunicação</div>
         <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Evolução acelerada em 8 meses, reconhecida com promoção. Gestão de redes sociais, produção de materiais e apoio na execução visual de eventos e campanhas sazonais.</div>
+        <div class="trajetoria-desc">Primeiro contato com o mercado. Redes sociais, materiais gráficos e apoio em eventos. Evolução rápida — promovido em 8 meses.</div>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Dez 2024 a Abr 2026</div>
+        <div class="trajetoria-step">03</div>
+        <div class="trajetoria-period">Dez 2024 — Abr 2026</div>
         <div class="trajetoria-role">Auxiliar de Marketing</div>
         <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Referência criativa do time. Identidade visual, produção audiovisual, relatório institucional e campanhas mensais de Social Media com design e copywriting.</div>
+        <div class="trajetoria-desc">Referência criativa do time. Identidade visual, audiovisual, relatório institucional e campanhas mensais com design e copywriting.</div>
       </div>
 
       <div class="trajetoria-item">
-        <div class="trajetoria-period">Abr 2026 a Atual</div>
+        <div class="trajetoria-step">04</div>
+        <div class="trajetoria-period">Abr 2026 — Atual</div>
         <div class="trajetoria-role">Social Media</div>
         <div class="trajetoria-company">AVANT Energia · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Estratégia e produção de conteúdo para redes sociais, automação de marketing e comunicação institucional no setor de energia.</div>
+        <div class="trajetoria-desc">Estratégia de conteúdo, automação de marketing e comunicação institucional no setor de energia por assinatura.</div>
       </div>
 
     </div>
