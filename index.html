@@ -992,6 +992,106 @@
     z-index: 9999;
   }
 
+  /* ── MODAL CURRÍCULO ── */
+  .cv-modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .cv-modal-overlay.open { display: flex; }
+
+  .cv-modal {
+    position: relative;
+    width: 100%; max-width: 860px;
+    height: min(90vh, 700px);
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    animation: cvModalIn 0.22s cubic-bezier(0.34,1.2,0.64,1) both;
+  }
+  @keyframes cvModalIn {
+    from { opacity: 0; transform: scale(0.94) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .cv-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .cv-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem; letter-spacing: 0.1em;
+    color: var(--white); opacity: 0.85;
+  }
+  .cv-modal-actions { display: flex; align-items: center; gap: 8px; }
+
+  .cv-modal-btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; border: none; transition: background 0.18s, transform 0.15s;
+    text-decoration: none;
+  }
+  .cv-modal-btn:hover { transform: translateY(-1px); }
+  .cv-modal-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  .cv-btn-download {
+    background: var(--red); color: #fff;
+  }
+  .cv-btn-download:hover { background: var(--red-dark); }
+
+  .cv-btn-print {
+    background: rgba(255,255,255,0.08); color: var(--white);
+  }
+  .cv-btn-print:hover { background: rgba(255,255,255,0.15); }
+
+  .cv-btn-close {
+    background: transparent; color: rgba(255,255,255,0.5);
+    padding: 7px 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cv-btn-close:hover { color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); }
+
+  .cv-modal-body {
+    flex: 1; overflow: hidden;
+    position: relative;
+  }
+  .cv-modal-body iframe {
+    width: 100%; height: 100%;
+    border: none; display: block;
+  }
+  .cv-modal-loading {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 12px;
+    color: rgba(255,255,255,0.35); font-size: 13px;
+  }
+  .cv-modal-loading::before {
+    content: '';
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-top-color: var(--red);
+    animation: cvSpin 0.7s linear infinite;
+  }
+  @keyframes cvSpin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 600px) {
+    .cv-modal { height: 92vh; border-radius: 12px; }
+    .cv-modal-header { padding: 12px 14px; }
+    .cv-modal-title { font-size: 0.9rem; }
+    .cv-btn-download span, .cv-btn-print span { display: none; }
+    .cv-modal-btn { padding: 7px 10px; }
+  }
+
   .btn-top {
     display: flex; align-items: center; gap: 8px;
     background: var(--vermelho, var(--red, #C0392B));
@@ -1147,7 +1247,7 @@
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
         <a href="#cases" class="btn-primary">Ver Portfólio</a>
-        <a href="curriculo-mario-vinicius.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Visualizar Currículo</a>
+        <button class="btn-secondary" id="btnOpenCV" type="button">Visualizar Currículo</button>
       </div>
     </div>
   </div>
@@ -1717,6 +1817,88 @@
     WhatsApp
   </a>
 </div>
+
+<!-- ── MODAL CURRÍCULO ── -->
+<div class="cv-modal-overlay" id="cvModalOverlay" role="dialog" aria-modal="true" aria-label="Currículo de Mário Vinicius">
+  <div class="cv-modal" id="cvModal">
+    <div class="cv-modal-header">
+      <div class="cv-modal-title">Currículo — Mário Vinicius</div>
+      <div class="cv-modal-actions">
+        <a href="curriculo-mario-vinicius.pdf" download class="cv-modal-btn cv-btn-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Download</span>
+        </a>
+        <button class="cv-modal-btn cv-btn-print" id="cvBtnPrint" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <span>Imprimir</span>
+        </button>
+        <button class="cv-modal-btn cv-btn-close" id="cvBtnClose" type="button" aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="cv-modal-body">
+      <div class="cv-modal-loading" id="cvLoading">Carregando currículo…</div>
+      <iframe id="cvIframe" title="Currículo Mário Vinicius" src="" style="opacity:0;transition:opacity 0.3s;"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const PDF = 'curriculo-mario-vinicius.pdf';
+  const overlay = document.getElementById('cvModalOverlay');
+  const iframe  = document.getElementById('cvIframe');
+  const loading = document.getElementById('cvLoading');
+  const btnOpen  = document.getElementById('btnOpenCV');
+  const btnClose = document.getElementById('cvBtnClose');
+  const btnPrint = document.getElementById('cvBtnPrint');
+  let loaded = false;
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (!loaded) {
+      iframe.src = PDF;
+      iframe.onload = function() {
+        loading.style.display = 'none';
+        iframe.style.opacity = '1';
+        loaded = true;
+      };
+    }
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  btnOpen.addEventListener('click', openModal);
+  btnClose.addEventListener('click', closeModal);
+
+  // fecha clicando fora do modal
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // ESC fecha
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  // imprimir via iframe
+  btnPrint.addEventListener('click', function() {
+    if (!loaded) return;
+    try {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+    } catch(err) {
+      // fallback: abre o PDF em nova aba para impressão
+      window.open(PDF, '_blank');
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
