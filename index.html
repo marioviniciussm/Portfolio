@@ -108,11 +108,11 @@
     font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
     padding: 8px 16px; display: flex; align-items: center; white-space: nowrap;
     border-radius: 8px;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.15s, background 0.15s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
 
-  /* dropdown Cases */
+  /* dropdown Cases — controlado por JS, não por :hover CSS */
   .nav-dropdown { position: relative; display: flex; align-items: center; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
@@ -120,25 +120,30 @@
     letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     border-radius: 8px;
-    transition: color 0.2s, background 0.2s;
+    transition: color 0.15s, background 0.15s;
   }
-  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
-  .nav-dropdown:hover .nav-dropdown-btn { color: var(--white); background: var(--red); }
-  .nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
+  .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-btn { color: var(--white); background: var(--red); }
+  .nav-dropdown.open .nav-dropdown-btn svg { transform: rotate(180deg); }
 
   .nav-dropdown-menu {
-    position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-4px);
+    position: absolute; top: calc(100% + 10px); left: 50%;
+    transform: translateX(-50%) translateY(-6px);
     background: rgba(15,15,15,0.92);
     border: 1px solid rgba(255,255,255,0.09);
     border-radius: 14px;
     min-width: 220px; padding: 8px;
     opacity: 0; pointer-events: none;
-    transition: opacity 0.18s, transform 0.18s;
+    transition: opacity 0.15s, transform 0.15s;
     backdrop-filter: blur(16px) saturate(130%);
     -webkit-backdrop-filter: blur(16px) saturate(130%);
     box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.04) inset;
   }
-  .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+  /* ponte invisível entre o botão e o menu para não fechar ao atravessar o gap */
+  .nav-dropdown-menu::before {
+    content: ''; position: absolute; bottom: 100%; left: 0; right: 0; height: 14px;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
   .nav-dropdown-menu a {
     display: block; padding: 9px 14px;
     font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
@@ -194,7 +199,7 @@
     font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
     color: var(--gray); text-decoration: none;
     border-left: 3px solid transparent;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
   }
   .drawer-links li a:hover { color: var(--white); border-color: var(--red); background: rgba(192,57,43,0.08); }
 
@@ -203,13 +208,13 @@
     width: 100%; background: none; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 32px; border-left: 3px solid transparent;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
   }
   .drawer-cases-btn span {
     font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
-    transition: color 0.2s;
+    transition: color 0.15s;
   }
-  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--gray); fill: none; stroke-width: 2.5; transition: transform 0.3s, stroke 0.2s; }
+  .drawer-cases-btn svg { width: 12px; height: 12px; stroke: var(--gray); fill: none; stroke-width: 2.5; transition: transform 0.15s, stroke 0.15s; }
   .drawer-cases-btn:hover span, .drawer-cases-btn.open span { color: var(--white); }
   .drawer-cases-btn:hover svg, .drawer-cases-btn.open svg { stroke: var(--red); }
   .drawer-cases-btn:hover, .drawer-cases-btn.open { border-color: var(--red); background: rgba(192,57,43,0.08); }
@@ -241,20 +246,20 @@
   .hero-left > .hero-desc,
   .hero-left > .hero-location,
   .hero-left > .hero-ctas { position: relative; z-index: 2; }
-  .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; margin-bottom: 36px; width: fit-content; }
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 28px; }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 6px 14px; margin-bottom: 14px; width: fit-content; }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 8vw, 110px); line-height: 0.9; letter-spacing: 2px; color: var(--white); margin-bottom: 24px; }
   .hero-name span { color: var(--red); display: block; }
-  .hero-title { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
+  .hero-title { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 28px; }
   .hero-title strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 6px; }
   .hero-subtitle { font-size: 12px; color: var(--gray); letter-spacing: 1.5px; }
-  .hero-desc { font-size: 15px; color: #aaa; max-width: 420px; line-height: 1.75; margin-bottom: 44px; }
+  .hero-desc { font-size: 15px; color: #aaa; max-width: 420px; line-height: 1.75; margin-bottom: 12px; }
   .hero-ctas { display: flex; flex-direction: column; gap: 16px; }
   .hero-ctas-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .hero-social-icons { display: flex; gap: 12px; align-items: center; }
-  .social-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); color: var(--white); text-decoration: none; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .social-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); color: var(--white); text-decoration: none; transition: border-color 0.15s, color 0.15s, background 0.15s; }
   .social-icon:hover { border-color: var(--red); background: var(--red); color: var(--white); }
   .social-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-  .btn-primary, .btn-secondary { text-decoration: none; padding: 14px 20px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; text-align: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-primary, .btn-secondary { text-decoration: none; padding: 14px 20px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; text-align: center; transition: background 0.15s, border-color 0.15s, transform 0.15s; cursor: pointer; font-family: 'DM Sans', sans-serif; }
   .btn-primary { background: var(--red); color: var(--white); font-weight: 700; border: none; }
   .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
   .btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--white); font-weight: 500; }
@@ -409,7 +414,7 @@
     border-radius: 50%;
     background: var(--dark);
     border: 2px solid rgba(192,57,43,0.45);
-    transition: border-color 0.2s;
+    transition: border-color 0.15s;
   }
   .trajetoria-item:last-child::before {
     border-color: var(--red);
@@ -484,7 +489,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.10);
     min-height: 260px;
     cursor: pointer;
-    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
   }
 
   .case-card::before {
@@ -498,7 +503,7 @@
     letter-spacing: -2px;
     user-select: none;
     pointer-events: none;
-    transition: color 0.3s;
+    transition: color 0.15s;
     white-space: nowrap;
     overflow: hidden;
     max-width: 100%;
@@ -522,7 +527,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 24px;
     flex-shrink: 0;
-    transition: background 0.25s, border-color 0.25s;
+    transition: background 0.15s, border-color 0.15s;
   }
 
   .case-card:hover .case-icon {
@@ -551,7 +556,7 @@
   .case-desc {
     font-size: 13px; color: rgba(255,255,255,0.4);
     line-height: 1.7; flex: 1;
-    transition: color 0.25s;
+    transition: color 0.15s;
   }
 
   .case-card:hover .case-desc { color: rgba(255,255,255,0.68); }
@@ -562,14 +567,14 @@
     color: var(--red);
     font-size: 10px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
-    transition: color 0.25s, gap 0.25s;
+    transition: color 0.15s, gap 0.15s;
   }
 
   .case-arrow svg {
     width: 16px; height: 16px;
     stroke: currentColor; fill: none; stroke-width: 2;
     flex-shrink: 0;
-    transition: transform 0.25s;
+    transition: transform 0.15s;
   }
 
   .case-card:hover .case-arrow { gap: 12px; }
@@ -673,7 +678,7 @@
     .ps-toolbar { left: 32px; }
   }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-  .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid rgba(255,255,255,0.04); transition: border-left-color 0.2s, background 0.2s; }
+  .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid rgba(255,255,255,0.04); transition: border-left-color 0.15s, background 0.15s; }
   .skill-block:hover { border-left-color: rgba(192,57,43,0.6); background: rgba(192,57,43,0.04); }
   .skill-category { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
   .skill-cat-icon { width: 14px; height: 14px; fill: var(--red); flex-shrink: 0; }
@@ -702,7 +707,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.04);
     cursor: pointer;
     position: relative;
-    transition: border-left-color 0.2s, background 0.2s;
+    transition: border-left-color 0.15s, background 0.15s;
   }
   .contato-item:hover { border-left-color: var(--red); background: rgba(192,57,43,0.05); }
   .contato-item-body { flex: 1; }
@@ -718,7 +723,7 @@
   .contato-item-arrow svg {
     width: 22px; height: 22px;
     stroke: currentColor; fill: none; stroke-width: 2;
-    transition: transform 0.2s;
+    transition: transform 0.15s;
   }
   .contato-item:hover .contato-item-arrow { color: var(--red); }
   .contato-item:hover .contato-item-arrow svg { transform: translate(2px, -2px); }
@@ -800,7 +805,7 @@
   @media (max-width: 380px) { .hero-name { font-size: 52px; } }
 
   /* ── HERO — localização e disponibilidade ── */
-  .hero-location { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 24px; }
+  .hero-location { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
 
 
   /* ── FAIXA CONTEXTO AVANT ENERGIA ── */
@@ -919,7 +924,7 @@
     background: var(--white);
     text-decoration: none;
     padding: 8px 18px;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
   }
 
   .verte-ctx-link:hover {
@@ -1082,7 +1087,7 @@
     letter-spacing: 0.15em; text-transform: uppercase;
     opacity: 0; pointer-events: none;
     transform: translateY(8px);
-    transition: opacity 0.25s, transform 0.25s, background 0.2s;
+    transition: opacity 0.15s, transform 0.15s, background 0.15s;
     white-space: nowrap;
     border-radius: 8px;
   }
@@ -1099,7 +1104,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 11px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.15s, transform 0.15s;
     white-space: nowrap;
     border-radius: 8px;
   }
@@ -1685,27 +1690,40 @@
     });
   });
 
-  // ── DROPDOWN NAV — acessibilidade teclado ──
+  // ── DROPDOWN NAV — hover com delay para não fechar ao cruzar gap ──
   const navDropdown = document.getElementById('navDropdown');
   const dropBtn = navDropdown ? navDropdown.querySelector('.nav-dropdown-btn') : null;
   const dropMenu = navDropdown ? navDropdown.querySelector('.nav-dropdown-menu') : null;
   if (dropBtn && dropMenu) {
-    navDropdown.addEventListener('mouseenter', () => dropBtn.setAttribute('aria-expanded', 'true'));
-    navDropdown.addEventListener('mouseleave', () => dropBtn.setAttribute('aria-expanded', 'false'));
+    let closeTimer = null;
+
+    function openDropdown() {
+      clearTimeout(closeTimer);
+      navDropdown.classList.add('open');
+      dropBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      closeTimer = setTimeout(() => {
+        navDropdown.classList.remove('open');
+        dropBtn.setAttribute('aria-expanded', 'false');
+      }, 350);
+    }
+
+    navDropdown.addEventListener('mouseenter', openDropdown);
+    navDropdown.addEventListener('mouseleave', closeDropdown);
+
+    // Teclado: Escape fecha
     dropBtn.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dropMenu.style.opacity = '';
-        dropMenu.style.pointerEvents = '';
-        dropMenu.style.transform = '';
-        dropBtn.focus();
-      }
+      if (e.key === 'Escape') { navDropdown.classList.remove('open'); dropBtn.setAttribute('aria-expanded', 'false'); dropBtn.focus(); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); navDropdown.classList.toggle('open'); dropBtn.setAttribute('aria-expanded', navDropdown.classList.contains('open')); }
     });
+
+    // Click fora fecha
     document.addEventListener('click', (e) => {
       if (navDropdown && !navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('open');
         dropBtn.setAttribute('aria-expanded', 'false');
-        dropMenu.style.opacity = '';
-        dropMenu.style.pointerEvents = '';
-        dropMenu.style.transform = '';
       }
     });
   }
