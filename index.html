@@ -379,14 +379,6 @@
   .trajetoria-header .section-label { color: var(--red); margin-bottom: 6px; }
   .trajetoria-header .section-title { font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 0; }
 
-  /* Layout 2 colunas: timeline + painel lateral */
-  .trajetoria-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
   .trajetoria-track {
     position: relative;
     display: flex; flex-direction: column;
@@ -460,84 +452,12 @@
     letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px;
   }
 
-  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; }
-
-  /* Painel lateral direito */
-  .trajetoria-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    position: sticky;
-    top: 120px;
-  }
-
-  .trajetoria-stat-block {
-    padding: 24px 28px;
-    border-left: 3px solid rgba(255,255,255,0.04);
-    background: var(--dark);
-    transition: border-left-color 0.15s, background 0.15s;
-  }
-
-  .trajetoria-stat-block:hover {
-    border-left-color: rgba(192,57,43,0.5);
-    background: rgba(192,57,43,0.04);
-  }
-
-  .trajetoria-stat-label {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 14px;
-  }
-
-  .trajetoria-stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.8rem; color: var(--white);
-    line-height: 1; letter-spacing: 0.04em;
-    margin-bottom: 2px;
-  }
-
-  .trajetoria-stat-sub {
-    font-size: 12px; color: var(--gray);
-    letter-spacing: 0.08em;
-  }
-
-  .trajetoria-tags-block {
-    padding: 24px 28px;
-    border-left: 3px solid rgba(255,255,255,0.04);
-    background: var(--dark);
-    transition: border-left-color 0.15s, background 0.15s;
-  }
-
-  .trajetoria-tags-block:hover {
-    border-left-color: rgba(192,57,43,0.5);
-    background: rgba(192,57,43,0.04);
-  }
-
-  .trajetoria-tags-title {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 14px;
-  }
-
-  .trajetoria-tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-
-  .trajetoria-tag {
-    font-size: 11px; color: #bbb;
-    background: rgba(255,255,255,0.05);
-    padding: 4px 10px;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 2px;
-    letter-spacing: 0.05em;
-  }
+  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; max-width: 560px; }
 
   @media (max-width: 768px) {
     .sobre-main { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
     .sobre-area-item { padding: 14px 0; }
     .sobre-trajetoria { margin-top: 48px; padding-top: 36px; }
-    .trajetoria-body { grid-template-columns: 1fr; gap: 40px; }
-    .trajetoria-aside { position: static; }
     .trajetoria-item { padding-bottom: 28px; }
     .trajetoria-role { font-size: 1.35rem; }
   }
@@ -1384,81 +1304,44 @@
       <h2 class="section-title">Como cheguei até aqui</h2>
     </div>
 
-    <div class="trajetoria-body">
+    <div class="trajetoria-track">
 
-      <div class="trajetoria-track">
-
-        <div class="trajetoria-item">
-          <div class="trajetoria-top">
-            <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
-            <span class="trajetoria-tipo">Formação</span>
-          </div>
-          <div class="trajetoria-role">Técnico em Informática para Internet</div>
-          <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
-          <div class="trajetoria-desc">Web, design de interfaces, banco de dados. A base técnica que hoje alimenta o olhar estratégico em comunicação digital.</div>
+      <div class="trajetoria-item">
+        <div class="trajetoria-top">
+          <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
+          <span class="trajetoria-tipo">Formação</span>
         </div>
-
-        <div class="trajetoria-item">
-          <div class="trajetoria-top">
-            <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
-          </div>
-          <div class="trajetoria-role">Estagiário de Comunicação</div>
-          <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-          <div class="trajetoria-desc">Primeiro contato com o mercado. Redes sociais, materiais gráficos e apoio em eventos. Evolução rápida — promovido em 8 meses.</div>
-        </div>
-
-        <div class="trajetoria-item">
-          <div class="trajetoria-top">
-            <div class="trajetoria-period">Dez 2024 — Abr 2026</div>
-          </div>
-          <div class="trajetoria-role">Auxiliar de Marketing</div>
-          <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-          <div class="trajetoria-desc">Referência criativa do time. Identidade visual, audiovisual, relatório institucional e campanhas mensais com design e copywriting.</div>
-        </div>
-
-        <div class="trajetoria-item">
-          <div class="trajetoria-top">
-            <div class="trajetoria-period">Abr 2026 — Atual</div>
-          </div>
-          <div class="trajetoria-role">Social Media</div>
-          <div class="trajetoria-company">AVANT Energia · Porto Alegre/RS</div>
-          <div class="trajetoria-desc">Estratégia de conteúdo, automação de marketing e comunicação institucional no setor de energia por assinatura.</div>
-        </div>
-
+        <div class="trajetoria-role">Técnico em Informática para Internet</div>
+        <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
+        <div class="trajetoria-desc">Web, design de interfaces, banco de dados. A base técnica que hoje alimenta o olhar estratégico em comunicação digital.</div>
       </div>
 
-      <!-- Painel lateral direito -->
-      <aside class="trajetoria-aside">
-
-        <div class="trajetoria-stat-block">
-          <div class="trajetoria-stat-label">Tempo de mercado</div>
-          <div class="trajetoria-stat-num">2+</div>
-          <div class="trajetoria-stat-sub">anos em comunicação corporativa</div>
+      <div class="trajetoria-item">
+        <div class="trajetoria-top">
+          <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
         </div>
+        <div class="trajetoria-role">Estagiário de Comunicação</div>
+        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+        <div class="trajetoria-desc">Primeiro contato com o mercado. Redes sociais, materiais gráficos e apoio em eventos. Evolução rápida — promovido em 8 meses.</div>
+      </div>
 
-        <div class="trajetoria-stat-block">
-          <div class="trajetoria-stat-label">Empresas atendidas</div>
-          <div class="trajetoria-stat-num">2</div>
-          <div class="trajetoria-stat-sub">áreas distintas — saúde e energia</div>
+      <div class="trajetoria-item">
+        <div class="trajetoria-top">
+          <div class="trajetoria-period">Dez 2024 — Abr 2026</div>
         </div>
+        <div class="trajetoria-role">Auxiliar de Marketing</div>
+        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+        <div class="trajetoria-desc">Referência criativa do time. Identidade visual, audiovisual, relatório institucional e campanhas mensais com design e copywriting.</div>
+      </div>
 
-        <div class="trajetoria-tags-block">
-          <div class="trajetoria-tags-title">O que carrego de cada etapa</div>
-          <div class="trajetoria-tags">
-            <span class="trajetoria-tag">HTML & CSS</span>
-            <span class="trajetoria-tag">UX / UI</span>
-            <span class="trajetoria-tag">Banco de dados</span>
-            <span class="trajetoria-tag">Redes sociais</span>
-            <span class="trajetoria-tag">Adobe Suite</span>
-            <span class="trajetoria-tag">Identidade visual</span>
-            <span class="trajetoria-tag">Audiovisual</span>
-            <span class="trajetoria-tag">Copywriting</span>
-            <span class="trajetoria-tag">Automação</span>
-            <span class="trajetoria-tag">Estratégia de conteúdo</span>
-          </div>
+      <div class="trajetoria-item">
+        <div class="trajetoria-top">
+          <div class="trajetoria-period">Abr 2026 — Atual</div>
         </div>
-
-      </aside>
+        <div class="trajetoria-role">Social Media</div>
+        <div class="trajetoria-company">AVANT Energia · Porto Alegre/RS</div>
+        <div class="trajetoria-desc">Estratégia de conteúdo, automação de marketing e comunicação institucional no setor de energia por assinatura.</div>
+      </div>
 
     </div>
   </div>
