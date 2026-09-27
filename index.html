@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Mário Vinicius | Comunicador Visual | Designer, Videomaker & Social Media | Porto Alegre</title>
-<meta name="description" content="Portfólio de Mário Vinicius, Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.">
-<meta property="og:title" content="Mário Vinicius | Comunicador Visual">
-<meta property="og:description" content="Design, Videomaker e Social Media Estratégico. Transformo briefings em narrativas visuais de alto impacto.">
+<title>Mário Vinicius | Fotógrafo, Designer & Videomaker | Porto Alegre</title>
+<meta name="description" content="Portfólio de Mário Vinicius — fotógrafo, designer gráfico e videomaker em Porto Alegre. Cobertura de eventos, fotografia institucional, design editorial e produção audiovisual.">
+<meta property="og:title" content="Mário Vinicius | Fotógrafo, Designer & Videomaker">
+<meta property="og:description" content="Fotografia, design e vídeo — do acervo editorial à comunicação institucional. Porto Alegre/RS.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://marioviniciussm.github.io/Portfolio/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mário Vinicius | Comunicador Visual">
-<meta name="twitter:description" content="Design, Videomaker e Social Media Estratégico. Porto Alegre/RS.">
+<meta name="twitter:title" content="Mário Vinicius | Fotógrafo, Designer & Videomaker">
+<meta name="twitter:description" content="Fotografia, design e vídeo. Porto Alegre/RS.">
 <meta name="author" content="Mário Vinicius">
 <meta name="robots" content="index, follow">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Mário Vinicius — Comunicador Visual">
+<meta property="og:site_name" content="Mário Vinicius — Fotógrafo & Comunicador Visual">
 <meta property="og:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
-<meta property="og:image:alt" content="Mário Vinicius — Comunicador Visual">
+<meta property="og:image:alt" content="Mário Vinicius — Fotógrafo e Comunicador Visual">
 <meta name="twitter:image" content="https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png">
-<meta name="keywords" content="comunicador visual, designer gráfico, videomaker, social media, portfólio, Porto Alegre, Mário Vinicius, design institucional, produção audiovisual">
+<meta name="keywords" content="fotógrafo Porto Alegre, fotografia institucional, cobertura de eventos, fotografia editorial, designer gráfico, videomaker, social media, Mário Vinicius, comunicador visual, produção audiovisual">
 <link rel="canonical" href="https://marioviniciussm.github.io/Portfolio/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.svg">
@@ -32,10 +32,11 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mário Vinicius",
-  "jobTitle": "Comunicador Visual",
+  "jobTitle": "Fotógrafo e Comunicador Visual",
   "url": "https://marioviniciussm.github.io/Portfolio/",
   "image": "https://marioviniciussm.github.io/Portfolio/foto-hero-mariov.png",
-  "description": "Comunicador Visual especializado em design, videomaker e social media estratégico. Porto Alegre/RS.",
+  "description": "Fotógrafo, designer gráfico e videomaker em Porto Alegre. Cobertura de eventos, fotografia institucional, design editorial e produção audiovisual.",
+  "knowsAbout": ["Fotografia", "Design Gráfico", "Produção Audiovisual", "Social Media", "Edição de Vídeo", "Identidade Visual"],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Porto Alegre",
@@ -77,16 +78,16 @@
 
   /* wrapper interno — cápsula flutuante */
   .nav-inner {
-    display: flex; align-items: stretch; flex-wrap: nowrap;
-    width: 100%; max-width: 1160px;
-    min-height: 56px;
-    background: rgba(15,15,15,0.72);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    display: flex; align-items: center; flex-wrap: nowrap;
+    width: fit-content; max-width: min(1160px, calc(100% - 48px));
+    min-height: 62px;
+    background: rgba(15,15,15,0.78);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
     border: 1px solid rgba(255,255,255,0.09);
     border-radius: 16px;
     padding: 0 28px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04) inset;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.04) inset;
     pointer-events: all;
   }
 
@@ -100,23 +101,25 @@
   }
   .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
-  .nav-links > li { display: flex; align-items: stretch; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; }
+  .nav-links > li { display: flex; align-items: center; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
     font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
+    padding: 8px 16px; display: flex; align-items: center; white-space: nowrap;
+    border-radius: 8px;
     transition: color 0.2s, background 0.2s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
 
   /* dropdown Cases */
-  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
+  .nav-dropdown { position: relative; display: flex; align-items: center; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    border-radius: 8px;
     transition: color 0.2s, background 0.2s;
   }
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
@@ -722,8 +725,8 @@
   }
 
   @media (max-width: 768px) {
-    nav { min-height: 56px; }
-    .nav-inner { padding: 0 20px; width: 100%; }
+    nav { padding: 10px 16px 0; }
+    .nav-inner { padding: 0 16px; width: 100%; max-width: 100%; min-height: 54px; }
     .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
@@ -1072,10 +1075,10 @@
     <span class="hero-tag">Portfólio 2026</span>
     <h1 class="hero-name">Mário<br><span>Vinicius</span></h1>
     <p class="hero-title">
-      <strong>Comunicador Visual</strong>
-      <span class="hero-subtitle">Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media&nbsp;&nbsp;●&nbsp;&nbsp;Fotógrafo</span>
+      <strong>Fotógrafo & Comunicador Visual</strong>
+      <span class="hero-subtitle">Fotógrafo&nbsp;&nbsp;●&nbsp;&nbsp;Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media</span>
     </p>
-    <p class="hero-desc">Comunicador Visual com background em design, vídeo e redes sociais. Gosto de projetos onde consigo entender o contexto antes de abrir qualquer arquivo — e a câmera quase sempre entra no processo.</p>
+    <p class="hero-desc">Câmera na mão desde 2022, com acervo em fotografia de eventos, cobertura esportiva e comunicação institucional. Design, vídeo e redes sociais completam o processo.</p>
     <p class="hero-location">Porto Alegre/RS · Disponível para CLT, PJ e projetos freelance</p>
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
@@ -1091,20 +1094,20 @@
       <div class="hero-disciplines">
         <div class="discipline-item">
           <div>
+            <div class="discipline-text">Fotografia</div>
+            <div class="discipline-sub">Eventos · Cobertura esportiva · Institucional · Editorial</div>
+          </div>
+        </div>
+        <div class="discipline-item">
+          <div>
             <div class="discipline-text">Design Gráfico</div>
-            <div class="discipline-sub">Editorial · Identidade visual · Social Media</div>
+            <div class="discipline-sub">Identidade visual · Editorial · Peças digitais</div>
           </div>
         </div>
         <div class="discipline-item">
           <div>
             <div class="discipline-text">Produção Audiovisual</div>
-            <div class="discipline-sub">Vídeo institucional · Fotografia editorial · Captação · Pós&#8209;produção</div>
-          </div>
-        </div>
-        <div class="discipline-item">
-          <div>
-            <div class="discipline-text">Social Media Estratégico</div>
-            <div class="discipline-sub">Planejamento · Copywriting · Meta Ads</div>
+            <div class="discipline-sub">Captação · Edição · Vídeo institucional</div>
           </div>
         </div>
       </div>
@@ -1114,8 +1117,8 @@
 
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
-    <div class="marquee-item">DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> SOCIAL MEDIA <span>●</span> FOTOGRAFIA <span>●</span> META ADS <span>●</span> MOTION GRAPHICS <span>●</span> IDENTIDADE VISUAL <span>●</span> COPYWRITING <span>●</span></div>
+    <div class="marquee-item">FOTOGRAFIA <span>●</span> DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> COBERTURA DE EVENTOS <span>●</span> SOCIAL MEDIA <span>●</span> IDENTIDADE VISUAL <span>●</span> META ADS <span>●</span> PRODUÇÃO AUDIOVISUAL <span>●</span></div>
+    <div class="marquee-item">FOTOGRAFIA <span>●</span> DESIGN GRÁFICO <span>●</span> VIDEOMAKER <span>●</span> COBERTURA DE EVENTOS <span>●</span> SOCIAL MEDIA <span>●</span> IDENTIDADE VISUAL <span>●</span> META ADS <span>●</span> PRODUÇÃO AUDIOVISUAL <span>●</span></div>
   </div>
 </div>
 
@@ -1135,20 +1138,11 @@
     <div class="sobre-areas-list reveal" data-delay="2">
       <div class="sobre-area-item">
         <div class="sobre-area-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
         <div>
-          <div class="sobre-area-name">Comunicação Institucional</div>
-          <div class="sobre-area-desc">Campanhas, relatórios, eventos e apresentações estratégicas</div>
-        </div>
-      </div>
-      <div class="sobre-area-item">
-        <div class="sobre-area-icon">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        </div>
-        <div>
-          <div class="sobre-area-name">Design Gráfico</div>
-          <div class="sobre-area-desc">Identidade visual, peças gráficas e materiais para Adobe Suite</div>
+          <div class="sobre-area-name">Fotografia</div>
+          <div class="sobre-area-desc">Eventos, esportes, cobertura institucional e editorial — câmera desde 2022</div>
         </div>
       </div>
       <div class="sobre-area-item">
@@ -1162,20 +1156,29 @@
       </div>
       <div class="sobre-area-item">
         <div class="sobre-area-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <div>
+          <div class="sobre-area-name">Design Gráfico</div>
+          <div class="sobre-area-desc">Identidade visual, peças gráficas e materiais editoriais no Adobe Suite</div>
+        </div>
+      </div>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </div>
+        <div>
+          <div class="sobre-area-name">Comunicação Institucional</div>
+          <div class="sobre-area-desc">Campanhas, relatórios, eventos e apresentações estratégicas</div>
+        </div>
+      </div>
+      <div class="sobre-area-item">
+        <div class="sobre-area-icon">
           <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
         </div>
         <div>
           <div class="sobre-area-name">Social Media</div>
           <div class="sobre-area-desc">Calendário editorial, copywriting e gestão de perfis</div>
-        </div>
-      </div>
-      <div class="sobre-area-item">
-        <div class="sobre-area-icon">
-          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        </div>
-        <div>
-          <div class="sobre-area-name">Fotografia</div>
-          <div class="sobre-area-desc">Coberturas institucionais, eventos e ensaios editoriais</div>
         </div>
       </div>
       <div class="sobre-area-item">

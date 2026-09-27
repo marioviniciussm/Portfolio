@@ -85,12 +85,12 @@
 
   /* cápsula flutuante */
   .nav-inner {
-    display: flex; align-items: stretch; flex-wrap: nowrap;
-    width: 100%; max-width: 1160px;
-    min-height: 56px;
-    background: rgba(15,15,15,0.72);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    display: flex; align-items: center; flex-wrap: nowrap;
+    width: fit-content; max-width: min(1160px, calc(100% - 48px));
+    min-height: 62px;
+    background: rgba(15,15,15,0.78);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
     border: 1px solid rgba(255,255,255,0.09);
     border-radius: 16px;
     padding: 0 28px;
@@ -108,23 +108,25 @@
   }
   .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; }
-  .nav-links > li { display: flex; align-items: stretch; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; }
+  .nav-links > li { display: flex; align-items: center; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
     font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 0 20px; display: flex; align-items: center; white-space: nowrap;
+    padding: 8px 16px; display: flex; align-items: center; white-space: nowrap;
+    border-radius: 8px;
     transition: color 0.2s, background 0.2s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
 
   /* dropdown Cases */
-  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
+  .nav-dropdown { position: relative; display: flex; align-items: center; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 0 20px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    border-radius: 8px;
     transition: color 0.2s, background 0.2s;
   }
   .nav-dropdown-btn svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform 0.25s; }
@@ -692,8 +694,8 @@
     .nav-inner { padding: 0 32px; }
   }
   @media (max-width: 768px) {
-    nav { min-height: 56px; }
-    .nav-inner { padding: 0 20px; width: 100%; }
+    nav { padding: 10px 16px 0; }
+    .nav-inner { padding: 0 16px; width: 100%; max-width: 100%; min-height: 54px; }
     .nav-logo { font-size: 20px; padding: 0; border-right: none; margin-right: 0; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
