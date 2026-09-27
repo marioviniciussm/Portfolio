@@ -267,15 +267,20 @@
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.55s ease, transform 0.55s ease;
+    will-change: opacity, transform;
   }
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
   }
   .reveal[data-delay="1"] { transition-delay: 0.08s; }
   .reveal[data-delay="2"] { transition-delay: 0.18s; }
   .reveal[data-delay="3"] { transition-delay: 0.28s; }
   .reveal[data-delay="4"] { transition-delay: 0.38s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; will-change: auto; }
+  }
 
   /* ── SECTIONS ── */
   section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
@@ -775,134 +780,132 @@
     overflow: hidden;
   }
 
-
-
   .verte-ctx-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 36px 60px;
+    padding: 24px 60px;
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 60px;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
     align-items: center;
     position: relative;
     z-index: 1;
   }
 
   .verte-ctx-eyebrow {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 10px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 6px;
   }
 
   .verte-ctx-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
     letter-spacing: 0.04em;
     color: var(--white);
     line-height: 0.9;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   .verte-ctx-tagline {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-style: italic;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
   }
 
   .verte-ctx-desc {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.88);
-    line-height: 1.75;
-    margin-bottom: 28px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    margin-bottom: 16px;
   }
 
   .verte-ctx-stats {
     display: flex;
-    gap: 32px;
-    margin-bottom: 28px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    gap: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
 
   .verte-ctx-stat {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
 
   .verte-ctx-stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
+    font-size: 1.8rem;
     letter-spacing: 0.06em;
     color: var(--white);
     line-height: 1;
   }
 
   .verte-ctx-stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.55);
     font-weight: 500;
     text-align: center;
   }
 
   .verte-ctx-links-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 700;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 10px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 8px;
     width: 100%;
   }
 
   .verte-ctx-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 4px;
+    gap: 8px;
+    margin-top: 2px;
   }
 
   .verte-ctx-link {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    font-size: 13px;
+    gap: 8px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--red);
     background: var(--white);
     text-decoration: none;
-    padding: 16px 36px;
+    padding: 8px 18px;
     transition: background 0.2s, color 0.2s, transform 0.2s;
   }
 
   .verte-ctx-link:hover {
     background: rgba(255,255,255,0.88);
     color: var(--red-dark);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1024px) {
-    .verte-ctx-inner { padding: 28px 32px; gap: 40px; }
+    .verte-ctx-inner { padding: 20px 32px; gap: 28px; }
   }
 
   @media (max-width: 768px) {
     .verte-ctx-inner {
       grid-template-columns: 1fr;
-      padding: 28px 24px;
-      gap: 20px;
+      padding: 20px 24px;
+      gap: 14px;
     }
-    .verte-ctx-stats { gap: 20px; }
-    .verte-ctx-title { font-size: clamp(2rem, 10vw, 3rem); }
+    .verte-ctx-stats { gap: 16px; }
+    .verte-ctx-title { font-size: clamp(1.4rem, 7vw, 2rem); }
   }
 
 
@@ -1067,7 +1070,7 @@
       <strong>Comunicador Visual</strong>
       <span class="hero-subtitle">Designer&nbsp;&nbsp;●&nbsp;&nbsp;Videomaker&nbsp;&nbsp;●&nbsp;&nbsp;Social Media&nbsp;&nbsp;●&nbsp;&nbsp;Fotógrafo</span>
     </p>
-    <p class="hero-desc">Transformo briefings em narrativas visuais que geram resultado. Design, vídeo e estratégia de conteúdo integrados, do planejamento à entrega final.</p>
+    <p class="hero-desc">Trabalho com design, vídeo e conteúdo para redes sociais. Gosto de projetos onde consigo entender o contexto antes de começar — e a câmera quase sempre entra junto.</p>
     <p class="hero-location">Porto Alegre/RS · Disponível para CLT, PJ e projetos freelance</p>
     <div class="hero-ctas">
       <div class="hero-ctas-buttons">
@@ -1300,7 +1303,7 @@
       </div>
       <p class="case-label">Produção Audiovisual</p>
       <h3 class="case-title">Vídeos</h3>
-      <p class="case-desc">Vídeos institucionais, coberturas de eventos e produções autorais. Processo completo: do roteiro e captação até a edição final, com narrativa visual e intenção estratégica.</p>
+      <p class="case-desc">Vídeos institucionais, coberturas de eventos e produções autorais. Cuido de todo o processo: roteiro, captação, edição e finalização. Direto do campo pra timeline.</p>
       <div class="case-arrow">
         Ver vídeos
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -1314,7 +1317,7 @@
       </div>
       <p class="case-label">Design Gráfico</p>
       <h3 class="case-title">Peças Gráficas</h3>
-      <p class="case-desc">Identidades visuais, materiais editoriais, campanhas e peças para redes sociais. Design orientado à mensagem: cada entrega conectada ao posicionamento da marca.</p>
+      <p class="case-desc">Identidades visuais, materiais editoriais, campanhas e peças para redes sociais. Trabalho em Photoshop, Illustrator e Canva — e começo sempre entendendo o que a marca quer dizer.</p>
       <div class="case-arrow">
         Ver galeria
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -1328,7 +1331,7 @@
       </div>
       <p class="case-label">Social Media &amp; Estratégia</p>
       <h3 class="case-title">Social Media</h3>
-      <p class="case-desc">Planejamento editorial, Meta Ads e gestão de perfis institucionais. Estratégia de conteúdo integrada ao design e à identidade da marca, do calendário à análise de resultados.</p>
+      <p class="case-desc">Planejamento editorial, Meta Ads e gestão de perfis institucionais. Faço o calendário, crio as peças, subo os posts e acompanho os números — tudo junto, sem terceirizar a execução.</p>
       <div class="case-arrow">
         Ver estratégia
         <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
