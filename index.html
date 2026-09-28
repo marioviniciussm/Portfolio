@@ -338,6 +338,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+    padding-top: 60px; /* compensa visualmente o peso do label+título da coluna esquerda */
   }
 
   .sobre-area-item {
@@ -368,64 +369,94 @@
     font-size: 12px; color: var(--gray); line-height: 1.55;
   }
 
-  /* ── TRAJETÓRIA TIMELINE ── */
+  /* ── TRAJETÓRIA TIMELINE CENTRAL ── */
   .sobre-trajetoria {
     margin-top: 64px;
     padding-top: 48px;
     border-top: 1px solid rgba(255,255,255,0.07);
   }
 
-  .trajetoria-header { margin-bottom: 40px; }
+  .trajetoria-header { margin-bottom: 56px; text-align: center; }
   .trajetoria-header .section-label { color: var(--red); margin-bottom: 12px; }
   .trajetoria-header .section-title { font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 0; }
 
   .trajetoria-track {
     position: relative;
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
     gap: 0;
-    padding-left: 28px;
   }
 
-  /* linha vertical à esquerda */
+  /* linha vertical central */
   .trajetoria-track::before {
     content: '';
     position: absolute;
-    left: 6px; top: 6px; bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom,
-      rgba(192,57,43,0.2) 0%,
-      rgba(192,57,43,0.6) 50%,
+      rgba(192,57,43,0.15) 0%,
+      rgba(192,57,43,0.5) 40%,
       var(--red) 100%
     );
   }
 
+  /* cada linha da timeline ocupa toda a largura */
   .trajetoria-item {
     position: relative;
-    padding: 0 0 36px 24px;
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    align-items: start;
+    gap: 0;
+    padding-bottom: 48px;
   }
   .trajetoria-item:last-child { padding-bottom: 0; }
 
-  /* ponto na linha */
-  .trajetoria-item::before {
+  /* conteúdo do card (pode estar na coluna esq ou dir) */
+  .trajetoria-card {
+    padding: 0 32px;
+  }
+  /* item ímpar: card na esquerda, vazio na direita */
+  .trajetoria-item:nth-child(odd) .trajetoria-card { grid-column: 1; text-align: right; }
+  .trajetoria-item:nth-child(odd) .trajetoria-dot  { grid-column: 2; }
+  .trajetoria-item:nth-child(odd) .trajetoria-spacer { grid-column: 3; }
+
+  /* item par: vazio na esquerda, card na direita */
+  .trajetoria-item:nth-child(even) .trajetoria-spacer { grid-column: 1; order: -1; }
+  .trajetoria-item:nth-child(even) .trajetoria-dot    { grid-column: 2; }
+  .trajetoria-item:nth-child(even) .trajetoria-card   { grid-column: 3; text-align: left; }
+
+  /* ponto central */
+  .trajetoria-dot {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4px;
+  }
+  .trajetoria-dot::after {
     content: '';
-    position: absolute;
-    left: -4px; top: 6px;
-    width: 9px; height: 9px;
+    width: 11px; height: 11px;
     border-radius: 50%;
     background: var(--dark);
-    border: 2px solid rgba(192,57,43,0.45);
-    transition: border-color 0.15s;
+    border: 2px solid rgba(192,57,43,0.5);
+    flex-shrink: 0;
+    transition: border-color 0.15s, background 0.15s;
   }
-  .trajetoria-item:last-child::before {
+  .trajetoria-item:last-child .trajetoria-dot::after {
     border-color: var(--red);
     background: var(--red);
-    box-shadow: 0 0 0 3px rgba(192,57,43,0.15);
+    box-shadow: 0 0 0 4px rgba(192,57,43,0.15);
   }
 
+  .trajetoria-spacer { /* coluna vazia oposta ao card */ }
+
   .trajetoria-top {
-    display: flex; align-items: baseline; gap: 12px;
-    margin-bottom: 4px; flex-wrap: wrap;
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 6px; flex-wrap: wrap;
   }
+  .trajetoria-item:nth-child(odd) .trajetoria-top { justify-content: flex-end; }
+  .trajetoria-item:nth-child(even) .trajetoria-top { justify-content: flex-start; }
 
   .trajetoria-period {
     font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
@@ -452,13 +483,29 @@
     letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px;
   }
 
-  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; max-width: 560px; }
+  .trajetoria-desc { font-size: 14px; color: #aaa; line-height: 1.75; }
 
   @media (max-width: 768px) {
     .sobre-main { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
+    .sobre-areas-list { padding-top: 0; }
     .sobre-area-item { padding: 14px 0; }
     .sobre-trajetoria { margin-top: 48px; padding-top: 36px; }
-    .trajetoria-item { padding-bottom: 28px; }
+    .trajetoria-header { text-align: left; }
+    /* no mobile volta para layout de coluna simples */
+    .trajetoria-track::before { left: 6px; transform: none; }
+    .trajetoria-item {
+      display: block;
+      padding-left: 28px;
+      padding-bottom: 28px;
+    }
+    .trajetoria-card { padding: 0; text-align: left !important; }
+    .trajetoria-spacer { display: none; }
+    .trajetoria-dot {
+      position: absolute;
+      left: 0; top: 4px;
+      justify-content: flex-start;
+    }
+    .trajetoria-top { justify-content: flex-start !important; }
     .trajetoria-role { font-size: 1.35rem; }
   }
 
@@ -1305,41 +1352,61 @@
 
     <div class="trajetoria-track">
 
+      <!-- 1 — ímpar: card à ESQUERDA -->
       <div class="trajetoria-item">
-        <div class="trajetoria-top">
-          <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
-          <span class="trajetoria-tipo">Formação</span>
+        <div class="trajetoria-card">
+          <div class="trajetoria-top">
+            <div class="trajetoria-period">Fev 2019 — Dez 2022</div>
+            <span class="trajetoria-tipo">Formação</span>
+          </div>
+          <div class="trajetoria-role">Técnico em Informática para Internet</div>
+          <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
+          <div class="trajetoria-desc">Web, design de interfaces, banco de dados. A base técnica que hoje alimenta o olhar estratégico em comunicação digital.</div>
         </div>
-        <div class="trajetoria-role">Técnico em Informática para Internet</div>
-        <div class="trajetoria-company">ETEC · Praia Grande/SP</div>
-        <div class="trajetoria-desc">Web, design de interfaces, banco de dados. A base técnica que hoje alimenta o olhar estratégico em comunicação digital.</div>
+        <div class="trajetoria-dot"></div>
+        <div class="trajetoria-spacer"></div>
       </div>
 
+      <!-- 2 — par: card à DIREITA -->
       <div class="trajetoria-item">
-        <div class="trajetoria-top">
-          <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
+        <div class="trajetoria-spacer"></div>
+        <div class="trajetoria-dot"></div>
+        <div class="trajetoria-card">
+          <div class="trajetoria-top">
+            <div class="trajetoria-period">Abr 2024 — Dez 2024</div>
+          </div>
+          <div class="trajetoria-role">Estagiário de Comunicação</div>
+          <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+          <div class="trajetoria-desc">Primeiro contato com o mercado. Redes sociais, materiais gráficos e apoio em eventos. Evolução rápida — promovido em 8 meses.</div>
         </div>
-        <div class="trajetoria-role">Estagiário de Comunicação</div>
-        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Primeiro contato com o mercado. Redes sociais, materiais gráficos e apoio em eventos. Evolução rápida — promovido em 8 meses.</div>
       </div>
 
+      <!-- 3 — ímpar: card à ESQUERDA -->
       <div class="trajetoria-item">
-        <div class="trajetoria-top">
-          <div class="trajetoria-period">Dez 2024 — Abr 2026</div>
+        <div class="trajetoria-card">
+          <div class="trajetoria-top">
+            <div class="trajetoria-period">Dez 2024 — Abr 2026</div>
+          </div>
+          <div class="trajetoria-role">Auxiliar de Marketing</div>
+          <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
+          <div class="trajetoria-desc">Referência criativa do time. Identidade visual, audiovisual, relatório institucional e campanhas mensais com design e copywriting.</div>
         </div>
-        <div class="trajetoria-role">Auxiliar de Marketing</div>
-        <div class="trajetoria-company">Verte Saúde · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Referência criativa do time. Identidade visual, audiovisual, relatório institucional e campanhas mensais com design e copywriting.</div>
+        <div class="trajetoria-dot"></div>
+        <div class="trajetoria-spacer"></div>
       </div>
 
+      <!-- 4 — par: card à DIREITA (último — ponto ativo) -->
       <div class="trajetoria-item">
-        <div class="trajetoria-top">
-          <div class="trajetoria-period">Abr 2026 — Atual</div>
+        <div class="trajetoria-spacer"></div>
+        <div class="trajetoria-dot"></div>
+        <div class="trajetoria-card">
+          <div class="trajetoria-top">
+            <div class="trajetoria-period">Abr 2026 — Atual</div>
+          </div>
+          <div class="trajetoria-role">Social Media</div>
+          <div class="trajetoria-company">AVANT Energia · Porto Alegre/RS</div>
+          <div class="trajetoria-desc">Estratégia de conteúdo, automação de marketing e comunicação institucional no setor de energia por assinatura.</div>
         </div>
-        <div class="trajetoria-role">Social Media</div>
-        <div class="trajetoria-company">AVANT Energia · Porto Alegre/RS</div>
-        <div class="trajetoria-desc">Estratégia de conteúdo, automação de marketing e comunicação institucional no setor de energia por assinatura.</div>
       </div>
 
     </div>
