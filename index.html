@@ -844,7 +844,8 @@
   body.ps-edit-mode #ps-canvas { pointer-events: all; }
   /* esconde cursor nativo quando tiver ring visual */
   body.ps-cursor-ring #ps-canvas { cursor: none !important; }
-  body.ps-eyedropper-active #ps-canvas { pointer-events: none; cursor: crosshair; }
+  /* conta-gotas: canvas não recebe eventos, cursor padrão no DOM */
+  body.ps-eyedropper-active #ps-canvas { pointer-events: none !important; cursor: crosshair; }
 
   /* input de cor oculto */
   #ps-color-input { display: none; }
@@ -877,7 +878,7 @@
     overflow: hidden;
     transform: translate(16px, -136px);
   }
-  body.ps-eyedropper-active #ps-magnifier { display: block; }
+  /* display controlado por JS (setEyedropperLupaVisible) */
   #ps-magnifier canvas { position: absolute; inset: 0; }
   /* mira central da lupa */
   #ps-magnifier::after {
@@ -908,7 +909,7 @@
     white-space: nowrap;
     transform: translate(16px, -106px);
   }
-  body.ps-eyedropper-active #ps-eyedropper-color { display: block; }
+  /* display controlado por JS */
   #ps-eyedropper-color::before {
     content: '';
     position: absolute;
@@ -2163,6 +2164,8 @@
         canvas.style.cursor = 'default';
         document.body.classList.remove('ps-cursor-ring');
         setEyedropperActive(false);
+        eyedropperPressed = false;
+        setEyedropperLupaVisible(false);
         startDecAnim();
       }
     }
@@ -2227,18 +2230,19 @@
       }
     }
 
-    // move o anel com o mouse
+    // move o anel com o mouse (sempre no document para pegar fora do canvas)
     document.addEventListener('mousemove', (e) => {
       if (!editMode) return;
       cursorRing.style.left = e.clientX + 'px';
       cursorRing.style.top  = e.clientY + 'px';
-      // lupa do conta-gotas
-      if (activeTool === 'eyedropper') {
+      // lupa do conta-gotas: só atualiza posição aqui, conteúdo só ao pressionar
+      if (activeTool === 'eyedropper' && eyedropperPressed) {
         magnifier.style.left = e.clientX + 'px';
         magnifier.style.top  = e.clientY + 'px';
         eyedropperColor.style.left = e.clientX + 'px';
         eyedropperColor.style.top  = e.clientY + 'px';
         updateMagnifier(e.clientX, e.clientY);
+        previewPickColor(e.clientX, e.clientY);
       }
     }, { passive: true });
 
@@ -2327,57 +2331,94 @@
       ctx.restore();
     }
 
-    // — conta-gotas: lê pixel da composição page + canvas —
-    // Desativa canvas temporariamente para elementFromPoint chegar no DOM
-    function pickColor(x, y) {
-      // desliga canvas momentaneamente
-      canvas.style.pointerEvents = 'none';
+    // ── CONTA-GOTAS ──
+    // Quando eyedropper está ativo, o canvas tem pointer-events:none (via CSS body.ps-eyedropper-active),
+    // então os eventos chegam diretamente nos elementos do DOM.
+    // Todos os listeners do eyedropper ficam no document.
+
+    let eyedropperPressed = false;
+
+    // Lê a cor do elemento sob o cursor (canvas está transparente a eventos)
+    function pickColorAt(x, y) {
       const el = document.elementFromPoint(x, y);
-      canvas.style.pointerEvents = '';
-      if (!el) return;
+      if (!el || el === magnifier || el === eyedropperColor) return null;
       const style = window.getComputedStyle(el);
-      // tenta bg primeiro, depois color
       const candidates = [style.backgroundColor, style.color, style.borderColor];
       for (const col of candidates) {
         const m = col && col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-        if (m && !(m[1] === '0' && m[2] === '0' && m[3] === '0')) {
-          const hex = '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
-          brushColor = hex;
-          colorFg.style.background = hex;
-          colorInput.value = hex;
-          return;
-        }
+        if (!m) continue;
+        // ignora preto puro (transparente renderizado como rgb(0,0,0))
+        if (m[1] === '0' && m[2] === '0' && m[3] === '0') continue;
+        return '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
+      }
+      return null;
+    }
+
+    // Prévia ao mover (só mostra na lupa, não aplica)
+    function previewPickColor(x, y) {
+      const hex = pickColorAt(x, y);
+      if (!hex) return;
+      eyedropperColor.textContent = hex.toUpperCase();
+      eyedropperColor.style.setProperty('--eyedropper-preview', hex);
+    }
+
+    // Aplica cor ao soltar
+    function applyPickedColor(x, y) {
+      const hex = pickColorAt(x, y);
+      if (hex) {
+        brushColor = hex;
+        colorFg.style.background = hex;
+        colorInput.value = hex;
       }
     }
 
     // — lupa do conta-gotas —
-    const MAG_SIZE    = 120; // px da lupa
-    const MAG_ZOOM    = 8;   // ampliação
-    const MAG_REGION  = MAG_SIZE / MAG_ZOOM; // quantos px reais cabem
+    const MAG_SIZE   = 120;
+    const MAG_ZOOM   = 10;
+    const MAG_REGION = MAG_SIZE / MAG_ZOOM; // px reais capturados
 
     function updateMagnifier(mx, my) {
       if (!magCtx) return;
-      magCanvas.width  = MAG_SIZE;
-      magCanvas.height = MAG_SIZE;
+      // Lupa mostra o canvas principal ampliado (o que foi pintado)
+      // O fundo da página em si não é acessível via canvas 2d, então
+      // usamos o canvas de pintura + uma cor de fundo que imite o site.
       const sx = mx - MAG_REGION / 2;
       const sy = my - MAG_REGION / 2;
-      // fundo escuro
-      magCtx.fillStyle = '#111';
-      magCtx.fillRect(0, 0, MAG_SIZE, MAG_SIZE);
-      // tenta capturar a área do canvas principal (só o que foi pintado)
       magCtx.save();
+      // fundo escuro (cor do site)
+      magCtx.fillStyle = '#0f0f0f';
+      magCtx.fillRect(0, 0, MAG_SIZE, MAG_SIZE);
+      // pixels pintados
       magCtx.imageSmoothingEnabled = false;
       magCtx.drawImage(canvas, sx, sy, MAG_REGION, MAG_REGION, 0, 0, MAG_SIZE, MAG_SIZE);
       magCtx.restore();
-      // pixel central → cor da lupa
-      try {
-        const pixel = magCtx.getImageData(MAG_SIZE/2, MAG_SIZE/2, 1, 1).data;
-        const hex = '#' + [pixel[0], pixel[1], pixel[2]].map(n => n.toString(16).padStart(2,'0')).join('');
-        // mostra no tooltip de cor se tem algo pintado (alpha > 0)
-        const displayHex = pixel[3] > 10 ? hex : brushColor;
-        eyedropperColor.textContent = displayHex.toUpperCase();
-        eyedropperColor.style.setProperty('--eyedropper-preview', displayHex);
-      } catch(e) {}
+    }
+
+    // Eventos do conta-gotas no document (funciona mesmo com canvas sem pointer-events)
+    document.addEventListener('mousedown', (e) => {
+      if (!editMode || activeTool !== 'eyedropper') return;
+      if (e.target.closest('#psToolbar')) return;
+      eyedropperPressed = true;
+      // posiciona lupa imediatamente
+      magnifier.style.left = e.clientX + 'px';
+      magnifier.style.top  = e.clientY + 'px';
+      eyedropperColor.style.left = e.clientX + 'px';
+      eyedropperColor.style.top  = e.clientY + 'px';
+      setEyedropperLupaVisible(true);
+      updateMagnifier(e.clientX, e.clientY);
+      previewPickColor(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      if (!editMode || activeTool !== 'eyedropper' || !eyedropperPressed) return;
+      eyedropperPressed = false;
+      setEyedropperLupaVisible(false);
+      applyPickedColor(e.clientX, e.clientY);
+    });
+
+    function setEyedropperLupaVisible(on) {
+      magnifier.style.display       = on ? 'block' : 'none';
+      eyedropperColor.style.display = on ? 'block' : 'none';
     }
 
     // — seleção: retângulo pontilhado animado —
@@ -2430,7 +2471,7 @@
       lastX = x; lastY = y;
 
       if (activeTool === 'eyedropper') {
-        pickColor(x, y);
+        // eyedropper é tratado pelo listener no document (canvas tem pointer-events:none)
         painting = false;
         return;
       }
