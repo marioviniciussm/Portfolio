@@ -934,8 +934,7 @@
         data-video-entrega="Reel Instagram · Set 2025"
         data-video-processo="Revisão de corte · Ajuste de timing · Checagem de identidade visual · Publicação agendada via Meta Business Suite"
         data-video-objetivo="Divulgar a Emergência do HED para o público da Verte Saúde"
-        data-video-papel="Revisão de edição, adequação ao formato Reel e publicação"
-        data-video-resultado="5.896 visualizações · 3.264 alcance · 229 interações">
+        data-video-papel="Revisão de edição, adequação ao formato Reel e publicação">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/uXasY-DPo3I/maxresdefault.jpg" alt="Reel · Emergência HED Hospital Ernesto Dornelles" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -959,8 +958,7 @@
         data-video-entrega="Reel Instagram · Dez 2025"
         data-video-processo="Revisão de corte · Checagem de legenda e identidade visual · Publicação agendada via Meta Business Suite"
         data-video-objetivo="Reforçar a cultura de integridade, ética e compliance do Grupo Afpergs"
-        data-video-papel="Revisão editorial e publicação estratégica"
-        data-video-resultado="4.245 visualizações · 2.514 alcance · 94 interações">
+        data-video-papel="Revisão editorial e publicação estratégica">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/5nJpOxbL7ys/maxresdefault.jpg" alt="Reel · Dia da Integridade Grupo Afpergs" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -984,8 +982,7 @@
         data-video-entrega="Reel Instagram · Jul 2025"
         data-video-processo="Suporte técnico na captação · Revisão de corte e cor · Adequação ao formato vertical · Publicação via Meta Business Suite"
         data-video-objetivo="Celebrar o Dia da Mulher Negra, Indígena e Latino-americana com comunicação institucional"
-        data-video-papel="Suporte na captação, revisão de cor e corte, e publicação"
-        data-video-resultado="2.788 visualizações · 1.526 alcance · 156 interações">
+        data-video-papel="Suporte na captação, revisão de cor e corte, e publicação">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/PnJ4DUOZAik/maxresdefault.jpg" alt="Reel · Dia da Mulher Negra Verte Saúde" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -1009,8 +1006,7 @@
         data-video-entrega="Reel Instagram · Mar 2025"
         data-video-processo="Roteiro · Captação com câmera · Edição no DaVinci Resolve · Color grade · Exportação H.264 · Publicação via Meta Business Suite"
         data-video-objetivo="Divulgar o lançamento do Código de Conduta Ética e Canal de Conduta do HED"
-        data-video-papel="Produção completa: roteiro, captação, edição, color grade e publicação"
-        data-video-resultado="1.838 visualizações · 1.011 alcance · 96 interações">
+        data-video-papel="Produção completa: roteiro, captação, edição, color grade e publicação">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/WqZssbpJstY/maxresdefault.jpg" alt="HED · Código de Conduta Ética e Canal de Conduta" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -1043,8 +1039,7 @@
         data-video-entrega="Short · Reel · Estudo de caso · 2026"
         data-video-processo="Cortes e montagem de cena · Color Grade · Criação e ajuste das legendas · DaVinci Resolve"
         data-video-objetivo="Simular um anúncio em Reels do Instagram, com gancho chamativo no início para reter atenção e apresentar o imóvel de forma dinâmica"
-        data-video-papel="Edição e pós-produção"
-        data-video-resultado="Projeto não publicado · Desenvolvido como estudo de caso com foco em estratégia de anúncio para Reels">
+        data-video-papel="Edição e pós-produção">
         <div class="video-thumb-wrap">
           <img src="https://img.youtube.com/vi/ek7JYasPDKc/maxresdefault.jpg" alt="Private Imóveis · Estudo de Caso" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
@@ -1136,10 +1131,6 @@
           <span class="video-processo-label">Meu papel</span>
           <span class="video-processo-value" id="modalPapel"></span>
         </div>
-        <div class="video-processo-item">
-          <span class="video-processo-label">Resultado</span>
-          <span class="video-processo-value" id="modalResultado"></span>
-        </div>
       </div>
     </div>
   </div>
@@ -1171,7 +1162,7 @@ const modalLabel = document.getElementById('modalLabel');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 
-function openVideoModal(videoId, title, label, desc, cliente, entrega, processo, objetivo, papel, resultado) {
+function openVideoModal(videoId, title, label, desc, cliente, entrega, processo, objetivo, papel) {
   if (!/^[\w-]+$/.test(videoId)) return;
   const scrollY = window.scrollY;
   modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
@@ -1181,16 +1172,14 @@ function openVideoModal(videoId, title, label, desc, cliente, entrega, processo,
   modalDesc.textContent = desc;
   const processoEl = document.getElementById('modalProcesso');
   if (processoEl) {
-    if (cliente || entrega || processo || objetivo || papel || resultado) {
+    if (cliente || entrega || processo || objetivo || papel) {
       document.getElementById('modalCliente').textContent = cliente || '—';
       document.getElementById('modalEntrega').textContent = entrega || '—';
       document.getElementById('modalProcessoDesc').textContent = processo || '—';
       const objEl = document.getElementById('modalObjetivo');
       const papelEl = document.getElementById('modalPapel');
-      const resultadoEl = document.getElementById('modalResultado');
       if (objEl) objEl.textContent = objetivo || '—';
       if (papelEl) papelEl.textContent = papel || '—';
-      if (resultadoEl) resultadoEl.textContent = resultado || '—';
       processoEl.style.display = 'grid';
     } else {
       processoEl.style.display = 'none';
@@ -1231,8 +1220,7 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
       card.dataset.videoEntrega || '',
       card.dataset.videoProcesso || '',
       card.dataset.videoObjetivo || '',
-      card.dataset.videoPapel || '',
-      card.dataset.videoResultado || ''
+      card.dataset.videoPapel || ''
     );
   });
 });
