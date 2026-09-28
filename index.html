@@ -2298,6 +2298,17 @@
     const eyedropperPreview = document.getElementById('ps-eyedropper-preview');
 
     function pickColorAt(x, y) {
+      // 1) tenta pegar do canvas primeiro (pixel desenhado)
+      const dpr = window.devicePixelRatio || 1;
+      const px = Math.round(x * dpr);
+      const py = Math.round(y * dpr);
+      if (px >= 0 && py >= 0 && px < canvas.width && py < canvas.height) {
+        const data = ctx.getImageData(px, py, 1, 1).data;
+        if (data[3] > 10) { // pixel não transparente
+          return '#' + [data[0], data[1], data[2]].map(n => n.toString(16).padStart(2,'0')).join('');
+        }
+      }
+      // 2) fallback: cor do elemento DOM abaixo
       const el = document.elementFromPoint(x, y);
       if (!el || el.closest('#psToolbar') || el === eyedropperPreview) return null;
       const style = window.getComputedStyle(el);
