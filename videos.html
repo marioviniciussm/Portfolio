@@ -762,14 +762,23 @@
   .video-card.vertical .video-thumb-wrap {
     padding-bottom: 177.78%; /* 9:16 */
   }
-  /* grid de shorts: colunas mais estreitas */
+  /* grid de shorts: colunas estreitas para preservar proporção 9:16 */
   .video-grid.shorts-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 320px));
+    grid-template-columns: repeat(auto-fill, 280px);
     justify-content: start;
     gap: 20px;
   }
+  .video-grid.shorts-grid .video-card {
+    width: 280px;
+  }
   @media (max-width: 768px) {
-    .video-grid.shorts-grid { grid-template-columns: 1fr; }
+    .video-grid.shorts-grid {
+      grid-template-columns: 1fr;
+    }
+    .video-grid.shorts-grid .video-card {
+      width: 100%;
+      max-width: 360px;
+    }
   }
 
   /* ── BOTÕES FLUTUANTES ── */
@@ -1067,16 +1076,16 @@
       <!-- AVANT Day -->
       <div class="video-card vertical"
         data-video-id="Wd1Go41SzN8"
-        data-video-title="AVANT Day — Resultados & Conquistas"
+        data-video-title="AVANT Day"
         data-video-label="Reel Institucional · AVANT Energia · 2026"
-        data-video-desc="Reel produzido para o AVANT Day, evento trimestral de revisão de resultados e celebração das conquistas da equipe AVANT Energia."
+        data-video-desc="Reel comemorativo do AVANT Day — evento trimestral da AVANT Energia para revisão de resultados e celebração das conquistas da equipe."
         data-video-cliente="AVANT Energia"
         data-video-entrega="Reel Instagram · 2026"
         data-video-processo="Captação · Edição · Publicação"
         data-video-objetivo="Celebrar as conquistas do trimestre e engajar o time no AVANT Day"
         data-video-papel="Captação, edição e publicação completa">
         <div class="video-thumb-wrap">
-          <img src="https://img.youtube.com/vi/Wd1Go41SzN8/maxresdefault.jpg" alt="Reel AVANT Day — AVANT Energia" loading="lazy">
+          <img src="https://img.youtube.com/vi/Wd1Go41SzN8/hqdefault.jpg" alt="Reel AVANT Day — AVANT Energia" loading="lazy">
           <div class="video-play-btn" aria-label="Reproduzir vídeo">
             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
@@ -1084,7 +1093,7 @@
         <div class="video-card-info">
           <p class="video-card-label">Reel Institucional · AVANT Energia · 2026</p>
           <h3 class="video-card-title">AVANT Day</h3>
-          <p class="video-card-desc">Captação, edição e publicação completa.</p>
+          <p class="video-card-desc">Evento trimestral de revisão de resultados e celebração das conquistas da equipe AVANT Energia.</p>
         </div>
       </div>
 
