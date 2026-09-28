@@ -842,9 +842,83 @@
     touch-action: none;
   }
   body.ps-edit-mode #ps-canvas { pointer-events: all; }
+  /* esconde cursor nativo quando tiver ring visual */
+  body.ps-cursor-ring #ps-canvas { cursor: none !important; }
+  body.ps-eyedropper-active #ps-canvas { pointer-events: none; cursor: crosshair; }
 
   /* input de cor oculto */
   #ps-color-input { display: none; }
+
+  /* anel de cursor — mostra raio da ferramenta */
+  #ps-cursor-ring {
+    position: fixed;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.85);
+    box-shadow: 0 0 0 0.5px rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 10002;
+    display: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.1s, height 0.1s;
+  }
+  body.ps-cursor-ring #ps-cursor-ring { display: block; }
+
+  /* lupa do conta-gotas */
+  #ps-magnifier {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.4);
+    pointer-events: none;
+    z-index: 10003;
+    display: none;
+    overflow: hidden;
+    transform: translate(16px, -136px);
+  }
+  body.ps-eyedropper-active #ps-magnifier { display: block; }
+  #ps-magnifier canvas { position: absolute; inset: 0; }
+  /* mira central da lupa */
+  #ps-magnifier::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255,255,255,0.6) 0, rgba(255,255,255,0.6) 1px, transparent 1px, transparent calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% + 0.5px), transparent calc(50% + 0.5px), transparent calc(100% - 1px), rgba(255,255,255,0.6) calc(100% - 1px)),
+      linear-gradient(90deg, rgba(255,255,255,0.6) 0, rgba(255,255,255,0.6) 1px, transparent 1px, transparent calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% + 0.5px), transparent calc(50% + 0.5px), transparent calc(100% - 1px), rgba(255,255,255,0.6) calc(100% - 1px));
+    z-index: 1;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  /* tooltip cor atual do conta-gotas */
+  #ps-eyedropper-color {
+    position: fixed;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 3px 8px 3px 22px;
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 10003;
+    display: none;
+    white-space: nowrap;
+    transform: translate(16px, -106px);
+  }
+  body.ps-eyedropper-active #ps-eyedropper-color { display: block; }
+  #ps-eyedropper-color::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 50%;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: var(--eyedropper-preview, #c0392b);
+  }
 
   /* tooltip */
   .ps-tooltip {
@@ -1738,6 +1812,12 @@
   </div>
   <!-- canvas global de pintura -->
   <canvas id="ps-canvas"></canvas>
+  <!-- anel de cursor (tamanho do pincel) -->
+  <div id="ps-cursor-ring"></div>
+  <!-- lupa do conta-gotas -->
+  <div id="ps-magnifier"><canvas id="ps-magnifier-canvas" width="120" height="120"></canvas></div>
+  <!-- tooltip de cor do conta-gotas -->
+  <div id="ps-eyedropper-color"></div>
   <!-- input de cor oculto -->
   <input type="color" id="ps-color-input" value="#c0392b">
   <!-- tooltip -->
@@ -2081,8 +2161,14 @@
         updateCursor();
       } else {
         canvas.style.cursor = 'default';
+        document.body.classList.remove('ps-cursor-ring');
+        setEyedropperActive(false);
         startDecAnim();
       }
+    }
+
+    function setEyedropperActive(on) {
+      document.body.classList.toggle('ps-eyedropper-active', on);
     }
 
     toggleBtn.addEventListener('click', () => setEditMode(!editMode));
@@ -2095,17 +2181,6 @@
     undoBtn.addEventListener('click', undo);
     redoBtn.addEventListener('click', redo);
 
-    // — troca de ferramenta —
-    document.querySelectorAll('.ps-tool[data-tool]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (!editMode) return;
-        allTools.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeTool = btn.dataset.tool;
-        updateCursor();
-      });
-    });
-
     // — tamanho do pincel —
     document.querySelectorAll('.ps-size-dot').forEach(dot => {
       dot.addEventListener('click', () => {
@@ -2113,6 +2188,7 @@
         document.querySelectorAll('.ps-size-dot').forEach(d => d.classList.remove('active'));
         dot.classList.add('active');
         brushSize = parseInt(dot.dataset.size);
+        updateCursor(); // atualiza anel de cursor
       });
     });
 
@@ -2126,19 +2202,45 @@
       colorFg.style.background = brushColor;
     });
 
-    // — cursor personalizado —
+    // — refs extras —
+    const cursorRing      = document.getElementById('ps-cursor-ring');
+    const magnifier       = document.getElementById('ps-magnifier');
+    const magCanvas       = document.getElementById('ps-magnifier-canvas');
+    const magCtx          = magCanvas ? magCanvas.getContext('2d') : null;
+    const eyedropperColor = document.getElementById('ps-eyedropper-color');
+
+    // — cursor personalizado + anel de tamanho —
     function updateCursor() {
-      if (!editMode) { canvas.style.cursor = 'default'; return; }
-      const cursors = {
-        pencil:     'crosshair',
-        brush:      'crosshair',
-        eraser:     'cell',
-        eyedropper: 'crosshair',
-        selection:  'crosshair',
-        move:       'grab',
-      };
-      canvas.style.cursor = cursors[activeTool] || 'crosshair';
+      const ringTools = ['pencil', 'brush', 'eraser'];
+      const hasRing = editMode && ringTools.includes(activeTool);
+      document.body.classList.toggle('ps-cursor-ring', hasRing);
+      if (hasRing) {
+        const r = activeTool === 'eraser' ? brushSize * 1.5 : brushSize / 2;
+        cursorRing.style.width  = (r * 2) + 'px';
+        cursorRing.style.height = (r * 2) + 'px';
+      }
+      if (!editMode) return;
+      // cursor nativo para tools sem anel
+      if (!hasRing) {
+        const cursors = { eyedropper: 'crosshair', selection: 'crosshair', move: 'grab' };
+        canvas.style.cursor = cursors[activeTool] || 'crosshair';
+      }
     }
+
+    // move o anel com o mouse
+    document.addEventListener('mousemove', (e) => {
+      if (!editMode) return;
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top  = e.clientY + 'px';
+      // lupa do conta-gotas
+      if (activeTool === 'eyedropper') {
+        magnifier.style.left = e.clientX + 'px';
+        magnifier.style.top  = e.clientY + 'px';
+        eyedropperColor.style.left = e.clientX + 'px';
+        eyedropperColor.style.top  = e.clientY + 'px';
+        updateMagnifier(e.clientX, e.clientY);
+      }
+    }, { passive: true });
 
     // — tooltip —
     const toolNames = {
@@ -2164,10 +2266,11 @@
       return { x: e.clientX, y: e.clientY };
     }
 
-    // — caneta (borda dura) —
+    // — caneta (borda dura, opacidade total) —
     function drawPencil(x0, y0, x1, y1) {
       ctx.save();
-      ctx.shadowBlur   = 0;
+      ctx.globalAlpha = 1;
+      ctx.shadowBlur  = 0;
       ctx.beginPath();
       ctx.moveTo(x0, y0);
       ctx.lineTo(x1, y1);
@@ -2180,21 +2283,37 @@
       ctx.restore();
     }
 
-    // — pincel (borda suave via shadowBlur) —
+    // — pincel (borda suave: radial gradient por ponto, sem efeito neon) —
     function drawBrush(x0, y0, x1, y1) {
-      ctx.save();
-      ctx.shadowBlur   = brushSize * 0.6;
-      ctx.shadowColor  = brushColor;
-      ctx.beginPath();
-      ctx.moveTo(x0, y0);
-      ctx.lineTo(x1, y1);
-      ctx.strokeStyle = brushColor;
-      ctx.lineWidth   = brushSize * 0.5;  // núcleo mais fino, blur suaviza
-      ctx.lineCap     = 'round';
-      ctx.lineJoin    = 'round';
-      ctx.globalCompositeOperation = 'source-over';
-      ctx.stroke();
-      ctx.restore();
+      // interpola pontos ao longo do segmento para densidade natural
+      const dist = Math.hypot(x1 - x0, y1 - y0);
+      const step = Math.max(1, brushSize * 0.2);
+      const steps = Math.max(1, Math.ceil(dist / step));
+      for (let i = 0; i <= steps; i++) {
+        const t  = steps === 0 ? 0 : i / steps;
+        const px = x0 + (x1 - x0) * t;
+        const py = y0 + (y1 - y0) * t;
+        // radial gradient: opaco no centro, transparente na borda
+        const r = brushSize / 2;
+        const grad = ctx.createRadialGradient(px, py, 0, px, py, r);
+        // parseia brushColor para rgba
+        const [rr, gg, bb] = hexToRgb(brushColor);
+        grad.addColorStop(0,   `rgba(${rr},${gg},${bb},0.35)`);
+        grad.addColorStop(0.5, `rgba(${rr},${gg},${bb},0.15)`);
+        grad.addColorStop(1,   `rgba(${rr},${gg},${bb},0)`);
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(px, py, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function hexToRgb(hex) {
+      const n = parseInt(hex.slice(1), 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
     }
 
     // — borracha —
@@ -2208,19 +2327,57 @@
       ctx.restore();
     }
 
-    // — conta-gotas —
+    // — conta-gotas: lê pixel da composição page + canvas —
+    // Desativa canvas temporariamente para elementFromPoint chegar no DOM
     function pickColor(x, y) {
+      // desliga canvas momentaneamente
+      canvas.style.pointerEvents = 'none';
       const el = document.elementFromPoint(x, y);
+      canvas.style.pointerEvents = '';
       if (!el) return;
       const style = window.getComputedStyle(el);
-      const col = style.backgroundColor || style.color || '';
-      const m = col.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-      if (m) {
-        const hex = '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
-        brushColor = hex;
-        colorFg.style.background = hex;
-        colorInput.value = hex;
+      // tenta bg primeiro, depois color
+      const candidates = [style.backgroundColor, style.color, style.borderColor];
+      for (const col of candidates) {
+        const m = col && col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (m && !(m[1] === '0' && m[2] === '0' && m[3] === '0')) {
+          const hex = '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
+          brushColor = hex;
+          colorFg.style.background = hex;
+          colorInput.value = hex;
+          return;
+        }
       }
+    }
+
+    // — lupa do conta-gotas —
+    const MAG_SIZE    = 120; // px da lupa
+    const MAG_ZOOM    = 8;   // ampliação
+    const MAG_REGION  = MAG_SIZE / MAG_ZOOM; // quantos px reais cabem
+
+    function updateMagnifier(mx, my) {
+      if (!magCtx) return;
+      magCanvas.width  = MAG_SIZE;
+      magCanvas.height = MAG_SIZE;
+      const sx = mx - MAG_REGION / 2;
+      const sy = my - MAG_REGION / 2;
+      // fundo escuro
+      magCtx.fillStyle = '#111';
+      magCtx.fillRect(0, 0, MAG_SIZE, MAG_SIZE);
+      // tenta capturar a área do canvas principal (só o que foi pintado)
+      magCtx.save();
+      magCtx.imageSmoothingEnabled = false;
+      magCtx.drawImage(canvas, sx, sy, MAG_REGION, MAG_REGION, 0, 0, MAG_SIZE, MAG_SIZE);
+      magCtx.restore();
+      // pixel central → cor da lupa
+      try {
+        const pixel = magCtx.getImageData(MAG_SIZE/2, MAG_SIZE/2, 1, 1).data;
+        const hex = '#' + [pixel[0], pixel[1], pixel[2]].map(n => n.toString(16).padStart(2,'0')).join('');
+        // mostra no tooltip de cor se tem algo pintado (alpha > 0)
+        const displayHex = pixel[3] > 10 ? hex : brushColor;
+        eyedropperColor.textContent = displayHex.toUpperCase();
+        eyedropperColor.style.setProperty('--eyedropper-preview', displayHex);
+      } catch(e) {}
     }
 
     // — seleção: retângulo pontilhado animado —
@@ -2250,6 +2407,18 @@
       if (moveSnap) { ctx.putImageData(moveSnap, 0, 0); }
       ctx.setLineDash([]);
     }
+
+    // — troca de ferramenta: atualiza estado da lupa —
+    document.querySelectorAll('.ps-tool[data-tool]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!editMode) return;
+        allTools.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTool = btn.dataset.tool;
+        setEyedropperActive(activeTool === 'eyedropper');
+        updateCursor();
+      });
+    });
 
     // — pointer events —
     function onPointerDown(e) {
