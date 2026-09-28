@@ -356,15 +356,16 @@
     display: inline-block;
     background: var(--vermelho, #c0392b);
     color: #ffffff;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 3px 9px;
+    padding: 4px 10px;
     border-radius: 4px;
     vertical-align: middle;
     margin-left: 10px;
-    line-height: 18px;
+    line-height: 1;
     position: relative;
     top: -2px;
   }
@@ -756,6 +757,21 @@
     .video-modal-processo { grid-template-columns: 1fr 1fr; }
   }
 
+  /* ── CARD VERTICAL (Shorts / Reels 9:16) ── */
+  .video-card.vertical .video-thumb-wrap,
+  .video-card.vertical .video-modal-player {
+    padding-bottom: 177.78%; /* 9:16 */
+  }
+  /* grid de shorts: colunas mais estreitas */
+  .video-grid.shorts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 320px));
+    justify-content: start;
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .video-grid.shorts-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── BOTÕES FLUTUANTES ── */
   .fab-group {
     position: fixed;
@@ -920,13 +936,7 @@
         <div class="video-card-info">
           <p class="video-card-label">Reel Institucional · Verte Saúde · Set 2025</p>
           <h3 class="video-card-title">Emergência HED — Hospital Ernesto Dornelles</h3>
-          <p class="video-card-desc">Revisão de corte e timing, adequação ao formato Reel (9:16) e publicação via Meta Business Suite. Melhor resultado da aba: 5.896 visualizações.</p>
-          <div style="display:flex; gap:20px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06);">
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Visualizações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">5.896</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Alcance</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">3.264</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Interações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">229</div></div>
-          </div>
-          <p style="font-size:0.6rem; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; margin-top:8px;">Métricas via Instagram · @vertesaude</p>
+          <p class="video-card-desc">Revisão de corte e timing, adequação ao formato Reel (9:16) e publicação via Meta Business Suite.</p>
         </div>
       </div>
 
@@ -952,12 +962,6 @@
           <p class="video-card-label">Reel Institucional · Verte Saúde · Dez 2025</p>
           <h3 class="video-card-title">Dia da Integridade — Grupo Afpergs</h3>
           <p class="video-card-desc">Revisão editorial, checagem de identidade visual e legenda institucional. Publicação via Meta Business Suite com agendamento estratégico.</p>
-          <div style="display:flex; gap:20px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06);">
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Visualizações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">4.245</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Alcance</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">2.514</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Interações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">94</div></div>
-          </div>
-          <p style="font-size:0.6rem; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; margin-top:8px;">Métricas via Instagram · @vertesaude</p>
         </div>
       </div>
 
@@ -982,13 +986,7 @@
         <div class="video-card-info">
           <p class="video-card-label">Reel Institucional · Verte Saúde · Jul 2025</p>
           <h3 class="video-card-title">Dia da Mulher Negra — Verte Saúde</h3>
-          <p class="video-card-desc">Suporte técnico na captação, revisão de corte e adequação ao formato vertical 9:16. Publicação e acompanhamento de métricas via Meta Business Suite.</p>
-          <div style="display:flex; gap:20px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06);">
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Visualizações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">2.788</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Alcance</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">1.526</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Interações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">156</div></div>
-          </div>
-          <p style="font-size:0.6rem; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; margin-top:8px;">Métricas via Instagram · @vertesaude</p>
+          <p class="video-card-desc">Suporte técnico na captação, revisão de corte e adequação ao formato vertical 9:16. Publicação via Meta Business Suite.</p>
         </div>
       </div>
 
@@ -1013,13 +1011,7 @@
         <div class="video-card-info">
           <p class="video-card-label">Reel Institucional · Verte Saúde · Mar 2025</p>
           <h3 class="video-card-title">HED — Código de Conduta Ética e Canal de Conduta</h3>
-          <p class="video-card-desc">Produção completa: roteiro, captação com câmera, edição e color grade no DaVinci Resolve, exportação H.264 e publicação. Único vídeo da aba com ciclo integral de produção.</p>
-          <div style="display:flex; gap:20px; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.06);">
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Visualizações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">1.838</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Alcance</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">1.011</div></div>
-            <div style="flex:1;"><div style="font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:3px;">Interações</div><div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:#fff; letter-spacing:0.05em;">96</div></div>
-          </div>
-          <p style="font-size:0.6rem; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; margin-top:8px;">Métricas via Instagram · @vertesaude</p>
+          <p class="video-card-desc">Produção completa: roteiro, captação com câmera, edição e color grade no DaVinci Resolve, exportação H.264 e publicação.</p>
         </div>
       </div>
 
@@ -1066,22 +1058,36 @@
     <div style="padding:24px 0 32px; border-bottom:1px solid rgba(255,255,255,0.06); margin-bottom:32px;">
       <p style="font-size:0.62rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--vermelho); margin-bottom:8px;">Contexto do projeto</p>
       <p style="font-size:0.9rem; color:#bbb; line-height:1.75; max-width:680px;">
-        Reels e vídeos institucionais produzidos para a AVANT Energia desde abril de 2026. Conteúdo para redes sociais com foco em comunicação B2B no setor de energia limpa,
-        cobrindo desde datas comemorativas até campanhas de produto e institucional. Links serão adicionados em breve.
+        Reels e vídeos institucionais produzidos para a AVANT Energia desde abril de 2026. Conteúdo para redes sociais com foco em comunicação B2B no setor de energia limpa, cobrindo datas comemorativas, campanhas de produto e institucional.
       </p>
     </div>
 
-    <div class="video-grid" id="avant-video-grid">
-      <div class="video-card" style="opacity:0.55; cursor:default; pointer-events:none;">
-        <div class="video-thumb-wrap" style="background:#1a1a1a; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(192,57,43,0.4)" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    <div class="video-grid shorts-grid" id="avant-video-grid">
+
+      <!-- Dia do Meio Ambiente -->
+      <div class="video-card vertical"
+        data-video-id="Wd1Go41SzN8"
+        data-video-title="Dia do Meio Ambiente — AVANT Energia"
+        data-video-label="Reel · AVANT Energia · Jun 2026"
+        data-video-desc="Reel produzido para o Dia Mundial do Meio Ambiente, reforçando o posicionamento da AVANT Energia como pioneira em energia limpa por assinatura no Sul do Brasil."
+        data-video-cliente="AVANT Energia"
+        data-video-entrega="Reel Instagram · Jun 2026"
+        data-video-processo="Captação · Edição · Publicação"
+        data-video-objetivo="Reforçar o posicionamento de energia limpa da AVANT no Dia do Meio Ambiente"
+        data-video-papel="Captação, edição e publicação completa">
+        <div class="video-thumb-wrap">
+          <img src="https://img.youtube.com/vi/Wd1Go41SzN8/maxresdefault.jpg" alt="Reel Dia do Meio Ambiente — AVANT Energia" loading="lazy">
+          <div class="video-play-btn" aria-label="Reproduzir vídeo">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
         </div>
         <div class="video-card-info">
-          <p class="video-card-label">Reel Institucional · AVANT Energia · 2026</p>
-          <h3 class="video-card-title">Em breve</h3>
-          <p class="video-card-desc">Vídeos da AVANT Energia serão adicionados aqui. Suba as mídias no Cloudinary e passe os links para incluir.</p>
+          <p class="video-card-label">Reel · AVANT Energia · Jun 2026</p>
+          <h3 class="video-card-title">Dia do Meio Ambiente</h3>
+          <p class="video-card-desc">Captação, edição e publicação completa. Reforça o posicionamento da AVANT como pioneira em energia limpa por assinatura no Sul do Brasil.</p>
         </div>
       </div>
+
     </div>
 
   </div><!-- /tab-avant -->
@@ -1190,11 +1196,23 @@ function closeVideoModal() {
   modal.classList.remove('open');
   modalIframe.src = '';
   document.body.style.overflow = '';
+  // reseta dimensões do modal para o padrão widescreen
+  const player = document.querySelector('.video-modal-player');
+  if (player) player.style.paddingBottom = '';
+  const content = document.querySelector('.video-modal-content');
+  if (content) content.style.maxWidth = '';
 }
 
 document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
   card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
+    // ajusta o modal para shorts (9:16) vs widescreen (16:9)
+    const isVertical = card.classList.contains('vertical');
+    const player = document.querySelector('.video-modal-player');
+    if (player) player.style.paddingBottom = isVertical ? '177.78%' : '56.25%';
+    const content = document.querySelector('.video-modal-content');
+    if (content) content.style.maxWidth = isVertical ? '380px' : '860px';
+
     openVideoModal(
       card.dataset.videoId,
       card.dataset.videoTitle,
