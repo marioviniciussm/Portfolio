@@ -70,7 +70,7 @@
 
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10001;
     display: flex; justify-content: center;
     padding: 12px 24px 0;
     pointer-events: none;
@@ -846,6 +846,10 @@
   body.ps-cursor-ring #ps-canvas { cursor: none !important; }
   /* conta-gotas: canvas não recebe eventos, cursor padrão no DOM */
   body.ps-eyedropper-active #ps-canvas { pointer-events: none !important; cursor: crosshair; }
+  /* em modo edição: sem seleção de texto; nav e fab sempre clicáveis */
+  body.ps-edit-mode { user-select: none; -webkit-user-select: none; }
+  body.ps-edit-mode nav,
+  body.ps-edit-mode .fab-group { pointer-events: all; }
 
   /* input de cor oculto */
   #ps-color-input { display: none; }
@@ -864,61 +868,33 @@
   }
   body.ps-cursor-ring #ps-cursor-ring { display: block; }
 
-  /* lupa do conta-gotas */
-  #ps-magnifier {
+  /* quadradinho + hex do conta-gotas */
+  #ps-eyedropper-preview {
     position: fixed;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.3);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.4);
-    pointer-events: none;
-    z-index: 10003;
     display: none;
-    overflow: hidden;
-    transform: translate(16px, -136px);
-  }
-  /* display controlado por JS (setEyedropperLupaVisible) */
-  #ps-magnifier canvas { position: absolute; inset: 0; }
-  /* mira central da lupa */
-  #ps-magnifier::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(rgba(255,255,255,0.6) 0, rgba(255,255,255,0.6) 1px, transparent 1px, transparent calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% + 0.5px), transparent calc(50% + 0.5px), transparent calc(100% - 1px), rgba(255,255,255,0.6) calc(100% - 1px)),
-      linear-gradient(90deg, rgba(255,255,255,0.6) 0, rgba(255,255,255,0.6) 1px, transparent 1px, transparent calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% - 0.5px), rgba(255,255,255,0.6) calc(50% + 0.5px), transparent calc(50% + 0.5px), transparent calc(100% - 1px), rgba(255,255,255,0.6) calc(100% - 1px));
-    z-index: 1;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  /* tooltip cor atual do conta-gotas */
-  #ps-eyedropper-color {
-    position: fixed;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    background: #1a1a1a;
+    align-items: center;
+    gap: 6px;
+    background: #1e1e1e;
     border: 1px solid rgba(255,255,255,0.15);
-    color: #fff;
-    padding: 3px 8px 3px 22px;
-    border-radius: 3px;
+    border-radius: 4px;
+    padding: 5px 8px 5px 6px;
     pointer-events: none;
     z-index: 10003;
-    display: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
     white-space: nowrap;
-    transform: translate(16px, -106px);
+    transform: translate(14px, -50%);
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
-  /* display controlado por JS */
-  #ps-eyedropper-color::before {
-    content: '';
-    position: absolute;
-    left: 6px; top: 50%;
-    transform: translateY(-50%);
-    width: 10px; height: 10px;
-    border-radius: 2px;
+  #ps-eyedropper-preview.visible { display: flex; }
+  #ps-eyedropper-preview .ep-swatch {
+    width: 16px; height: 16px;
+    border-radius: 3px;
     border: 1px solid rgba(255,255,255,0.2);
-    background: var(--eyedropper-preview, #c0392b);
+    flex-shrink: 0;
   }
 
   /* tooltip */
@@ -1815,10 +1791,8 @@
   <canvas id="ps-canvas"></canvas>
   <!-- anel de cursor (tamanho do pincel) -->
   <div id="ps-cursor-ring"></div>
-  <!-- lupa do conta-gotas -->
-  <div id="ps-magnifier"><canvas id="ps-magnifier-canvas" width="120" height="120"></canvas></div>
-  <!-- tooltip de cor do conta-gotas -->
-  <div id="ps-eyedropper-color"></div>
+  <!-- preview de cor do conta-gotas (quadradinho + hex) -->
+  <div id="ps-eyedropper-preview"><span class="ep-swatch"></span><span class="ep-label"></span></div>
   <!-- input de cor oculto -->
   <input type="color" id="ps-color-input" value="#c0392b">
   <!-- tooltip -->
@@ -2207,10 +2181,6 @@
 
     // — refs extras —
     const cursorRing      = document.getElementById('ps-cursor-ring');
-    const magnifier       = document.getElementById('ps-magnifier');
-    const magCanvas       = document.getElementById('ps-magnifier-canvas');
-    const magCtx          = magCanvas ? magCanvas.getContext('2d') : null;
-    const eyedropperColor = document.getElementById('ps-eyedropper-color');
 
     // — cursor personalizado + anel de tamanho —
     function updateCursor() {
@@ -2235,15 +2205,6 @@
       if (!editMode) return;
       cursorRing.style.left = e.clientX + 'px';
       cursorRing.style.top  = e.clientY + 'px';
-      // lupa do conta-gotas: só atualiza posição aqui, conteúdo só ao pressionar
-      if (activeTool === 'eyedropper' && eyedropperPressed) {
-        magnifier.style.left = e.clientX + 'px';
-        magnifier.style.top  = e.clientY + 'px';
-        eyedropperColor.style.left = e.clientX + 'px';
-        eyedropperColor.style.top  = e.clientY + 'px';
-        updateMagnifier(e.clientX, e.clientY);
-        previewPickColor(e.clientX, e.clientY);
-      }
     }, { passive: true });
 
     // — tooltip —
@@ -2332,93 +2293,68 @@
     }
 
     // ── CONTA-GOTAS ──
-    // Quando eyedropper está ativo, o canvas tem pointer-events:none (via CSS body.ps-eyedropper-active),
-    // então os eventos chegam diretamente nos elementos do DOM.
-    // Todos os listeners do eyedropper ficam no document.
-
+    // Com eyedropper ativo, canvas tem pointer-events:none → eventos chegam no DOM
     let eyedropperPressed = false;
+    const eyedropperPreview = document.getElementById('ps-eyedropper-preview');
 
-    // Lê a cor do elemento sob o cursor (canvas está transparente a eventos)
     function pickColorAt(x, y) {
       const el = document.elementFromPoint(x, y);
-      if (!el || el === magnifier || el === eyedropperColor) return null;
+      if (!el || el.closest('#psToolbar') || el === eyedropperPreview) return null;
       const style = window.getComputedStyle(el);
       const candidates = [style.backgroundColor, style.color, style.borderColor];
       for (const col of candidates) {
         const m = col && col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
         if (!m) continue;
-        // ignora preto puro (transparente renderizado como rgb(0,0,0))
         if (m[1] === '0' && m[2] === '0' && m[3] === '0') continue;
         return '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
       }
       return null;
     }
 
-    // Prévia ao mover (só mostra na lupa, não aplica)
-    function previewPickColor(x, y) {
-      const hex = pickColorAt(x, y);
-      if (!hex) return;
-      eyedropperColor.textContent = hex.toUpperCase();
-      eyedropperColor.style.setProperty('--eyedropper-preview', hex);
+    function showEyedropperPreview(x, y, hex) {
+      if (!eyedropperPreview) return;
+      eyedropperPreview.style.left = x + 'px';
+      eyedropperPreview.style.top  = y + 'px';
+      const swatch = eyedropperPreview.querySelector('.ep-swatch');
+      const label  = eyedropperPreview.querySelector('.ep-label');
+      if (swatch) swatch.style.background = hex || brushColor;
+      if (label)  label.textContent = (hex || brushColor).toUpperCase();
+      eyedropperPreview.classList.add('visible');
     }
 
-    // Aplica cor ao soltar
-    function applyPickedColor(x, y) {
-      const hex = pickColorAt(x, y);
-      if (hex) {
-        brushColor = hex;
-        colorFg.style.background = hex;
-        colorInput.value = hex;
-      }
+    function hideEyedropperPreview() {
+      if (eyedropperPreview) eyedropperPreview.classList.remove('visible');
     }
 
-    // — lupa do conta-gotas —
-    const MAG_SIZE   = 120;
-    const MAG_ZOOM   = 10;
-    const MAG_REGION = MAG_SIZE / MAG_ZOOM; // px reais capturados
-
-    function updateMagnifier(mx, my) {
-      if (!magCtx) return;
-      // Lupa mostra o canvas principal ampliado (o que foi pintado)
-      // O fundo da página em si não é acessível via canvas 2d, então
-      // usamos o canvas de pintura + uma cor de fundo que imite o site.
-      const sx = mx - MAG_REGION / 2;
-      const sy = my - MAG_REGION / 2;
-      magCtx.save();
-      // fundo escuro (cor do site)
-      magCtx.fillStyle = '#0f0f0f';
-      magCtx.fillRect(0, 0, MAG_SIZE, MAG_SIZE);
-      // pixels pintados
-      magCtx.imageSmoothingEnabled = false;
-      magCtx.drawImage(canvas, sx, sy, MAG_REGION, MAG_REGION, 0, 0, MAG_SIZE, MAG_SIZE);
-      magCtx.restore();
-    }
-
-    // Eventos do conta-gotas no document (funciona mesmo com canvas sem pointer-events)
     document.addEventListener('mousedown', (e) => {
       if (!editMode || activeTool !== 'eyedropper') return;
       if (e.target.closest('#psToolbar')) return;
       eyedropperPressed = true;
-      // posiciona lupa imediatamente
-      magnifier.style.left = e.clientX + 'px';
-      magnifier.style.top  = e.clientY + 'px';
-      eyedropperColor.style.left = e.clientX + 'px';
-      eyedropperColor.style.top  = e.clientY + 'px';
-      setEyedropperLupaVisible(true);
-      updateMagnifier(e.clientX, e.clientY);
-      previewPickColor(e.clientX, e.clientY);
+      const hex = pickColorAt(e.clientX, e.clientY);
+      showEyedropperPreview(e.clientX, e.clientY, hex);
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!editMode || activeTool !== 'eyedropper' || !eyedropperPressed) return;
+      const hex = pickColorAt(e.clientX, e.clientY);
+      showEyedropperPreview(e.clientX, e.clientY, hex);
     });
 
     document.addEventListener('mouseup', (e) => {
       if (!editMode || activeTool !== 'eyedropper' || !eyedropperPressed) return;
       eyedropperPressed = false;
-      setEyedropperLupaVisible(false);
-      applyPickedColor(e.clientX, e.clientY);
+      hideEyedropperPreview();
+      const hex = pickColorAt(e.clientX, e.clientY);
+      if (hex) {
+        brushColor = hex;
+        colorFg.style.background = hex;
+        colorInput.value = hex;
+      }
     });
 
     function setEyedropperLupaVisible(on) {
-      magnifier.style.display       = on ? 'block' : 'none';
-      eyedropperColor.style.display = on ? 'block' : 'none';
+      if (!on) hideEyedropperPreview();
+      eyedropperPressed = false;
     }
 
     // — seleção: retângulo pontilhado animado —
