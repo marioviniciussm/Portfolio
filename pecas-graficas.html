@@ -1008,6 +1008,43 @@
     .fab-group { bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
     .btn-top, .btn-whatsapp { font-size: 9px; letter-spacing: 0.12em; padding: 11px 14px; min-height: 44px; }
   }
+
+  /* ── AVANT PLACEHOLDER ── */
+  .avant-placeholder {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .avant-placeholder-inner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 40px 60px;
+    background: rgba(255,255,255,0.03);
+  }
+  .avant-placeholder-badge {
+    display: inline-block;
+    background: rgba(192,57,43,0.15);
+    color: rgba(192,57,43,0.9);
+    border: 1px solid rgba(192,57,43,0.3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+  .avant-placeholder-text {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    margin: 0;
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
 </style>
 </head>
 <body>
@@ -1505,15 +1542,18 @@
               <div class="case-intro-meta-item"><span class="case-intro-meta-label">Ferramentas</span><span class="case-intro-meta-value">Photoshop · Illustrator · Canva · Adobe Express</span></div>
             </div>
           </div>
-          <div class="grid-4col" data-gallery="avant-pecas">
-            <!-- Peças da AVANT Energia serão adicionadas aqui via Cloudinary -->
-            <!-- Exemplo de formato:
-            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" alt="Descrição" loading="lazy"></div>
-            -->
+          <div class="avant-placeholder">
+            <div class="avant-placeholder-inner">
+              <span class="avant-placeholder-badge">Em breve</span>
+              <p class="avant-placeholder-text">Peças gráficas em preparação. O conteúdo será adicionado aqui em breve.</p>
+            </div>
           </div>
-          <p style="text-align:center; color:rgba(255,255,255,0.25); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; padding:40px 0;">
-            Mídias em preparação · adicione os links do Cloudinary acima
-          </p>
+          <!-- Peças da AVANT Energia serão adicionadas aqui via Cloudinary -->
+          <!-- Exemplo de formato:
+          <div class="grid-4col" data-gallery="avant-pecas">
+            <div class="grid-item"><img src="https://res.cloudinary.com/di2aesnlv/image/upload/w_800,q_auto,f_auto/NOME_DO_ARQUIVO.jpg" alt="Descrição" loading="lazy"></div>
+          </div>
+          -->
         </div><!-- /cobertura-body-inner -->
       </div><!-- /cobertura-body -->
     </div>

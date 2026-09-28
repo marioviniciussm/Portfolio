@@ -1391,6 +1391,39 @@
     .fab-group { bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
     .btn-top, .btn-whatsapp { font-size: 9px; letter-spacing: 0.12em; padding: 11px 14px; min-height: 44px; }
   }
+
+  /* ── AVANT PLACEHOLDER ── */
+  .avant-placeholder-sm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 20px;
+  }
+  .avant-placeholder-badge {
+    display: inline-block;
+    background: rgba(192,57,43,0.15);
+    color: rgba(192,57,43,0.9);
+    border: 1px solid rgba(192,57,43,0.3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+  .avant-placeholder-text {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
 </style>
 </head>
 <body>
@@ -2550,13 +2583,10 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="destaque-metric-label">do Brasil</div>
         </div>
       </div>
-      <p style="font-size:0.85rem; color:#aaa; line-height:1.7; margin-bottom:20px;">
-        Conteúdo em produção. Cases, métricas e exemplos de posts serão adicionados aqui.
-        Suba as mídias no Cloudinary e passe os links para incluir.
-      </p>
-      <p style="font-size:0.65rem; color:rgba(255,255,255,0.3); letter-spacing:0.2em; text-transform:uppercase;">
-        Em preparação · em breve
-      </p>
+      <div class="avant-placeholder-sm">
+        <span class="avant-placeholder-badge">Em breve</span>
+        <p class="avant-placeholder-text">Cases, métricas e exemplos de posts em preparação. O conteúdo será adicionado aqui em breve.</p>
+      </div>
     </div>
 
   </div>
