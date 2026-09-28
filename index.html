@@ -675,11 +675,6 @@
     stroke-linejoin: round;
   }
 
-  .ps-tool:hover {
-    background: rgba(192,57,43,0.2);
-    color: var(--white);
-  }
-
   .ps-tool.active {
     background: rgba(192,57,43,0.35);
     color: var(--white);
@@ -697,6 +692,7 @@
     width: 28px;
     height: 28px;
     margin-top: 4px;
+    cursor: default;
   }
 
   .ps-color-bg {
@@ -720,9 +716,132 @@
     z-index: 1;
   }
 
+  /* ── TOOLBAR MODO EDIÇÃO ── */
+  /* toggle button — fica abaixo do inner */
+  .ps-toggle-btn {
+    margin-top: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(192,57,43,0.15);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-radius: 2px;
+    color: rgba(192,57,43,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+  .ps-toggle-btn svg {
+    width: 14px; height: 14px;
+    stroke: currentColor; fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .ps-toggle-btn:hover { background: rgba(192,57,43,0.3); color: var(--red); border-color: rgba(192,57,43,0.6); }
+  .ps-toggle-btn.on { background: var(--red); color: #fff; border-color: var(--red); }
+
+  /* no modo ativo, ferramentas viram clicáveis */
+  body.ps-edit-mode .ps-tool {
+    cursor: pointer;
+  }
+  body.ps-edit-mode .ps-tool:hover {
+    background: rgba(192,57,43,0.2);
+    color: var(--white);
+  }
+  body.ps-edit-mode .ps-color-swatch {
+    cursor: pointer;
+  }
+  body.ps-edit-mode .ps-toolbar-inner {
+    border-color: rgba(192,57,43,0.4);
+    box-shadow: 0 0 0 1px rgba(192,57,43,0.15);
+  }
+
+  /* botão limpar — visível só no modo ativo */
+  .ps-clear-btn {
+    margin-top: 4px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    color: rgba(255,255,255,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+    title: 'Limpar tela';
+  }
+  .ps-clear-btn svg {
+    width: 14px; height: 14px;
+    stroke: currentColor; fill: none;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .ps-clear-btn:hover { background: rgba(255,80,80,0.2); color: #ff6b6b; border-color: rgba(255,80,80,0.3); }
+  body.ps-edit-mode .ps-clear-btn { display: flex; }
+
+  /* tamanho do pincel — só no modo ativo */
+  .ps-size-control {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  body.ps-edit-mode .ps-size-control { display: flex; }
+  .ps-size-dot {
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .ps-size-dot:hover, .ps-size-dot.active { background: var(--red); }
+  .ps-size-dot.sm { width: 4px; height: 4px; }
+  .ps-size-dot.md { width: 8px; height: 8px; }
+  .ps-size-dot.lg { width: 14px; height: 14px; }
+
+  /* canvas global de pintura */
+  #ps-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    touch-action: none;
+  }
+  body.ps-edit-mode #ps-canvas { pointer-events: all; }
+  /* só pincel e borracha capturam eventos — seleção e mover também */
+
+  /* input de cor — escondido, ativado via js */
+  #ps-color-input { display: none; }
+
+  /* tooltip de ferramenta */
+  .ps-tooltip {
+    position: fixed;
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #ccc;
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 4px 8px;
+    border-radius: 3px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    z-index: 10001;
+    white-space: nowrap;
+  }
+  .ps-tooltip.visible { opacity: 1; }
+
   @media (max-width: 1024px) {
     #habilidades { padding-left: 92px; }
     .ps-toolbar { left: 32px; }
+  }
+  @media (max-width: 768px) {
+    #habilidades { padding-left: 24px; }
+    .ps-toolbar { display: none; }
   }
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .skill-block { background: var(--dark); padding: 36px 32px; border-left: 3px solid rgba(255,255,255,0.04); transition: border-left-color 0.15s, background 0.15s; }
@@ -1531,42 +1650,53 @@
 </div>
 
 <section id="habilidades">
-  <!-- Toolbar decorativa estilo Photoshop -->
-  <div class="ps-toolbar" aria-hidden="true">
+  <!-- Toolbar estilo Photoshop — decorativa por padrão, funcional no modo edição -->
+  <div class="ps-toolbar" id="psToolbar">
     <div class="ps-toolbar-inner">
-      <div class="ps-tool active" title="Seleção">
+      <div class="ps-tool" data-tool="selection" title="Seleção">
         <svg viewBox="0 0 24 24"><path d="M4 2l16 9-9 2-3 9z"/></svg>
       </div>
-      <div class="ps-tool" title="Mover">
+      <div class="ps-tool" data-tool="move" title="Mover pintura">
         <svg viewBox="0 0 24 24"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M12 12h.01"/><path d="M12 3v18M3 12h18"/></svg>
       </div>
-      <div class="ps-tool" title="Recorte">
-        <svg viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
-      </div>
       <div class="ps-tool-divider"></div>
-      <div class="ps-tool" title="Pincel">
+      <div class="ps-tool active" data-tool="brush" title="Pincel">
         <svg viewBox="0 0 24 24"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1 1 2.48 1.02 3.5 1.02 2.2 0 3.5-1.8 3.5-4.04 0-1.26-.7-2.02-2-2.02z"/></svg>
       </div>
-      <div class="ps-tool" title="Borracha">
+      <div class="ps-tool" data-tool="eraser" title="Borracha">
         <svg viewBox="0 0 24 24"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
       </div>
-      <div class="ps-tool" title="Texto">
-        <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+      <div class="ps-tool" data-tool="eyedropper" title="Conta-gotas">
+        <svg viewBox="0 0 24 24"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8Z"/></svg>
       </div>
       <div class="ps-tool-divider"></div>
-      <div class="ps-tool" title="Zoom">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-      </div>
-      <div class="ps-tool" title="Conta-gotas">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/><circle cx="7.5" cy="11.5" r="1.5" fill="currentColor"/><circle cx="11.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="16.5" cy="8.5" r="1.5" fill="currentColor"/></svg>
+      <!-- tamanho do pincel -->
+      <div class="ps-size-control">
+        <div class="ps-size-dot sm" data-size="4" title="Fino"></div>
+        <div class="ps-size-dot md active" data-size="12" title="Médio"></div>
+        <div class="ps-size-dot lg" data-size="28" title="Grosso"></div>
       </div>
       <div class="ps-tool-divider"></div>
-      <div class="ps-color-swatch">
-        <div class="ps-color-fg"></div>
+      <div class="ps-color-swatch" id="psColorSwatch" title="Cor do pincel">
+        <div class="ps-color-fg" id="psColorFg"></div>
         <div class="ps-color-bg"></div>
       </div>
     </div>
+    <!-- botão toggle modo edição -->
+    <button class="ps-toggle-btn" id="psToggleBtn" title="Ativar modo de edição">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    </button>
+    <!-- botão limpar (visível só no modo ativo) -->
+    <button class="ps-clear-btn" id="psClearBtn" title="Limpar tela">
+      <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+    </button>
   </div>
+  <!-- canvas global de pintura -->
+  <canvas id="ps-canvas"></canvas>
+  <!-- input de cor oculto -->
+  <input type="color" id="ps-color-input" value="#c0392b">
+  <!-- tooltip -->
+  <div class="ps-tooltip" id="psTooltip"></div>
   <p class="section-label reveal">Ferramentas e competências</p>
   <h2 class="section-title reveal" data-delay="1">Habilidades</h2>
   <div class="skills-grid">
@@ -1794,16 +1924,273 @@
     });
   }
 
-  // ── PHOTOSHOP TOOLBAR — animação ──
-  const psTools = document.querySelectorAll('.ps-tool');
-  if (psTools.length) {
-    let activeIdx = 0;
-    setInterval(() => {
-      psTools[activeIdx].classList.remove('active');
-      activeIdx = (activeIdx + 1) % psTools.length;
-      psTools[activeIdx].classList.add('active');
-    }, 1800);
-  }
+  // ── PHOTOSHOP TOOLBAR — modo edição funcional ──
+  (function() {
+    const canvas    = document.getElementById('ps-canvas');
+    const ctx       = canvas ? canvas.getContext('2d') : null;
+    const toggleBtn = document.getElementById('psToggleBtn');
+    const clearBtn  = document.getElementById('psClearBtn');
+    const colorInput = document.getElementById('ps-color-input');
+    const colorFg   = document.getElementById('psColorFg');
+    const colorSwatch = document.getElementById('psColorSwatch');
+    const tooltip   = document.getElementById('psTooltip');
+    if (!canvas || !ctx) return;
+
+    // — estado —
+    let editMode  = false;
+    let activeTool = 'brush';
+    let brushSize  = 12;
+    let brushColor = '#c0392b';
+    let painting   = false;
+    let lastX = 0, lastY = 0;
+    // para mover a camada: copiamos o conteúdo do canvas e reposicionamos
+    let moveStartX = 0, moveStartY = 0;
+    let moveSnap = null; // ImageData antes de mover
+    // para seleção
+    let selStart = null;
+
+    // — resize canvas para viewport inteiro —
+    function resizeCanvas() {
+      // preserva conteúdo existente
+      const tmp = document.createElement('canvas');
+      tmp.width = canvas.width; tmp.height = canvas.height;
+      tmp.getContext('2d').drawImage(canvas, 0, 0);
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.drawImage(tmp, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    // — ativa/desativa modo edição —
+    function setEditMode(on) {
+      editMode = on;
+      document.body.classList.toggle('ps-edit-mode', on);
+      toggleBtn.classList.toggle('on', on);
+      toggleBtn.title = on ? 'Sair do modo de edição' : 'Ativar modo de edição';
+    }
+
+    toggleBtn.addEventListener('click', () => setEditMode(!editMode));
+    clearBtn.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
+    // — troca de ferramenta —
+    document.querySelectorAll('.ps-tool[data-tool]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!editMode) return;
+        document.querySelectorAll('.ps-tool').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTool = btn.dataset.tool;
+        updateCursor();
+      });
+    });
+
+    // — tamanho do pincel —
+    document.querySelectorAll('.ps-size-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        if (!editMode) return;
+        document.querySelectorAll('.ps-size-dot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        brushSize = parseInt(dot.dataset.size);
+      });
+    });
+
+    // — conta-gotas / seletor de cor —
+    colorSwatch.addEventListener('click', () => {
+      if (!editMode) return;
+      colorInput.click();
+    });
+    colorInput.addEventListener('input', () => {
+      brushColor = colorInput.value;
+      colorFg.style.background = brushColor;
+    });
+
+    // — cursor personalizado —
+    function updateCursor() {
+      if (!editMode) { canvas.style.cursor = 'default'; return; }
+      const cursors = {
+        brush:      'crosshair',
+        eraser:     'cell',
+        eyedropper: 'crosshair',
+        selection:  'crosshair',
+        move:       'grab',
+      };
+      canvas.style.cursor = cursors[activeTool] || 'crosshair';
+    }
+
+    // — tooltip —
+    const toolNames = {
+      brush: 'Pincel', eraser: 'Borracha',
+      eyedropper: 'Conta-gotas', selection: 'Seleção', move: 'Mover pintura',
+    };
+    document.querySelectorAll('.ps-tool[data-tool]').forEach(btn => {
+      btn.addEventListener('mouseenter', (e) => {
+        if (!editMode) return;
+        tooltip.textContent = toolNames[btn.dataset.tool] || '';
+        tooltip.classList.add('visible');
+      });
+      btn.addEventListener('mousemove', (e) => {
+        tooltip.style.left = (e.clientX + 14) + 'px';
+        tooltip.style.top  = (e.clientY - 8)  + 'px';
+      });
+      btn.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+    });
+
+    // — helpers de coordenada —
+    function getXY(e) {
+      if (e.touches) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+      return { x: e.clientX, y: e.clientY };
+    }
+
+    // — pincel: interpola pontos para traço suave —
+    function drawLine(x0, y0, x1, y1) {
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.strokeStyle = brushColor;
+      ctx.lineWidth   = brushSize;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.stroke();
+    }
+
+    // — borracha —
+    function erase(x, y) {
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, brushSize * 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,1)';
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // — conta-gotas: pega cor do elemento sob o cursor via document —
+    function pickColor(x, y) {
+      const el = document.elementFromPoint(x, y);
+      if (!el) return;
+      const style = window.getComputedStyle(el);
+      let col = style.backgroundColor || style.color || '';
+      // tenta converter rgb() para hex
+      const m = col.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+      if (m) {
+        const hex = '#' + [m[1],m[2],m[3]].map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
+        brushColor = hex;
+        colorFg.style.background = hex;
+        colorInput.value = hex;
+      }
+    }
+
+    // — seleção: retângulo pontilhado animado —
+    let selAnimId = null;
+    let selOffset = 0;
+    function drawSelection(x0, y0, x1, y1) {
+      // redesenha só a seleção em loop
+      if (selAnimId) cancelAnimationFrame(selAnimId);
+      function animate() {
+        // regrava a última snapshot antes de desenhar seleção
+        if (moveSnap) ctx.putImageData(moveSnap, 0, 0);
+        selOffset = (selOffset + 0.5) % 12;
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([6, 6]);
+        ctx.lineDashOffset = -selOffset;
+        ctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
+        ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+        ctx.lineDashOffset = -selOffset + 6;
+        ctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
+        ctx.restore();
+        selAnimId = requestAnimationFrame(animate);
+      }
+      animate();
+    }
+    function stopSelection() {
+      if (selAnimId) { cancelAnimationFrame(selAnimId); selAnimId = null; }
+      if (moveSnap) { ctx.putImageData(moveSnap, 0, 0); }
+      ctx.setLineDash([]);
+    }
+
+    // — pointer events —
+    function onPointerDown(e) {
+      if (!editMode) return;
+      // não captura cliques nos botões da toolbar
+      if (e.target.closest('#psToolbar')) return;
+      e.preventDefault();
+      painting = true;
+      const { x, y } = getXY(e);
+      lastX = x; lastY = y;
+
+      if (activeTool === 'eyedropper') {
+        pickColor(x, y);
+        painting = false;
+        return;
+      }
+      if (activeTool === 'selection') {
+        selStart = { x, y };
+        moveSnap = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        return;
+      }
+      if (activeTool === 'move') {
+        moveStartX = x; moveStartY = y;
+        moveSnap = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        canvas.style.cursor = 'grabbing';
+        return;
+      }
+      // brush: pinta um ponto imediato
+      if (activeTool === 'brush') drawLine(x, y, x, y);
+      if (activeTool === 'eraser') erase(x, y);
+    }
+
+    function onPointerMove(e) {
+      if (!editMode || !painting) return;
+      e.preventDefault();
+      const { x, y } = getXY(e);
+
+      if (activeTool === 'brush') {
+        drawLine(lastX, lastY, x, y);
+      } else if (activeTool === 'eraser') {
+        erase(x, y);
+      } else if (activeTool === 'selection' && selStart) {
+        drawSelection(selStart.x, selStart.y, x, y);
+      } else if (activeTool === 'move' && moveSnap) {
+        const dx = x - moveStartX;
+        const dy = y - moveStartY;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.putImageData(moveSnap, dx, dy);
+      }
+      lastX = x; lastY = y;
+    }
+
+    function onPointerUp(e) {
+      if (!editMode) return;
+      if (activeTool === 'selection') stopSelection();
+      if (activeTool === 'move') {
+        moveSnap = null;
+        canvas.style.cursor = 'grab';
+      }
+      painting = false;
+      ctx.setLineDash([]);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    // mouse
+    canvas.addEventListener('mousedown',  onPointerDown);
+    canvas.addEventListener('mousemove',  onPointerMove);
+    canvas.addEventListener('mouseup',    onPointerUp);
+    canvas.addEventListener('mouseleave', onPointerUp);
+    // touch
+    canvas.addEventListener('touchstart', onPointerDown, { passive: false });
+    canvas.addEventListener('touchmove',  onPointerMove, { passive: false });
+    canvas.addEventListener('touchend',   onPointerUp);
+
+    // esc sai do modo
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && editMode) setEditMode(false);
+    });
+
+  })();
 
   // ── VOLTAR AO TOPO ──
   document.addEventListener('DOMContentLoaded', () => {
