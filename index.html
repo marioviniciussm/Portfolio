@@ -272,7 +272,7 @@
   .hero-right-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background: transparent; border-top: none; padding: 28px 48px 32px; }
   .hero-disciplines { display: flex; flex-direction: column; gap: 8px; }
   .discipline-item { position: relative; display: flex; align-items: center; gap: 16px; padding: 12px 20px; background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-left: 3px solid var(--red); overflow: hidden; }
-  .discipline-item::before { content: ''; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 100px); font-weight: 900; letter-spacing: -2px; color: rgba(255,255,255,0.07); line-height: 1; pointer-events: none; z-index: 0; }
+  .discipline-item::before { content: ''; position: absolute; right: 12px; left: auto; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 100px); font-weight: 900; letter-spacing: -2px; color: rgba(255,255,255,0.07); line-height: 1; pointer-events: none; z-index: 0; }
   .discipline-item:nth-child(1)::before { content: "01"; }
   .discipline-item:nth-child(2)::before { content: "02"; }
   .discipline-item:nth-child(3)::before { content: "03"; }
@@ -1054,7 +1054,7 @@
     .hero-right-content { left: 0; right: 0; bottom: 0; padding: 20px 24px 24px; }
     .hero-disciplines { gap: 8px; }
     .discipline-item { padding: 12px 16px; gap: 12px; }
-    .discipline-item::before { font-size: clamp(56px, 14vw, 88px); left: 8px; }
+    .discipline-item::before { font-size: clamp(56px, 14vw, 88px); right: 8px; left: auto; }
     section, #cases, #contato { padding: 56px 24px; max-width: 100%; width: 100%; }
     .section-label { font-size: 10px; }
     .section-title { font-size: clamp(36px, 10vw, 52px); margin-bottom: 32px; }
