@@ -712,7 +712,7 @@
     z-index: 1;
   }
 
-  /* tamanho do pincel — sempre visível, mas inativo fora do modo */
+  /* tamanho do pincel — slider */
   .ps-size-control {
     display: flex;
     flex-direction: column;
@@ -720,22 +720,54 @@
     gap: 6px;
     margin-top: 6px;
     opacity: 0.25;
+    pointer-events: none;
     transition: opacity 0.15s;
   }
-  body.ps-edit-mode .ps-size-control { opacity: 1; }
-  .ps-size-dot {
-    border-radius: 50%;
-    background: rgba(255,255,255,0.35);
-    cursor: default;
-    transition: background 0.15s, transform 0.15s;
-    flex-shrink: 0;
+  body.ps-edit-mode .ps-size-control { opacity: 1; pointer-events: all; }
+  .ps-size-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    user-select: none;
   }
-  body.ps-edit-mode .ps-size-dot { cursor: pointer; }
-  body.ps-edit-mode .ps-size-dot:hover { background: rgba(192,57,43,0.7); transform: scale(1.2); }
-  .ps-size-dot.active { background: var(--red); }
-  .ps-size-dot.sm { width: 6px;  height: 6px; }
-  .ps-size-dot.md { width: 11px; height: 11px; }
-  .ps-size-dot.lg { width: 18px; height: 18px; }
+  .ps-size-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    width: 4px;
+    height: 64px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  .ps-size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .ps-size-slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+  .ps-size-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    border: none;
+    cursor: pointer;
+  }
+  .ps-size-preview {
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    flex-shrink: 0;
+    transition: width 0.1s, height 0.1s;
+  }
 
   /* ── BOTÕES EXTERNOS À TOOLBAR INNER ── */
   /* toggle — label claro de ação */
@@ -1763,9 +1795,9 @@
       <div class="ps-tool-divider"></div>
       <!-- tamanho do pincel -->
       <div class="ps-size-control">
-        <div class="ps-size-dot sm" data-size="4" title="Fino"></div>
-        <div class="ps-size-dot md active" data-size="12" title="Médio"></div>
-        <div class="ps-size-dot lg" data-size="28" title="Grosso"></div>
+        <div class="ps-size-preview" id="psSizePreview" style="width:12px;height:12px;"></div>
+        <input class="ps-size-slider" id="psSizeSlider" type="range" min="2" max="48" value="12" title="Tamanho do pincel">
+        <span class="ps-size-label">px</span>
       </div>
       <div class="ps-tool-divider"></div>
       <div class="ps-color-swatch" id="psColorSwatch" title="Cor do pincel">
@@ -2167,14 +2199,18 @@
     redoBtn.addEventListener('click', redo);
 
     // — tamanho do pincel —
-    document.querySelectorAll('.ps-size-dot').forEach(dot => {
-      dot.addEventListener('click', () => {
-        if (!editMode) return;
-        document.querySelectorAll('.ps-size-dot').forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
-        brushSize = parseInt(dot.dataset.size);
-        updateCursor(); // atualiza anel de cursor
-      });
+    const psSizeSlider = document.getElementById('psSizeSlider');
+    const psSizePreview = document.getElementById('psSizePreview');
+    function updateSizePreview(val) {
+      const sz = Math.min(val, 28);
+      psSizePreview.style.width  = sz + 'px';
+      psSizePreview.style.height = sz + 'px';
+    }
+    psSizeSlider.addEventListener('input', () => {
+      if (!editMode) return;
+      brushSize = parseInt(psSizeSlider.value);
+      updateSizePreview(brushSize);
+      updateCursor();
     });
 
     // — seletor de cor —
