@@ -86,7 +86,7 @@
     -webkit-backdrop-filter: blur(10px) saturate(130%);
     border: 1px solid rgba(255,255,255,0.09);
     border-radius: 0;
-    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    border-bottom: 2px solid var(--red);
     padding: 0 28px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.4);
     pointer-events: all;
@@ -102,23 +102,23 @@
   }
   .nav-logo span { color: var(--red); }
 
-  .nav-links { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: nowrap; }
-  .nav-links > li { display: flex; align-items: center; }
+  .nav-links { display: flex; gap: 0; list-style: none; align-items: stretch; flex-wrap: nowrap; height: 100%; }
+  .nav-links > li { display: flex; align-items: stretch; }
   .nav-links a {
     color: var(--gray); text-decoration: none;
     font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 8px 16px; display: flex; align-items: center; white-space: nowrap;
+    padding: 0 16px; display: flex; align-items: center; white-space: nowrap;
     border-radius: 0;
     transition: color 0.15s, background 0.15s;
   }
   .nav-links a:hover { color: var(--white); background: var(--red); }
 
   /* dropdown Cases — controlado por JS, não por :hover CSS */
-  .nav-dropdown { position: relative; display: flex; align-items: center; }
+  .nav-dropdown { position: relative; display: flex; align-items: stretch; }
   .nav-dropdown-btn {
     color: var(--gray); background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 0 16px;
     display: flex; align-items: center; gap: 6px; white-space: nowrap;
     border-radius: 0;
     transition: color 0.15s, background 0.15s;
@@ -267,8 +267,9 @@
   .btn-secondary:hover { border-color: var(--white); transform: translateY(-2px); }
 
   /* outline deslocado atrás do hero */
-  .hero-right-wrap { position: relative; padding: 0 14px 14px 0; }
-  .hero-right-wrap::before { content: ''; position: absolute; top: 14px; right: 0; bottom: 0; left: -14px; border: 2px solid var(--red); z-index: 0; pointer-events: none; }
+  .hero-right-wrap { position: relative; padding: 0 14px 14px 0; display: contents; }
+  .hero-right-wrap-inner { position: relative; padding: 0 14px 14px 0; }
+  .hero-right-wrap-inner::before { content: ''; position: absolute; top: 14px; right: 0; bottom: 0; left: -14px; border: 2px solid var(--red); z-index: 0; pointer-events: none; }
   .hero-right { position: relative; background: var(--black); overflow: hidden; z-index: 1; }
   .hero-right::after { content: ''; position: absolute; inset: 0; z-index: 10; pointer-events: none; opacity: 0.35; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; mix-blend-mode: soft-light; }
   .hero-right::before { display: none; }
@@ -1054,8 +1055,8 @@
     .hero-ctas-buttons { grid-template-columns: 1fr 1fr; gap: 10px; }
     .btn-primary, .btn-secondary { padding: 13px 12px; font-size: 10px; }
     .social-icon { width: 38px; height: 38px; }
-    .hero-right-wrap { padding: 0 10px 10px 0; }
-    .hero-right-wrap::before { top: 10px; left: -10px; }
+    .hero-right-wrap-inner { padding: 0 10px 10px 0; }
+    .hero-right-wrap-inner::before { top: 10px; left: -10px; }
     .hero-right { order: 2; min-height: 520px; padding: 0; overflow: hidden; }
     .hero-photo { position: absolute; top: 0; left: 0; width: 100%; height: 75%; object-fit: cover; object-position: 30% top; transform: none; mask-image: linear-gradient(to bottom, black 55%, transparent 92%); -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%); }
     .hero-right-content { left: 0; right: 0; bottom: 0; padding: 20px 24px 24px; }
@@ -1486,6 +1487,7 @@
   </div>
 
   <div class="hero-right-wrap">
+  <div class="hero-right-wrap-inner">
   <div class="hero-right reveal" data-delay="2">
     <img src="foto-hero-mariov.png" alt="Mário Vinicius" class="hero-photo">
     <div class="hero-right-content">
@@ -1510,6 +1512,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
   </div>
 </section>
