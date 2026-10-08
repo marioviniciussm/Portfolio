@@ -972,7 +972,7 @@
   }
 
   .btn-top {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 9px;
     background: var(--vermelho);
     border: none; cursor: pointer;
     padding: 13px 20px;
@@ -984,14 +984,14 @@
     transform: translateY(8px);
     transition: opacity 0.15s, transform 0.15s, background 0.15s;
     white-space: nowrap;
-    border-radius: 8px;
+    clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
   }
   .btn-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-  .btn-top:hover { background: var(--vermelho-dark, #922b21); transform: translateY(-2px); }
-  .btn-top svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; flex-shrink: 0; }
+  .btn-top:hover { background: var(--vermelho-dark); transform: translateY(-2px); }
+  .btn-top svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; flex-shrink: 0; }
 
   .btn-whatsapp {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 9px;
     background: #25D366;
     padding: 13px 20px;
     color: #fff; text-decoration: none;
@@ -1000,14 +1000,16 @@
     letter-spacing: 0.15em; text-transform: uppercase;
     transition: background 0.15s, transform 0.15s;
     white-space: nowrap;
-    border-radius: 8px;
+    clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
   }
   .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
-  .btn-whatsapp svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; flex-shrink: 0; }
+  .btn-whatsapp svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 1.8; flex-shrink: 0; }
 
   @media (max-width: 768px) {
     .fab-group { bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; gap: 8px; }
-    .btn-top, .btn-whatsapp { font-size: 9px; letter-spacing: 0.12em; padding: 11px 14px; min-height: 44px; }
+    .btn-top, .btn-whatsapp { font-size: 10px; padding: 12px 16px; }
+    .btn-top svg { width: 15px; height: 15px; }
+    .btn-whatsapp svg { width: 16px; height: 16px; }
   }
 
   /* ── AVANT PLACEHOLDER ── */
